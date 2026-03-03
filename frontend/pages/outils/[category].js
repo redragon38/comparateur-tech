@@ -58,6 +58,18 @@ const CATEGORY_META = {
     desc: 'Protégez votre vie privée, sécurisez vos connexions et naviguez librement avec les meilleurs VPN sélectionnés par TheCreamAI.',
     longDesc: 'Un VPN (Virtual Private Network) est indispensable pour tout créateur ou entrepreneur soucieux de sa sécurité numérique. Que vous travailliez depuis un café, en déplacement ou depuis chez vous, un VPN chiffre vos connexions et masque votre adresse IP.',
   },
+  'ia-generative': {
+    label: 'IA générative',
+    icon: '✨',
+    color: 'from-pink-600 to-violet-500',
+    colorSolid: '#ec4899',
+    glow: 'rgba(236,72,153,0.2)',
+    border: 'border-pink-500/30',
+    bg: 'bg-pink-900/20',
+    textColor: 'text-gray-900',
+    desc: 'Générez du texte, des images et des vidéos avec les meilleurs outils d\'IA générative : ChatGPT, Midjourney, Claude et bien plus.',
+    longDesc: "L'IA générative transforme la création de contenu. Que ce soit pour rédiger, illustrer, coder ou générer des vidéos, ces outils permettent de produire en quelques secondes ce qui prenait des heures. Découvrez notre sélection des meilleures solutions d'IA générative pour booster votre créativité et votre productivité.",
+  },
   'antivirus': {
     label: 'Antivirus',
     icon: '🦠',
@@ -72,9 +84,10 @@ const CATEGORY_META = {
   },
 };
 
-// Les 4 catégories fixes (slug -> label)
+// Les 5 catégories fixes (slug -> label)
 const FIXED_CATEGORIES = [
   { slug: 'intelligence-artificielle', label: 'Intelligence artificielle' },
+  { slug: 'ia-generative', label: 'IA générative' },
   { slug: 'hebergement-web', label: 'Hébergement web' },
   { slug: 'vpn', label: 'VPN' },
   { slug: 'antivirus', label: 'Antivirus' },

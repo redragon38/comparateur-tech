@@ -56,15 +56,6 @@ function CompareCard({ tool, rank }) {
   const url = tool.affiliateUrl || tool.website || '#';
 
   return (
-<<<<<<< HEAD
-    <div className={`bg-white rounded-2xl flex flex-col relative overflow-hidden border-2 ${meta.border} hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-100/60 transition-all duration-300 group cursor-pointer shadow-sm`}>
-      <div className={`h-1.5 w-full ${meta.topBar}`} />
-      <div className="p-5 flex flex-col flex-1">
-        <Link href={`/tool/${tool.id}`} className="absolute inset-0 z-10" aria-label={`Voir ${tool.name}`} />
-
-        <div className="flex items-center justify-between mb-4">
-          <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${rank === 0 ? 'gradient-purple text-white' : 'bg-gray-100 text-gray-700'}`}>
-=======
     <div className={`bg-white rounded-2xl flex flex-col relative overflow-hidden border-2 ${meta.border} transition-all duration-300 group cursor-pointer shadow-sm hover:shadow-xl hover:-translate-y-1`}>
       <div className={`h-1.5 w-full ${meta.topBar}`} />
 
@@ -74,7 +65,6 @@ function CompareCard({ tool, rank }) {
         {/* Rang + badge */}
         <div className="flex items-center justify-between mb-3 sm:mb-4">
           <span className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-700">
->>>>>>> e1e71006e992e9f1033014f1fa53003639ef3267
             {rank + 1}
           </span>
           <div className="flex gap-1">
@@ -83,14 +73,9 @@ function CompareCard({ tool, rank }) {
           </div>
         </div>
 
-<<<<<<< HEAD
-        <div className="flex justify-center mb-4">
-          <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden shadow-sm">
-=======
         {/* Logo */}
         <div className="flex justify-center mb-3 sm:mb-4">
           <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden shadow-sm">
->>>>>>> e1e71006e992e9f1033014f1fa53003639ef3267
             {tool.logo ? (
               <img src={tool.logo} alt={tool.name} className="w-full h-full object-contain p-2" loading="lazy"
                 onError={e => { e.target.style.display='none'; e.target.parentElement.innerHTML=`<span class="text-3xl">${meta.icon}</span>`; }} />
@@ -98,27 +83,17 @@ function CompareCard({ tool, rank }) {
           </div>
         </div>
 
-<<<<<<< HEAD
-        <h3 className="font-bold text-base text-gray-900 text-center mb-1 group-hover:text-purple-700 transition-colors">{tool.name}</h3>
-
-        <div className="flex justify-center gap-1 mb-3 flex-wrap">
-=======
         {/* Nom */}
         <h3 className="font-bold text-sm sm:text-base text-gray-900 text-center mb-1 group-hover:text-purple-700 transition-colors">{tool.name}</h3>
 
         {/* Tags */}
         <div className="flex justify-center gap-1 mb-2 sm:mb-3 flex-wrap">
->>>>>>> e1e71006e992e9f1033014f1fa53003639ef3267
           {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-2 py-0.5 rounded-full font-semibold">🆓 Essai</span>}
           {tool.price && <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${meta.badge}`}>{tool.price}</span>}
         </div>
 
-<<<<<<< HEAD
-        <p className="text-gray-500 text-xs leading-relaxed text-center mb-4 line-clamp-2 flex-1">{tool.short || tool.highlight}</p>
-=======
         {/* Description */}
         <p className="text-gray-500 text-xs leading-relaxed text-center mb-3 sm:mb-4 line-clamp-2 flex-1">{tool.short || tool.highlight}</p>
->>>>>>> e1e71006e992e9f1033014f1fa53003639ef3267
 
         {tool.rating && (
           <div className="flex flex-col items-center gap-1 mb-3 sm:mb-4">
@@ -158,61 +133,6 @@ export default function Home({ tools }) {
       <main>
         <HeroSection />
 
-<<<<<<< HEAD
-        {/* Trust bar */}
-        <div className="bg-white border-y border-gray-100 py-4">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-2 text-xs text-gray-500 font-medium">
-              {[
-                { icon: '✅', text: '32 outils testés manuellement' },
-                { icon: '🔒', text: '100% indépendant' },
-                { icon: '⭐', text: 'Note moyenne 4.9/5' },
-                { icon: '🔄', text: 'Mis à jour trimestriellement' },
-                { icon: '💬', text: '2 800+ lecteurs satisfaits' },
-              ].map((item, i) => (
-                <span key={i} className="flex items-center gap-1.5">
-                  <span>{item.icon}</span> {item.text}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Comment ça marche */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Comment ça marche ?</h2>
-              <p className="text-gray-500 text-sm">Trouvez le bon outil en 3 étapes simples</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              {HOW_IT_WORKS.map((step, i) => (
-                <div key={i} className="text-center relative">
-                  {i < HOW_IT_WORKS.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gradient-to-r from-purple-200 to-purple-200 z-0" />
-                  )}
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 rounded-2xl gradient-purple flex items-center justify-center text-2xl mx-auto mb-4 shadow-lg shadow-purple-300/40">
-                      {step.icon}
-                    </div>
-                    <div className="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Étape {step.step}</div>
-                    <h3 className="font-bold text-gray-900 mb-2">{step.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Comparatif */}
-        <section className="py-20 bg-gray-50" id="comparatif">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-10">
-              <span className="inline-block bg-purple-50 border border-purple-200 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">⚖️ Comparatif</span>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Comparez les meilleurs outils</h2>
-              <p className="text-gray-500 max-w-lg mx-auto">Sélectionnez une catégorie pour voir notre top sélection, triés par note d'expert.</p>
-=======
         {/* ── Comparatif ── */}
         <section className="py-12 sm:py-20 bg-white" id="comparatif">
           <div className="container mx-auto px-4 sm:px-6">
@@ -220,18 +140,13 @@ export default function Home({ tools }) {
               <span className="inline-block bg-purple-50 border border-purple-200 text-purple-700 px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">⚖️ Comparatif</span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900">Comparez les meilleurs outils</h2>
               <p className="text-gray-500 max-w-lg mx-auto text-sm sm:text-base px-4">Sélectionnez une catégorie pour voir notre top sélection.</p>
->>>>>>> e1e71006e992e9f1033014f1fa53003639ef3267
             </div>
 
             {/* Filtres — scroll horizontal sur mobile */}
             <div className="scroll-x-mobile gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-3 mb-7 sm:mb-10 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
               {CATEGORIES.map(cat => (
                 <button key={cat} onClick={() => setSelectedCat(cat)}
-<<<<<<< HEAD
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all text-sm ${
-=======
                   className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold transition-all text-sm whitespace-nowrap min-h-[44px] ${
->>>>>>> e1e71006e992e9f1033014f1fa53003639ef3267
                     selectedCat === cat
                       ? 'gradient-purple text-white shadow-lg shadow-purple-300/50 scale-105'
                       : 'bg-white border border-gray-200 text-gray-700 hover:border-purple-300 hover:text-purple-700 hover:bg-purple-50'

@@ -7033,5 +7033,515 @@
     },
     "createdAt": "2025-02-01",
     "updatedAt": "2025-02-24"
+  },
+  {
+    "id": "chatgpt",
+    "slug": "chatgpt",
+    "name": "ChatGPT",
+    "partner": "OpenAI",
+    "website": "https://chat.openai.com",
+    "affiliateUrl": "https://chat.openai.com",
+    "logo": "/partners/chatgpt.png",
+    "og": "",
+    "categories": [
+      "IA générative"
+    ],
+    "tags": [
+      "chatbot",
+      "rédaction",
+      "code",
+      "assistant"
+    ],
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "priceMonthly": 20,
+    "priceCurrency": "USD",
+    "price": "Gratuit / 20 $/mois",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.8,
+      "count": 312
+    },
+    "selection": true,
+    "featured": true,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "ChatGPT est l'assistant IA le plus populaire au monde, capable de rédiger, coder, résumer et répondre à toutes vos questions en langage naturel.",
+    "highlight": "L'IA générative de référence pour la rédaction, le code et l'assistance au quotidien.",
+    "strengths": [
+      "Interface conversationnelle intuitive",
+      "Polyvalent : rédaction, code, analyse",
+      "Mises à jour régulières",
+      "Version gratuite disponible",
+      "GPT-4o intégré sur abonnement"
+    ],
+    "strengthShort": [
+      "Très polyvalent",
+      "Interface intuitive",
+      "GPT-4o",
+      "Version gratuite"
+    ],
+    "limitations": [
+      "Peut halluciner des informations",
+      "Données de formation pas toujours récentes",
+      "Limite de messages sur le plan gratuit"
+    ],
+    "limitationsShort": [
+      "Hallucinations possibles",
+      "Données limitées",
+      "Quota gratuit"
+    ],
+    "verdict": "ChatGPT reste la référence incontournable des assistants IA. Sa polyvalence, sa facilité d'utilisation et la puissance de GPT-4o en font l'outil idéal pour la rédaction, le code et l'assistance quotidienne."
+  },
+  {
+    "id": "midjourney",
+    "slug": "midjourney",
+    "name": "Midjourney",
+    "partner": "Midjourney Inc.",
+    "website": "https://www.midjourney.com",
+    "affiliateUrl": "https://www.midjourney.com",
+    "logo": "/partners/midjourney.png",
+    "og": "",
+    "categories": [
+      "IA générative"
+    ],
+    "tags": [
+      "image",
+      "art",
+      "design",
+      "créativité"
+    ],
+    "languages": [
+      "en"
+    ],
+    "priceMonthly": 10,
+    "priceCurrency": "USD",
+    "price": "À partir de 10 $/mois",
+    "trial": false,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.7,
+      "count": 189
+    },
+    "selection": true,
+    "featured": true,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Midjourney génère des images époustouflantes à partir de simples descriptions textuelles. Le meilleur outil de génération d'images IA pour les créatifs.",
+    "highlight": "La référence pour créer des visuels d'une qualité artistique exceptionnelle par IA.",
+    "strengths": [
+      "Qualité artistique exceptionnelle",
+      "Grande variété de styles",
+      "Communauté active",
+      "Résultats très réalistes",
+      "Amélioration continue"
+    ],
+    "strengthShort": [
+      "Qualité artistique",
+      "Styles variés",
+      "Réalisme",
+      "Communauté"
+    ],
+    "limitations": [
+      "Pas de version gratuite",
+      "Interface via Discord uniquement",
+      "Contrôle limité sur les détails"
+    ],
+    "limitationsShort": [
+      "Payant",
+      "Interface Discord",
+      "Contrôle limité"
+    ],
+    "verdict": "Midjourney est sans conteste le leader de la génération d'images par IA. La qualité artistique de ses rendus surpasse la concurrence et en fait l'outil de référence pour tout créatif cherchant à produire des visuels impactants."
+  },
+  {
+    "id": "claude-ai",
+    "slug": "claude-ai",
+    "name": "Claude",
+    "partner": "Anthropic",
+    "website": "https://claude.ai",
+    "affiliateUrl": "https://claude.ai",
+    "logo": "/partners/claude.png",
+    "og": "",
+    "categories": [
+      "IA générative"
+    ],
+    "tags": [
+      "rédaction",
+      "analyse",
+      "code",
+      "long contexte"
+    ],
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "priceMonthly": 20,
+    "priceCurrency": "USD",
+    "price": "Gratuit / 20 $/mois",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.8,
+      "count": 145
+    },
+    "selection": true,
+    "featured": true,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Claude est l'assistant IA d'Anthropic, reconnu pour sa capacité à analyser de longs documents, rédiger avec finesse et coder avec précision.",
+    "highlight": "L'IA générative la plus sûre et nuancée pour l'analyse, la rédaction longue et le code.",
+    "strengths": [
+      "Très long contexte (200k tokens)",
+      "Réponses nuancées et précises",
+      "Excellent pour l'analyse de documents",
+      "Sécurité et éthique au cœur",
+      "Version gratuite généreuse"
+    ],
+    "strengthShort": [
+      "Long contexte",
+      "Nuancé",
+      "Analyse docs",
+      "Éthique"
+    ],
+    "limitations": [
+      "Moins connu que ChatGPT",
+      "Pas de génération d'images",
+      "Accès API payant"
+    ],
+    "limitationsShort": [
+      "Moins populaire",
+      "Pas d'images",
+      "API payante"
+    ],
+    "verdict": "Claude s'impose comme l'alternative la plus sérieuse à ChatGPT pour les tâches d'analyse, de rédaction longue et de code. Sa gestion de contexte étendu et ses réponses de qualité en font un outil indispensable."
+  },
+  {
+    "id": "gemini",
+    "slug": "gemini",
+    "name": "Gemini",
+    "partner": "Google",
+    "website": "https://gemini.google.com",
+    "affiliateUrl": "https://gemini.google.com",
+    "logo": "/partners/gemini.png",
+    "og": "",
+    "categories": [
+      "IA générative"
+    ],
+    "tags": [
+      "Google",
+      "multimodal",
+      "recherche",
+      "assistant"
+    ],
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "priceMonthly": 20,
+    "priceCurrency": "USD",
+    "price": "Gratuit / 20 $/mois",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.5,
+      "count": 98
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Gemini est l'IA générative de Google, intégrée à l'écosystème Google (Gmail, Docs, Drive) pour une productivité boostée au quotidien.",
+    "highlight": "L'IA de Google, idéale si vous utilisez déjà l'écosystème Google Workspace.",
+    "strengths": [
+      "Intégré à Google Workspace",
+      "Accès en temps réel au web",
+      "Multimodal (texte, image, audio)",
+      "Gratuit avec un compte Google",
+      "Modèle Ultra très puissant"
+    ],
+    "strengthShort": [
+      "Intégré Google",
+      "Temps réel web",
+      "Multimodal",
+      "Gratuit"
+    ],
+    "limitations": [
+      "Moins créatif que ChatGPT",
+      "Qualité inégale selon les tâches",
+      "Données collectées par Google"
+    ],
+    "limitationsShort": [
+      "Moins créatif",
+      "Qualité inégale",
+      "Données Google"
+    ],
+    "verdict": "Gemini est le choix naturel pour les utilisateurs de l'écosystème Google. Son intégration avec Gmail, Docs et Drive le rend particulièrement efficace pour la productivité bureautique, même s'il reste en retrait sur les tâches créatives."
+  },
+  {
+    "id": "copilot",
+    "slug": "copilot",
+    "name": "Microsoft Copilot",
+    "partner": "Microsoft",
+    "website": "https://copilot.microsoft.com",
+    "affiliateUrl": "https://copilot.microsoft.com",
+    "logo": "/partners/copilot.png",
+    "og": "",
+    "categories": [
+      "IA générative"
+    ],
+    "tags": [
+      "Microsoft",
+      "Office",
+      "productivité",
+      "code"
+    ],
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "priceMonthly": 30,
+    "priceCurrency": "USD",
+    "price": "Gratuit / 30 $/mois",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.4,
+      "count": 76
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Microsoft Copilot intègre GPT-4 directement dans Word, Excel, PowerPoint et Teams pour automatiser et améliorer votre productivité Microsoft 365.",
+    "highlight": "L'IA de Microsoft intégrée à Office 365 pour une productivité décuplée.",
+    "strengths": [
+      "Intégré à Microsoft 365",
+      "Propulsé par GPT-4",
+      "Génère du code, des slides, des mails",
+      "Accès web gratuit",
+      "Sécurité entreprise"
+    ],
+    "strengthShort": [
+      "Intégré Office 365",
+      "GPT-4",
+      "Multi-format",
+      "Sécurité entreprise"
+    ],
+    "limitations": [
+      "Copilot Pro onéreux",
+      "Performances variables selon l'app",
+      "Nécessite Microsoft 365 pour les fonctions avancées"
+    ],
+    "limitationsShort": [
+      "Prix élevé Pro",
+      "Performances variables",
+      "Nécessite M365"
+    ],
+    "verdict": "Microsoft Copilot est l'outil idéal pour les entreprises déjà dans l'écosystème Microsoft. Son intégration native dans Word, Excel et Teams en fait un accélérateur de productivité puissant, surtout pour les équipes professionnelles."
+  },
+  {
+    "id": "dall-e",
+    "slug": "dall-e",
+    "name": "DALL·E 3",
+    "partner": "OpenAI",
+    "website": "https://openai.com/dall-e-3",
+    "affiliateUrl": "https://chat.openai.com",
+    "logo": "/partners/dalle.png",
+    "og": "",
+    "categories": [
+      "IA générative"
+    ],
+    "tags": [
+      "image",
+      "illustration",
+      "design",
+      "OpenAI"
+    ],
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "priceMonthly": 20,
+    "priceCurrency": "USD",
+    "price": "Inclus dans ChatGPT Plus",
+    "trial": false,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.5,
+      "count": 134
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "DALL·E 3 génère des images réalistes et créatives à partir de vos descriptions. Accessible directement via ChatGPT Plus.",
+    "highlight": "La génération d'images d'OpenAI, intégrée à ChatGPT pour une expérience fluide.",
+    "strengths": [
+      "Intégré à ChatGPT",
+      "Compréhension fine des prompts",
+      "Styles variés",
+      "Génération rapide",
+      "Respect des droits d'auteur"
+    ],
+    "strengthShort": [
+      "Intégré ChatGPT",
+      "Prompts précis",
+      "Rapide",
+      "Styles variés"
+    ],
+    "limitations": [
+      "Nécessite ChatGPT Plus",
+      "Moins artistique que Midjourney",
+      "Quota d'images limité"
+    ],
+    "limitationsShort": [
+      "Payant",
+      "Moins artistique",
+      "Quota limité"
+    ],
+    "verdict": "DALL·E 3 est la solution idéale pour générer des images directement dans ChatGPT. Plus accessible que Midjourney mais légèrement moins artistique, il reste une excellente option pour les non-designers cherchant des visuels de qualité rapidement."
+  },
+  {
+    "id": "perplexity",
+    "slug": "perplexity",
+    "name": "Perplexity AI",
+    "partner": "Perplexity",
+    "website": "https://www.perplexity.ai",
+    "affiliateUrl": "https://www.perplexity.ai",
+    "logo": "/partners/perplexity.png",
+    "og": "",
+    "categories": [
+      "IA générative"
+    ],
+    "tags": [
+      "recherche",
+      "web",
+      "sources",
+      "information"
+    ],
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "priceMonthly": 20,
+    "priceCurrency": "USD",
+    "price": "Gratuit / 20 $/mois",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.6,
+      "count": 87
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Perplexity est un moteur de recherche dopé à l'IA qui répond à vos questions avec des sources vérifiées et à jour en temps réel.",
+    "highlight": "Le moteur de recherche IA qui cite ses sources — parfait pour la recherche et la veille.",
+    "strengths": [
+      "Réponses sourcées et vérifiées",
+      "Accès au web en temps réel",
+      "Gratuit et sans inscription",
+      "Interface claire",
+      "Résumés concis"
+    ],
+    "strengthShort": [
+      "Sources citées",
+      "Temps réel",
+      "Gratuit",
+      "Interface claire"
+    ],
+    "limitations": [
+      "Moins créatif pour la rédaction",
+      "Profondeur limitée sans Pro",
+      "Pas de génération d'images"
+    ],
+    "limitationsShort": [
+      "Moins créatif",
+      "Profondeur limitée",
+      "Pas d'images"
+    ],
+    "verdict": "Perplexity AI révolutionne la recherche en ligne en combinant la puissance des LLMs avec le web en temps réel. C'est l'outil de référence pour la veille, la recherche documentaire et toute question nécessitant des informations récentes et sourcées."
+  },
+  {
+    "id": "runway",
+    "slug": "runway",
+    "name": "Runway",
+    "partner": "Runway AI",
+    "website": "https://runwayml.com",
+    "affiliateUrl": "https://runwayml.com",
+    "logo": "/partners/runway.png",
+    "og": "",
+    "categories": [
+      "IA générative"
+    ],
+    "tags": [
+      "vidéo",
+      "création",
+      "montage",
+      "IA vidéo"
+    ],
+    "languages": [
+      "en"
+    ],
+    "priceMonthly": 15,
+    "priceCurrency": "USD",
+    "price": "Gratuit / 15 $/mois",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.5,
+      "count": 63
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Runway génère et édite des vidéos par IA. Du texte à la vidéo en quelques secondes, c'est l'outil de référence pour les créateurs de contenu vidéo.",
+    "highlight": "La génération vidéo par IA la plus avancée pour les créateurs de contenu.",
+    "strengths": [
+      "Génération texte-vers-vidéo",
+      "Outils d'édition IA intégrés",
+      "Suppression arrière-plan",
+      "Interface créative",
+      "Mises à jour fréquentes"
+    ],
+    "strengthShort": [
+      "Texte-vers-vidéo",
+      "Édition IA",
+      "Interface créative",
+      "Mises à jour"
+    ],
+    "limitations": [
+      "Crédits limités sur plan gratuit",
+      "Vidéos courtes sur plan de base",
+      "Qualité variable"
+    ],
+    "limitationsShort": [
+      "Crédits limités",
+      "Vidéos courtes",
+      "Qualité variable"
+    ],
+    "verdict": "Runway s'impose comme le leader de la génération vidéo par IA. Sa capacité à transformer du texte en vidéo et ses outils d'édition avancés en font un incontournable pour les créateurs de contenu souhaitant produire des vidéos professionnelles sans compétences techniques."
   }
 ]

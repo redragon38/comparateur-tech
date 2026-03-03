@@ -6,6 +6,7 @@ const CAT_META = {
   'Intelligence artificielle': { icon: '🤖', topBar: 'bg-violet-500',  border: 'border-violet-200',  badge: 'bg-violet-50 border-violet-200 text-violet-700'   },
   'Hébergement web':           { icon: '🌐', topBar: 'bg-emerald-500', border: 'border-emerald-200', badge: 'bg-emerald-50 border-emerald-200 text-emerald-700' },
   'Antivirus':                 { icon: '🦠', topBar: 'bg-red-500',     border: 'border-red-200',     badge: 'bg-red-50 border-red-200 text-red-700'            },
+  'IA générative':             { icon: '✨', topBar: 'bg-pink-500',    border: 'border-pink-200',    badge: 'bg-pink-50 border-pink-200 text-pink-700'         },
 };
 
 function Stars({ val }) {
