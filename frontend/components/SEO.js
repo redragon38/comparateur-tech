@@ -3,7 +3,7 @@ import Head from 'next/head';
 export default function SEO({
   title = 'Thecreamai - Les Meilleurs Tools IA pour Créateurs & Entrepreneurs',
   description = 'Discover une sélection d\'outils IA triés sur le volet pour booster votre productivité, créativité et business. VPN, outils de design, marketing et bien plus.',
-  canonical = 'https://thecreamai.com',
+  canonical = 'https://thecreamai.com/',
   ogImage = 'https://thecreamai.com/og-image.jpg',
   ogType = 'website',
   twitterCard = 'summary_large_image',

@@ -44,7 +44,7 @@ export default function Home({ tools }) {
       <SEO
         title="Thecreamai — Les Meilleurs Outils IA, VPN & Hébergement Web"
         description="Découvrez et comparez les meilleurs outils IA, VPN, hébergements web et antivirus. Sélection vérifiée et mise à jour par nos experts."
-        canonical="https://thecreamai.com"
+        canonical="https://thecreamai.com/"
         structuredData={STRUCTURED_DATA}
       />
       <Header />
