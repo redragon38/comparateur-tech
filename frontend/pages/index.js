@@ -75,7 +75,7 @@ export default function Home({ tools }) {
             </div>
 
             {/* Grille — 2 colonnes sur mobile */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 mb-7 sm:mb-10">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-7 sm:mb-10">
               {catTools.map((tool, i) => <ToolCard key={tool.id} tool={tool} />)}
             </div>
 
