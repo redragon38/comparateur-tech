@@ -78,8 +78,8 @@ export default function Footer() {
               <li><Link href="/contact" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Contact</Link></li>
               <li><Link href="/comparatifs" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Comparatifs</Link></li>
               <li><Link href="/blog" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Blog</Link></li>
-              <li><Link href="#" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Mentions légales</Link></li>
-              <li><Link href="#" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Confidentialité</Link></li>
+              <li><Link href="/mentions-legales" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Mentions légales</Link></li>
+              <li><Link href="/cgu" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">CGU</Link></li>
             </ul>
           </div>
         </div>
@@ -88,10 +88,14 @@ export default function Footer() {
         <div className="border-t border-purple-100 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-gray-400 text-xs">© 2025 Comparateur-Tech. Tous droits réservés.</p>
           <div className="flex gap-4 sm:gap-6 flex-wrap justify-center">
-            {['Mentions légales', 'CGU', 'Contact'].map((item, i) => (
-              <Link key={i} href={item === 'Contact' ? '/contact' : '#'}
+            {[
+              { label: 'Mentions légales', href: '/mentions-legales' },
+              { label: 'CGU', href: '/cgu' },
+              { label: 'Contact', href: '/contact' },
+            ].map((item, i) => (
+              <Link key={i} href={item.href}
                 className="text-gray-400 hover:text-purple-700 transition-colors text-xs min-h-[44px] flex items-center">
-                {item}
+                {item.label}
               </Link>
             ))}
           </div>

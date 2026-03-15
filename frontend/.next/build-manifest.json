@@ -32,10 +32,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/comparatifs": [
+    "/cgu": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/comparatifs.js"
+      "static/chunks/pages/cgu.js"
+    ],
+    "/mentions-legales": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/mentions-legales.js"
     ]
   },
   "ampFirstPages": []
