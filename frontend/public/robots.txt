@@ -1,0 +1,47 @@
+# Robots.txt pour Comparateur-Tech
+# https://comparateur-tech.com/robots.txt
+
+# Autoriser tous les robots d'exploration
+User-agent: *
+Allow: /
+
+# Bloquer les ressources sensibles
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /admin/
+Disallow: /private/
+
+# Crawl-delay pour éviter la surcharge serveur
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://comparateur-tech.com/sitemap.xml
+
+# Règles spécifiques pour les principaux bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Bloquer les mauvais bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
