@@ -26,6 +26,13 @@ export default function Document() {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
 
+        {/* ── Umami Analytics (no cookie · RGPD · temps réel) ── */}
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="6ea0f83b-1027-4e94-972d-f57f04528f2d"
+        />
+
         {/* ── Google Analytics (chargé en defer pour ne pas bloquer) ── */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LP1TMHQWW" />
         <script
