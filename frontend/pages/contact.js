@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { Mail, Clock, Globe, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
-const FORMSPREE_ID = 'xjgezqgj';
+const FORMSPREE_ID = 'xvzwyejw';
 const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
 
 const SUBJECTS = [
@@ -89,7 +89,7 @@ export default function ContactPage() {
           {/* Infos — horizontal scroll sur mobile, grid sur desktop */}
           <div className="flex gap-3 sm:grid sm:grid-cols-3 sm:gap-4 mb-8 sm:mb-10 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0">
             {[
-              { icon: <Mail className="w-5 h-5 text-purple-700" />, title: 'Email', content: 'l.bonin2011@gmail.com' },
+              { icon: <Mail className="w-5 h-5 text-purple-700" />, title: 'Email', content: 'comparateur.tech@gmail.com' },
               { icon: <Clock className="w-5 h-5 text-purple-700" />, title: 'Délai', content: 'Sous 24h en jours ouvrés' },
               { icon: <Globe className="w-5 h-5 text-purple-700" />, title: 'Disponibilité', content: 'France & International' },
             ].map((card, i) => (
@@ -160,7 +160,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl text-sm font-medium">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
                   Erreur. Écrivez à{' '}
-                  <a href="mailto:l.bonin2011@gmail.com" className="underline">l.bonin2011@gmail.com</a>
+                  <a href="mailto:comparateur.tech@gmail.com" className="underline">comparateur.tech@gmail.com</a>
                 </div>
               )}
             </form>

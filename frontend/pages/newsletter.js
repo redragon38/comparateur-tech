@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { CheckCircle, Mail, Zap, Shield, Star, Gift, AlertCircle } from 'lucide-react';
 
-const FORMSPREE_URL = 'https://formspree.io/f/xjgezqgj';
+const FORMSPREE_URL = 'https://formspree.io/f/xvzwyejw';
 
 const PERKS = [
   { icon: <Zap className="w-5 h-5 text-yellow-500" />, bg: 'bg-yellow-50 border-yellow-100', title: 'Nouveaux outils en avant-première', desc: 'Soyez le premier informé des meilleures sorties avant tout le monde.' },
@@ -62,7 +62,7 @@ function NewsletterForm({ size = 'normal' }) {
       </form>
       {status === 'error' && (
         <div className="flex items-center justify-center gap-2 text-red-200 text-sm mt-3">
-          <AlertCircle className="w-4 h-4" /> Erreur. Réessayez ou écrivez à l.bonin2011@gmail.com
+          <AlertCircle className="w-4 h-4" /> Erreur. Réessayez ou écrivez à comparateur.tech@gmail.com
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
-import { Menu, X, ChevronDown, LayoutGrid, Trophy, Mail } from 'lucide-react';
+import { Menu, X, ChevronDown, LayoutGrid, Trophy, Mail, Users2 } from 'lucide-react';
 
 const CATEGORIES = [
   { slug: 'intelligence-artificielle', label: 'Intelligence artificielle', icon: '🤖', desc: 'Outils IA pour la productivité', href: '/outils/intelligence-artificielle' },
@@ -113,6 +113,9 @@ export default function Header() {
               <Link href="/contact" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all">
                 Contact
               </Link>
+              <Link href="/partenaires" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all flex items-center gap-1.5">
+                <Users2 className="w-3.5 h-3.5" /> Partenaires
+              </Link>
 
               {/* Top 10 dropdown */}
               <div className="relative ml-2" ref={top10Ref}>
@@ -161,6 +164,7 @@ export default function Header() {
             <Link href="/blog" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm">📰 Blog</Link>
             <Link href="/newsletter" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm">📧 Newsletter</Link>
             <Link href="/contact" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm">✉️ Contact</Link>
+            <Link href="/partenaires" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm">🤝 Partenaires</Link>
             <div className="pt-3 border-t border-purple-50">
               <p className="text-xs font-bold uppercase tracking-widest text-gray-400 px-3 py-1.5">🏆 Top 10</p>
               {TOP10_CATEGORIES.map(cat => (

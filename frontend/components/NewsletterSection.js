@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Mail, ArrowRight, CheckCircle, Zap, Gift, Star } from 'lucide-react';
 
-const FORMSPREE_URL = 'https://formspree.io/f/xjgezqgj';
+const FORMSPREE_URL = 'https://formspree.io/f/xvzwyejw';
 
 const PERKS = [
   { icon: <Zap className="w-4 h-4" />, text: 'Nouveaux outils en avant-première' },
@@ -87,7 +87,7 @@ export default function NewsletterSection() {
                     {error && (
                       <p className="text-red-400 text-xs mt-2 text-center">
                         Erreur. Réessayez ou écrivez à{' '}
-                        <a href="mailto:l.bonin2011@gmail.com" className="underline">l.bonin2011@gmail.com</a>
+                        <a href="mailto:comparateur.tech@gmail.com" className="underline">comparateur.tech@gmail.com</a>
                       </p>
                     )}
                     <p className="text-gray-500 text-xs mt-3 text-center">

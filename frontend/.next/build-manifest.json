@@ -17,11 +17,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
-    "/404": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/404.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -32,15 +27,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/cgu": [
+    "/contact": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/cgu.js"
+      "static/chunks/pages/contact.js"
     ],
-    "/mentions-legales": [
+    "/newsletter": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/mentions-legales.js"
+      "static/chunks/pages/newsletter.js"
+    ],
+    "/partenaires": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/partenaires.js"
     ]
   },
   "ampFirstPages": []

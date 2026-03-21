@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Mail, CheckCircle, AlertCircle, Twitter, Linkedin, Youtube } from 'lucide-react';
 
-const FORMSPREE_URL = 'https://formspree.io/f/xjgezqgj';
+const FORMSPREE_URL = 'https://formspree.io/f/xvzwyejw';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -78,6 +78,7 @@ export default function Footer() {
             <h4 className="font-bold mb-3 text-gray-700 text-xs uppercase tracking-wider">Légal</h4>
             <ul className="space-y-2.5">
               <li><Link href="/contact" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Contact</Link></li>
+              <li><Link href="/partenaires" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Partenaires</Link></li>
               <li><Link href="/comparatifs" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Comparatifs</Link></li>
               <li><Link href="/blog" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Blog</Link></li>
               <li><Link href="/mentions-legales" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Mentions légales</Link></li>

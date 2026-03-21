@@ -15,7 +15,7 @@ const sections = [
         <ul className="space-y-1 text-sm text-gray-600">
           <li><span className="font-semibold text-gray-700">Statut :</span> Particulier (site personnel)</li>
           <li><span className="font-semibold text-gray-700">Email :</span>{' '}
-            <a href="mailto:l.bonin2011@gmail.com" className="text-purple-600 hover:underline">l.bonin2011@gmail.com</a>
+            <a href="mailto:comparateur.tech@gmail.com" className="text-purple-600 hover:underline">comparateur.tech@gmail.com</a>
           </li>
         </ul>
         <p className="text-gray-500 text-sm leading-relaxed mt-3 italic">
@@ -89,7 +89,7 @@ const sections = [
         </ul>
         <p className="text-gray-600 text-sm">
           Pour exercer ces droits :{' '}
-          <a href="mailto:l.bonin2011@gmail.com" className="text-purple-600 hover:underline">l.bonin2011@gmail.com</a>
+          <a href="mailto:comparateur.tech@gmail.com" className="text-purple-600 hover:underline">comparateur.tech@gmail.com</a>
         </p>
       </>
     ),
