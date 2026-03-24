@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // Optimisations d'images
+  // Optimisation images
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'comparateur-tech.com' },
@@ -11,23 +11,18 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [390, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 jours
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
 
-  // Compression Gzip/Brotli
   compress: true,
-
-  // Optimisations perf
   poweredByHeader: false,
   generateEtags: true,
 
-  // Experimental
   experimental: {
-    optimizeCss: false, // Mettre true si critters est installé
-    scrollRestoration: true,
+    optimizeCss: false,
+    scrollRestoration: false, // géré manuellement dans _app.js
   },
 
-  // Headers sécurité + cache mobile
   async headers() {
     return [
       {
@@ -40,30 +35,41 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
-      // Cache long pour assets statiques
       {
-        source: '/(.*)\\.(png|jpg|jpeg|gif|webp|avif|ico|svg|woff2|woff|ttf)',
+        source: '/(.*)\\.{png,jpg,jpeg,gif,webp,avif,ico,svg,woff2,woff,ttf}',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
-      // Cache pour les données JSON
       {
         source: '/data/(.*)\\.json',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=3600, stale-while-revalidate=86400' },
         ],
       },
+      {
+        source: '/_next/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+        ],
+      },
     ];
   },
 
   async redirects() {
-    return [];
+    return [
+      { source: '/en',        destination: '/',          permanent: false },
+      { source: '/en/:path*', destination: '/:path*',    permanent: false },
+      { source: '/fr',        destination: '/',          permanent: true  },
+      { source: '/fr/:path*', destination: '/:path*',    permanent: true  },
+      { source: '/outils/',   destination: '/outils',    permanent: true  },
+      { source: '/blog/',     destination: '/blog',      permanent: true  },
+    ];
   },
 
   env: {
     SITE_URL: process.env.SITE_URL || 'https://comparateur-tech.com',
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
