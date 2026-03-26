@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Exclure les ressources techniques
+Disallow: /_next/
+Disallow: /api/
+
+# Exclure les pages de redirection (contenu dupliqué)
+Disallow: /en/
+Disallow: /fr/
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Sitemap
+Sitemap: https://comparateur-tech.com/sitemap.xml

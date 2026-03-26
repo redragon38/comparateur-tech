@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TheCreAmAI — Les Meilleurs Outils IA, VPN & Hébergement Web</title>
+<meta name="description" content="Découvrez et comparez les meilleurs outils IA, VPN, hébergements web et antivirus. Avis vérifiés, comparatifs experts et guides pour créateurs et entrepreneurs.">
+<meta name="keywords" content="outils IA, intelligence artificielle, VPN, hébergement web, antivirus, NordVPN, Hostinger, Bitdefender, comparatif, avis">
+<meta property="og:title" content="TheCreAmAI — Les Meilleurs Outils IA, VPN & Hébergement Web">
+<meta property="og:description" content="Comparez les meilleurs outils du web : IA, VPN, hébergement web et antivirus. Avis experts, guides et sélections vérifiées.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://comparateur-tech.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05010f;
+    --bg2: #0b0120;
+    --purple: #8b5cf6;
+    --purple2: #6d28d9;
+    --pink: #ec4899;
+    --cyan: #06b6d4;
+    --text: #f1f0f5;
+    --muted: #8b89a0;
+    --card: rgba(139, 92, 246, 0.07);
+    --border: rgba(139, 92, 246, 0.18);
+    --glow: rgba(139, 92, 246, 0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 { font-family: 'Syne', sans-serif; }
+
+  /* ─── BACKGROUND ANIMATED ─── */
+  .bg-mesh {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  }
+  .bg-mesh::before {
+    content: '';
+    position: absolute;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(109,40,217,0.18) 0%, transparent 70%);
+    top: -200px; left: -200px;
+    animation: drift1 12s ease-in-out infinite alternate;
+  }
+  .bg-mesh::after {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 70%);
+    bottom: -150px; right: -150px;
+    animation: drift2 15s ease-in-out infinite alternate;
+  }
+  @keyframes drift1 { to { transform: translate(80px, 60px); } }
+  @keyframes drift2 { to { transform: translate(-60px, -40px); } }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+  /* ─── TOPBAR ANNOUNCEMENT ─── */
+  .topbar {
+    background: linear-gradient(90deg, var(--purple2), var(--pink), var(--purple));
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 100;
+  }
+  .topbar a { color: white; font-weight: 700; text-decoration: underline; }
+
+  /* ─── HEADER ─── */
+  header {
+    position: sticky; top: 0; z-index: 90;
+    backdrop-filter: blur(20px);
+    background: rgba(5, 1, 15, 0.85);
+    border-bottom: 1px solid var(--border);
+  }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: 1200px; margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  .logo span { display: inline-flex; align-items: center; gap: 8px; }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--purple2), var(--purple));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 8px; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    padding: 8px 16px; border-radius: 8px;
+    font-size: 14px; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); background: rgba(139,92,246,0.12); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--purple2), var(--purple)) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    box-shadow: 0 0 20px rgba(139,92,246,0.3);
+  }
+  .nav-cta:hover { box-shadow: 0 0 30px rgba(139,92,246,0.5) !important; transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 100px 0 80px;
+    text-align: center;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(139,92,246,0.12);
+    border: 1px solid var(--border);
+    padding: 8px 18px; border-radius: 100px;
+    font-size: 13px; font-weight: 600; color: #c4b5fd;
+    margin-bottom: 28px;
+    animation: fadeInDown 0.6s ease;
+  }
+  .hero-badge .dot { width: 7px; height: 7px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  @keyframes fadeInDown { from { opacity:0; transform: translateY(-20px); } to { opacity:1; transform: translateY(0); } }
+  @keyframes fadeInUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+
+  .hero h1 {
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 800;
+    line-height: 1.08;
+    margin-bottom: 24px;
+    animation: fadeInUp 0.7s 0.1s ease both;
+  }
+  .hero h1 .gradient-text {
+    background: linear-gradient(135deg, var(--purple), var(--pink), var(--cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    font-size: 18px; color: var(--muted);
+    max-width: 600px; margin: 0 auto 40px;
+    line-height: 1.7;
+    animation: fadeInUp 0.7s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    animation: fadeInUp 0.7s 0.3s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--purple2), var(--purple));
+    color: white; padding: 15px 32px;
+    border-radius: 12px; font-weight: 700; font-size: 16px;
+    border: none; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 30px rgba(109,40,217,0.5);
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(109,40,217,0.65); }
+  .btn-secondary {
+    background: rgba(139,92,246,0.1);
+    border: 1px solid var(--border);
+    color: var(--text); padding: 15px 32px;
+    border-radius: 12px; font-weight: 600; font-size: 16px;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { background: rgba(139,92,246,0.2); border-color: var(--purple); transform: translateY(-2px); }
+
+  /* ─── STATS ─── */
+  .stats {
+    padding: 20px 0 60px;
+    animation: fadeInUp 0.7s 0.4s ease both;
+  }
+  .stats-grid {
+    display: flex; justify-content: center; gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    max-width: 700px; margin: 0 auto;
+  }
+  .stat-item {
+    flex: 1; text-align: center; padding: 28px 20px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px; font-weight: 800;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title { text-align: center; margin-bottom: 56px; }
+  .section-badge {
+    display: inline-block;
+    background: rgba(139,92,246,0.12);
+    border: 1px solid var(--border);
+    color: #c4b5fd; padding: 6px 16px; border-radius: 100px;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .section-title h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.2; margin-bottom: 14px; }
+  .section-title p { color: var(--muted); font-size: 17px; max-width: 540px; margin: 0 auto; line-height: 1.6; }
+
+  /* ─── WHY SECTION ─── */
+  .why { padding: 80px 0; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .why-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px;
+    transition: all 0.3s;
+  }
+  .why-card:hover { border-color: var(--purple); background: rgba(139,92,246,0.12); transform: translateY(-4px); box-shadow: 0 12px 40px var(--glow); }
+  .why-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, rgba(109,40,217,0.3), rgba(236,72,153,0.2));
+    border: 1px solid var(--border); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 16px;
+  }
+  .why-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .why-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── TOOLS SECTION ─── */
+  .tools-section { padding: 80px 0; }
+  .filter-bar { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 48px; }
+  .search-wrap { position: relative; width: 100%; max-width: 520px; }
+  .search-wrap input {
+    width: 100%;
+    background: rgba(11, 1, 32, 0.8);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 14px 20px 14px 48px;
+    color: var(--text); font-size: 15px; font-family: 'DM Sans', sans-serif;
+    outline: none; transition: all 0.3s;
+  }
+  .search-wrap input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(139,92,246,0.15); }
+  .search-wrap input::placeholder { color: var(--muted); }
+  .search-icon {
+    position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); font-size: 18px; pointer-events: none;
+  }
+  .cats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .cat-btn {
+    padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all 0.25s; border: 1px solid var(--border);
+    background: rgba(11, 1, 32, 0.6); color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cat-btn:hover, .cat-btn.active {
+    background: linear-gradient(135deg, var(--purple2), var(--purple));
+    border-color: transparent; color: white;
+    box-shadow: 0 4px 20px rgba(109,40,217,0.4);
+  }
+
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
+  .tool-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 24px; cursor: pointer;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .tool-card::before {
+    content: ''; position: absolute;
+    inset: 0; opacity: 0; transition: opacity 0.3s;
+    background: radial-gradient(circle at 50% 0%, rgba(139,92,246,0.12), transparent 70%);
+  }
+  .tool-card:hover { border-color: var(--purple); transform: translateY(-5px); box-shadow: 0 16px 50px rgba(109,40,217,0.25); }
+  .tool-card:hover::before { opacity: 1; }
+
+  .tool-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+  .tool-logo {
+    width: 60px; height: 60px; border-radius: 14px;
+    background: white; display: flex; align-items: center; justify-content: center;
+    overflow: hidden; flex-shrink: 0;
+  }
+  .tool-logo img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+  .tool-logo-fallback {
+    width: 60px; height: 60px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--purple2), var(--purple));
+    display: flex; align-items: center; justify-content: center; font-size: 28px;
+  }
+  .tool-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .badge {
+    padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .badge-verified { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: #34d399; }
+  .badge-top { background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.3); color: #fbbf24; }
+  .badge-new { background: rgba(6,182,212,0.15); border: 1px solid rgba(6,182,212,0.3); color: #22d3ee; }
+
+  .tool-name { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .tool-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; min-height: 40px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  .tool-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .stars { display: flex; gap: 2px; }
+  .star { font-size: 13px; }
+  .star.full { color: #fbbf24; }
+  .star.empty { color: #374151; }
+  .rating-text { font-size: 12px; color: var(--muted); }
+
+  .tool-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .tag {
+    background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2);
+    color: #c4b5fd; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 500;
+  }
+
+  .tool-footer { border-top: 1px solid var(--border); padding-top: 14px; display: flex; gap: 10px; }
+  .btn-tool {
+    flex: 1; background: linear-gradient(135deg, var(--purple2), var(--purple));
+    color: white; padding: 11px; border-radius: 10px;
+    border: none; cursor: pointer; font-weight: 600; font-size: 13px;
+    font-family: 'DM Sans', sans-serif; transition: all 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    text-decoration: none;
+  }
+  .btn-tool:hover { box-shadow: 0 6px 20px rgba(109,40,217,0.4); transform: translateY(-1px); }
+  .btn-detail {
+    background: rgba(139,92,246,0.1); border: 1px solid var(--border);
+    color: var(--muted); padding: 11px 16px; border-radius: 10px;
+    cursor: pointer; font-size: 13px; font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+  }
+  .btn-detail:hover { border-color: var(--purple); color: var(--text); }
+
+  .empty-state { text-align: center; padding: 60px 0; color: var(--muted); }
+  .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials { padding: 80px 0; background: linear-gradient(180deg, transparent, rgba(109,40,217,0.05), transparent); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .testimonial-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px;
+    transition: all 0.3s;
+  }
+  .testimonial-card:hover { border-color: var(--purple); transform: translateY(-3px); }
+  .t-stars { margin-bottom: 14px; font-size: 14px; color: #fbbf24; letter-spacing: 2px; }
+  .t-text { font-size: 14px; line-height: 1.7; color: #d1d5db; margin-bottom: 20px; font-style: italic; }
+  .t-author { display: flex; align-items: center; gap: 12px; }
+  .t-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700;
+    background: linear-gradient(135deg, var(--purple2), var(--pink));
+  }
+  .t-name { font-weight: 700; font-size: 14px; }
+  .t-role { font-size: 12px; color: var(--muted); }
+
+  /* ─── NEWSLETTER ─── */
+  .newsletter { padding: 80px 0; }
+  .newsletter-box {
+    background: linear-gradient(135deg, rgba(109,40,217,0.2), rgba(236,72,153,0.1));
+    border: 1px solid rgba(139,92,246,0.3);
+    border-radius: 28px; padding: 64px 40px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .newsletter-box::before {
+    content: ''; position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(109,40,217,0.2) 0%, transparent 70%);
+    top: -200px; left: 50%; transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .newsletter-box h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; margin-bottom: 14px; position: relative; }
+  .newsletter-box p { color: var(--muted); margin-bottom: 36px; font-size: 16px; max-width: 480px; margin-left: auto; margin-right: auto; position: relative; }
+  .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; position: relative; }
+  .newsletter-form input {
+    flex: 1; background: rgba(5,1,15,0.8); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 20px;
+    color: var(--text); font-size: 15px; font-family: 'DM Sans', sans-serif;
+    outline: none; transition: all 0.3s;
+  }
+  .newsletter-form input:focus { border-color: var(--purple); }
+  .newsletter-form input::placeholder { color: var(--muted); }
+  .newsletter-form button {
+    background: linear-gradient(135deg, var(--purple2), var(--purple));
+    color: white; padding: 14px 28px; border-radius: 12px;
+    border: none; cursor: pointer; font-weight: 700; font-size: 15px;
+    font-family: 'DM Sans', sans-serif; white-space: nowrap;
+    box-shadow: 0 6px 24px rgba(109,40,217,0.4); transition: all 0.3s;
+  }
+  .newsletter-form button:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(109,40,217,0.55); }
+  .newsletter-note { font-size: 12px; color: var(--muted); margin-top: 14px; position: relative; }
+
+  /* ─── FOOTER ─── */
+  footer { border-top: 1px solid var(--border); padding: 60px 0 30px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.7; margin: 12px 0 20px; max-width: 280px; }
+  .footer-socials { display: flex; gap: 10px; }
+  .social-btn {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--card); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; text-decoration: none; transition: all 0.3s;
+  }
+  .social-btn:hover { border-color: var(--purple); background: rgba(139,92,246,0.2); transform: translateY(-2px); }
+  .footer-col h4 { font-size: 14px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--purple); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { color: var(--muted); font-size: 13px; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--purple); }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: #0d0225; border: 1px solid var(--border);
+    border-radius: 24px; max-width: 600px; width: 100%;
+    padding: 36px; position: relative;
+    max-height: 90vh; overflow-y: auto;
+    transform: scale(0.95); transition: transform 0.3s;
+  }
+  .modal-overlay.open .modal { transform: scale(1); }
+  .modal-close {
+    position: absolute; top: 20px; right: 20px;
+    background: rgba(139,92,246,0.1); border: 1px solid var(--border);
+    color: var(--muted); width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 18px; transition: all 0.2s;
+  }
+  .modal-close:hover { background: rgba(139,92,246,0.25); color: var(--text); }
+  .modal-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .modal-logo { width: 70px; height: 70px; border-radius: 16px; background: white; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .modal-logo img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+  .modal-logo-fallback { width: 70px; height: 70px; border-radius: 16px; background: linear-gradient(135deg, var(--purple2), var(--purple)); display: flex; align-items: center; justify-content: center; font-size: 32px; }
+  .modal-title h3 { font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+  .modal-title p { color: var(--muted); font-size: 13px; }
+  .modal-desc { color: #c4b5fd; line-height: 1.7; margin-bottom: 24px; font-size: 14px; }
+  .modal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .meta-item { background: rgba(139,92,246,0.08); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .meta-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .meta-value { font-size: 16px; font-weight: 700; }
+  .modal-actions { display: flex; gap: 12px; }
+  .modal-actions a { flex: 1; }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress { position: fixed; top: 0; left: 0; z-index: 300; height: 3px; background: linear-gradient(90deg, var(--purple2), var(--pink)); width: 0%; transition: width 0.1s; }
+
+  /* ─── SCROLL TO TOP ─── */
+  .scroll-top {
+    position: fixed; bottom: 30px; right: 30px; z-index: 100;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple2), var(--purple));
+    border: none; color: white; cursor: pointer; font-size: 18px;
+    box-shadow: 0 6px 24px rgba(109,40,217,0.4); transition: all 0.3s;
+    opacity: 0; pointer-events: none; display: flex; align-items: center; justify-content: center;
+  }
+  .scroll-top.visible { opacity: 1; pointer-events: all; }
+  .scroll-top:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(109,40,217,0.55); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid > div:first-child { grid-column: 1/-1; }
+    .newsletter-form { flex-direction: column; }
+    .modal-meta { grid-template-columns: 1fr; }
+    .stats-grid { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-item:last-child { border-bottom: none; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* Loading skeleton */
+  .skeleton {
+    background: linear-gradient(90deg, rgba(139,92,246,0.05) 25%, rgba(139,92,246,0.15) 50%, rgba(139,92,246,0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+  }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress" id="progress"></div>
+<div class="bg-mesh"></div>
+
+<!-- Topbar -->
+<div class="topbar">
+  🎉 Sélection mise à jour — <strong>32 outils vérifiés</strong> pour booster votre activité &nbsp;·&nbsp; <a href="#tools">Voir la sélection →</a>
+</div>
+
+<!-- Header -->
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <span>
+        <span class="logo-icon">✦</span>
+        TheCreAmAI
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#tools">Outils</a>
+      <a href="#why">Pourquoi nous</a>
+      <a href="#avis">Avis</a>
+      <a href="#newsletter" class="nav-cta">Newsletter gratuite</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Mis à jour en 2025 · Sélection experte
+    </div>
+    <h1>
+      Trouvez les meilleurs<br>
+      <span class="gradient-text">outils du web</span><br>
+      en quelques secondes
+    </h1>
+    <p>IA, VPN, hébergement web, antivirus — comparez les meilleures solutions du marché, vérifiées et notées par nos experts.</p>
+    <div class="hero-actions">
+      <a href="#tools" class="btn-primary">⚡ Explorer les outils</a>
+      <a href="#why" class="btn-secondary">📖 Comment ça marche</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" id="stat1">32</div>
+        <div class="stat-label">Outils sélectionnés</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat2">4</div>
+        <div class="stat-label">Catégories</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat3">100%</div>
+        <div class="stat-label">Avis vérifiés</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why us -->
+<section class="why fade-in" id="why">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-badge">Pourquoi nous choisir</div>
+      <h2>Des recommandations en qui vous pouvez avoir confiance</h2>
+      <p>Chaque outil est testé et sélectionné pour répondre aux besoins réels des créateurs et entrepreneurs.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🔍</div>
+        <h3>Sélection rigoureuse</h3>
+        <p>Chaque outil est testé manuellement selon des critères précis : performance, rapport qualité-prix, support et fiabilité.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⭐</div>
+        <h3>Avis authentiques</h3>
+        <p>Les notes sont basées sur des milliers d'avis réels. Pas de faux témoignages, pas de manipulation.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚀</div>
+        <h3>Mis à jour régulièrement</h3>
+        <p>Notre équipe surveille l'évolution des outils pour vous garantir une information toujours à jour.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💡</div>
+        <h3>Comparatifs détaillés</h3>
+        <p>Forces, faiblesses, prix — tout est là pour que vous preniez la bonne décision en un coup d'œil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools Section -->
+<section class="tools-section" id="tools">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-badge">Tools</div>
+      <h2>Découvrez les meilleurs outils</h2>
+      <p>Filtrez par catégorie ou recherchez directement l'outil qu'il vous faut.</p>
+    </div>
+
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-icon">🔎</span>
+        <input type="text" id="searchInput" placeholder="Rechercher un outil (ex: NordVPN, Hostinger...)" oninput="filterTools()">
+      </div>
+      <div class="cats" id="catButtons">
+        <button class="cat-btn active" onclick="setCategory('all', this)">Tous (32)</button>
+        <button class="cat-btn" onclick="setCategory('Intelligence artificielle', this)">🤖 IA</button>
+        <button class="cat-btn" onclick="setCategory('VPN', this)">🛡️ VPN</button>
+        <button class="cat-btn" onclick="setCategory('Hébergement web', this)">🌐 Hébergement</button>
+        <button class="cat-btn" onclick="setCategory('Antivirus', this)">🦠 Antivirus</button>
+      </div>
+    </div>
+
+    <div class="tools-grid" id="toolsGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none">
+      <div class="icon">🔍</div>
+      <p>Aucun outil trouvé pour cette recherche.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials fade-in" id="avis">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-badge">Témoignages</div>
+      <h2>Ce qu'en disent nos lecteurs</h2>
+      <p>Des entrepreneurs et créateurs qui ont trouvé les bons outils grâce à TheCreAmAI.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Grâce à TheCreAmAI, j'ai trouvé le bon hébergeur en 10 minutes. Les comparatifs sont clairs et les avis fiables. Je recommande !"</p>
+        <div class="t-author">
+          <div class="t-avatar">S</div>
+          <div><div class="t-name">Sarah M.</div><div class="t-role">Freelance Web Designer</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Le meilleur site pour comparer les VPN. J'ai passé des heures ailleurs sans décision — ici en 5 min c'était réglé."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background: linear-gradient(135deg, #0ea5e9, #6d28d9)">T</div>
+          <div><div class="t-name">Thomas K.</div><div class="t-role">Développeur & Digital Nomad</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"J'utilise TheCreAmAI comme référence avant chaque achat d'outil IA. La sélection est sérieuse et les notes honnêtes."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background: linear-gradient(135deg, #ec4899, #8b5cf6)">A</div>
+          <div><div class="t-name">Amélie R.</div><div class="t-role">Créatrice de contenu</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter fade-in" id="newsletter">
+  <div class="container">
+    <div class="newsletter-box">
+      <h2>🎯 Ne ratez aucun bon outil</h2>
+      <p>Chaque semaine, recevez la sélection des meilleurs outils, offres exclusives et guides pratiques — directement dans votre boîte mail.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" id="emailInput" placeholder="votre@email.com" required>
+        <button type="submit">S'abonner gratuitement →</button>
+      </form>
+      <p class="newsletter-note">✅ Gratuit · Zéro spam · Désabonnement en 1 clic</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">✦ TheCreAmAI</a>
+        <p>La plateforme de référence pour découvrir et comparer les meilleurs outils du web. Sélection vérifiée pour créateurs et entrepreneurs.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Catégories</h4>
+        <ul>
+          <li><a href="#" onclick="setCategory('Intelligence artificielle')">🤖 IA</a></li>
+          <li><a href="#" onclick="setCategory('VPN')">🛡️ VPN</a></li>
+          <li><a href="#" onclick="setCategory('Hébergement web')">🌐 Hébergement</a></li>
+          <li><a href="#" onclick="setCategory('Antivirus')">🦠 Antivirus</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="#">Comparatifs</a></li>
+          <li><a href="#">Guides</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 TheCreAmAI. Tous droits réservés.</p>
+      <div class="footer-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">CGU</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ─── DATA ───
+const tools = [
+  { id: "nordvpn", name: "NordVPN", categories: ["VPN"], tags: ["VPN", "anonymat", "cybersécurité", "streaming"], logo: "/partners/nordvpn.png", rating: { value: 4.8, count: 94 }, short: "VPN haut de gamme offrant sécurité avancée, navigation anonyme et accès fluide aux contenus internationaux.", website: "https://nordvpn.com", verified: true, featured: true, price: "Abonnement premium", trial: true },
+  { id: "surfshark", name: "Surfshark", categories: ["VPN"], tags: ["VPN", "streaming", "anonymat"], logo: "/partners/surfshark.png", rating: { value: 4.7, count: 82 }, short: "VPN rapide et abordable offrant navigation anonyme, sécurité renforcée et accès au streaming mondial.", website: "https://surfshark.com", verified: true, price: "Abonnement premium", trial: true },
+  { id: "clickup", name: "ClickUp", categories: ["Intelligence artificielle"], tags: ["IA", "productivité", "gestion de projet"], logo: "/partners/clickup.png", rating: { value: 4.7, count: 76 }, short: "Plateforme tout-en-un de gestion de projets dopée à l'IA pour centraliser vos tâches, docs et objectifs.", website: "https://clickup.com", verified: true, featured: true, price: "Freemium", trial: true },
+  { id: "emergent", name: "Emergent", categories: ["Intelligence artificielle"], tags: ["IA", "agents", "automation"], logo: "/partners/emergent.png", rating: { value: 4.6, count: 41 }, short: "Créez et orchestrez des agents IA pour automatiser vos workflows complexes sans coder.", website: "https://emergentmind.com", verified: true, price: "Freemium" },
+  { id: "protonvpn", name: "Proton VPN", categories: ["VPN"], tags: ["VPN", "open source", "vie privée"], logo: "/partners/protonvpn.png", rating: { value: 4.7, count: 88 }, short: "VPN sécurisé et open source protégeant la vie privée, avec version gratuite sans limite de bande passante.", website: "https://protonvpn.com", verified: true, price: "Gratuit / Premium" },
+  { id: "ipvanish", name: "IPVanish", categories: ["VPN"], tags: ["VPN", "anonymat", "vitesse"], logo: "/partners/ipvanish.png", rating: { value: 4.6, count: 63 }, short: "VPN rapide et sécurisé offrant anonymat, connexions illimitées et protection des données.", website: "https://ipvanish.com", verified: false, price: "Abonnement premium" },
+  { id: "expressvpn", name: "ExpressVPN", categories: ["VPN"], tags: ["VPN", "vitesse", "streaming", "premium"], logo: "/partners/expressvpn.png", rating: { value: 4.8, count: 127 }, short: "VPN premium offrant vitesse, sécurité et confidentialité avancée sur plus de 94 pays.", website: "https://expressvpn.com", verified: true, featured: true, price: "Abonnement premium", trial: true },
+  { id: "cyberghost", name: "CyberGhost VPN", categories: ["VPN"], tags: ["VPN", "streaming", "débutants"], logo: "/partners/cyberghost.png", rating: { value: 4.7, count: 91 }, short: "VPN sécurisé et rapide idéal pour la protection de la vie privée et le streaming sans frontières.", website: "https://cyberghostvpn.com", verified: true, price: "Abonnement premium" },
+  { id: "mullvad", name: "Mullvad VPN", categories: ["VPN"], tags: ["VPN", "anonymat total", "no-log"], logo: "/partners/mullvad.png", rating: { value: 4.7, count: 52 }, short: "VPN anonyme garantissant confidentialité absolue et absence totale de logs utilisateur.", website: "https://mullvad.net", verified: true, price: "5€/mois" },
+  { id: "hostinger", name: "Hostinger", categories: ["Hébergement web"], tags: ["hébergement", "WordPress", "pas cher"], logo: "/partners/hostinger.png", rating: { value: 4.8, count: 214 }, short: "Hébergeur web avec le meilleur rapport qualité-prix du marché, parfait pour débuter.", website: "https://hostinger.fr", verified: true, featured: true, price: "À partir de 2,99€/mois", trial: true },
+  { id: "o2switch", name: "o2switch", categories: ["Hébergement web"], tags: ["hébergement", "français", "mutualisé"], logo: "/partners/o2switch.png", rating: { value: 4.9, count: 186 }, short: "Hébergeur français indépendant de référence, avec offre unique illimitée et support expert en français.", website: "https://o2switch.fr", verified: true, featured: true, price: "7,99€/mois illimité" },
+  { id: "kinsta", name: "Kinsta", categories: ["Hébergement web"], tags: ["hébergement WordPress", "premium", "Google Cloud"], logo: "/partners/kinsta.png", rating: { value: 4.9, count: 143 }, short: "Hébergeur WordPress managé premium sur infrastructure Google Cloud, ultra-rapide.", website: "https://kinsta.com", verified: true, price: "À partir de 35$/mois" },
+  { id: "siteground", name: "SiteGround", categories: ["Hébergement web"], tags: ["hébergement", "WordPress", "support"], logo: "/partners/siteground.png", rating: { value: 4.7, count: 168 }, short: "Hébergeur WordPress recommandé officiellement, reconnu pour sa fiabilité et son support exceptionnel.", website: "https://siteground.com", verified: true, price: "À partir de 3,99€/mois" },
+  { id: "planethoster", name: "PlanetHoster", categories: ["Hébergement web"], tags: ["hébergement", "francophone", "illimité"], logo: "/partners/planethoster.png", rating: { value: 4.8, count: 97 }, short: "Hébergeur francophone canadien avec support illimité et offres adaptées aux PME.", website: "https://planethoster.com", verified: true, price: "À partir de 6€/mois" },
+  { id: "hostarmada", name: "HostArmada", categories: ["Hébergement web"], tags: ["hébergement", "cloud SSD", "vitesse"], logo: "/partners/hostarmada.png", rating: { value: 4.8, count: 74 }, short: "Hébergeur cloud SSD nouvelle génération avec performances élevées et support 24/7.", website: "https://hostarmada.com", verified: true, price: "À partir de 2,49$/mois" },
+  { id: "ovhcloud", name: "OVHcloud", categories: ["Hébergement web"], tags: ["hébergement", "cloud", "européen"], logo: "/partners/ovhcloud.png", rating: { value: 4.6, count: 201 }, short: "Leader européen du cloud et de l'hébergement web, souveraineté des données garantie.", website: "https://ovhcloud.com", verified: true, price: "À partir de 1,99€/mois" },
+  { id: "bitdefender", name: "Bitdefender", categories: ["Antivirus"], tags: ["antivirus", "cybersécurité", "protection avancée"], logo: "/partners/bitdefender.png", rating: { value: 4.8, count: 312 }, short: "Solution antivirus et cybersécurité de référence, protégeant contre toutes les cybermenaces.", website: "https://bitdefender.com", verified: true, featured: true, price: "À partir de 19,99€/an", trial: true },
+  { id: "malwarebytes", name: "Malwarebytes", categories: ["Antivirus"], tags: ["antivirus", "malware", "référence"], logo: "/partners/malwarebytes.png", rating: { value: 4.7, count: 189 }, short: "Solution anti-malware de référence, reconnue par les experts en cybersécurité du monde entier.", website: "https://malwarebytes.com", verified: true, price: "Gratuit / Premium", trial: true },
+  { id: "avast", name: "Avast Antivirus", categories: ["Antivirus"], tags: ["antivirus", "gratuit", "populaire"], logo: "/partners/avast.png", rating: { value: 4.6, count: 256 }, short: "Solution de cybersécurité populaire avec version gratuite robuste et interface simple.", website: "https://avast.com", verified: true, price: "Gratuit / Premium" },
+  { id: "avg", name: "AVG Antivirus", categories: ["Antivirus"], tags: ["antivirus", "gratuit", "léger"], logo: "/partners/avg.png", rating: { value: 4.6, count: 178 }, short: "Solution de cybersécurité accessible et légère, idéale pour les utilisateurs débutants.", website: "https://avg.com", verified: false, price: "Gratuit / Premium" },
+  { id: "fsecure", name: "F-Secure", categories: ["Antivirus"], tags: ["antivirus", "nordique", "premium"], logo: "/partners/fsecure.png", rating: { value: 4.7, count: 94 }, short: "Solution de cybersécurité nordique premium, reconnue pour ses performances détection en temps réel.", website: "https://f-secure.com", verified: true, price: "À partir de 34,99€/an", trial: true },
+  { id: "totalvpn", name: "Total VPN", categories: ["VPN"], tags: ["VPN", "simple", "économique"], logo: "/partners/totalvpn.png", rating: { value: 4.5, count: 38 }, short: "VPN simple et économique pour sécuriser sa navigation et protéger ses données personnelles.", website: "https://totalvpn.com", verified: false, price: "Abonnement économique" },
+  { id: "norton-vpn", name: "Norton Secure VPN", categories: ["VPN"], tags: ["VPN", "Norton", "sécurité"], logo: "/partners/norton.png", rating: { value: 4.6, count: 71 }, short: "VPN simple et sécurisé par Norton pour protéger votre vie privée et votre connexion.", website: "https://norton.com", verified: true, price: "Inclus dans Norton 360" },
+  { id: "kaspersky-vpn", name: "Kaspersky VPN", categories: ["VPN"], tags: ["VPN", "Kaspersky", "chiffrement"], logo: "/partners/kaspersky.png", rating: { value: 4.6, count: 59 }, short: "VPN sécurisé avec protection de la vie privée et chiffrement de niveau militaire.", website: "https://kaspersky.com", verified: false, price: "Inclus Kaspersky Plus" },
+  { id: "purevpn", name: "PureVPN", categories: ["VPN"], tags: ["VPN", "rapide", "31 jours remboursé"], logo: "/partners/purevpn.png", rating: { value: 4.6, count: 83 }, short: "VPN rapide et sécurisé offrant anonymat et protection complète avec garantie 31 jours.", website: "https://purevpn.com", verified: true, price: "Abonnement premium", trial: true },
+  { id: "hideme", name: "Hide.me", categories: ["VPN"], tags: ["VPN", "anonymat", "gratuit"], logo: "/partners/hideme.png", rating: { value: 4.6, count: 47 }, short: "VPN rapide et sécurisé offrant anonymat et confidentialité totale avec version gratuite.", website: "https://hide.me", verified: true, price: "Gratuit / Premium" },
+  { id: "privadovpn", name: "PrivadoVPN", categories: ["VPN"], tags: ["VPN", "sécurisé", "no-log"], logo: "/partners/privadovpn.png", rating: { value: 4.6, count: 31 }, short: "VPN sécurisé et rapide, idéal pour la protection de la vie privée avec politique no-log certifiée.", website: "https://privadovpn.com", verified: true, price: "Gratuit / Premium" },
+  { id: "hmavpn", name: "HMA VPN", categories: ["VPN"], tags: ["VPN", "serveurs", "streaming"], logo: "/partners/hmavpn.png", rating: { value: 4.5, count: 64 }, short: "VPN rapide et sécurisé pour protéger vos données et naviguer sans restrictions.", website: "https://hidemyass.com", verified: false, price: "Abonnement premium" },
+  { id: "lws", name: "LWS", categories: ["Hébergement web"], tags: ["hébergement", "français", "IA"], logo: "/partners/lws.png", rating: { value: 4.6, count: 88 }, short: "Hébergeur web français abordable avec IA intégrée pour simplifier la gestion de vos sites.", website: "https://lws.fr", verified: true, price: "À partir de 1,99€/mois" },
+  { id: "ionos", name: "IONOS", categories: ["Hébergement web"], tags: ["hébergement", "allemand", "PME"], logo: "/partners/ionos.png", rating: { value: 4.5, count: 142 }, short: "Acteur historique européen de l'hébergement web, fiable et adapté aux entreprises.", website: "https://ionos.fr", verified: true, price: "À partir de 1€/mois" },
+  { id: "bluehost", name: "Bluehost", categories: ["Hébergement web"], tags: ["hébergement", "WordPress", "recommandé"], logo: "/partners/bluehost.png", rating: { value: 4.6, count: 197 }, short: "Hébergeur recommandé par WordPress.org, idéal pour créer son site facilement et rapidement.", website: "https://bluehost.com", verified: true, price: "À partir de 2,95$/mois", trial: true },
+  { id: "bitdefender-vpn", name: "Bitdefender VPN", categories: ["VPN"], tags: ["VPN", "Bitdefender", "simple"], logo: "/partners/bitdefender.png", rating: { value: 4.6, count: 55 }, short: "VPN simple et sécurisé par Bitdefender, protégeant vos connexions avec fiabilité.", website: "https://bitdefender.com", verified: true, price: "Inclus Bitdefender Premium" }
+];
+
+let activeCategory = 'all';
+
+function renderStars(value) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    html += `<span class="star ${i <= Math.floor(value) ? 'full' : 'empty'}">${i <= Math.floor(value) ? '★' : '☆'}</span>`;
+  }
+  return html;
+}
+
+function getEmoji(cat) {
+  const map = { 'VPN': '🛡️', 'Intelligence artificielle': '🤖', 'Hébergement web': '🌐', 'Antivirus': '🦠' };
+  return map[cat] || '🛠️';
+}
+
+function getBadges(tool) {
+  let badges = '';
+  if (tool.verified) badges += '<span class="badge badge-verified">✓ Vérifié</span>';
+  if (tool.featured) badges += '<span class="badge badge-top">🏆 Top</span>';
+  if (tool.trial) badges += '<span class="badge badge-new">🆓 Essai gratuit</span>';
+  return badges;
+}
+
+function renderTools(list) {
+  const grid = document.getElementById('toolsGrid');
+  const empty = document.getElementById('emptyState');
+  if (list.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+
+  grid.innerHTML = list.map(tool => `
+    <div class="tool-card" onclick="openModal('${tool.id}')">
+      <div class="tool-header">
+        <div class="tool-logo-fallback">${getEmoji(tool.categories[0])}</div>
+        <div class="tool-badges">${getBadges(tool)}</div>
+      </div>
+      <h3 class="tool-name">${tool.name}</h3>
+      <p class="tool-desc">${tool.short}</p>
+      <div class="tool-rating">
+        <div class="stars">${renderStars(tool.rating.value)}</div>
+        <span class="rating-text">${tool.rating.value} (${tool.rating.count} avis)</span>
+      </div>
+      <div class="tool-tags">
+        ${(tool.categories || []).map(c => `<span class="tag">${c}</span>`).join('')}
+        ${tool.price ? `<span class="tag" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399">${tool.price}</span>` : ''}
+      </div>
+      <div class="tool-footer">
+        <a class="btn-tool" href="${tool.website}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir le site ↗</a>
+        <button class="btn-detail" onclick="event.stopPropagation(); openModal('${tool.id}')">Détails</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterTools() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  let filtered = tools;
+  if (activeCategory !== 'all') filtered = filtered.filter(t => t.categories.includes(activeCategory));
+  if (search) filtered = filtered.filter(t =>
+    t.name.toLowerCase().includes(search) ||
+    t.short.toLowerCase().includes(search) ||
+    (t.tags && t.tags.some(tag => tag.toLowerCase().includes(search)))
+  );
+  renderTools(filtered);
+}
+
+function setCategory(cat, btn) {
+  activeCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  filterTools();
+  document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });
+}
+
+function openModal(id) {
+  const tool = tools.find(t => t.id === id);
+  if (!tool) return;
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-header">
+      <div class="modal-logo-fallback">${getEmoji(tool.categories[0])}</div>
+      <div class="modal-title">
+        <h3>${tool.name}</h3>
+        <p>${tool.categories.join(', ')} ${tool.verified ? '· ✓ Vérifié' : ''}</p>
+      </div>
+    </div>
+    <div class="tool-rating" style="margin-bottom:16px">
+      <div class="stars">${renderStars(tool.rating.value)}</div>
+      <span class="rating-text" style="font-size:14px">${tool.rating.value}/5 · ${tool.rating.count} avis</span>
+    </div>
+    <p class="modal-desc">${tool.short}</p>
+    <div class="modal-meta">
+      <div class="meta-item">
+        <div class="meta-label">Catégorie</div>
+        <div class="meta-value">${getEmoji(tool.categories[0])} ${tool.categories[0]}</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Prix</div>
+        <div class="meta-value">${tool.price || 'Voir le site'}</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Note</div>
+        <div class="meta-value">${tool.rating.value} / 5</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Essai gratuit</div>
+        <div class="meta-value">${tool.trial ? '✅ Disponible' : '❌ Non'}</div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <a href="${tool.website}" target="_blank" rel="noopener" class="btn-primary" style="justify-content:center">Visiter le site ↗</a>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = '🎉 Merci ! Vous êtes inscrit !';
+  btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+  setTimeout(() => {
+    btn.textContent = "S'abonner gratuitement →";
+    btn.style.background = '';
+    document.getElementById('emailInput').value = '';
+  }, 3500);
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('progress').style.width = scrolled + '%';
+  const st = document.getElementById('scrollTop');
+  if (window.scrollY > 400) st.classList.add('visible'); else st.classList.remove('visible');
+});
+
+// Intersection observer for fade-in
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Counter animation
+function animateCounter(el, target, suffix = '') {
+  let current = 0; const duration = 1500; const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = Math.floor(current) + suffix;
+    if (current >= target) clearInterval(timer);
+  }, 16);
+}
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(document.getElementById('stat1'), 32, '+');
+      animateCounter(document.getElementById('stat2'), 4);
+      document.getElementById('stat3').textContent = '100%';
+      statsObs.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+const statsEl = document.querySelector('.stats-grid');
+if (statsEl) statsObs.observe(statsEl);
+
+// Initial render
+renderTools(tools);
+</script>
+</body>
+</html>
