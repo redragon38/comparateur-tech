@@ -80,6 +80,7 @@ export default function Footer() {
               <li><Link href="/contact" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Contact</Link></li>
               <li><Link href="/partenaires" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Partenaires</Link></li>
               <li><Link href="/comparatifs" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Comparatifs</Link></li>
+              <li><Link href="/commencer" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Commencer</Link></li>
               <li><Link href="/blog" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Blog</Link></li>
               <li><Link href="/mentions-legales" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Mentions légales</Link></li>
               <li><Link href="/cgu" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">CGU</Link></li>
@@ -94,6 +95,7 @@ export default function Footer() {
             {[
               { label: 'Mentions légales', href: '/mentions-legales' },
               { label: 'CGU', href: '/cgu' },
+              { label: 'Commencer', href: '/commencer' },
               { label: 'Contact', href: '/contact' },
             ].map((item, i) => (
               <Link key={i} href={item.href}
