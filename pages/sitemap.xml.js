@@ -7,6 +7,7 @@ const STATIC_PAGES = [
   { url: '/',                                 changefreq: 'weekly',  priority: '1.0' },
   { url: '/outils',                           changefreq: 'weekly',  priority: '0.9' },
   { url: '/comparatifs',                      changefreq: 'weekly',  priority: '0.8' },
+  { url: '/commencer',                        changefreq: 'monthly', priority: '0.7' },
   { url: '/blog',                             changefreq: 'weekly',  priority: '0.8' },
   { url: '/outils/intelligence-artificielle', changefreq: 'weekly',  priority: '0.8' },
   { url: '/ia-generative',                    changefreq: 'weekly',  priority: '0.7' },

@@ -155,6 +155,9 @@ export default function Header() {
               <Link href="/comparatifs" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
                 Comparatifs
               </Link>
+              <Link href="/commencer" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
+                Commencer
+              </Link>
               <Link href="/blog" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
                 Blog
               </Link>
@@ -277,6 +280,7 @@ export default function Header() {
             ))}
           </div>
           <Link href="/comparatifs" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">⚖️ Comparatifs</Link>
+          <Link href="/commencer" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">🧭 Commencer</Link>
           <Link href="/blog" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">📰 Blog</Link>
           <Link href="/newsletter" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">📧 Newsletter</Link>
           <Link href="/contact" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">✉️ Contact</Link>

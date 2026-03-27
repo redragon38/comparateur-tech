@@ -6,8 +6,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
 import ToolCard from '../components/ToolCard';
-import SEO, { buildBreadcrumbSchema } from '../components/SEO';
-import { ArrowRight, Trophy } from 'lucide-react';
+import SEO from '../components/SEO';
+import { ArrowRight, BookOpen, Trophy, Sparkles, ShieldCheck, Rocket } from 'lucide-react';
 
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), 'public', 'data', 'tools-slim.json');
@@ -24,6 +24,30 @@ const CAT_META_FILTER = {
   'Antivirus':                 { icon: '🦠' },
   'Intelligence artificielle': { icon: '🤖' },
 };
+
+const QUICK_START_STEPS = [
+  {
+    icon: Sparkles,
+    title: 'Définissez votre besoin',
+    desc: 'Commencez par votre objectif : créer du contenu, sécuriser vos données, ou héberger un site rapidement.',
+    cta: 'Découvrir les catégories',
+    href: '/outils',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Comparez les alternatives',
+    desc: 'Consultez nos comparatifs et scores pour voir les points forts et limites de chaque outil en un coup d’œil.',
+    cta: 'Voir les comparatifs',
+    href: '/comparatifs',
+  },
+  {
+    icon: Rocket,
+    title: 'Passez à l’action',
+    desc: 'Utilisez notre guide de démarrage pour choisir un outil en moins de 15 minutes, selon votre profil.',
+    cta: 'Lire le guide',
+    href: '/commencer',
+  },
+];
 
 const STRUCTURED_DATA = [
   {
@@ -120,6 +144,55 @@ export default function Home({ tools }) {
           </div>
         </section>
 
+        <section className="py-14 sm:py-20 bg-gray-50 border-y border-purple-100">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-8 sm:mb-12">
+              <span className="inline-flex items-center gap-2 bg-white border border-purple-200 text-purple-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
+                <BookOpen className="w-4 h-4" />
+                Démarrage rapide
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Un parcours simple pour mieux choisir</h2>
+              <p className="text-gray-500 max-w-2xl mx-auto text-sm sm:text-base">Que vous soyez freelance, PME ou créateur, suivez ces 3 étapes pour éviter les mauvais choix.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+              {QUICK_START_STEPS.map(({ icon: Icon, title, desc, cta, href }) => (
+                <article key={title} className="bg-white border border-purple-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
+                  <div className="w-11 h-11 rounded-xl gradient-purple flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-5">{desc}</p>
+                  <Link href={href} className="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800">
+                    {cta} <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="rounded-3xl border border-purple-100 bg-gradient-to-br from-purple-50 via-white to-white p-7 sm:p-10">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div className="max-w-2xl">
+                  <span className="inline-block bg-white border border-purple-200 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">Nouveau guide</span>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Vous démarrez aujourd’hui ? On vous guide pas à pas.</h2>
+                  <p className="text-gray-600 text-sm sm:text-base">Nous avons ajouté une nouvelle page “Commencer” avec une checklist décisionnelle, des erreurs à éviter et des parcours par profil.</p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/commencer" className="gradient-purple text-white px-6 py-3 rounded-xl font-semibold inline-flex items-center justify-center gap-2">
+                    Ouvrir le guide <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link href="/temoignages" className="bg-white border border-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:border-purple-300 hover:text-purple-700 hover:bg-purple-50 transition-all inline-flex items-center justify-center gap-2">
+                    Lire les témoignages
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
       </main>
       <Footer />
