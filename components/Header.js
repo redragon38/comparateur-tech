@@ -62,7 +62,7 @@ export default function Header() {
       {/* ── Topbar ── */}
       {topbarVisible && (
         <div className="bg-gradient-to-r from-violet-700 via-purple-600 to-violet-700 text-white text-center py-2.5 text-sm font-medium px-4 relative">
-          🎉 Sélection mise à jour — <strong>40 outils vérifiés</strong> pour booster votre activité &nbsp;·&nbsp;
+          🧪 Sélection éditoriale — <strong>115 outils analysés</strong> et des fiches mises à jour régulièrement &nbsp;·&nbsp;
           <Link href="/outils" className="underline font-bold hover:text-purple-200 transition-colors">Voir la sélection →</Link>
           <button
             onClick={() => setTopbarVisible(false)}
@@ -157,6 +157,9 @@ export default function Header() {
               </Link>
               <Link href="/blog" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
                 Blog
+              </Link>
+              <Link href="/methodologie" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
+                Méthodologie
               </Link>
               <Link href="/newsletter" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200 flex items-center gap-1.5">
                 <Mail className="w-3.5 h-3.5" /> Newsletter

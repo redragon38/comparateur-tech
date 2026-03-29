@@ -1,4 +1,4 @@
-import { Star, Zap, Check, ArrowUpRight } from 'lucide-react';
+import { Star, Zap, Check, ArrowUpRight, Scale } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -246,6 +246,23 @@ export default function ToolCard({ tool }) {
             }}
           >
             Voir la fiche
+          </Link>
+          <Link
+            href={`/tool/${tool.id}#compare`}
+            onClick={e => e.stopPropagation()}
+            className="h-10 px-3 rounded-xl font-semibold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-200"
+            style={{ color: m.softText, background: m.softBg, border: `1.5px solid ${m.borderAlpha}` }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.borderColor = m.hoverBorder;
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.borderColor = m.borderAlpha;
+            }}
+          >
+            <Scale className="w-3.5 h-3.5" />
+            Comparer
           </Link>
           <a
             href={url}

@@ -127,10 +127,10 @@ export default function ComparatifsPage({ tools }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title={`Comparatifs outils 2025 — VPN, Hébergement, Antivirus, IA | Comparateur-Tech`}
+        title={`Comparatifs outils ${new Date().getFullYear()} — VPN, Hébergement, Antivirus, IA | Comparateur-Tech`}
         description={`Comparez les ${tools.length} meilleurs outils VPN, hébergement web, antivirus et IA. Avis experts vérifiés, notes, prix et essais gratuits. Mis à jour ${new Date().getFullYear()}.`}
         canonical="https://comparateur-tech.com/comparatifs"
-        keywords="comparatif VPN 2025, comparatif hébergement web, meilleur antivirus comparatif, comparateur IA"
+        keywords="comparatif VPN 2026, comparatif hébergement web, meilleur antivirus comparatif, comparateur IA"
         structuredData={buildBreadcrumbSchema([
           { name: 'Accueil', url: '/' },
           { name: 'Comparatifs' },
@@ -190,7 +190,7 @@ export default function ComparatifsPage({ tools }) {
 
           {/* Compteur */}
           <p className="text-center text-gray-500 text-sm mb-8">
-            <span className="text-purple-700 font-bold">{filtered.length}</span> outil{filtered.length > 1 ? 's' : ''} trouvé{filtered.length > 1 ? 's' : ''}
+            <span className="text-purple-700 font-bold">{filtered.length}</span>{' '}{filtered.length > 1 ? 'outils trouvés' : 'outil trouvé'}
             {selectedCat !== 'Tout' && <> dans <span className="text-purple-700 font-bold">{selectedCat}</span></>}
           </p>
 

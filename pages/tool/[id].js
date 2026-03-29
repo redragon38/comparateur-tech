@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-import { useState } from 'react';
-import { ArrowLeft, ExternalLink, Star, Check, X, ChevronDown, ChevronRight, Zap, Shield, Globe, Award } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { ExternalLink, Star, Check, X, ChevronDown, ChevronRight, Zap, Shield, Globe, Award, Scale, Plus } from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ToolCard from '../../components/ToolCard';
@@ -26,10 +26,10 @@ export async function getStaticProps({ params }) {
   const tools = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const tool = tools.find(t => t.id === params.id) || null;
   if (!tool) return { notFound: true };
-  const alts = tools
+  const relatedTools = tools
     .filter(t => t.id !== tool.id && t.categories?.some(c => tool.categories?.includes(c)))
-    .slice(0, 3);
-  return { props: { tool, alts } };
+    .slice(0, 12);
+  return { props: { tool, relatedTools } };
 }
 
 // ─── Fin SSG ──────────────────────────────────────────────────────────────────
@@ -82,10 +82,25 @@ function renderMarkdown(text) {
 }
 
 // ─── Props injectées par getStaticProps (plus de useEffect / fetch) ───────────
-export default function ToolPage({ tool, alts }) {
+export default function ToolPage({ tool, relatedTools }) {
   const cat = tool.categories?.[0];
   const m = CAT_META[cat] || DEFAULT;
   const url = tool.affiliateUrl || tool.website || '#';
+  const [compareId, setCompareId] = useState(relatedTools?.[0]?.id || null);
+
+  const compareTool = useMemo(() => {
+    if (!compareId) return null;
+    return (relatedTools || []).find(t => t.id === compareId) || null;
+  }, [compareId, relatedTools]);
+
+  const comparisonRows = compareTool ? [
+    { label: 'Catégorie', left: (tool.categories || []).join(', ') || '—', right: (compareTool.categories || []).join(', ') || '—' },
+    { label: 'Prix', left: tool.price || 'Non communiqué', right: compareTool.price || 'Non communiqué' },
+    { label: 'Essai gratuit', left: tool.trial ? 'Oui' : 'Non', right: compareTool.trial ? 'Oui' : 'Non' },
+    { label: 'Note', left: tool.rating ? `${tool.rating.value}/5` : '—', right: compareTool.rating ? `${compareTool.rating.value}/5` : '—' },
+    { label: 'Langues', left: tool.languages?.length ? tool.languages.slice(0, 4).join(', ').toUpperCase() : '—', right: compareTool.languages?.length ? compareTool.languages.slice(0, 4).join(', ').toUpperCase() : '—' },
+    { label: 'Idéal pour', left: tool.idealFor?.[0] || '—', right: compareTool.idealFor?.[0] || '—' },
+  ] : [];
 
   // ── Schémas JSON-LD : SoftwareApplication + BreadcrumbList + FAQPage ──
   const catSlug = cat ? cat.toLowerCase().replace(/ /g,'-').replace(/[éè]/g,'e').replace(/ç/g,'c') : 'outils';
@@ -192,14 +207,21 @@ export default function ToolPage({ tool, alts }) {
                   ))}
                 </div>
 
-                <a href={url} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 text-white font-bold px-7 py-3.5 rounded-xl text-sm transition-all duration-200"
-                  style={{
-                    background: `linear-gradient(135deg, ${m.accent}ee, ${m.accent})`,
-                    boxShadow: `0 6px 20px rgba(${m.border},0.35)`,
-                  }}>
-                  Visiter {tool.name} <ExternalLink className="w-4 h-4" />
-                </a>
+                <div className="flex flex-wrap gap-3">
+                  <a href={url} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 text-white font-bold px-7 py-3.5 rounded-xl text-sm transition-all duration-200"
+                    style={{
+                      background: `linear-gradient(135deg, ${m.accent}ee, ${m.accent})`,
+                      boxShadow: `0 6px 20px rgba(${m.border},0.35)`,
+                    }}>
+                    Visiter {tool.name} <ExternalLink className="w-4 h-4" />
+                  </a>
+                  {relatedTools?.length > 0 && (
+                    <a href="#compare" className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-semibold text-gray-800 bg-white border border-gray-200 hover:border-purple-300 transition-all duration-200">
+                      <Scale className="w-4 h-4" /> Comparer avec d'autres
+                    </a>
+                  )}
+                </div>
               </div>
 
               <div
@@ -390,9 +412,9 @@ export default function ToolPage({ tool, alts }) {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-5">
+            <div className="space-y-5 lg:sticky lg:top-24 lg:self-start">
               <div
-                className="rounded-2xl p-5 sm:p-6 sticky top-24"
+                className="rounded-2xl p-5 sm:p-6"
                 style={{ background: 'white', border: `1px solid rgba(${m.border},0.15)`, boxShadow: `0 4px 20px rgba(${m.border},0.08)` }}
               >
                 <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Accès direct</h3>
@@ -429,14 +451,85 @@ export default function ToolPage({ tool, alts }) {
                 </div>
               </div>
 
-              {alts.length > 0 && (
-                <div className="bg-white rounded-2xl p-5 sm:p-6" style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Alternatives</h3>
-                  <div className="space-y-3">
-                    {alts.map(alt => (
-                      <ToolCard key={alt.id} tool={alt} />
+              {relatedTools.length > 0 && (
+                <div id="compare" className="bg-white rounded-2xl p-5 sm:p-6 scroll-mt-28" style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Comparer avec</h3>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {relatedTools.slice(0, 6).map(option => (
+                      <button
+                        key={option.id}
+                        onClick={() => setCompareId(option.id)}
+                        className={`px-3 py-2 rounded-xl text-xs font-semibold border transition-all ${compareId === option.id ? 'text-white shadow-sm' : 'bg-white text-gray-700 hover:border-purple-300'}`}
+                        style={compareId === option.id ? { background: `linear-gradient(135deg, ${m.accent}ee, ${m.accent})`, borderColor: 'transparent' } : { borderColor: '#e5e7eb' }}
+                      >
+                        {option.name}
+                      </button>
                     ))}
                   </div>
+
+                  {compareTool && (
+                    <>
+                      <div className="grid grid-cols-[1fr_auto_1fr] gap-3 items-stretch mb-4">
+                        <div className="rounded-2xl border border-gray-200 p-4 bg-gray-50">
+                          <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-2">Actuel</p>
+                          <p className="font-bold text-gray-900">{tool.name}</p>
+                          <p className="text-xs text-gray-500 mt-1">{tool.short || tool.highlight}</p>
+                        </div>
+                        <div className="flex items-center justify-center text-gray-300 font-bold text-xs">VS</div>
+                        <div className="rounded-2xl border border-gray-200 p-4 bg-gray-50">
+                          <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comparé</p>
+                          <p className="font-bold text-gray-900">{compareTool.name}</p>
+                          <p className="text-xs text-gray-500 mt-1">{compareTool.short || compareTool.highlight}</p>
+                        </div>
+                      </div>
+
+                      <div className="overflow-hidden rounded-2xl border border-gray-200">
+                        <table className="w-full text-xs sm:text-sm">
+                          <thead>
+                            <tr className="bg-gray-50 border-b border-gray-200">
+                              <th className="text-left px-3 py-3 text-gray-500 font-semibold">Critère</th>
+                              <th className="text-left px-3 py-3 text-gray-900 font-bold">{tool.name}</th>
+                              <th className="text-left px-3 py-3 text-gray-900 font-bold">{compareTool.name}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {comparisonRows.map((row, index) => (
+                              <tr key={row.label} className={index !== comparisonRows.length - 1 ? 'border-b border-gray-100' : ''}>
+                                <td className="px-3 py-3 text-gray-500 font-medium">{row.label}</td>
+                                <td className="px-3 py-3 text-gray-800">{row.left}</td>
+                                <td className="px-3 py-3 text-gray-800">{row.right}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-4 mt-4">
+                        <div className="rounded-2xl border border-green-200 bg-green-50 p-4">
+                          <p className="text-sm font-bold text-gray-900 mb-2">Pourquoi choisir {tool.name}</p>
+                          <ul className="space-y-2 text-xs sm:text-sm text-gray-700">
+                            {(tool.strengthShort || tool.strengths || []).slice(0, 3).map((item, i) => (
+                              <li key={i} className="flex items-start gap-2"><Plus className="w-4 h-4 mt-0.5 text-green-600 flex-shrink-0" /> <span>{item}</span></li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="rounded-2xl border border-blue-200 bg-blue-50 p-4">
+                          <p className="text-sm font-bold text-gray-900 mb-2">Pourquoi choisir {compareTool.name}</p>
+                          <ul className="space-y-2 text-xs sm:text-sm text-gray-700">
+                            {(compareTool.strengthShort || compareTool.strengths || []).slice(0, 3).map((item, i) => (
+                              <li key={i} className="flex items-start gap-2"><Plus className="w-4 h-4 mt-0.5 text-blue-600 flex-shrink-0" /> <span>{item}</span></li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="mt-4">
+                        <Link href={`/tool/${compareTool.id}`} className="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:underline">
+                          Voir la fiche de {compareTool.name}
+                        </Link>
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </div>

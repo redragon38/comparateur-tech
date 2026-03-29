@@ -81,6 +81,7 @@ export default function Footer() {
               <li><Link href="/partenaires" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Partenaires</Link></li>
               <li><Link href="/comparatifs" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Comparatifs</Link></li>
               <li><Link href="/blog" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Blog</Link></li>
+              <li><Link href="/methodologie" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Méthodologie</Link></li>
               <li><Link href="/mentions-legales" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">Mentions légales</Link></li>
               <li><Link href="/cgu" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">CGU</Link></li>
             </ul>
@@ -89,7 +90,7 @@ export default function Footer() {
 
         {/* Ligne légale mobile — liens horizontaux scroll */}
         <div className="border-t border-purple-100 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-gray-400 text-xs">© 2025 Comparateur-Tech. Tous droits réservés.</p>
+          <p className="text-gray-400 text-xs">© {new Date().getFullYear()} Comparateur-Tech. Tous droits réservés.</p>
           <div className="flex gap-4 sm:gap-6 flex-wrap justify-center">
             {[
               { label: 'Mentions légales', href: '/mentions-legales' },
