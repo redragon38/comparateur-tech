@@ -4,6 +4,13 @@ export default function Document() {
   return (
     <Html lang="fr">
       <Head>
+
+    <script async
+  src="https://taap.it/scripts/tracker.js"
+  data-project="pk_aa97ee2d1ea3dcec38ffebbd60e82779"
+  data-track-outbound="true"
+  data-track-forms="true"
+></script>
         {/* ── Viewport mobile (dans _document, pas dans _app) ── */}
         
         {/* ── Preconnect fonts ── */}
