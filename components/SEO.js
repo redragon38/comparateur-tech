@@ -4,15 +4,15 @@ const SITE_NAME = 'Comparateur-Tech';
 const BASE_URL  = 'https://comparateur-tech.com';
 
 export default function SEO({
-  title = `${SITE_NAME} — Les Meilleurs Outils IA, VPN & Hébergement Web`,
-  description = "Découvrez et comparez les meilleurs outils IA, VPN, hébergements web et antivirus. Sélection vérifiée et mise à jour par nos experts.",
+  title = `${SITE_NAME} — Les Meilleurs Outils IA, VPN, Cybersécurité & Hébergement Web`,
+  description = "Découvrez et comparez les meilleurs outils IA, VPN, cybersécurité, hébergements web et antivirus. Sélection vérifiée et mise à jour par nos experts.",
   canonical = `${BASE_URL}/`,
   ogImage = `${BASE_URL}/og-image.svg`,
   ogType = 'website',
   twitterCard = 'summary_large_image',
   noindex = false,
   nofollow = false,
-  keywords = 'comparateur IA, meilleur VPN, hébergement web, antivirus, outils intelligence artificielle',
+  keywords = 'comparateur IA, meilleur VPN, hébergement web, antivirus, cybersécurité, outils intelligence artificielle',
   author = SITE_NAME,
   structuredData = null,
   datePublished = null,

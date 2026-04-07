@@ -8,6 +8,7 @@ const QUICK_LINKS = [
   { label: '🛡️ VPN', href: '/outils/vpn' },
   { label: '🌐 Hébergement', href: '/outils/hebergement-web' },
   { label: '🦠 Antivirus', href: '/outils/antivirus' },
+  { label: '🔐 Cybersécurité', href: '/outils/cybersecurite' },
 ];
 
 function AnimatedCounter({ target, suffix, delay = 0 }) {
@@ -144,7 +145,7 @@ export default function HeroSection({ stats }) {
         <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto mt-8">
           <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
             <div className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-              <AnimatedCounter target={stats?.totalTools || 115} suffix="+" />
+              <AnimatedCounter target={stats?.totalTools || 119} suffix="+" />
             </div>
             <div className="text-sm text-gray-500 mt-1">Outils analysés</div>
           </div>

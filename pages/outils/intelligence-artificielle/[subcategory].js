@@ -131,6 +131,7 @@ export default function IASubcategoryPage({ sub, tools, otherSubs }) {
                         { slug: 'hebergement-web', label: 'Hébergement web', icon: '🌐' },
                         { slug: 'vpn', label: 'VPN', icon: '🛡️' },
                         { slug: 'antivirus', label: 'Antivirus', icon: '🦠' },
+                        { slug: 'cybersecurite', label: 'Cybersécurité', icon: '🔐' },
                       ].map(cat => (
                         <li key={cat.slug}>
                           <Link href={`/outils/${cat.slug}`}

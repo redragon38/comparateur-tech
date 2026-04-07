@@ -20,9 +20,10 @@ const CATEGORY_META = {
   'Hébergement web':           { icon: '🌐', topBar: 'bg-emerald-500', border: 'border-emerald-200', badge: 'bg-emerald-50 border-emerald-200 text-emerald-700', desc: 'Hébergez vos projets' },
   'VPN':                       { icon: '🛡️', topBar: 'bg-blue-500', border: 'border-blue-200', badge: 'bg-blue-50 border-blue-200 text-blue-700', desc: 'Sécurisez vos connexions' },
   'Antivirus':                 { icon: '🦠', topBar: 'bg-red-500', border: 'border-red-200', badge: 'bg-red-50 border-red-200 text-red-700', desc: 'Protégez vos appareils' },
+  'Cybersécurité':             { icon: '🔐', topBar: 'bg-slate-700', border: 'border-slate-200', badge: 'bg-slate-50 border-slate-200 text-slate-700', desc: 'Renforcez votre sécurité' },
 };
 
-const FIXED_CATEGORIES = ['Intelligence artificielle', 'Hébergement web', 'VPN', 'Antivirus'];
+const FIXED_CATEGORIES = ['Intelligence artificielle', 'Hébergement web', 'VPN', 'Antivirus', 'Cybersécurité'];
 
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), 'public', 'data', 'tools-slim.json');
@@ -57,10 +58,10 @@ export default function ToolsPage({ tools, categoryMap }) {
   return (
     <>
       <SEO
-        title="Tous les outils tech — IA, VPN, Hébergement, Antivirus | Comparateur-Tech"
-        description={`Explorez ${tools.length}+ outils sélectionnés et vérifiés par nos experts : intelligence artificielle, VPN, hébergement web et antivirus. Comparez et choisissez le meilleur outil pour vos besoins.`}
+        title="Tous les outils tech — IA, VPN, Hébergement, Antivirus, Cybersécurité | Comparateur-Tech"
+        description={`Explorez ${tools.length}+ outils sélectionnés et vérifiés par nos experts : intelligence artificielle, VPN, hébergement web, antivirus et cybersécurité. Comparez et choisissez le meilleur outil pour vos besoins.`}
         canonical="https://comparateur-tech.com/outils"
-        keywords="outils IA, meilleur VPN, hébergement web, antivirus, comparateur outils tech"
+        keywords="outils IA, meilleur VPN, hébergement web, antivirus, cybersécurité, comparateur outils tech"
         structuredData={buildBreadcrumbSchema([
           { name: 'Accueil', url: '/' },
           { name: 'Tous les outils' },
@@ -90,7 +91,7 @@ export default function ToolsPage({ tools, categoryMap }) {
             {/* Catégories cards */}
             <div className="mb-8 sm:mb-12">
               <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-5 text-gray-900">Parcourir par catégorie</h2>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
                 {FIXED_CATEGORIES.map(cat => {
                   const meta = CATEGORY_META[cat];
                   const slug = normalizeSlug(cat);

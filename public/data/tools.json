@@ -16083,7 +16083,7 @@
     "partner": "Bitwarden",
     "website": "https://bitwarden.com",
     "affiliateUrl": "https://bitwarden.com",
-    "logo": "/partners/bitwarden.png",
+    "logo": "/partners/bitwarden.svg",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16279,7 +16279,7 @@
     "partner": "1Password",
     "website": "https://1password.com",
     "affiliateUrl": "https://1password.com",
-    "logo": "/partners/1password.png",
+    "logo": "/partners/1password.svg",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16454,7 +16454,7 @@
     "partner": "Twilio",
     "website": "https://authy.com",
     "affiliateUrl": "https://authy.com",
-    "logo": "/partners/authy.png",
+    "logo": "/partners/authy.svg",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16617,7 +16617,7 @@
     "partner": "CrowdSec",
     "website": "https://crowdsec.net",
     "affiliateUrl": "https://crowdsec.net",
-    "logo": "/partners/crowdsec.png",
+    "logo": "/partners/crowdsec.svg",
     "og": "",
     "categories": [
       "Cybersécurité"

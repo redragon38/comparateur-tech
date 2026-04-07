@@ -10,6 +10,7 @@ Lorsque la question concerne les outils tech, le numérique ou les services en l
 - /outils/vpn → VPN
 - /outils/hebergement-web → Hébergement web
 - /outils/antivirus → Antivirus
+- /outils/cybersecurite → Cybersécurité
 - /top-10-intelligence-artificielle, /top-10-vpn, /top-10-hebergement-web, /top-10-antivirus → Top 10
 - /comparatifs → Comparatifs détaillés
 - /blog → Articles et guides

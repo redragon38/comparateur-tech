@@ -60,6 +60,7 @@ export default function Footer() {
               <li><Link href="/outils/vpn" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">🛡️ VPN</Link></li>
               <li><Link href="/outils/hebergement-web" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">🌐 Hébergement</Link></li>
               <li><Link href="/outils/antivirus" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">🦠 Antivirus</Link></li>
+              <li><Link href="/outils/cybersecurite" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">🔐 Cybersécurité</Link></li>
             </ul>
           </div>
 

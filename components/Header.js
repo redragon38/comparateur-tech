@@ -7,6 +7,7 @@ const CATEGORIES = [
   { slug: 'hebergement-web',           label: 'Hébergement web',           icon: '🌐', desc: 'Hébergez vos projets web', href: '/outils/hebergement-web' },
   { slug: 'vpn',                       label: 'VPN',                       icon: '🛡️', desc: 'Sécurisez vos connexions', href: '/outils/vpn' },
   { slug: 'antivirus',                 label: 'Antivirus',                 icon: '🦠', desc: 'Protégez vos appareils', href: '/outils/antivirus' },
+  { slug: 'cybersecurite',             label: 'Cybersécurité',             icon: '🔐', desc: 'Renforcez votre sécurité numérique', href: '/outils/cybersecurite' },
 ];
 
 const TOP10_CATEGORIES = [
@@ -14,6 +15,7 @@ const TOP10_CATEGORIES = [
   { slug: 'hebergement-web',           label: 'Hébergement', icon: '🌐' },
   { slug: 'vpn',                       label: 'VPN', icon: '🛡️' },
   { slug: 'antivirus',                 label: 'Antivirus', icon: '🦠' },
+  { slug: 'cybersecurite',             label: 'Cybersécurité', icon: '🔐' },
 ];
 
 export default function Header() {
@@ -62,7 +64,7 @@ export default function Header() {
       {/* ── Topbar ── */}
       {topbarVisible && (
         <div className="bg-gradient-to-r from-violet-700 via-purple-600 to-violet-700 text-white text-center py-2.5 text-sm font-medium px-4 relative">
-          🧪 Sélection éditoriale — <strong>115 outils analysés</strong> et des fiches mises à jour régulièrement &nbsp;·&nbsp;
+          🧪 Sélection éditoriale — <strong>119 outils analysés</strong> et des fiches mises à jour régulièrement &nbsp;·&nbsp;
           <Link href="/outils" className="underline font-bold hover:text-purple-200 transition-colors">Voir la sélection →</Link>
           <button
             onClick={() => setTopbarVisible(false)}

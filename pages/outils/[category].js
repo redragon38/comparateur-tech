@@ -135,13 +135,26 @@ const CATEGORY_META = {
     desc: 'Protégez vos appareils contre les virus, malwares, ransomwares et toutes les cybermenaces avec les meilleures solutions antivirus.',
     longDesc: 'Un antivirus performant est la première ligne de défense contre les cybermenaces. Que vous soyez créateur, entrepreneur ou particulier, protéger vos appareils et vos données est une priorité. Découvrez les solutions les plus efficaces pour sécuriser votre environnement numérique.',
   },
+  'cybersecurite': {
+    label: 'Cybersécurité',
+    icon: '🔐',
+    color: 'from-slate-600 to-gray-800',
+    colorSolid: '#334155',
+    glow: 'rgba(51,65,85,0.2)',
+    border: 'border-slate-500/30',
+    bg: 'bg-slate-900/20',
+    textColor: 'text-gray-900',
+    desc: 'Renforcez votre sécurité numérique avec les meilleurs outils de gestion des accès, de protection des appareils et de défense serveur.',
+    longDesc: 'La cybersécurité ne se limite pas à l’antivirus. Gestionnaires de mots de passe, authentification forte, protection anti-malware et outils de défense serveur permettent de mieux protéger vos comptes, vos appareils et vos infrastructures au quotidien.',
+  },
 };
 
-// Les 3 catégories gérées par cette page (IA a sa propre page dédiée)
+// Les catégories gérées par cette page (IA a sa propre page dédiée)
 const FIXED_CATEGORIES = [
   { slug: 'hebergement-web', label: 'Hébergement web' },
   { slug: 'vpn', label: 'VPN' },
   { slug: 'antivirus', label: 'Antivirus' },
+  { slug: 'cybersecurite', label: 'Cybersécurité' },
 ];
 
 function getMetaForCategory(slug) {

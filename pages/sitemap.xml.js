@@ -41,6 +41,7 @@ const OUTILS_CATEGORIES = [
   'vpn',
   'hebergement-web',
   'antivirus',
+  'cybersecurite',
   'intelligence-artificielle',
 ];
 

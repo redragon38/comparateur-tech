@@ -36,6 +36,14 @@ const CAT_META = {
     borderAlpha: 'rgba(220,38,38,0.18)', hoverBorder: 'rgba(220,38,38,0.35)',
     glow: 'rgba(220,38,38,0.22)',
   },
+  'Cybersécurité': {
+    icon: '🔐', label: 'Cybersécurité',
+    gradient: 'linear-gradient(135deg, #334155, #111827)',
+    color: '#334155',
+    softBg: '#f8fafc', softText: '#334155', softLight: '#e2e8f0',
+    borderAlpha: 'rgba(51,65,85,0.18)', hoverBorder: 'rgba(51,65,85,0.35)',
+    glow: 'rgba(51,65,85,0.22)',
+  },
   'IA générative': {
     icon: '✨', label: 'IA Générative',
     gradient: 'linear-gradient(135deg, #db2777, #7c3aed)',
