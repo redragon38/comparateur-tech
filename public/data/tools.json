@@ -16075,5 +16075,704 @@
     "en.article": {},
     "createdAt": "2026-03-07",
     "updatedAt": "2026-03-07"
+  },
+  {
+    "id": "bitwarden",
+    "slug": "bitwarden",
+    "name": "Bitwarden",
+    "partner": "Bitwarden",
+    "website": "https://bitwarden.com",
+    "affiliateUrl": "https://bitwarden.com",
+    "logo": "/partners/bitwarden.png",
+    "og": "",
+    "categories": [
+      "Cybersécurité"
+    ],
+    "tags": [
+      "mot de passe",
+      "coffre-fort",
+      "sécurité",
+      "authentification"
+    ],
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it"
+    ],
+    "priceMonthly": 0.83,
+    "priceCurrency": "USD",
+    "price": "Gratuit / Premium dès 10 $/an",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.8,
+      "count": 89
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Gestionnaire de mots de passe open source permettant de stocker, générer et partager des identifiants en toute sécurité.",
+    "highlight": "Un gestionnaire de mots de passe open source fiable, simple et très abordable.",
+    "description": "Bitwarden est un __gestionnaire de mots de passe sécurisé__ conçu pour centraliser les identifiants, cartes et notes sensibles dans un __coffre-fort chiffré__. Son approche __open source__ et multiplateforme en fait une solution populaire pour améliorer la sécurité numérique au quotidien.",
+    "strengths": [
+      "Open source et transparent",
+      "Synchronisation sur tous les appareils",
+      "Générateur de mots de passe robuste",
+      "Partage sécurisé pour équipes et familles",
+      "Tarification très compétitive",
+      "Extensions navigateurs et apps mobiles complètes"
+    ],
+    "strengthShort": [
+      "Open source",
+      "Multi-appareils",
+      "Prix abordable",
+      "Partage sécurisé",
+      "Apps complètes"
+    ],
+    "limitations": [
+      "Interface moins premium que certains concurrents",
+      "Certaines options avancées nécessitent le premium",
+      "Prise en main des organisations un peu technique",
+      "Dépendance au mot de passe maître"
+    ],
+    "limitationsShort": [
+      "Interface sobre",
+      "Options premium",
+      "Réglages techniques",
+      "Mot de passe maître critique"
+    ],
+    "idealFor": [
+      "Particuliers voulant sécuriser leurs comptes",
+      "Familles partageant des accès",
+      "Freelances et petites équipes",
+      "Utilisateurs recherchant une solution open source"
+    ],
+    "notFor": [
+      "Utilisateurs voulant une interface très luxueuse",
+      "Entreprises ayant des besoins IAM très avancés",
+      "Personnes refusant toute gestion du mot de passe maître"
+    ],
+    "verdict": "Bitwarden est l’un des meilleurs choix pour sécuriser ses identifiants sans se ruiner. Son modèle open source, sa compatibilité multiplateforme et ses fonctions essentielles très solides en font une solution de référence pour les particuliers comme pour les équipes.",
+    "readMore": [
+      {
+        "href": "/guides/gestionnaire-mot-de-passe",
+        "title": "Pourquoi utiliser un gestionnaire de mots de passe",
+        "desc": "Comprendre comment protéger efficacement ses comptes en ligne."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Bitwarden est-il gratuit ?",
+        "a": "Oui, une version gratuite très complète est disponible."
+      },
+      {
+        "q": "Bitwarden est-il open source ?",
+        "a": "Oui, son code est public et auditable."
+      },
+      {
+        "q": "Peut-on l’utiliser sur mobile et ordinateur ?",
+        "a": "Oui, il fonctionne sur la plupart des plateformes."
+      }
+    ],
+    "article": {
+      "intro": "La sécurisation des comptes en ligne passe aujourd’hui par l’utilisation d’un gestionnaire de mots de passe fiable. Bitwarden s’est imposé comme une référence grâce à son approche open source, sa simplicité et son excellent rapport qualité-prix.",
+      "whatIs": "Bitwarden est un gestionnaire de mots de passe qui stocke et chiffre les identifiants, notes et données sensibles dans un coffre-fort numérique sécurisé.",
+      "features": "Il permet la synchronisation multi-appareils, la génération de mots de passe forts, l’autoremplissage, le partage sécurisé et l’organisation des accès personnels ou professionnels.",
+      "useCases": "Bitwarden convient aux particuliers, familles, freelances et équipes souhaitant renforcer leur sécurité sans complexité excessive.",
+      "benefits": "Il réduit le risque de réutilisation des mots de passe, améliore la sécurité globale et simplifie la gestion quotidienne des accès.",
+      "pricing": "Une version gratuite est disponible, avec une offre premium abordable pour débloquer des fonctions supplémentaires.",
+      "conclusion": "Bitwarden est une solution sérieuse, accessible et durable pour mieux protéger ses comptes en ligne."
+    },
+    "en.categories": [
+      "Cybersecurity"
+    ],
+    "en.tags": [
+      "password manager",
+      "vault",
+      "security",
+      "authentication"
+    ],
+    "en.short": "Open-source password manager to securely store, generate and share credentials across devices.",
+    "en.highlight": "A reliable open-source password manager with excellent value.",
+    "en.description": "Bitwarden is a __secure password manager__ built to store credentials, cards and sensitive notes inside an encrypted __digital vault__. Its __open-source__ approach and multi-platform apps make it a strong choice for improving daily security.",
+    "en.strengths": [
+      "Open-source transparency",
+      "Cross-device sync",
+      "Strong password generator",
+      "Secure sharing for teams and families",
+      "Very competitive pricing",
+      "Complete browser and mobile apps"
+    ],
+    "en.strengthShort": [
+      "Open source",
+      "Cross-device",
+      "Affordable",
+      "Secure sharing",
+      "Complete apps"
+    ],
+    "en.limitations": [
+      "Interface feels less premium than some rivals",
+      "Some advanced features need premium",
+      "Organization setup can be technical",
+      "Master password remains critical"
+    ],
+    "en.limitationsShort": [
+      "Basic interface",
+      "Premium features",
+      "Technical setup",
+      "Master password critical"
+    ],
+    "en.idealFor": [
+      "Individuals securing online accounts",
+      "Families sharing credentials",
+      "Freelancers and small teams",
+      "Users wanting open-source security"
+    ],
+    "en.notFor": [
+      "Users wanting a luxury interface",
+      "Enterprises needing advanced IAM",
+      "People unwilling to manage a master password"
+    ],
+    "en.verdict": "Bitwarden is one of the strongest value choices for password security. Its open-source model, cross-platform support and solid core features make it a trusted option for individuals and teams.",
+    "en.readMore": [
+      {
+        "href": "/guides/password-manager",
+        "title": "Why use a password manager",
+        "desc": "Learn how password managers improve online account protection."
+      }
+    ],
+    "en.faq": [
+      {
+        "q": "Is Bitwarden free?",
+        "a": "Yes, it offers a very capable free plan."
+      },
+      {
+        "q": "Is Bitwarden open source?",
+        "a": "Yes, its code is publicly auditable."
+      },
+      {
+        "q": "Does it work on mobile and desktop?",
+        "a": "Yes, it supports most major platforms."
+      }
+    ],
+    "en.article": {
+      "intro": "Protecting online accounts now requires a strong password management solution. Bitwarden stands out through its open-source model, simplicity and strong value.",
+      "whatIs": "Bitwarden is a password manager that encrypts and stores credentials, notes and sensitive data in a secure digital vault.",
+      "features": "It offers sync, password generation, autofill, secure sharing and organized access management.",
+      "useCases": "It fits individuals, families, freelancers and teams looking for practical security.",
+      "benefits": "It reduces password reuse, strengthens account safety and simplifies daily access management.",
+      "pricing": "A generous free version is available, with low-cost premium upgrades.",
+      "conclusion": "Bitwarden is a serious, accessible and durable solution for better password security."
+    },
+    "createdAt": "2026-04-07",
+    "updatedAt": "2026-04-07"
+  },
+  {
+    "id": "1password",
+    "slug": "1password",
+    "name": "1Password",
+    "partner": "1Password",
+    "website": "https://1password.com",
+    "affiliateUrl": "https://1password.com",
+    "logo": "/partners/1password.png",
+    "og": "",
+    "categories": [
+      "Cybersécurité"
+    ],
+    "tags": [
+      "mot de passe",
+      "sécurité",
+      "entreprise",
+      "coffre-fort"
+    ],
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "es"
+    ],
+    "priceMonthly": 2.99,
+    "priceCurrency": "USD",
+    "price": "Payant dès 2.99 $/mois",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.8,
+      "count": 93
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Gestionnaire de mots de passe premium combinant sécurité avancée, expérience utilisateur soignée et outils pour particuliers comme entreprises.",
+    "highlight": "Un gestionnaire premium très abouti pour sécuriser mots de passe, secrets et accès sensibles.",
+    "description": "1Password est une solution de __gestion des identifiants et secrets__ pensée pour offrir un haut niveau de __sécurité__ avec une expérience utilisateur très fluide. Elle permet de stocker mots de passe, clés, documents sensibles et informations d’authentification dans des coffres-forts sécurisés.",
+    "strengths": [
+      "Interface moderne et très agréable",
+      "Excellente expérience sur desktop et mobile",
+      "Fonctions avancées pour équipes et entreprises",
+      "Mode Travel sécurisé",
+      "Surveillance de compromission avec Watchtower",
+      "Partage simple et fiable"
+    ],
+    "strengthShort": [
+      "Interface premium",
+      "Apps excellentes",
+      "Fonctions entreprise",
+      "Watchtower",
+      "Partage fiable"
+    ],
+    "limitations": [
+      "Pas de vraie formule gratuite permanente",
+      "Tarif supérieur à des alternatives open source",
+      "Certaines fonctions orientées entreprises",
+      "Moins personnalisable que des solutions auto-hébergées"
+    ],
+    "limitationsShort": [
+      "Pas gratuit permanent",
+      "Plus cher",
+      "Orienté entreprises",
+      "Moins personnalisable"
+    ],
+    "idealFor": [
+      "Utilisateurs recherchant une expérience premium",
+      "Familles et professionnels",
+      "Équipes gérant des accès sensibles",
+      "Entreprises voulant simplifier la sécurité"
+    ],
+    "notFor": [
+      "Petits budgets stricts",
+      "Utilisateurs voulant uniquement du gratuit",
+      "Fans d’auto-hébergement"
+    ],
+    "verdict": "1Password est une référence haut de gamme pour la gestion sécurisée des accès. Il combine très bien sécurité, simplicité d’usage et fonctionnalités avancées, ce qui en fait un excellent choix pour les utilisateurs exigeants et les équipes.",
+    "readMore": [],
+    "faq": [
+      {
+        "q": "1Password est-il gratuit ?",
+        "a": "Non, il fonctionne surtout sur abonnement après essai."
+      },
+      {
+        "q": "1Password convient-il aux entreprises ?",
+        "a": "Oui, il propose des fonctions avancées pour équipes et organisations."
+      }
+    ],
+    "article": {
+      "intro": "1Password est l’un des gestionnaires de mots de passe les plus réputés du marché premium.",
+      "whatIs": "Il s’agit d’un coffre-fort numérique pour stocker identifiants, secrets et données sensibles.",
+      "features": "Il propose autoremplissage, partage, alertes de sécurité, stockage structuré et gestion des accès.",
+      "useCases": "Il est adapté aux particuliers exigeants, aux familles et aux entreprises.",
+      "benefits": "Il améliore la sécurité tout en gardant une excellente simplicité d’utilisation.",
+      "pricing": "Le service est payant avec période d’essai.",
+      "conclusion": "1Password est un choix premium très solide pour centraliser et sécuriser ses accès."
+    },
+    "en.categories": [
+      "Cybersecurity"
+    ],
+    "en.tags": [
+      "password manager",
+      "security",
+      "business",
+      "vault"
+    ],
+    "en.short": "Premium password manager combining advanced security, polished UX and powerful tools for individuals and teams.",
+    "en.highlight": "A polished premium password manager for securing passwords, secrets and sensitive access.",
+    "en.description": "1Password is a __credential and secret management solution__ designed to deliver strong __security__ with a polished user experience. It stores passwords, keys, documents and authentication details inside secure vaults.",
+    "en.strengths": [
+      "Modern interface",
+      "Excellent desktop and mobile apps",
+      "Advanced team and business features",
+      "Secure Travel Mode",
+      "Watchtower security monitoring",
+      "Simple and reliable sharing"
+    ],
+    "en.strengthShort": [
+      "Premium interface",
+      "Great apps",
+      "Business features",
+      "Watchtower",
+      "Reliable sharing"
+    ],
+    "en.limitations": [
+      "No permanent free plan",
+      "More expensive than open-source alternatives",
+      "Some features mainly target businesses",
+      "Less customizable than self-hosted tools"
+    ],
+    "en.limitationsShort": [
+      "No free plan",
+      "Higher price",
+      "Business-oriented",
+      "Less customizable"
+    ],
+    "en.idealFor": [
+      "Users wanting a premium experience",
+      "Families and professionals",
+      "Teams managing sensitive access",
+      "Businesses simplifying security"
+    ],
+    "en.notFor": [
+      "Strict budgets",
+      "Users wanting only free tools",
+      "Self-hosting enthusiasts"
+    ],
+    "en.verdict": "1Password is a high-end leader in secure access management. It balances security, ease of use and advanced features extremely well for demanding users and teams.",
+    "en.readMore": [],
+    "en.faq": [
+      {
+        "q": "Is 1Password free?",
+        "a": "No, it mainly runs on subscription after a trial."
+      },
+      {
+        "q": "Is 1Password good for businesses?",
+        "a": "Yes, it includes advanced features for teams and organizations."
+      }
+    ],
+    "en.article": {
+      "intro": "1Password is one of the most respected premium password managers on the market.",
+      "whatIs": "It is a digital vault for storing passwords, secrets and sensitive information.",
+      "features": "It includes autofill, sharing, security alerts, structured storage and access management.",
+      "useCases": "It fits demanding individuals, families and businesses.",
+      "benefits": "It improves security while staying very easy to use.",
+      "pricing": "The service is paid with a trial period.",
+      "conclusion": "1Password is a strong premium choice for centralizing and protecting access."
+    },
+    "createdAt": "2026-04-07",
+    "updatedAt": "2026-04-07"
+  },
+  {
+    "id": "authy",
+    "slug": "authy",
+    "name": "Authy",
+    "partner": "Twilio",
+    "website": "https://authy.com",
+    "affiliateUrl": "https://authy.com",
+    "logo": "/partners/authy.png",
+    "og": "",
+    "categories": [
+      "Cybersécurité"
+    ],
+    "tags": [
+      "2FA",
+      "authentification",
+      "MFA",
+      "sécurité"
+    ],
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "priceMonthly": 0,
+    "priceCurrency": "USD",
+    "price": "Gratuit",
+    "trial": false,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.5,
+      "count": 74
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Application d’authentification à deux facteurs permettant de sécuriser les connexions avec des codes temporaires sur plusieurs appareils.",
+    "highlight": "Une application 2FA simple pour renforcer la sécurité des comptes avec des codes temporaires.",
+    "description": "Authy est une application de __double authentification (2FA)__ conçue pour ajouter une couche de __sécurité supplémentaire__ à vos comptes en ligne grâce à des codes temporaires. Elle facilite la protection des connexions sur mobile et desktop.",
+    "strengths": [
+      "Renforce fortement la sécurité des comptes",
+      "Synchronisation multi-appareils",
+      "Interface simple et rapide",
+      "Compatible avec de nombreux services",
+      "Gratuit pour la majorité des usages"
+    ],
+    "strengthShort": [
+      "2FA efficace",
+      "Simple",
+      "Multi-appareils",
+      "Compatible",
+      "Gratuit"
+    ],
+    "limitations": [
+      "Fonctions limitées face à des suites sécurité complètes",
+      "Dépendance au téléphone principal dans certains cas",
+      "Moins riche qu’un gestionnaire de mots de passe"
+    ],
+    "limitationsShort": [
+      "Fonctions limitées",
+      "Dépendance mobile",
+      "Moins complet"
+    ],
+    "idealFor": [
+      "Toute personne voulant protéger ses comptes",
+      "Utilisateurs activant le 2FA sur plusieurs services",
+      "Débutants en cybersécurité"
+    ],
+    "notFor": [
+      "Gestion complète des mots de passe",
+      "Entreprises cherchant une suite IAM avancée"
+    ],
+    "verdict": "Authy reste une solution simple et efficace pour renforcer immédiatement la sécurité des comptes grâce au 2FA. C’est un excellent complément à un gestionnaire de mots de passe.",
+    "readMore": [],
+    "faq": [
+      {
+        "q": "Authy est-il gratuit ?",
+        "a": "Oui, l’application est gratuite pour les usages standards."
+      },
+      {
+        "q": "À quoi sert Authy ?",
+        "a": "À générer des codes 2FA pour sécuriser les connexions."
+      }
+    ],
+    "article": {
+      "intro": "Le 2FA est aujourd’hui l’un des moyens les plus simples pour mieux protéger ses comptes.",
+      "whatIs": "Authy est une application qui génère des codes temporaires d’authentification.",
+      "features": "Elle propose la synchronisation, la gestion de comptes 2FA et une utilisation simple sur plusieurs appareils.",
+      "useCases": "Elle convient à tous les utilisateurs souhaitant sécuriser leurs accès en ligne.",
+      "benefits": "Elle réduit fortement le risque d’accès non autorisé en cas de fuite de mot de passe.",
+      "pricing": "Authy est gratuit.",
+      "conclusion": "Authy est un excellent outil d’entrée pour améliorer rapidement sa sécurité."
+    },
+    "en.categories": [
+      "Cybersecurity"
+    ],
+    "en.tags": [
+      "2FA",
+      "authentication",
+      "MFA",
+      "security"
+    ],
+    "en.short": "Two-factor authentication app that secures logins with time-based codes across multiple devices.",
+    "en.highlight": "A simple 2FA app to make online accounts much safer.",
+    "en.description": "Authy is a __two-factor authentication app__ designed to add an extra __security layer__ to online accounts using time-based codes. It helps protect logins on mobile and desktop.",
+    "en.strengths": [
+      "Strongly improves account security",
+      "Cross-device sync",
+      "Simple interface",
+      "Compatible with many services",
+      "Free for standard usage"
+    ],
+    "en.strengthShort": [
+      "Effective 2FA",
+      "Simple",
+      "Cross-device",
+      "Compatible",
+      "Free"
+    ],
+    "en.limitations": [
+      "Limited compared with full security suites",
+      "Can depend on main device in some cases",
+      "Less feature-rich than password managers"
+    ],
+    "en.limitationsShort": [
+      "Limited scope",
+      "Mobile dependence",
+      "Less complete"
+    ],
+    "en.idealFor": [
+      "Anyone wanting stronger account protection",
+      "Users enabling 2FA on many services",
+      "Cybersecurity beginners"
+    ],
+    "en.notFor": [
+      "Full password management",
+      "Businesses needing advanced IAM"
+    ],
+    "en.verdict": "Authy is a simple and effective way to improve account security immediately through 2FA. It is an excellent companion to a password manager.",
+    "en.readMore": [],
+    "en.faq": [
+      {
+        "q": "Is Authy free?",
+        "a": "Yes, it is free for standard use."
+      },
+      {
+        "q": "What does Authy do?",
+        "a": "It generates 2FA codes to secure logins."
+      }
+    ],
+    "en.article": {
+      "intro": "2FA is one of the simplest and most effective ways to secure accounts.",
+      "whatIs": "Authy is an app that generates temporary authentication codes.",
+      "features": "It offers sync, multi-account 2FA management and simple cross-device use.",
+      "useCases": "It fits any user wanting to protect online access.",
+      "benefits": "It greatly lowers the risk of unauthorized access after password leaks.",
+      "pricing": "Authy is free.",
+      "conclusion": "Authy is a very good entry-level tool for improving security fast."
+    },
+    "createdAt": "2026-04-07",
+    "updatedAt": "2026-04-07"
+  },
+  {
+    "id": "crowdsec",
+    "slug": "crowdsec",
+    "name": "CrowdSec",
+    "partner": "CrowdSec",
+    "website": "https://crowdsec.net",
+    "affiliateUrl": "https://crowdsec.net",
+    "logo": "/partners/crowdsec.png",
+    "og": "",
+    "categories": [
+      "Cybersécurité"
+    ],
+    "tags": [
+      "pare-feu",
+      "serveur",
+      "protection",
+      "communautaire"
+    ],
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "priceMonthly": 0,
+    "priceCurrency": "EUR",
+    "price": "Open source / offres pro",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.5,
+      "count": 61
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Outil open source de défense collaborative pour protéger serveurs et applications contre les attaques automatisées.",
+    "highlight": "Une approche open source et communautaire pour bloquer bots, scans et attaques sur serveurs.",
+    "description": "CrowdSec est une solution __open source de cybersécurité__ conçue pour protéger serveurs, applications et services exposés sur internet contre les __attaques automatisées__, scans, bots malveillants et tentatives d’intrusion.",
+    "strengths": [
+      "Open source et communautaire",
+      "Très utile pour protéger serveurs auto-hébergés",
+      "Détection des comportements suspects",
+      "Blocage collaboratif des IP malveillantes",
+      "Bonne intégration avec de nombreux environnements"
+    ],
+    "strengthShort": [
+      "Open source",
+      "Défense collaborative",
+      "Protection serveurs",
+      "Détection comportementale",
+      "Intégrations utiles"
+    ],
+    "limitations": [
+      "Plus technique que des outils grand public",
+      "Moins adapté aux débutants",
+      "Nécessite configuration serveur correcte"
+    ],
+    "limitationsShort": [
+      "Technique",
+      "Pas débutant",
+      "Configuration requise"
+    ],
+    "idealFor": [
+      "Admins système",
+      "Développeurs auto-hébergeant des services",
+      "Petites infrastructures web",
+      "Utilisateurs sensibles à l’open source"
+    ],
+    "notFor": [
+      "Utilisateurs non techniques",
+      "Besoin d’un antivirus classique bureau"
+    ],
+    "verdict": "CrowdSec est une excellente option pour renforcer la sécurité de serveurs et services web grâce à une logique collaborative et open source. Il convient particulièrement aux profils techniques cherchant une protection réseau proactive.",
+    "readMore": [],
+    "faq": [
+      {
+        "q": "CrowdSec est-il open source ?",
+        "a": "Oui, sa base technologique repose sur une approche open source."
+      },
+      {
+        "q": "À qui s’adresse CrowdSec ?",
+        "a": "Principalement aux administrateurs système, développeurs et profils techniques."
+      }
+    ],
+    "article": {
+      "intro": "La protection des serveurs connectés à internet demande aujourd’hui des outils capables de réagir rapidement aux comportements malveillants.",
+      "whatIs": "CrowdSec est une solution collaborative de sécurité pour détecter et bloquer les attaques réseau et applicatives.",
+      "features": "Il analyse les logs, identifie les comportements suspects et aide à bloquer les sources malveillantes.",
+      "useCases": "Il est utile pour protéger VPS, serveurs web, applications auto-hébergées et environnements techniques.",
+      "benefits": "Il renforce la sécurité proactive et mutualise l’intelligence sur les menaces.",
+      "pricing": "Une base open source est disponible avec des offres professionnelles selon les besoins.",
+      "conclusion": "CrowdSec est un choix très pertinent pour les utilisateurs techniques cherchant une sécurité serveur moderne."
+    },
+    "en.categories": [
+      "Cybersecurity"
+    ],
+    "en.tags": [
+      "firewall",
+      "server",
+      "protection",
+      "community"
+    ],
+    "en.short": "Open-source collaborative defense tool to protect servers and apps from bots, scans and automated attacks.",
+    "en.highlight": "An open-source community-driven way to block bots, scans and attacks on servers.",
+    "en.description": "CrowdSec is an __open-source cybersecurity solution__ designed to protect servers, apps and internet-facing services from __automated attacks__, malicious bots, scans and intrusion attempts.",
+    "en.strengths": [
+      "Open-source and community-driven",
+      "Very useful for self-hosted servers",
+      "Suspicious behavior detection",
+      "Collaborative blocking of malicious IPs",
+      "Good integration with many environments"
+    ],
+    "en.strengthShort": [
+      "Open source",
+      "Collaborative defense",
+      "Server protection",
+      "Behavior detection",
+      "Useful integrations"
+    ],
+    "en.limitations": [
+      "More technical than consumer tools",
+      "Less suitable for beginners",
+      "Requires correct server setup"
+    ],
+    "en.limitationsShort": [
+      "Technical",
+      "Not beginner-friendly",
+      "Setup required"
+    ],
+    "en.idealFor": [
+      "System administrators",
+      "Developers self-hosting services",
+      "Small web infrastructures",
+      "Open-source minded users"
+    ],
+    "en.notFor": [
+      "Non-technical users",
+      "People wanting a classic desktop antivirus"
+    ],
+    "en.verdict": "CrowdSec is an excellent option for strengthening server and web service security through an open-source collaborative model. It is especially relevant for technical users seeking proactive protection.",
+    "en.readMore": [],
+    "en.faq": [
+      {
+        "q": "Is CrowdSec open source?",
+        "a": "Yes, it is built around an open-source approach."
+      },
+      {
+        "q": "Who is CrowdSec for?",
+        "a": "Mainly system administrators, developers and technical users."
+      }
+    ],
+    "en.article": {
+      "intro": "Protecting internet-facing servers requires tools that react quickly to malicious behavior.",
+      "whatIs": "CrowdSec is a collaborative security solution for detecting and blocking network and application attacks.",
+      "features": "It analyzes logs, detects suspicious behavior and helps block malicious sources.",
+      "useCases": "It is useful for VPS protection, web servers, self-hosted apps and technical environments.",
+      "benefits": "It strengthens proactive defense and shares threat intelligence.",
+      "pricing": "An open-source base is available, with pro offers depending on needs.",
+      "conclusion": "CrowdSec is a highly relevant choice for technical users wanting modern server security."
+    },
+    "createdAt": "2026-04-07",
+    "updatedAt": "2026-04-07"
   }
 ]
