@@ -474,7 +474,7 @@
     "partner": "ClickUp",
     "website": "https://clickup.com",
     "affiliateUrl": "https://clickup.com",
-    "logo": "/partners/clickup.png",
+    "logo": "/partners/clickup.ico",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -901,7 +901,7 @@
     "partner": "Proton AG",
     "website": "https://protonvpn.com",
     "affiliateUrl": "https://protonvpn.com",
-    "logo": "/partners/proton-vpn.png",
+    "logo": "/partners/proton-vpn.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -1605,7 +1605,7 @@
     "partner": "Norton",
     "website": "https://us.norton.com/products/norton-secure-vpn",
     "affiliateUrl": "https://us.norton.com/products/norton-secure-vpn",
-    "logo": "/partners/norton-vpn.jpg",
+    "logo": "/partners/norton-vpn.avif",
     "og": "",
     "categories": [
       "VPN"
@@ -2043,7 +2043,7 @@
     "partner": "ExpressVPN",
     "website": "https://www.expressvpn.com",
     "affiliateUrl": "https://www.expressvpn.com",
-    "logo": "/partners/expressvpn.png",
+    "logo": "/partners/expressvpn.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -2267,7 +2267,7 @@
     "partner": "CyberGhost",
     "website": "https://www.cyberghostvpn.com",
     "affiliateUrl": "https://www.cyberghostvpn.com",
-    "logo": "/partners/cyberghost-vpn.png",
+    "logo": "/partners/cyberghost-vpn.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -3384,7 +3384,7 @@
     "partner": "PrivadoVPN",
     "website": "https://privadovpn.com",
     "affiliateUrl": "https://privadovpn.com",
-    "logo": "/partners/privadovpn.svg",
+    "logo": "/partners/privadovpn.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -3607,7 +3607,7 @@
     "partner": "HMA VPN",
     "website": "https://www.hidemyass.com",
     "affiliateUrl": "https://www.hidemyass.com",
-    "logo": "/partners/hma-vpn.png",
+    "logo": "/partners/hma-vpn.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -3830,7 +3830,7 @@
     "partner": "Hostinger",
     "website": "https://www.hostinger.fr",
     "affiliateUrl": "https://www.hostinger.fr",
-    "logo": "/partners/hostinger.ico",
+    "logo": "/partners/hostinger.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -5083,7 +5083,7 @@
     "partner": "LWS",
     "website": "https://www.lws.fr",
     "affiliateUrl": "https://www.lws.fr",
-    "logo": "/partners/lws.png",
+    "logo": "/partners/lws.ico",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -5918,7 +5918,7 @@
     "partner": "Bitdefender",
     "website": "https://www.bitdefender.fr",
     "affiliateUrl": "https://www.bitdefender.fr",
-    "logo": "/partners/bitdefender.ico",
+    "logo": "/partners/bitdefender.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -6141,7 +6141,7 @@
     "partner": "Gen Digital",
     "website": "https://www.avg.com/fr-fr",
     "affiliateUrl": "https://www.avg.com/fr-fr",
-    "logo": "/partners/avg.ico",
+    "logo": "/partners/avg.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -6364,7 +6364,7 @@
     "partner": "Malwarebytes Inc.",
     "website": "https://www.malwarebytes.com/fr",
     "affiliateUrl": "https://www.malwarebytes.com/fr",
-    "logo": "/partners/malwarebytes.png",
+    "logo": "/partners/malwarebytes.ico",
     "og": "",
     "categories": [
       "Antivirus"
@@ -6587,7 +6587,7 @@
     "partner": "Gen Digital",
     "website": "https://www.avast.com/fr-fr",
     "affiliateUrl": "https://www.avast.com/fr-fr",
-    "logo": "/partners/avast.svg",
+    "logo": "/partners/avast.ico",
     "og": "",
     "categories": [
       "Antivirus"
@@ -6810,7 +6810,7 @@
     "partner": "F-Secure Corporation",
     "website": "https://www.f-secure.com/fr",
     "affiliateUrl": "https://www.f-secure.com/fr",
-    "logo": "/partners/f-secure.png",
+    "logo": "/partners/f-secure.ico",
     "og": "",
     "categories": [
       "Antivirus"
@@ -7160,7 +7160,7 @@
     "partner": "Anthropic",
     "website": "https://claude.ai",
     "affiliateUrl": "https://claude.ai",
-    "logo": "/partners/claude.ico",
+    "logo": "/partners/claude-ai.ico",
     "og": "",
     "categories": [
       "IA générative"
@@ -7224,7 +7224,7 @@
     "partner": "Google",
     "website": "https://gemini.google.com",
     "affiliateUrl": "https://gemini.google.com",
-    "logo": "/partners/gemini.svg",
+    "logo": "/partners/gemini.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7352,7 +7352,7 @@
     "partner": "OpenAI",
     "website": "https://openai.com/dall-e-3",
     "affiliateUrl": "https://chat.openai.com",
-    "logo": "/partners/dalle.png",
+    "logo": "/partners/dall-e.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -8149,7 +8149,7 @@
     "partner": "Kape Technologies",
     "website": "https://www.privateinternetaccess.com",
     "affiliateUrl": "https://www.privateinternetaccess.com",
-    "logo": "/partners/pia-vpn.png",
+    "logo": "/partners/pia-vpn.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -8340,7 +8340,7 @@
     "partner": "Astrill",
     "website": "https://www.astrill.com",
     "affiliateUrl": "https://www.astrill.com",
-    "logo": "/partners/astrill-vpn.png",
+    "logo": "/partners/astrill-vpn.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -8520,7 +8520,7 @@
     "partner": "WP Engine",
     "website": "https://wpengine.com",
     "affiliateUrl": "https://wpengine.com",
-    "logo": "/partners/wp-engine.png",
+    "logo": "/partners/wp-engine.ico",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -8710,7 +8710,7 @@
     "partner": "Infomaniak Network",
     "website": "https://www.infomaniak.com",
     "affiliateUrl": "https://www.infomaniak.com",
-    "logo": "/partners/infomaniak.png",
+    "logo": "/partners/infomaniak.ico",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -9393,7 +9393,7 @@
     "partner": "xAI",
     "website": "https://grok.com",
     "affiliateUrl": "https://grok.com",
-    "logo": "/partners/grok.svg",
+    "logo": "/partners/grok.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -9683,7 +9683,7 @@
     "partner": "Stability AI",
     "website": "https://stability.ai",
     "affiliateUrl": "https://stability.ai",
-    "logo": "/partners/stable-diffusion.png",
+    "logo": "/partners/stable-diffusion.webp",
     "og": "",
     "categories": [
       "IA générative",
@@ -9777,7 +9777,7 @@
     "partner": "Notion Labs",
     "website": "https://www.notion.so/product/ai",
     "affiliateUrl": "https://www.notion.so",
-    "logo": "/partners/notion-ai.ico",
+    "logo": "/partners/notion-ai.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10439,7 +10439,7 @@
     "partner": "Microsoft / GitHub",
     "website": "https://github.com/features/copilot",
     "affiliateUrl": "https://github.com/features/copilot",
-    "logo": "/partners/github-copilot.png",
+    "logo": "/partners/github-copilot.ico",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10532,7 +10532,7 @@
     "partner": "Grammarly Inc.",
     "website": "https://www.grammarly.com",
     "affiliateUrl": "https://www.grammarly.com",
-    "logo": "/partners/grammarly.ico",
+    "logo": "/partners/grammarly.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10811,7 +10811,7 @@
     "partner": "Zapier Inc.",
     "website": "https://zapier.com",
     "affiliateUrl": "https://zapier.com",
-    "logo": "/partners/zapier.png",
+    "logo": "/partners/zapier.ico",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10996,7 +10996,7 @@
     "partner": "McAfee",
     "website": "https://tunnelbear.com",
     "affiliateUrl": "https://tunnelbear.com",
-    "logo": "/partners/tunnelbear.png",
+    "logo": "/partners/tunnelbear.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -11386,7 +11386,7 @@
     "partner": "F-Secure",
     "website": "https://f-secure.com/vpn",
     "affiliateUrl": "https://f-secure.com/vpn",
-    "logo": "/partners/f-secure-vpn.png",
+    "logo": "/partners/f-secure-vpn.ico",
     "og": "",
     "categories": [
       "VPN"
@@ -11866,7 +11866,7 @@
     "partner": "G DATA CyberDefense",
     "website": "https://gdata.de",
     "affiliateUrl": "https://gdata.de",
-    "logo": "/partners/g-data.png",
+    "logo": "/partners/g-data.ico",
     "og": "",
     "categories": [
       "Antivirus"
@@ -11996,7 +11996,7 @@
     "partner": "Qihoo 360",
     "website": "https://360totalsecurity.com",
     "affiliateUrl": "https://360totalsecurity.com",
-    "logo": "/partners/360-total-security.ico",
+    "logo": "/partners/360-total-security.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -12739,7 +12739,7 @@
     "partner": "Cloudflare",
     "website": "https://cloudflare.com",
     "affiliateUrl": "https://cloudflare.com",
-    "logo": "/partners/cloudflare.png",
+    "logo": "/partners/cloudflare.ico",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13002,7 +13002,7 @@
     "partner": "Wix.com",
     "website": "https://wix.com",
     "affiliateUrl": "https://wix.com",
-    "logo": "/partners/wix.png",
+    "logo": "/partners/wix.ico",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13265,7 +13265,7 @@
     "partner": "Webflow",
     "website": "https://webflow.com",
     "affiliateUrl": "https://webflow.com",
-    "logo": "/partners/webflow.png",
+    "logo": "/partners/webflow.ico",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13523,7 +13523,7 @@
     "partner": "Netlify",
     "website": "https://netlify.com",
     "affiliateUrl": "https://netlify.com",
-    "logo": "/partners/netlify.ico",
+    "logo": "/partners/netlify.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13898,7 +13898,7 @@
     "partner": "Google DeepMind",
     "website": "https://gemini.google.com",
     "affiliateUrl": "https://gemini.google.com",
-    "logo": "/partners/gemini-advanced.svg",
+    "logo": "/partners/gemini-advanced.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -14028,7 +14028,7 @@
     "partner": "Adobe",
     "website": "https://firefly.adobe.com",
     "affiliateUrl": "https://firefly.adobe.com",
-    "logo": "/partners/adobe-firefly.ico",
+    "logo": "/partners/adobe-firefly.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -15095,7 +15095,7 @@
     "partner": "DeepL",
     "website": "https://deepl.com",
     "affiliateUrl": "https://deepl.com",
-    "logo": "/partners/deepl.png",
+    "logo": "/partners/deepl.ico",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15227,7 +15227,7 @@
     "partner": "Notion Labs",
     "website": "https://notion.so",
     "affiliateUrl": "https://notion.so",
-    "logo": "/partners/notion.ico",
+    "logo": "/partners/notion.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15487,7 +15487,7 @@
     "partner": "Airtable",
     "website": "https://airtable.com",
     "affiliateUrl": "https://airtable.com",
-    "logo": "/partners/airtable.png",
+    "logo": "/partners/airtable.ico",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15879,7 +15879,7 @@
     "partner": "Cohere",
     "website": "https://cohere.com",
     "affiliateUrl": "https://cohere.com",
-    "logo": "/partners/cohere.png",
+    "logo": "/partners/cohere.ico",
     "og": "",
     "categories": [
       "IA générative",
@@ -16008,7 +16008,7 @@
     "partner": "Anthropic",
     "website": "https://anthropic.com",
     "affiliateUrl": "https://anthropic.com",
-    "logo": "/partners/anthropic-api.png",
+    "logo": "/partners/anthropic-api.ico",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -17545,7 +17545,7 @@
     "partner": "Insecure.Org",
     "website": "https://nmap.org",
     "affiliateUrl": "https://nmap.org",
-    "logo": "/partners/nmap.png",
+    "logo": "/partners/nmap.ico",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -17760,7 +17760,7 @@
     "partner": "HashiCorp",
     "website": "https://www.vaultproject.io",
     "affiliateUrl": "https://www.vaultproject.io",
-    "logo": "/partners/hashicorp-vault.ico",
+    "logo": "/partners/hashicorp-vault.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -18192,7 +18192,7 @@
     "partner": "Cisco",
     "website": "https://www.snort.org",
     "affiliateUrl": "https://www.snort.org",
-    "logo": "/partners/snort.png",
+    "logo": "/partners/snort.ico",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -18618,7 +18618,7 @@
     "partner": "Veracode",
     "website": "https://www.veracode.com",
     "affiliateUrl": "https://www.veracode.com",
-    "logo": "/partners/veracode.png",
+    "logo": "/partners/veracode.svg",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -18832,7 +18832,7 @@
     "partner": "Splunk",
     "website": "https://www.splunk.com",
     "affiliateUrl": "https://www.splunk.com",
-    "logo": "/partners/splunk.png",
+    "logo": "/partners/splunk-siem.ico",
     "og": "",
     "categories": [
       "Cybersécurité",
