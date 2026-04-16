@@ -1605,7 +1605,7 @@
     "partner": "Norton",
     "website": "https://us.norton.com/products/norton-secure-vpn",
     "affiliateUrl": "https://us.norton.com/products/norton-secure-vpn",
-    "logo": "/logos/norton-vpn.jpg",
+    "logo": "/logos/norton-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -4874,7 +4874,7 @@
     "partner": "Kinsta",
     "website": "https://kinsta.com/fr",
     "affiliateUrl": "https://kinsta.com/fr",
-    "logo": "/logos/kinsta.jpg",
+    "logo": "/logos/kinsta.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -7288,7 +7288,7 @@
     "partner": "Microsoft",
     "website": "https://copilot.microsoft.com",
     "affiliateUrl": "https://copilot.microsoft.com",
-    "logo": "/logos/copilot.jpg",
+    "logo": "/logos/copilot.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7543,7 +7543,7 @@
     "partner": "NortonLifeLock",
     "website": "https://fr.norton.com",
     "affiliateUrl": "https://fr.norton.com",
-    "logo": "/logos/norton360.jpg",
+    "logo": "/logos/norton360.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -8340,7 +8340,7 @@
     "partner": "Astrill",
     "website": "https://www.astrill.com",
     "affiliateUrl": "https://www.astrill.com",
-    "logo": "/logos/astrill-vpn.jpg",
+    "logo": "/logos/astrill-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -9587,7 +9587,7 @@
     "partner": "Meta",
     "website": "https://llama.meta.com",
     "affiliateUrl": "https://llama.meta.com",
-    "logo": "/logos/llama.jpg",
+    "logo": "/logos/llama.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -10904,7 +10904,7 @@
     "partner": "Make",
     "website": "https://www.make.com",
     "affiliateUrl": "https://www.make.com",
-    "logo": "/logos/make.jpg",
+    "logo": "/logos/make.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15358,7 +15358,7 @@
     "partner": "Linear",
     "website": "https://linear.app",
     "affiliateUrl": "https://linear.app",
-    "logo": "/logos/linear.jpg",
+    "logo": "/logos/linear.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -16193,7 +16193,7 @@
     "partner": "Bitwarden",
     "website": "https://bitwarden.com",
     "affiliateUrl": "https://bitwarden.com",
-    "logo": "/logos/bitwarden.png",
+    "logo": "/logos/bitwarden.svg",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16389,7 +16389,7 @@
     "partner": "1Password",
     "website": "https://1password.com",
     "affiliateUrl": "https://1password.com",
-    "logo": "/logos/1password.png",
+    "logo": "/logos/1password.svg",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16564,7 +16564,7 @@
     "partner": "Twilio",
     "website": "https://authy.com",
     "affiliateUrl": "https://authy.com",
-    "logo": "/logos/authy.png",
+    "logo": "/logos/authy.svg",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16727,7 +16727,7 @@
     "partner": "CrowdSec",
     "website": "https://crowdsec.net",
     "affiliateUrl": "https://crowdsec.net",
-    "logo": "/logos/crowdsec.png",
+    "logo": "/logos/crowdsec.svg",
     "og": "",
     "categories": [
       "Cybersécurité"
