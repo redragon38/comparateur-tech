@@ -160,7 +160,7 @@ export function buildSoftwareSchema(tool) {
         worstRating: 1,
       },
     }),
-    ...(tool.priceMonthly != null && {
+    ...(typeof tool.priceMonthly === 'number' && tool.priceMonthly > 0 && {
       offers: {
         '@type': 'Offer',
         price: tool.priceMonthly,

@@ -21,6 +21,7 @@ const nextConfig = {
   // Note: scrollRestoration supprimé (retiré de Next.js 14)
   experimental: {
     optimizeCss: false,
+    cpus: 1,
   },
 
   async headers() {

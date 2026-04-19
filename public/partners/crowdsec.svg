@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="CrowdSec">
-<rect width="512" height="512" rx="64" fill="#f3f4f6"/>
-<rect x="24" y="24" width="464" height="464" rx="48" fill="#ffffff" stroke="#d1d5db" stroke-width="8"/>
-<text x="256" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#111827">CrowdSec</text>
-<text x="256" y="300" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#6b7280">Security Tool</text>
-</svg>

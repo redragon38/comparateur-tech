@@ -25,6 +25,7 @@ const STATIC_PAGES = [
 
 // Tous les articles blog (synchronisé avec pages/blog/index.js et pages/blog/[slug].js)
 const BLOG_ARTICLES = [
+  { slug: 'openai-api-vs-anthropic-api',                date: '2026-04-19' },
   { slug: 'meilleurs-comparateurs-ia-2025',             date: '2025-03-13' },
   { slug: 'meilleurs-comparateurs-vpn-2025',            date: '2025-03-14' },
   { slug: 'meilleurs-comparateurs-antivirus-2025',      date: '2025-03-14' },
