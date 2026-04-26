@@ -6,7 +6,7 @@
     "partner": "Nord Security",
     "website": "https://nordvpn.com",
     "affiliateUrl": "https://nordvpn.com",
-    "logo": "/partners/nordvpn.png",
+    "logo": "/logos/nordvpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -240,7 +240,7 @@
     "partner": "Surfshark B.V.",
     "website": "https://surfshark.com",
     "affiliateUrl": "https://surfshark.com",
-    "logo": "/partners/surfshark.png",
+    "logo": "/logos/surfshark.png",
     "og": "",
     "categories": [
       "VPN"
@@ -474,7 +474,7 @@
     "partner": "ClickUp",
     "website": "https://clickup.com",
     "affiliateUrl": "https://clickup.com",
-    "logo": "/partners/clickup.png",
+    "logo": "/logos/clickup.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -693,7 +693,7 @@
     "partner": "Emergent",
     "website": "https://emergent.sh",
     "affiliateUrl": "https://emergent.sh",
-    "logo": "/partners/emergent.png",
+    "logo": "/logos/emergent.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -901,7 +901,7 @@
     "partner": "Proton AG",
     "website": "https://protonvpn.com",
     "affiliateUrl": "https://protonvpn.com",
-    "logo": "/partners/proton-vpn.png",
+    "logo": "/logos/proton-vpn.jpg",
     "og": "",
     "categories": [
       "VPN"
@@ -1143,7 +1143,7 @@
     "partner": "Ziff Davis",
     "website": "https://www.ipvanish.com",
     "affiliateUrl": "https://www.ipvanish.com",
-    "logo": "/partners/ipvanish.png",
+    "logo": "/logos/ipvanish.png",
     "og": "",
     "categories": [
       "VPN"
@@ -1374,7 +1374,7 @@
     "partner": "Total Security",
     "website": "https://www.totalvpn.com",
     "affiliateUrl": "https://www.totalvpn.com",
-    "logo": "/partners/total-vpn.png",
+    "logo": "/logos/total-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -1605,7 +1605,7 @@
     "partner": "Norton",
     "website": "https://us.norton.com/products/norton-secure-vpn",
     "affiliateUrl": "https://us.norton.com/products/norton-secure-vpn",
-    "logo": "/partners/norton-vpn.jpg",
+    "logo": "/logos/norton-vpn.jpg",
     "og": "",
     "categories": [
       "VPN"
@@ -1820,7 +1820,7 @@
     "partner": "Bitdefender",
     "website": "https://www.bitdefender.com/solutions/vpn.html",
     "affiliateUrl": "https://www.bitdefender.com/solutions/vpn.html",
-    "logo": "/partners/bitdefender-vpn.ico",
+    "logo": "/logos/bitdefender-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -2043,7 +2043,7 @@
     "partner": "ExpressVPN",
     "website": "https://www.expressvpn.com",
     "affiliateUrl": "https://www.expressvpn.com",
-    "logo": "/partners/expressvpn.png",
+    "logo": "/logos/expressvpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -2267,7 +2267,7 @@
     "partner": "CyberGhost",
     "website": "https://www.cyberghostvpn.com",
     "affiliateUrl": "https://www.cyberghostvpn.com",
-    "logo": "/partners/cyberghost-vpn.png",
+    "logo": "/logos/cyberghost-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -2491,7 +2491,7 @@
     "partner": "Kaspersky",
     "website": "https://www.kaspersky.com/vpn-secure-connection",
     "affiliateUrl": "https://www.kaspersky.com/vpn-secure-connection",
-    "logo": "/partners/kaspersky-vpn.ico",
+    "logo": "/logos/kaspersky-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -2715,7 +2715,7 @@
     "partner": "Mullvad",
     "website": "https://mullvad.net",
     "affiliateUrl": "https://mullvad.net",
-    "logo": "/partners/mullvad-vpn.ico",
+    "logo": "/logos/mullvad-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -2938,7 +2938,7 @@
     "partner": "PureVPN",
     "website": "https://www.purevpn.com",
     "affiliateUrl": "https://www.purevpn.com",
-    "logo": "/partners/purevpn.png",
+    "logo": "/logos/purevpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -3161,7 +3161,7 @@
     "partner": "Hide.me",
     "website": "https://hide.me",
     "affiliateUrl": "https://hide.me",
-    "logo": "/partners/hideme.ico",
+    "logo": "/logos/hideme.png",
     "og": "",
     "categories": [
       "VPN"
@@ -3384,7 +3384,7 @@
     "partner": "PrivadoVPN",
     "website": "https://privadovpn.com",
     "affiliateUrl": "https://privadovpn.com",
-    "logo": "/partners/privadovpn.svg",
+    "logo": "/logos/privadovpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -3607,7 +3607,7 @@
     "partner": "HMA VPN",
     "website": "https://www.hidemyass.com",
     "affiliateUrl": "https://www.hidemyass.com",
-    "logo": "/partners/hma-vpn.png",
+    "logo": "/logos/hma-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -3830,7 +3830,7 @@
     "partner": "Hostinger",
     "website": "https://www.hostinger.fr",
     "affiliateUrl": "https://www.hostinger.fr",
-    "logo": "/partners/hostinger.ico",
+    "logo": "/logos/hostinger.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -4039,7 +4039,7 @@
     "partner": "o2switch",
     "website": "https://www.o2switch.fr",
     "affiliateUrl": "https://www.o2switch.fr",
-    "logo": "/partners/o2switch.png",
+    "logo": "/logos/o2switch.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -4247,7 +4247,7 @@
     "partner": "OVHcloud",
     "website": "https://www.ovhcloud.com/fr",
     "affiliateUrl": "https://www.ovhcloud.com/fr",
-    "logo": "/partners/ovhcloud.ico",
+    "logo": "/logos/ovhcloud.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -4456,7 +4456,7 @@
     "partner": "SiteGround",
     "website": "https://www.siteground.com",
     "affiliateUrl": "https://www.siteground.com",
-    "logo": "/partners/siteground.ico",
+    "logo": "/logos/siteground.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -4665,7 +4665,7 @@
     "partner": "PlanetHoster",
     "website": "https://www.planethoster.com/fr",
     "affiliateUrl": "https://www.planethoster.com/fr",
-    "logo": "/partners/planethoster.ico",
+    "logo": "/logos/planethoster.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -4874,7 +4874,7 @@
     "partner": "Kinsta",
     "website": "https://kinsta.com/fr",
     "affiliateUrl": "https://kinsta.com/fr",
-    "logo": "/partners/kinsta.png",
+    "logo": "/logos/kinsta.jpg",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -5083,7 +5083,7 @@
     "partner": "LWS",
     "website": "https://www.lws.fr",
     "affiliateUrl": "https://www.lws.fr",
-    "logo": "/partners/lws.png",
+    "logo": "/logos/lws.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -5291,7 +5291,7 @@
     "partner": "IONOS",
     "website": "https://www.ionos.fr",
     "affiliateUrl": "https://www.ionos.fr",
-    "logo": "/partners/ionos.ico",
+    "logo": "/logos/ionos.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -5500,7 +5500,7 @@
     "partner": "Bluehost",
     "website": "https://www.bluehost.com",
     "affiliateUrl": "https://www.bluehost.com",
-    "logo": "/partners/bluehost.png",
+    "logo": "/logos/bluehost.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -5709,7 +5709,7 @@
     "partner": "HostArmada",
     "website": "https://hostarmada.com",
     "affiliateUrl": "https://hostarmada.com",
-    "logo": "/partners/hostarmada.ico",
+    "logo": "/logos/hostarmada.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -5918,7 +5918,7 @@
     "partner": "Bitdefender",
     "website": "https://www.bitdefender.fr",
     "affiliateUrl": "https://www.bitdefender.fr",
-    "logo": "/partners/bitdefender.ico",
+    "logo": "/logos/bitdefender.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -6141,7 +6141,7 @@
     "partner": "Gen Digital",
     "website": "https://www.avg.com/fr-fr",
     "affiliateUrl": "https://www.avg.com/fr-fr",
-    "logo": "/partners/avg.ico",
+    "logo": "/logos/avg.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -6364,7 +6364,7 @@
     "partner": "Malwarebytes Inc.",
     "website": "https://www.malwarebytes.com/fr",
     "affiliateUrl": "https://www.malwarebytes.com/fr",
-    "logo": "/partners/malwarebytes.png",
+    "logo": "/logos/malwarebytes.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -6587,7 +6587,7 @@
     "partner": "Gen Digital",
     "website": "https://www.avast.com/fr-fr",
     "affiliateUrl": "https://www.avast.com/fr-fr",
-    "logo": "/partners/avast.svg",
+    "logo": "/logos/avast.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -6810,7 +6810,7 @@
     "partner": "F-Secure Corporation",
     "website": "https://www.f-secure.com/fr",
     "affiliateUrl": "https://www.f-secure.com/fr",
-    "logo": "/partners/f-secure.png",
+    "logo": "/logos/f-secure.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -7033,7 +7033,7 @@
     "partner": "OpenAI",
     "website": "https://chat.openai.com",
     "affiliateUrl": "https://chat.openai.com",
-    "logo": "/partners/chatgpt.png",
+    "logo": "/logos/chatgpt.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7097,7 +7097,7 @@
     "partner": "Midjourney Inc.",
     "website": "https://www.midjourney.com",
     "affiliateUrl": "https://www.midjourney.com",
-    "logo": "/partners/midjourney.png",
+    "logo": "/logos/midjourney.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7160,7 +7160,7 @@
     "partner": "Anthropic",
     "website": "https://claude.ai",
     "affiliateUrl": "https://claude.ai",
-    "logo": "/partners/claude.ico",
+    "logo": "/logos/claude.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7224,7 +7224,7 @@
     "partner": "Google",
     "website": "https://gemini.google.com",
     "affiliateUrl": "https://gemini.google.com",
-    "logo": "/partners/gemini.svg",
+    "logo": "/logos/gemini.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7288,7 +7288,7 @@
     "partner": "Microsoft",
     "website": "https://copilot.microsoft.com",
     "affiliateUrl": "https://copilot.microsoft.com",
-    "logo": "/partners/copilot.ico",
+    "logo": "/logos/copilot.jpg",
     "og": "",
     "categories": [
       "IA générative"
@@ -7352,7 +7352,7 @@
     "partner": "OpenAI",
     "website": "https://openai.com/dall-e-3",
     "affiliateUrl": "https://chat.openai.com",
-    "logo": "/partners/dalle.png",
+    "logo": "/logos/dalle.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7416,7 +7416,7 @@
     "partner": "Perplexity",
     "website": "https://www.perplexity.ai",
     "affiliateUrl": "https://www.perplexity.ai",
-    "logo": "/partners/perplexity.ico",
+    "logo": "/logos/perplexity.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7480,7 +7480,7 @@
     "partner": "Runway AI",
     "website": "https://runwayml.com",
     "affiliateUrl": "https://runwayml.com",
-    "logo": "/partners/runway.png",
+    "logo": "/logos/runway.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -7543,7 +7543,7 @@
     "partner": "NortonLifeLock",
     "website": "https://fr.norton.com",
     "affiliateUrl": "https://fr.norton.com",
-    "logo": "/partners/norton360.jpg",
+    "logo": "/logos/norton360.jpg",
     "og": "",
     "categories": [
       "Antivirus"
@@ -7644,7 +7644,7 @@
     "partner": "ESET",
     "website": "https://www.eset.com/fr",
     "affiliateUrl": "https://www.eset.com/fr",
-    "logo": "/partners/eset-nod32.ico",
+    "logo": "/logos/eset-nod32.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -7746,7 +7746,7 @@
     "partner": "McAfee",
     "website": "https://www.mcafee.com/fr-fr",
     "affiliateUrl": "https://www.mcafee.com/fr-fr",
-    "logo": "/partners/mcafee.ico",
+    "logo": "/logos/mcafee.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -7848,7 +7848,7 @@
     "partner": "Trend Micro",
     "website": "https://www.trendmicro.com/fr_fr",
     "affiliateUrl": "https://www.trendmicro.com/fr_fr",
-    "logo": "/partners/trend-micro.ico",
+    "logo": "/logos/trend-micro.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -7949,7 +7949,7 @@
     "partner": "Intego",
     "website": "https://www.intego.com/fr",
     "affiliateUrl": "https://www.intego.com/fr",
-    "logo": "/partners/intego.ico",
+    "logo": "/logos/intego.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -8048,7 +8048,7 @@
     "partner": "Windscribe Limited",
     "website": "https://windscribe.com",
     "affiliateUrl": "https://windscribe.com",
-    "logo": "/partners/windscribe.ico",
+    "logo": "/logos/windscribe.png",
     "og": "",
     "categories": [
       "VPN"
@@ -8149,7 +8149,7 @@
     "partner": "Kape Technologies",
     "website": "https://www.privateinternetaccess.com",
     "affiliateUrl": "https://www.privateinternetaccess.com",
-    "logo": "/partners/pia-vpn.png",
+    "logo": "/logos/pia-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -8251,7 +8251,7 @@
     "partner": "Golden Frog",
     "website": "https://www.vyprvpn.com",
     "affiliateUrl": "https://www.vyprvpn.com",
-    "logo": "/partners/vypr-vpn.png",
+    "logo": "/logos/vypr-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -8340,7 +8340,7 @@
     "partner": "Astrill",
     "website": "https://www.astrill.com",
     "affiliateUrl": "https://www.astrill.com",
-    "logo": "/partners/astrill-vpn.png",
+    "logo": "/logos/astrill-vpn.jpg",
     "og": "",
     "categories": [
       "VPN"
@@ -8430,7 +8430,7 @@
     "partner": "OVPN Integritet AB",
     "website": "https://www.ovpn.com",
     "affiliateUrl": "https://www.ovpn.com",
-    "logo": "/partners/ovpn.ico",
+    "logo": "/logos/ovpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -8520,7 +8520,7 @@
     "partner": "WP Engine",
     "website": "https://wpengine.com",
     "affiliateUrl": "https://wpengine.com",
-    "logo": "/partners/wp-engine.png",
+    "logo": "/logos/wp-engine.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -8617,7 +8617,7 @@
     "partner": "DigitalOcean (Cloudways)",
     "website": "https://www.cloudways.com",
     "affiliateUrl": "https://www.cloudways.com",
-    "logo": "/partners/cloudways.png",
+    "logo": "/logos/cloudways.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -8710,7 +8710,7 @@
     "partner": "Infomaniak Network",
     "website": "https://www.infomaniak.com",
     "affiliateUrl": "https://www.infomaniak.com",
-    "logo": "/partners/infomaniak.png",
+    "logo": "/logos/infomaniak.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -8801,7 +8801,7 @@
     "partner": "Alwaysdata",
     "website": "https://www.alwaysdata.com",
     "affiliateUrl": "https://www.alwaysdata.com",
-    "logo": "/partners/alwaysdata.png",
+    "logo": "/logos/alwaysdata.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -8891,7 +8891,7 @@
     "partner": "Gandi SAS",
     "website": "https://www.gandi.net",
     "affiliateUrl": "https://www.gandi.net",
-    "logo": "/partners/gandi.ico",
+    "logo": "/logos/gandi.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -8982,7 +8982,7 @@
     "partner": "Kaspersky Lab",
     "website": "https://www.kaspersky.fr",
     "affiliateUrl": "https://www.kaspersky.fr",
-    "logo": "/partners/kaspersky.ico",
+    "logo": "/logos/kaspersky.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -9074,7 +9074,7 @@
     "partner": "OpenText (Webroot)",
     "website": "https://www.webroot.com",
     "affiliateUrl": "https://www.webroot.com",
-    "logo": "/partners/webroot.ico",
+    "logo": "/logos/webroot.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -9304,7 +9304,7 @@
     "partner": "Sophos",
     "website": "https://home.sophos.com",
     "affiliateUrl": "https://home.sophos.com",
-    "logo": "/partners/sophos-home.ico",
+    "logo": "/logos/sophos-home.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -9393,7 +9393,7 @@
     "partner": "xAI",
     "website": "https://grok.com",
     "affiliateUrl": "https://grok.com",
-    "logo": "/partners/grok.svg",
+    "logo": "/logos/grok.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -9487,7 +9487,7 @@
     "partner": "Mistral AI",
     "website": "https://mistral.ai",
     "affiliateUrl": "https://mistral.ai",
-    "logo": "/partners/mistral-ai.ico",
+    "logo": "/logos/mistral-ai.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -9587,7 +9587,7 @@
     "partner": "Meta",
     "website": "https://llama.meta.com",
     "affiliateUrl": "https://llama.meta.com",
-    "logo": "/partners/llama.jpg",
+    "logo": "/logos/llama.jpg",
     "og": "",
     "categories": [
       "IA générative",
@@ -9683,7 +9683,7 @@
     "partner": "Stability AI",
     "website": "https://stability.ai",
     "affiliateUrl": "https://stability.ai",
-    "logo": "/partners/stable-diffusion.png",
+    "logo": "/logos/stable-diffusion.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -9777,7 +9777,7 @@
     "partner": "Notion Labs",
     "website": "https://www.notion.so/product/ai",
     "affiliateUrl": "https://www.notion.so",
-    "logo": "/partners/notion-ai.ico",
+    "logo": "/logos/notion-ai.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -9872,7 +9872,7 @@
     "partner": "Jasper AI Inc.",
     "website": "https://www.jasper.ai",
     "affiliateUrl": "https://www.jasper.ai",
-    "logo": "/partners/jasper-ai.png",
+    "logo": "/logos/jasper-ai.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -9967,7 +9967,7 @@
     "partner": "ElevenLabs Inc.",
     "website": "https://elevenlabs.io",
     "affiliateUrl": "https://elevenlabs.io",
-    "logo": "/partners/elevenlabs.ico",
+    "logo": "/logos/elevenlabs.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10065,7 +10065,7 @@
     "partner": "Suno Inc.",
     "website": "https://suno.com",
     "affiliateUrl": "https://suno.com",
-    "logo": "/partners/suno.ico",
+    "logo": "/logos/suno.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10157,7 +10157,7 @@
     "partner": "Kuaishou Technology",
     "website": "https://klingai.com",
     "affiliateUrl": "https://klingai.com",
-    "logo": "/partners/kling-ai.ico",
+    "logo": "/logos/kling-ai.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10247,7 +10247,7 @@
     "partner": "HeyGen Inc.",
     "website": "https://www.heygen.com",
     "affiliateUrl": "https://www.heygen.com",
-    "logo": "/partners/heygen.ico",
+    "logo": "/logos/heygen.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10341,7 +10341,7 @@
     "partner": "Anysphere Inc.",
     "website": "https://cursor.com",
     "affiliateUrl": "https://cursor.com",
-    "logo": "/partners/cursor.ico",
+    "logo": "/logos/cursor.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10439,7 +10439,7 @@
     "partner": "Microsoft / GitHub",
     "website": "https://github.com/features/copilot",
     "affiliateUrl": "https://github.com/features/copilot",
-    "logo": "/partners/github-copilot.png",
+    "logo": "/logos/github-copilot.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10532,7 +10532,7 @@
     "partner": "Grammarly Inc.",
     "website": "https://www.grammarly.com",
     "affiliateUrl": "https://www.grammarly.com",
-    "logo": "/partners/grammarly.ico",
+    "logo": "/logos/grammarly.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10624,7 +10624,7 @@
     "partner": "Canva",
     "website": "https://www.canva.com",
     "affiliateUrl": "https://www.canva.com",
-    "logo": "/partners/canva-ai.ico",
+    "logo": "/logos/canva-ai.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10719,7 +10719,7 @@
     "partner": "Descript Inc.",
     "website": "https://www.descript.com",
     "affiliateUrl": "https://www.descript.com",
-    "logo": "/partners/descript.png",
+    "logo": "/logos/descript.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10811,7 +10811,7 @@
     "partner": "Zapier Inc.",
     "website": "https://zapier.com",
     "affiliateUrl": "https://zapier.com",
-    "logo": "/partners/zapier.png",
+    "logo": "/logos/zapier.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10904,7 +10904,7 @@
     "partner": "Make",
     "website": "https://www.make.com",
     "affiliateUrl": "https://www.make.com",
-    "logo": "/partners/make.ico",
+    "logo": "/logos/make.jpg",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -10996,7 +10996,7 @@
     "partner": "McAfee",
     "website": "https://tunnelbear.com",
     "affiliateUrl": "https://tunnelbear.com",
-    "logo": "/partners/tunnelbear.png",
+    "logo": "/logos/tunnelbear.png",
     "og": "",
     "categories": [
       "VPN"
@@ -11127,7 +11127,7 @@
     "partner": "IVPN",
     "website": "https://ivpn.net",
     "affiliateUrl": "https://ivpn.net",
-    "logo": "/partners/ivpn.png",
+    "logo": "/logos/ivpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -11256,7 +11256,7 @@
     "partner": "PrivateVPN",
     "website": "https://privatevpn.com",
     "affiliateUrl": "https://privatevpn.com",
-    "logo": "/partners/privatevpn.ico",
+    "logo": "/logos/privatevpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -11386,7 +11386,7 @@
     "partner": "F-Secure",
     "website": "https://f-secure.com/vpn",
     "affiliateUrl": "https://f-secure.com/vpn",
-    "logo": "/partners/f-secure-vpn.png",
+    "logo": "/logos/f-secure-vpn.png",
     "og": "",
     "categories": [
       "VPN"
@@ -11624,7 +11624,7 @@
     "partner": "Aura",
     "website": "https://hotspotshield.com",
     "affiliateUrl": "https://hotspotshield.com",
-    "logo": "/partners/hotspot-shield.ico",
+    "logo": "/logos/hotspot-shield.png",
     "og": "",
     "categories": [
       "VPN"
@@ -11743,7 +11743,7 @@
     "partner": "CrowdStrike",
     "website": "https://crowdstrike.com",
     "affiliateUrl": "https://crowdstrike.com",
-    "logo": "/partners/crowdstrike.png",
+    "logo": "/logos/crowdstrike.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -11866,7 +11866,7 @@
     "partner": "G DATA CyberDefense",
     "website": "https://gdata.de",
     "affiliateUrl": "https://gdata.de",
-    "logo": "/partners/g-data.png",
+    "logo": "/logos/g-data.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -11996,7 +11996,7 @@
     "partner": "Qihoo 360",
     "website": "https://360totalsecurity.com",
     "affiliateUrl": "https://360totalsecurity.com",
-    "logo": "/partners/360-total-security.ico",
+    "logo": "/logos/360-total-security.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -12126,7 +12126,7 @@
     "partner": "VIPRE Security Group",
     "website": "https://vipre.com",
     "affiliateUrl": "https://vipre.com",
-    "logo": "/partners/vipre-antivirus.png",
+    "logo": "/logos/vipre-antivirus.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -12255,7 +12255,7 @@
     "partner": "SentinelOne",
     "website": "https://sentinelone.com",
     "affiliateUrl": "https://sentinelone.com",
-    "logo": "/partners/sentinel-one.png",
+    "logo": "/logos/sentinel-one.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -12378,7 +12378,7 @@
     "partner": "Nord Security",
     "website": "https://nordpass.com",
     "affiliateUrl": "https://nordpass.com",
-    "logo": "/partners/nordpass.ico",
+    "logo": "/logos/nordpass.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -12501,7 +12501,7 @@
     "partner": "Emsisoft",
     "website": "https://emsisoft.com",
     "affiliateUrl": "https://emsisoft.com",
-    "logo": "/partners/emsisoft.ico",
+    "logo": "/logos/emsisoft.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -12620,7 +12620,7 @@
     "partner": "Sophos",
     "website": "https://hitmanpro.com",
     "affiliateUrl": "https://hitmanpro.com",
-    "logo": "/partners/hitmanpro.ico",
+    "logo": "/logos/hitmanpro.png",
     "og": "",
     "categories": [
       "Antivirus"
@@ -12739,7 +12739,7 @@
     "partner": "Cloudflare",
     "website": "https://cloudflare.com",
     "affiliateUrl": "https://cloudflare.com",
-    "logo": "/partners/cloudflare.png",
+    "logo": "/logos/cloudflare.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -12869,7 +12869,7 @@
     "partner": "Amazon",
     "website": "https://aws.amazon.com",
     "affiliateUrl": "https://aws.amazon.com",
-    "logo": "/partners/aws-amazon.ico",
+    "logo": "/logos/aws-amazon.png",
     "og": "",
     "categories": [
       "Hébergement web",
@@ -13002,7 +13002,7 @@
     "partner": "Wix.com",
     "website": "https://wix.com",
     "affiliateUrl": "https://wix.com",
-    "logo": "/partners/wix.png",
+    "logo": "/logos/wix.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13134,7 +13134,7 @@
     "partner": "Squarespace",
     "website": "https://squarespace.com",
     "affiliateUrl": "https://squarespace.com",
-    "logo": "/partners/squarespace.ico",
+    "logo": "/logos/squarespace.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13265,7 +13265,7 @@
     "partner": "Webflow",
     "website": "https://webflow.com",
     "affiliateUrl": "https://webflow.com",
-    "logo": "/partners/webflow.png",
+    "logo": "/logos/webflow.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13394,7 +13394,7 @@
     "partner": "DigitalOcean",
     "website": "https://digitalocean.com",
     "affiliateUrl": "https://digitalocean.com",
-    "logo": "/partners/digitalocean.png",
+    "logo": "/logos/digitalocean.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13523,7 +13523,7 @@
     "partner": "Netlify",
     "website": "https://netlify.com",
     "affiliateUrl": "https://netlify.com",
-    "logo": "/partners/netlify.ico",
+    "logo": "/logos/netlify.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13646,7 +13646,7 @@
     "partner": "Supabase",
     "website": "https://supabase.com",
     "affiliateUrl": "https://supabase.com",
-    "logo": "/partners/supabase.png",
+    "logo": "/logos/supabase.png",
     "og": "",
     "categories": [
       "Hébergement web"
@@ -13769,7 +13769,7 @@
     "partner": "Anthropic",
     "website": "https://claude.ai",
     "affiliateUrl": "https://claude.ai",
-    "logo": "/partners/claude-3-opus.ico",
+    "logo": "/logos/claude-3-opus.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -13898,7 +13898,7 @@
     "partner": "Google DeepMind",
     "website": "https://gemini.google.com",
     "affiliateUrl": "https://gemini.google.com",
-    "logo": "/partners/gemini-advanced.svg",
+    "logo": "/logos/gemini-advanced.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -14028,7 +14028,7 @@
     "partner": "Adobe",
     "website": "https://firefly.adobe.com",
     "affiliateUrl": "https://firefly.adobe.com",
-    "logo": "/partners/adobe-firefly.ico",
+    "logo": "/logos/adobe-firefly.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -14162,7 +14162,7 @@
     "partner": "Perplexity AI",
     "website": "https://perplexity.ai",
     "affiliateUrl": "https://perplexity.ai",
-    "logo": "/partners/perplexity-pro.ico",
+    "logo": "/logos/perplexity-pro.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -14293,7 +14293,7 @@
     "partner": "OpenAI",
     "website": "https://openai.com",
     "affiliateUrl": "https://openai.com",
-    "logo": "/partners/openai-o3.png",
+    "logo": "/logos/openai-o3.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -14412,7 +14412,7 @@
     "partner": "Mistral AI",
     "website": "https://mistral.ai",
     "affiliateUrl": "https://mistral.ai",
-    "logo": "/partners/mistral-large.ico",
+    "logo": "/logos/mistral-large.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -14535,7 +14535,7 @@
     "partner": "Black Forest Labs",
     "website": "https://blackforestlabs.ai",
     "affiliateUrl": "https://blackforestlabs.ai",
-    "logo": "/partners/flux-ai.ico",
+    "logo": "/logos/flux-ai.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -14654,7 +14654,7 @@
     "partner": "OpenAI",
     "website": "https://sora.com",
     "affiliateUrl": "https://sora.com",
-    "logo": "/partners/sora-openai.png",
+    "logo": "/logos/sora-openai.png",
     "og": "",
     "categories": [
       "IA générative"
@@ -14773,7 +14773,7 @@
     "partner": "OpenAI",
     "website": "https://platform.openai.com",
     "affiliateUrl": "https://platform.openai.com",
-    "logo": "/partners/openai-api.png",
+    "logo": "/logos/openai-api.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -14964,7 +14964,7 @@
     "partner": "Synthesia",
     "website": "https://synthesia.io",
     "affiliateUrl": "https://synthesia.io",
-    "logo": "/partners/synthesia.png",
+    "logo": "/logos/synthesia.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15095,7 +15095,7 @@
     "partner": "DeepL",
     "website": "https://deepl.com",
     "affiliateUrl": "https://deepl.com",
-    "logo": "/partners/deepl.png",
+    "logo": "/logos/deepl.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15227,7 +15227,7 @@
     "partner": "Notion Labs",
     "website": "https://notion.so",
     "affiliateUrl": "https://notion.so",
-    "logo": "/partners/notion.ico",
+    "logo": "/logos/notion.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15358,7 +15358,7 @@
     "partner": "Linear",
     "website": "https://linear.app",
     "affiliateUrl": "https://linear.app",
-    "logo": "/partners/linear.ico",
+    "logo": "/logos/linear.jpg",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15487,7 +15487,7 @@
     "partner": "Airtable",
     "website": "https://airtable.com",
     "affiliateUrl": "https://airtable.com",
-    "logo": "/partners/airtable.png",
+    "logo": "/logos/airtable.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15616,7 +15616,7 @@
     "partner": "Monday.com",
     "website": "https://monday.com",
     "affiliateUrl": "https://monday.com",
-    "logo": "/partners/monday-com.ico",
+    "logo": "/logos/monday-com.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15747,7 +15747,7 @@
     "partner": "Asana",
     "website": "https://asana.com",
     "affiliateUrl": "https://asana.com",
-    "logo": "/partners/asana.ico",
+    "logo": "/logos/asana.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -15879,7 +15879,7 @@
     "partner": "Cohere",
     "website": "https://cohere.com",
     "affiliateUrl": "https://cohere.com",
-    "logo": "/partners/cohere.png",
+    "logo": "/logos/cohere.png",
     "og": "",
     "categories": [
       "IA générative",
@@ -16008,7 +16008,7 @@
     "partner": "Anthropic",
     "website": "https://anthropic.com",
     "affiliateUrl": "https://anthropic.com",
-    "logo": "/partners/anthropic-api.png",
+    "logo": "/logos/anthropic-api.png",
     "og": "",
     "categories": [
       "Intelligence artificielle"
@@ -16193,7 +16193,7 @@
     "partner": "Bitwarden",
     "website": "https://bitwarden.com",
     "affiliateUrl": "https://bitwarden.com",
-    "logo": "/partners/bitwarden.ico",
+    "logo": "/logos/bitwarden.png",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16389,7 +16389,7 @@
     "partner": "1Password",
     "website": "https://1password.com",
     "affiliateUrl": "https://1password.com",
-    "logo": "/partners/1password.ico",
+    "logo": "/logos/1password.png",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16564,7 +16564,7 @@
     "partner": "Twilio",
     "website": "https://authy.com",
     "affiliateUrl": "https://authy.com",
-    "logo": "/partners/authy.png",
+    "logo": "/logos/authy.png",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16727,7 +16727,7 @@
     "partner": "CrowdSec",
     "website": "https://crowdsec.net",
     "affiliateUrl": "https://crowdsec.net",
-    "logo": "/partners/crowdsec.ico",
+    "logo": "/logos/crowdsec.png",
     "og": "",
     "categories": [
       "Cybersécurité"
@@ -16892,7 +16892,7 @@
     "partner": "Wireshark Foundation",
     "website": "https://www.wireshark.org",
     "affiliateUrl": "https://www.wireshark.org",
-    "logo": "/partners/wireshark.ico",
+    "logo": "/logos/wireshark.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -17108,7 +17108,7 @@
     "partner": "Rapid7",
     "website": "https://www.metasploit.com",
     "affiliateUrl": "https://www.metasploit.com",
-    "logo": "/partners/metasploit.png",
+    "logo": "/logos/metasploit.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -17326,7 +17326,7 @@
     "partner": "PortSwigger",
     "website": "https://portswigger.net/burp",
     "affiliateUrl": "https://portswigger.net/burp",
-    "logo": "/partners/burpsuite.ico",
+    "logo": "/logos/burpsuite.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -17545,7 +17545,7 @@
     "partner": "Insecure.Org",
     "website": "https://nmap.org",
     "affiliateUrl": "https://nmap.org",
-    "logo": "/partners/nmap.png",
+    "logo": "/logos/nmap.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -17760,7 +17760,7 @@
     "partner": "HashiCorp",
     "website": "https://www.vaultproject.io",
     "affiliateUrl": "https://www.vaultproject.io",
-    "logo": "/partners/hashicorp-vault.ico",
+    "logo": "/logos/hashicorp-vault.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -17972,7 +17972,7 @@
     "partner": "Offensive Security",
     "website": "https://www.kali.org",
     "affiliateUrl": "https://www.kali.org",
-    "logo": "/partners/kali-linux.ico",
+    "logo": "/logos/kali-linux.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -18192,7 +18192,7 @@
     "partner": "Cisco",
     "website": "https://www.snort.org",
     "affiliateUrl": "https://www.snort.org",
-    "logo": "/partners/snort.png",
+    "logo": "/logos/snort.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -18405,7 +18405,7 @@
     "partner": "Greenbone",
     "website": "https://www.openvas.org",
     "affiliateUrl": "https://www.openvas.org",
-    "logo": "/partners/openvas.ico",
+    "logo": "/logos/openvas.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -18618,7 +18618,7 @@
     "partner": "Veracode",
     "website": "https://www.veracode.com",
     "affiliateUrl": "https://www.veracode.com",
-    "logo": "/partners/veracode.png",
+    "logo": "/logos/veracode.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -18832,7 +18832,7 @@
     "partner": "Splunk",
     "website": "https://www.splunk.com",
     "affiliateUrl": "https://www.splunk.com",
-    "logo": "/partners/splunk.png",
+    "logo": "/logos/splunk.png",
     "og": "",
     "categories": [
       "Cybersécurité",
@@ -19044,5 +19044,340 @@
     },
     "createdAt": "2026-04-16",
     "updatedAt": "2026-04-16"
-  }
+  },
+
+{
+  "id": "dashlane",
+  "slug": "dashlane",
+  "name": "Dashlane",
+  "partner": "Dashlane",
+  "website": "https://dashlane.com",
+  "affiliateUrl": "https://dashlane.com",
+  "logo": "/logos/dashlane.png",
+  "categories": ["Cybersécurité"],
+  "tags": ["mot de passe", "gestionnaire", "sécurité", "VPN intégré"],
+  "languages": ["fr", "en", "de", "es"],
+  "priceMonthly": 4.99,
+  "priceCurrency": "USD",
+  "price": "Gratuit / 4.99 $/mois",
+  "trial": true,
+  "status": "published",
+  "source": "éditeur",
+  "rating": { "value": 4.6, "count": 87 },
+  "selection": false,
+  "featured": false,
+  "verified": true,
+  "isAffiliate": false,
+  "hasReview": true,
+  "short": "Gestionnaire de mots de passe premium avec VPN intégré, surveillance du dark web et interface soignée.",
+  "highlight": "L'un des gestionnaires de mots de passe les plus complets avec VPN et alertes dark web inclus.",
+  "description": "Dashlane est un __gestionnaire de mots de passe__ reconnu pour son interface soignée et ses fonctionnalités étendues. Il stocke et synchronise les identifiants, propose un __VPN intégré__, surveille les fuites sur le __dark web__ et remplit automatiquement les formulaires sur tous vos appareils.",
+  "strengths": [
+    "Interface très soignée et intuitive",
+    "VPN intégré dans les plans premium",
+    "Surveillance des fuites de données dark web",
+    "Générateur de mots de passe robuste",
+    "Synchronisation multi-appareils fluide",
+    "Partage sécurisé d'identifiants"
+  ],
+  "strengthShort": ["Interface premium", "VPN inclus", "Dark web monitoring", "Multi-appareils", "Partage sécurisé"],
+  "limitations": [
+    "Plan gratuit limité à un seul appareil",
+    "Plus cher que certains concurrents",
+    "VPN de base comparé aux VPN dédiés",
+    "Pas d'option auto-hébergement"
+  ],
+  "limitationsShort": ["Gratuit limité", "Prix élevé", "VPN basique", "Pas d'auto-hébergement"],
+  "idealFor": ["Particuliers cherchant tout-en-un", "Familles", "Professionnels mobiles"],
+  "notFor": ["Budget serré", "Fans d'auto-hébergement", "VPN intensif"],
+  "verdict": "Dashlane est l'une des solutions les plus abouties pour la gestion des mots de passe au quotidien. Son interface, son VPN inclus et sa surveillance dark web en font un choix premium complet, même si son prix est légèrement supérieur à la concurrence.",
+  "faq": [
+    { "q": "Dashlane inclut-il un VPN ?", "a": "Oui, un VPN basique est inclus dans les plans Premium." },
+    { "q": "Dashlane est-il gratuit ?", "a": "Une version gratuite existe mais limitée à un appareil." }
+  ],
+  "article": {
+    "intro": "Dashlane combine gestion des mots de passe, VPN et surveillance du dark web dans une interface parmi les plus soignées du marché.",
+    "whatIs": "Dashlane est un coffre-fort numérique chiffré pour centraliser et gérer tous ses identifiants en toute sécurité.",
+    "features": "Autoremplissage, VPN intégré, alertes dark web, générateur de mots de passe et partage sécurisé.",
+    "useCases": "Idéal pour sécuriser tous ses comptes en ligne avec une solution unique et intuitive.",
+    "benefits": "Il réduit la fatigue des mots de passe tout en apportant une couche supplémentaire de protection.",
+    "pricing": "Version gratuite (1 appareil) et plans Premium à partir de 4,99 $/mois.",
+    "conclusion": "Dashlane est un excellent choix premium pour qui veut centraliser sa sécurité numérique sans complexité."
+  },
+  "en.categories": ["Cybersecurity"],
+  "en.tags": ["password manager", "security", "VPN", "dark web"],
+  "en.short": "Premium password manager with built-in VPN, dark web monitoring and polished interface.",
+  "en.highlight": "One of the most complete password managers with VPN and dark web alerts included.",
+  "en.verdict": "Dashlane is a polished all-in-one solution for password management, combining security, convenience and extra protection features.",
+  "createdAt": "2026-04-26",
+  "updatedAt": "2026-04-26"
+},
+{
+  "id": "pfsense",
+  "slug": "pfsense",
+  "name": "pfSense",
+  "partner": "Netgate",
+  "website": "https://www.pfsense.org",
+  "affiliateUrl": "https://www.pfsense.org",
+  "logo": "/logos/pfsense.png",
+  "categories": ["Cybersécurité", "Pare-feu"],
+  "tags": ["pare-feu", "firewall", "réseau", "open source", "VPN", "routeur"],
+  "languages": ["fr", "en", "de", "es"],
+  "priceMonthly": 0,
+  "priceCurrency": "EUR",
+  "price": "Gratuit open source / Plus payant",
+  "trial": true,
+  "status": "published",
+  "source": "éditeur",
+  "rating": { "value": 4.7, "count": 143 },
+  "selection": false,
+  "featured": false,
+  "verified": true,
+  "isAffiliate": false,
+  "hasReview": true,
+  "short": "Distribution pare-feu et routeur open source basée sur FreeBSD, offrant des fonctionnalités de sécurité réseau avancées.",
+  "highlight": "Le pare-feu open source de référence pour sécuriser les réseaux professionnels et personnels.",
+  "description": "pfSense est une __distribution pare-feu__ et routeur open source basée sur FreeBSD. Elle transforme un PC standard en __firewall professionnel__ avec filtrage de paquets, __VPN IPsec/OpenVPN__, détection d'intrusion, QoS et portail captif. Utilisée par des milliers de PME et professionnels IT dans le monde.",
+  "strengths": [
+    "Pare-feu stateful complet et configurable",
+    "Support VPN IPsec, OpenVPN et WireGuard",
+    "Interface web d'administration claire",
+    "Système de paquets extensible (Snort, Squid, pfBlockerNG)",
+    "Gratuit et open source",
+    "Haute disponibilité avec CARP"
+  ],
+  "strengthShort": ["Pare-feu complet", "VPN multi-protocoles", "Interface web", "Extensible", "Open source"],
+  "limitations": [
+    "Nécessite un hardware dédié ou une VM",
+    "Courbe d'apprentissage pour les débutants",
+    "Support communautaire uniquement en version gratuite",
+    "Certains paquets peuvent être instables"
+  ],
+  "limitationsShort": ["Hardware requis", "Apprentissage", "Support limité gratuit", "Stabilité paquets"],
+  "idealFor": ["PME sécurisant leur réseau", "Administrateurs réseau", "Homelab et lab sécurité", "Remplacer un routeur FAI"],
+  "notFor": ["Utilisateurs sans bases réseau", "Environnements sans hardware dédié", "Débutants complets"],
+  "verdict": "pfSense est la référence des pare-feux open source. Sa richesse fonctionnelle, sa flexibilité et sa communauté active en font un choix incontournable pour sécuriser les réseaux professionnels et personnels sans coût de licence.",
+  "faq": [
+    { "q": "pfSense fonctionne-t-il sur du matériel standard ?", "a": "Oui, il peut s'installer sur n'importe quel PC avec deux cartes réseau." },
+    { "q": "pfSense supporte-t-il WireGuard ?", "a": "Oui, depuis les versions récentes." },
+    { "q": "pfSense est-il gratuit ?", "a": "Oui, la version Community Edition est gratuite et open source." }
+  ],
+  "article": {
+    "intro": "pfSense transforme un simple PC en pare-feu professionnel complet, offrant des fonctionnalités habituellement réservées aux équipements coûteux.",
+    "whatIs": "pfSense est une distribution FreeBSD spécialisée en sécurité réseau, combinant pare-feu, routeur, VPN et outils IDS.",
+    "features": "Filtrage stateful, VPN, NAT, QoS, portail captif, DHCP, DNS resolver et système de paquets extensible.",
+    "useCases": "Sécurisation de réseaux d'entreprises, homelab, remplacement de box opérateur et segmentation réseau.",
+    "benefits": "pfSense offre un niveau de sécurité réseau professionnel sans coût de licence, avec une flexibilité maximale.",
+    "pricing": "Gratuit en Community Edition. Version pfSense Plus avec support disponible.",
+    "conclusion": "pfSense reste le choix de référence pour les professionnels IT souhaitant un pare-feu puissant et maîtrisé."
+  },
+  "en.categories": ["Cybersecurity", "Firewall"],
+  "en.tags": ["firewall", "network", "open source", "VPN", "router"],
+  "en.short": "Open-source firewall and router distribution based on FreeBSD offering advanced network security features.",
+  "en.highlight": "The reference open-source firewall for securing professional and personal networks.",
+  "en.verdict": "pfSense is the go-to open-source firewall. Its rich features, flexibility and active community make it essential for securing networks without licensing costs.",
+  "createdAt": "2026-04-26",
+  "updatedAt": "2026-04-26"
+},
+{
+  "id": "nessus",
+  "slug": "nessus",
+  "name": "Nessus",
+  "partner": "Tenable",
+  "website": "https://www.tenable.com/products/nessus",
+  "affiliateUrl": "https://www.tenable.com/products/nessus",
+  "logo": "/logos/nessus.png",
+  "categories": ["Cybersécurité", "Scanner de vulnérabilités"],
+  "tags": ["scanner de vulnérabilités", "CVE", "pentesting", "audit sécurité", "compliance", "Tenable"],
+  "languages": ["fr", "en", "de", "es", "ja"],
+  "priceMonthly": 0,
+  "priceCurrency": "USD",
+  "price": "Gratuit (Essentials) / Pro sur devis",
+  "trial": true,
+  "status": "published",
+  "source": "éditeur",
+  "rating": { "value": 4.8, "count": 198 },
+  "selection": false,
+  "featured": false,
+  "verified": true,
+  "isAffiliate": false,
+  "hasReview": true,
+  "short": "Scanner de vulnérabilités de référence mondiale pour détecter les failles CVE, les mauvaises configurations et les risques de conformité.",
+  "highlight": "Le scanner de vulnérabilités le plus utilisé au monde avec plus de 200 000 plugins de détection.",
+  "description": "Nessus est le __scanner de vulnérabilités__ développé par Tenable, considéré comme le plus précis et le plus utilisé au monde. Avec plus de __200 000 plugins__ de détection, il identifie les __failles CVE__, mauvaises configurations, problèmes de conformité et vulnérabilités logicielles sur tous types de systèmes.",
+  "strengths": [
+    "Plus de 200 000 plugins de détection",
+    "Taux de faux positifs très faible",
+    "Rapports détaillés avec score CVSS et priorisation",
+    "Version Essentials gratuite (jusqu'à 16 IPs)",
+    "Scans de conformité CIS, PCI-DSS, HIPAA",
+    "Interface très intuitive"
+  ],
+  "strengthShort": ["200k+ plugins", "Faibles faux positifs", "Rapports CVSS", "Gratuit 16 IPs", "Conformité intégrée"],
+  "limitations": [
+    "Version Pro très coûteuse",
+    "Scans longs sur grandes infrastructures",
+    "Gratuit limité à 16 adresses IP",
+    "Peut surcharger le réseau lors des scans"
+  ],
+  "limitationsShort": ["Pro coûteux", "Scans lents", "Gratuit limité", "Impact réseau"],
+  "idealFor": ["Pentesters et auditeurs", "Administrateurs systèmes", "Équipes GRC et conformité", "PME avec peu de serveurs"],
+  "notFor": ["Très grandes infrastructures sans budget Pro", "Utilisateurs non techniques", "Scan en temps réel continu"],
+  "verdict": "Nessus est la référence absolue du scanning de vulnérabilités. Sa précision, ses 200 000 plugins et ses capacités de conformité en font l'outil privilégié des auditeurs et pentesters du monde entier. La version Essentials gratuite est déjà très utile pour les petites infrastructures.",
+  "faq": [
+    { "q": "Nessus est-il gratuit ?", "a": "Oui, la version Essentials est gratuite pour jusqu'à 16 IPs." },
+    { "q": "Nessus est-il meilleur qu'OpenVAS ?", "a": "Nessus a généralement un taux de détection plus élevé et moins de faux positifs, mais OpenVAS est entièrement gratuit." },
+    { "q": "Nessus peut-il tester la conformité PCI-DSS ?", "a": "Oui, il inclut des templates de scan de conformité intégrés." }
+  ],
+  "article": {
+    "intro": "Nessus s'est imposé depuis plus de 20 ans comme la référence mondiale en matière de scanning de vulnérabilités.",
+    "whatIs": "Nessus est un scanner de vulnérabilités développé par Tenable permettant d'identifier les failles sur tous types de systèmes et applications.",
+    "features": "Détection CVE, conformité CIS/PCI, rapports CVSS, scans réseau et web, découverte d'assets et priorisation des risques.",
+    "useCases": "Audits de sécurité périodiques, préparation de pentests, conformité réglementaire et gestion des vulnérabilités.",
+    "benefits": "Nessus réduit significativement la surface d'attaque en identifiant les failles avant les attaquants.",
+    "pricing": "Essentials gratuit (16 IPs). Nessus Pro pour les professionnels sur devis.",
+    "conclusion": "Nessus reste le scanner de vulnérabilités le plus fiable pour les professionnels de la sécurité."
+  },
+  "en.categories": ["Cybersecurity", "Vulnerability Scanner"],
+  "en.tags": ["vulnerability scanner", "CVE", "pentesting", "security audit", "compliance", "Tenable"],
+  "en.short": "World-leading vulnerability scanner for detecting CVE flaws, misconfigurations and compliance risks.",
+  "en.highlight": "The world's most used vulnerability scanner with 200,000+ detection plugins.",
+  "en.verdict": "Nessus is the absolute reference for vulnerability scanning. Its precision, 200,000 plugins and compliance capabilities make it the tool of choice for auditors and pentesters worldwide.",
+  "createdAt": "2026-04-26",
+  "updatedAt": "2026-04-26"
+},
+{
+  "id": "owasp-zap",
+  "slug": "owasp-zap",
+  "name": "OWASP ZAP",
+  "partner": "OWASP Foundation",
+  "website": "https://www.zaproxy.org",
+  "affiliateUrl": "https://www.zaproxy.org",
+  "logo": "/logos/owasp-zap.png",
+  "categories": ["Cybersécurité", "Sécurité Web"],
+  "tags": ["DAST", "sécurité web", "OWASP", "scanner web", "proxy", "pentesting web", "open source", "API security"],
+  "languages": ["fr", "en", "de", "es", "ja", "zh"],
+  "priceMonthly": 0,
+  "priceCurrency": "EUR",
+  "price": "Gratuit open source",
+  "trial": false,
+  "status": "published",
+  "source": "éditeur",
+  "rating": { "value": 4.6, "count": 134 },
+  "selection": false,
+  "featured": false,
+  "verified": true,
+  "isAffiliate": false,
+  "hasReview": true,
+  "short": "Outil DAST open source de l'OWASP pour tester la sécurité des applications web et APIs en détectant automatiquement les vulnérabilités.",
+  "highlight": "Le scanner de sécurité web open source de référence maintenu par l'OWASP Foundation.",
+  "description": "OWASP ZAP (Zed Attack Proxy) est l'outil de __test de sécurité web__ open source le plus utilisé, maintenu par la fondation __OWASP__. Il combine un proxy d'interception, un scanner actif et passif, et des outils de fuzzing pour détecter automatiquement les __vulnérabilités web__ (XSS, SQLi, CSRF…) et sécuriser les applications et APIs.",
+  "strengths": [
+    "Totalement gratuit et open source",
+    "Scanner DAST actif et passif",
+    "Proxy d'interception pour tests manuels",
+    "Intégration CI/CD via API et Docker",
+    "Support des tests d'API REST et GraphQL",
+    "Communauté OWASP active et add-ons nombreux"
+  ],
+  "strengthShort": ["Gratuit", "DAST actif+passif", "Proxy HTTP", "CI/CD intégration", "API testing"],
+  "limitations": [
+    "Moins puissant que Burp Suite Pro sur tests manuels",
+    "Interface graphique vieillissante",
+    "Scanner peut générer du bruit sur les applications",
+    "Configuration avancée parfois complexe"
+  ],
+  "limitationsShort": ["Moins que Burp Pro", "Interface vieillissante", "Bruit possible", "Config complexe"],
+  "idealFor": ["Développeurs testant leurs apps", "Étudiants en sécurité web", "Équipes DevSecOps", "Bug bounty débutants", "PME sans budget sécurité"],
+  "notFor": ["Tests manuels avancés (Burp Pro préférable)", "Utilisateurs non techniques", "Tests réseau ou endpoint"],
+  "verdict": "OWASP ZAP est l'alternative open source idéale à Burp Suite pour les équipes DevSecOps et les développeurs souhaitant intégrer la sécurité web dans leur pipeline CI/CD gratuitement. Sa combinaison de scan automatisé et de proxy manuel en fait un outil complet pour l'essentiel des tests de sécurité applicative.",
+  "faq": [
+    { "q": "OWASP ZAP est-il gratuit ?", "a": "Oui, c'est un projet open source totalement gratuit." },
+    { "q": "ZAP peut-il s'intégrer dans un pipeline CI/CD ?", "a": "Oui, via son API REST et ses images Docker officielles." },
+    { "q": "ZAP est-il aussi bon que Burp Suite ?", "a": "ZAP est excellent pour l'automatisation ; Burp Suite Pro surpasse en tests manuels avancés." }
+  ],
+  "article": {
+    "intro": "OWASP ZAP démocratise les tests de sécurité web en offrant gratuitement des capacités proches des outils commerciaux.",
+    "whatIs": "ZAP est un proxy de sécurité web open source permettant d'intercepter, analyser et attaquer les applications web pour y trouver des vulnérabilités.",
+    "features": "Scan actif et passif, proxy d'interception, fuzzer, spider, support API et intégration CI/CD.",
+    "useCases": "Tests de sécurité applicative, intégration DevSecOps, formation en sécurité web et bug bounty.",
+    "benefits": "ZAP offre des capacités DAST professionnelles gratuitement avec une intégration pipeline très accessible.",
+    "pricing": "100% gratuit et open source.",
+    "conclusion": "OWASP ZAP est incontournable pour toute équipe cherchant à automatiser les tests de sécurité web sans budget."
+  },
+  "en.categories": ["Cybersecurity", "Web Security"],
+  "en.tags": ["DAST", "web security", "OWASP", "web scanner", "proxy", "web pentesting", "open source", "API security"],
+  "en.short": "OWASP's open-source DAST tool for testing web application and API security by automatically detecting vulnerabilities.",
+  "en.highlight": "The reference open-source web security scanner maintained by the OWASP Foundation.",
+  "en.verdict": "OWASP ZAP is the ideal open-source alternative to Burp Suite for DevSecOps teams wanting to integrate web security testing into CI/CD pipelines for free.",
+  "createdAt": "2026-04-26",
+  "updatedAt": "2026-04-26"
+},
+{
+  "id": "keepass",
+  "slug": "keepass",
+  "name": "KeePass",
+  "partner": "KeePass",
+  "website": "https://keepass.info",
+  "affiliateUrl": "https://keepass.info",
+  "logo": "/logos/keepass.png",
+  "categories": ["Cybersécurité"],
+  "tags": ["gestionnaire de mots de passe", "open source", "local", "chiffrement", "hors ligne"],
+  "languages": ["fr", "en", "de", "es", "it", "nl", "pl"],
+  "priceMonthly": 0,
+  "priceCurrency": "EUR",
+  "price": "Gratuit open source",
+  "trial": false,
+  "status": "published",
+  "source": "éditeur",
+  "rating": { "value": 4.5, "count": 112 },
+  "selection": false,
+  "featured": false,
+  "verified": true,
+  "isAffiliate": false,
+  "hasReview": true,
+  "short": "Gestionnaire de mots de passe open source local fonctionnant hors ligne, stockant les identifiants dans une base chiffrée sous votre contrôle total.",
+  "highlight": "Le gestionnaire de mots de passe open source hors ligne, gratuit et sous votre contrôle total.",
+  "description": "KeePass est un __gestionnaire de mots de passe__ open source qui stocke les identifiants dans un __fichier chiffré local__ (AES-256). Contrairement aux solutions cloud, toutes les données restent sur votre machine. Sa légèreté, sa portabilité et son chiffrement robuste en font le choix des utilisateurs exigeant un __contrôle total sur leurs données__.",
+  "strengths": [
+    "100% gratuit et open source",
+    "Données stockées localement, jamais dans le cloud",
+    "Chiffrement AES-256 et ChaCha20",
+    "Portable, fonctionne sans installation",
+    "Écosystème de plugins très riche",
+    "Compatible Windows, Linux, macOS via KeePassXC"
+  ],
+  "strengthShort": ["Gratuit", "Local uniquement", "AES-256", "Portable", "Plugins riches"],
+  "limitations": [
+    "Pas de synchronisation cloud native",
+    "Interface graphique datée",
+    "Synchronisation multi-appareils manuelle",
+    "Courbe d'apprentissage pour les débutants"
+  ],
+  "limitationsShort": ["Pas de cloud natif", "Interface datée", "Sync manuelle", "Moins accessible"],
+  "idealFor": ["Utilisateurs refusant le cloud", "Profils techniques soucieux de confidentialité", "Organisations sensibles aux données", "Utilisateurs avancés"],
+  "notFor": ["Utilisateurs cherchant une sync automatique multi-appareils", "Débutants non techniques", "Équipes avec partage fréquent"],
+  "verdict": "KeePass est le choix idéal pour les utilisateurs qui veulent un contrôle absolu sur leurs mots de passe sans dépendre d'un service cloud. Gratuit, open source et ultra-portable, il est la référence pour les profils techniques et les organisations sensibles aux données.",
+  "faq": [
+    { "q": "KeePass stocke-t-il les données dans le cloud ?", "a": "Non, les données restent uniquement sur votre machine ou support local." },
+    { "q": "KeePass fonctionne-t-il sur Mac ?", "a": "Oui, via KeePassXC qui est le fork multiplateforme recommandé." },
+    { "q": "Comment synchroniser KeePass sur plusieurs appareils ?", "a": "En plaçant la base sur un stockage partagé (NAS, Dropbox, etc.) manuellement." }
+  ],
+  "article": {
+    "intro": "À l'heure où les services cloud sont omniprésents, KeePass propose une alternative locale et souveraine pour la gestion des mots de passe.",
+    "whatIs": "KeePass est un gestionnaire de mots de passe open source qui stocke les identifiants dans une base de données chiffrée sur votre machine.",
+    "features": "Chiffrement AES-256, générateur de mots de passe, plugins, import/export et interface portable.",
+    "useCases": "Idéal pour les utilisateurs techniques, organisations sans cloud et profils exigeant une confidentialité maximale.",
+    "benefits": "KeePass offre une sécurité maximale sur les données sensibles avec zéro dépendance externe.",
+    "pricing": "Entièrement gratuit et open source.",
+    "conclusion": "KeePass est la référence pour ceux qui refusent de confier leurs mots de passe à des tiers."
+  },
+  "en.categories": ["Cybersecurity"],
+  "en.tags": ["password manager", "open source", "local", "encryption", "offline"],
+  "en.short": "Open-source local password manager working offline, storing credentials in an encrypted database under your full control.",
+  "en.highlight": "The offline open-source password manager, free and fully under your control.",
+  "en.verdict": "KeePass is the ideal choice for users wanting absolute control over their passwords without relying on a cloud service. Free, open source and highly portable, it is the reference for technical users and data-sensitive organizations.",
+  "createdAt": "2026-04-26",
+  "updatedAt": "2026-04-26"
+}
 ]
