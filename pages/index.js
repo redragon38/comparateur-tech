@@ -131,7 +131,6 @@ export default function Home({ tools, stats, spotlightTools }) {
         title="Comparateur-Tech — Outils IA, API IA et assistants de code comparés"
         description="Comparez des API IA, assistants génératifs, IDE IA et outils pour développeurs avec une méthode éditoriale claire : usages, limites, alternatives et verdict par profil."
         canonical="https://comparateur-tech.com/"
-        keywords="comparateur outils IA, API IA SaaS, assistant code IA, openai api avis, anthropic api avis, cursor avis"
         structuredData={STRUCTURED_DATA}
       />
       <Header />

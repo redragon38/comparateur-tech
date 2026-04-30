@@ -86,7 +86,6 @@ export default function OpenAIVsAnthropicPage() {
         description={description}
         canonical="https://comparateur-tech.com/blog/openai-api-vs-anthropic-api"
         ogType="article"
-        keywords="openai api vs anthropic api, api ia saas, quelle api ia choisir, openai api avis, anthropic api avis"
         datePublished="2026-04-19"
         dateModified="2026-04-19"
         articleSection="Intelligence artificielle"

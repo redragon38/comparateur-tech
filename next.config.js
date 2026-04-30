@@ -37,8 +37,9 @@ const nextConfig = {
         ],
       },
       {
-        // Regex corrigée : alternance (png|jpg|...) au lieu de {png,jpg,...}
-        source: '/(.*)\\.{0,1}(png|jpg|jpeg|gif|webp|avif|ico|svg|woff2|woff|ttf)',
+        // Cache long pour les assets statiques : le `.` est obligatoire,
+        // sinon des URLs sans extension matchaient (ex: /page) et héritaient d'un cache immutable.
+        source: '/:path*.(png|jpg|jpeg|gif|webp|avif|ico|svg|woff2|woff|ttf)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
@@ -60,8 +61,8 @@ const nextConfig = {
 
   async redirects() {
     return [
-      { source: '/en',        destination: '/',          permanent: false },
-      { source: '/en/:path*', destination: '/:path*',    permanent: false },
+      { source: '/en',        destination: '/',          permanent: true  },
+      { source: '/en/:path*', destination: '/:path*',    permanent: true  },
       { source: '/fr',        destination: '/',          permanent: true  },
       { source: '/fr/:path*', destination: '/:path*',    permanent: true  },
       { source: '/outils/',   destination: '/outils',    permanent: true  },

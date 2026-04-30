@@ -78,7 +78,6 @@ export default function NewsletterPage() {
         title="Newsletter — Outils IA, VPN & Hébergement chaque semaine | Comparateur-Tech"
         description="Rejoignez 2 800+ créateurs et entrepreneurs. Recevez chaque semaine la sélection des meilleurs outils, offres exclusives et tendances du digital."
         canonical="https://comparateur-tech.com/newsletter"
-        keywords="newsletter outils IA, newsletter VPN, newsletter hébergement web, digital, créateurs"
       />
       <Header />
       <main>

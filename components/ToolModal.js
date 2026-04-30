@@ -46,7 +46,7 @@ export default function ToolModal({ tool, onClose }) {
             {/* Logo */}
             <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center p-2 flex-shrink-0 overflow-hidden">
               {tool.logo ? (
-                <img src={tool.logo} alt={tool.name} className="max-w-full max-h-full object-contain" loading="lazy" />
+                <img src={tool.logo} alt={tool.name} width={96} height={96} className="max-w-full max-h-full object-contain" loading="lazy" decoding="async" />
               ) : (
                 <span className="text-3xl sm:text-4xl">🛠️</span>
               )}
@@ -173,7 +173,7 @@ export default function ToolModal({ tool, onClose }) {
             <a
               href={tool.website || tool.affiliateUrl || '#'}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="sponsored nofollow noopener noreferrer"
               className="gradient-purple text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-purple-500/50 transition-all min-h-[52px]"
               data-testid="visit-website-btn"
             >

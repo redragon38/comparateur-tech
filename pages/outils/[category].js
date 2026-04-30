@@ -226,7 +226,6 @@ export default function CategoryPage({ tools, meta, slug, allCategories }) {
       <SEO
         title={`${meta.label} – Comparatif & Avis ${new Date().getFullYear()} | Comparateur-Tech`}
         description={`Comparez les meilleurs ${meta.label.toLowerCase()} : avis experts, prix, essais gratuits et classement ${new Date().getFullYear()}. ${tools.length} outils sélectionnés et vérifiés.`}
-        keywords={`meilleur ${meta.label.toLowerCase()}, comparateur ${meta.label.toLowerCase()}, ${meta.label.toLowerCase()} avis, ${meta.label.toLowerCase()} prix`}
         structuredData={buildBreadcrumbSchema([
           { name: 'Accueil', url: '/' },
           { name: 'Outils', url: '/outils' },

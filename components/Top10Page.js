@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
-import SEO from './SEO';
+import SEO, { buildItemListSchema, buildBreadcrumbSchema } from './SEO';
 import { Star, ExternalLink, ArrowRight, Trophy, ChevronRight } from 'lucide-react';
 
 function Stars({ val }) {
@@ -22,9 +22,21 @@ function getRankBadge(rank) {
 }
 
 export default function Top10Page({ tools, meta, others, seo }) {
+  const structuredData = [
+    buildItemListSchema({
+      name: `Top 10 ${meta.label}`,
+      description: meta.desc,
+      items: tools,
+    }),
+    buildBreadcrumbSchema([
+      { name: 'Accueil', url: '/' },
+      { name: `Top 10 ${meta.label}` },
+    ]),
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <SEO {...seo} />
+      <SEO {...seo} structuredData={structuredData} />
       <Header />
       <main>
 
@@ -72,7 +84,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
                       {/* Logo */}
                       <div className="w-11 h-11 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0">
                         {tool.logo ? (
-                          <img src={tool.logo} alt={tool.name} className="w-full h-full object-contain p-1.5" loading="lazy"
+                          <img src={tool.logo} alt={tool.name} width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain p-1.5"
                             onError={e => { e.target.style.display='none'; e.target.parentElement.innerHTML=`<span class="text-xl">${meta.icon}</span>`; }} />
                         ) : <span className="text-xl">{meta.icon}</span>}
                       </div>
@@ -108,7 +120,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
                         className="flex-1 border border-gray-200 text-gray-700 py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 hover:bg-purple-50 hover:border-purple-300 transition-all min-h-[44px]">
                         Voir la fiche <ArrowRight className="w-3 h-3" />
                       </Link>
-                      <a href={url} target="_blank" rel="noopener noreferrer"
+                      <a href={url} target="_blank" rel="sponsored nofollow noopener noreferrer"
                         className="flex-1 gradient-purple text-white py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 hover:shadow-md transition-all min-h-[44px]">
                         Site officiel <ExternalLink className="w-3 h-3" />
                       </a>
@@ -127,7 +139,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
                       {/* Logo */}
                       <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0">
                         {tool.logo ? (
-                          <img src={tool.logo} alt={tool.name} className="w-full h-full object-contain p-2" loading="lazy"
+                          <img src={tool.logo} alt={tool.name} width={56} height={56} loading="lazy" decoding="async" className="w-full h-full object-contain p-2"
                             onError={e => { e.target.style.display='none'; e.target.parentElement.innerHTML=`<span class="text-2xl">${meta.icon}</span>`; }} />
                         ) : <span className="text-2xl">{meta.icon}</span>}
                       </div>
@@ -156,7 +168,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
                             className="border border-purple-200 text-gray-600 px-3 py-2 rounded-xl font-semibold text-xs flex items-center gap-1 hover:bg-purple-50 transition-all min-h-[44px]">
                             Fiche <ArrowRight className="w-3 h-3" />
                           </Link>
-                          <a href={url} target="_blank" rel="noopener noreferrer"
+                          <a href={url} target="_blank" rel="sponsored nofollow noopener noreferrer"
                             className="gradient-purple text-white px-3 py-2 rounded-xl font-semibold text-xs flex items-center gap-1 hover:shadow-md transition-all min-h-[44px]">
                             Site <ExternalLink className="w-3 h-3" />
                           </a>

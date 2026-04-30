@@ -42,7 +42,6 @@ export default function IASubcategoryPage({ sub, tools, otherSubs }) {
         title={`${sub.label} – Comparatif & Avis 2025 | Comparateur-Tech`}
         description={`Comparez les meilleurs outils de ${sub.label.toLowerCase()} : ${sub.desc} ${tools.length} outil${tools.length > 1 ? 's' : ''} sélectionné${tools.length > 1 ? 's' : ''} par nos experts.`}
         canonical={`https://comparateur-tech.com/outils/intelligence-artificielle/${sub.slug}`}
-        keywords={`${sub.label}, meilleur ${sub.label.toLowerCase()}, comparateur ${sub.label.toLowerCase()}, outil IA`}
         structuredData={buildBreadcrumbSchema([
           { name: 'Accueil', url: '/' },
           { name: 'Outils', url: '/outils' },

@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-3">
               <div className="w-9 h-9 flex items-center justify-center">
-                <img src="/logo.png" alt="Comparateur-Tech" className="w-9 h-9 object-contain" />
+                <img src="/logo.png" alt="Comparateur-Tech" width={36} height={36} loading="lazy" decoding="async" className="w-9 h-9 object-contain" />
               </div>
               <span className="text-xl font-extrabold text-gray-900">Comparateur-Tech</span>
             </Link>

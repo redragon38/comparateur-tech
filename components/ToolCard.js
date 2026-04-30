@@ -121,8 +121,11 @@ export default function ToolCard({ tool }) {
                 <img
                   src={tool.logo}
                   alt={`Logo ${tool.name}`}
+                  width={64}
+                  height={64}
                   className="w-full h-full object-contain p-1.5"
                   loading="lazy"
+                  decoding="async"
                   onError={e => {
                     e.target.style.display = 'none';
                     e.target.parentElement.innerHTML = `<span style="font-size:22px">${m.icon}</span>`;
@@ -275,7 +278,7 @@ export default function ToolCard({ tool }) {
           <a
             href={url}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="sponsored nofollow noopener noreferrer"
             onClick={e => e.stopPropagation()}
             className="flex-1 h-10 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 text-white transition-all duration-200"
             style={{

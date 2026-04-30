@@ -263,7 +263,6 @@ export default function ArticlePage({ article, slug }) {
         description={article.intro.slice(0, 155).trim() + (article.intro.length > 155 ? '…' : '')}
         canonical={`https://comparateur-tech.com/blog/${slug}`}
         ogType="article"
-        keywords={`${article.category}, ${article.title.split(':')[0].trim()}, comparateur, guide`}
         datePublished={ARTICLE_DATES[slug]?.published || '2025-01-01'}
         dateModified={ARTICLE_DATES[slug]?.modified || '2025-01-01'}
         articleSection={ARTICLE_DATES[slug]?.section || article.category}
@@ -311,7 +310,7 @@ export default function ArticlePage({ article, slug }) {
                   <a
                     href={section.url}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="sponsored nofollow noopener noreferrer"
                     className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-all hover:-translate-y-0.5 shadow-lg shadow-purple-900/30"
                   >
                     Visiter le site →

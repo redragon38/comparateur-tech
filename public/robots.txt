@@ -5,10 +5,6 @@ Allow: /
 Disallow: /_next/
 Disallow: /api/
 
-# Exclure les pages de redirection (contenu dupliqué)
-Disallow: /en/
-Disallow: /fr/
-
 # Google
 User-agent: Googlebot
 Allow: /

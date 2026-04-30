@@ -138,9 +138,6 @@ export default function ToolPage({ tool, relatedTools }) {
 
   const metaTitle = tool.seoTitle || `${tool.name} – Avis, Prix & Alternatives | Comparateur-Tech`;
   const metaDescription = tool.metaDescription || (tool.short ? `${tool.short.slice(0, 140)} Avis expert, prix, alternatives.` : `Découvrez notre avis sur ${tool.name} : fonctionnalités, prix, points forts et alternatives.`);
-  const metaKeywords = tool.seoKeywords?.length
-    ? tool.seoKeywords.join(', ')
-    : `${tool.name}, avis ${tool.name}, ${tool.name} prix, alternative ${tool.name}, ${(tool.categories || []).join(', ')}`;
   const heroTitle = tool.heroTitle || tool.name;
   const heroIntro = tool.heroIntro || tool.short || tool.highlight;
   const contentSections = Array.isArray(tool.contentSections) ? tool.contentSections : [];
@@ -159,7 +156,6 @@ export default function ToolPage({ tool, relatedTools }) {
         description={metaDescription}
         canonical={`https://comparateur-tech.com/tool/${tool.id}`}
         ogType="article"
-        keywords={metaKeywords}
         datePublished={tool.createdAt || '2025-01-01'}
         dateModified={tool.updatedAt || tool.createdAt || '2025-01-01'}
         articleSection={(tool.categories||[])[0] || 'Outils'}
@@ -197,7 +193,7 @@ export default function ToolPage({ tool, relatedTools }) {
                     }}
                   >
                     {tool.logo ? (
-                      <img src={tool.logo} alt={`Logo ${tool.name}`} className="w-full h-full object-contain p-2.5"
+                      <img src={tool.logo} alt={`Logo ${tool.name}`} width={96} height={96} decoding="async" className="w-full h-full object-contain p-2.5"
                         onError={e => { e.target.style.display='none'; e.target.parentElement.innerHTML=`<span style="font-size:36px">${m.icon}</span>`; }} />
                     ) : <span style={{ fontSize: '36px' }}>{m.icon}</span>}
                   </div>
@@ -245,7 +241,7 @@ export default function ToolPage({ tool, relatedTools }) {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <a href={url} target="_blank" rel="noopener noreferrer"
+                  <a href={url} target="_blank" rel="sponsored nofollow noopener noreferrer"
                     className="inline-flex items-center gap-2.5 text-white font-bold px-7 py-3.5 rounded-xl text-sm transition-all duration-200"
                     style={{
                       background: `linear-gradient(135deg, ${m.accent}ee, ${m.accent})`,
@@ -293,7 +289,7 @@ export default function ToolPage({ tool, relatedTools }) {
                     </div>
                   )}
                 </div>
-                <a href={url} target="_blank" rel="noopener noreferrer"
+                <a href={url} target="_blank" rel="sponsored nofollow noopener noreferrer"
                   className="block w-full text-center text-white text-xs font-bold py-3 rounded-xl transition-all duration-200"
                   style={{ background: `linear-gradient(135deg, ${m.accent}dd, ${m.accent})`, boxShadow: `0 4px 12px rgba(${m.border},0.28)` }}>
                   Accéder au site officiel ↗
@@ -535,7 +531,7 @@ export default function ToolPage({ tool, relatedTools }) {
                 style={{ background: 'white', border: `1px solid rgba(${m.border},0.15)`, boxShadow: `0 4px 20px rgba(${m.border},0.08)` }}
               >
                 <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Accès direct</h3>
-                <a href={url} target="_blank" rel="noopener noreferrer"
+                <a href={url} target="_blank" rel="sponsored nofollow noopener noreferrer"
                   className="block w-full text-center text-white text-sm font-bold py-3.5 rounded-xl mb-3 transition-all duration-200"
                   style={{ background: `linear-gradient(135deg, ${m.accent}dd, ${m.accent})`, boxShadow: `0 4px 14px rgba(${m.border},0.3)` }}>
                   Visiter {tool.name} ↗

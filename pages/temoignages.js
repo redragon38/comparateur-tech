@@ -29,7 +29,6 @@ export default function TemoignagesPage() {
         title="Témoignages — Ce qu'en disent nos lecteurs | Comparateur-Tech"
         description="Découvrez les avis et témoignages de nos lecteurs sur Comparateur-Tech. Des entrepreneurs et créateurs qui ont trouvé les bons outils grâce à nos comparatifs."
         canonical="https://comparateur-tech.com/temoignages"
-        keywords="avis Comparateur-Tech, témoignages, retours utilisateurs, comparatif outils"
       />
       <Header />
       <main>

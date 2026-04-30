@@ -61,7 +61,6 @@ export default function ToolsPage({ tools, categoryMap }) {
         title="Tous les outils tech — IA, VPN, Hébergement, Antivirus, Cybersécurité | Comparateur-Tech"
         description={`Explorez ${tools.length}+ outils sélectionnés et vérifiés par nos experts : intelligence artificielle, VPN, hébergement web, antivirus et cybersécurité. Comparez et choisissez le meilleur outil pour vos besoins.`}
         canonical="https://comparateur-tech.com/outils"
-        keywords="outils IA, meilleur VPN, hébergement web, antivirus, cybersécurité, comparateur outils tech"
         structuredData={buildBreadcrumbSchema([
           { name: 'Accueil', url: '/' },
           { name: 'Tous les outils' },

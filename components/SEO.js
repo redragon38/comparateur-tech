@@ -7,12 +7,11 @@ export default function SEO({
   title = `${SITE_NAME} — Les Meilleurs Outils IA, VPN, Cybersécurité & Hébergement Web`,
   description = "Découvrez et comparez les meilleurs outils IA, VPN, cybersécurité, hébergements web et antivirus. Sélection vérifiée et mise à jour par nos experts.",
   canonical = `${BASE_URL}/`,
-  ogImage = `${BASE_URL}/og-image.svg`,
+  ogImage = `${BASE_URL}/og-image.png`,
   ogType = 'website',
   twitterCard = 'summary_large_image',
   noindex = false,
   nofollow = false,
-  keywords = 'comparateur IA, meilleur VPN, hébergement web, antivirus, cybersécurité, outils intelligence artificielle',
   author = SITE_NAME,
   structuredData = null,
   datePublished = null,
@@ -28,7 +27,6 @@ export default function SEO({
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       {datePublished && <meta name="article:published_time" content={datePublished} />}
       {dateModified  && <meta name="article:modified_time"  content={dateModified}  />}
@@ -64,7 +62,6 @@ export default function SEO({
 
       <meta name="theme-color"             content="#7c3aed" />
       <meta name="msapplication-TileColor" content="#7c3aed" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -118,7 +115,7 @@ export function buildArticleSchema({ title, description, url, datePublished, dat
     url: `${BASE_URL}${url}`,
     datePublished,
     dateModified: dateModified || datePublished,
-    image: image || `${BASE_URL}/og-image.svg`,
+    image: image || `${BASE_URL}/og-image.png`,
     articleSection: section || 'Guides',
     author: {
       '@type': 'Organization',
@@ -139,8 +136,34 @@ export function buildArticleSchema({ title, description, url, datePublished, dat
   };
 }
 
+export function buildItemListSchema({ name, description, items }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    ...(description ? { description } : {}),
+    numberOfItems: items.length,
+    itemListElement: items.map((tool, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${BASE_URL}/tool/${tool.id}`,
+      name: tool.name,
+    })),
+  };
+}
+
+function stripMarkdown(text) {
+  return String(text || '')
+    .replace(/__([^_]+)__/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export function buildSoftwareSchema(tool) {
   const cat = tool.categories?.[0];
+  const verdictClean = stripMarkdown(tool.verdict);
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -158,6 +181,30 @@ export function buildSoftwareSchema(tool) {
         reviewCount: tool.rating.count,
         bestRating: 5,
         worstRating: 1,
+      },
+    }),
+    ...(verdictClean && tool.rating && {
+      review: {
+        '@type': 'Review',
+        name: `Avis ${tool.name} par Comparateur-Tech`,
+        reviewBody: verdictClean,
+        datePublished: tool.updatedAt || tool.createdAt || '2025-01-01',
+        author: {
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: BASE_URL,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: BASE_URL,
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: tool.rating.value,
+          bestRating: 5,
+          worstRating: 1,
+        },
       },
     }),
     ...(typeof tool.priceMonthly === 'number' && tool.priceMonthly > 0 && {

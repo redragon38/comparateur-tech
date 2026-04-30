@@ -31,7 +31,6 @@ export default function PourquoiNousPage() {
         title="Pourquoi nous choisir — Notre méthode & nos valeurs | Comparateur-Tech"
         description="Découvrez comment Comparateur-Tech sélectionne et évalue les meilleurs outils du web. Notre processus de test rigoureux, nos valeurs et notre engagement envers vous."
         canonical="https://comparateur-tech.com/pourquoi-nous"
-        keywords="à propos Comparateur-Tech, méthode sélection outils, critères notation, équipe"
       />
       <Header />
       <main>

@@ -27,7 +27,6 @@ export default function BlogPage() {
         title="Blog — Guides, Comparatifs & Avis Outils 2025 | Comparateur-Tech"
         description={`${ARTICLES.length} guides et comparatifs experts sur les meilleurs outils IA, VPN, hébergement web et antivirus. Conseils vérifiés et mis à jour régulièrement.`}
         canonical="https://comparateur-tech.com/blog"
-        keywords="guide VPN 2025, comparatif hébergement web, meilleur antivirus, outils IA productivité, blog tech"
         structuredData={buildBreadcrumbSchema([
           { name: 'Accueil', url: '/' },
           { name: 'Blog' },

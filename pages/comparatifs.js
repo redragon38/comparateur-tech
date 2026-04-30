@@ -58,7 +58,7 @@ function ToolCard({ tool, rank }) {
         <Link href={`/tool/${tool.id}`} className="flex justify-center mb-4">
           <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden shadow-sm">
             {tool.logo ? (
-              <img src={tool.logo} alt={tool.name} className="w-full h-full object-contain p-2"
+              <img src={tool.logo} alt={tool.name} width={64} height={64} loading="lazy" decoding="async" className="w-full h-full object-contain p-2"
                 onError={e => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = `<span class="text-3xl">${meta.icon}</span>`; }} />
             ) : (
               <span className="text-3xl">{meta.icon}</span>
@@ -101,7 +101,7 @@ function ToolCard({ tool, rank }) {
             className="flex-1 border border-gray-200 text-gray-700 py-2 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 hover:border-purple-300 hover:text-purple-700 hover:bg-purple-50 transition-all">
             Voir la fiche <ArrowRight className="w-3 h-3" />
           </Link>
-          <a href={affUrl} target="_blank" rel="noopener noreferrer"
+          <a href={affUrl} target="_blank" rel="sponsored nofollow noopener noreferrer"
             className="flex-1 gradient-purple text-white py-2 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 hover:shadow-lg hover:shadow-purple-300/40 transition-all">
             Site officiel <ExternalLink className="w-3 h-3" />
           </a>
@@ -130,7 +130,6 @@ export default function ComparatifsPage({ tools }) {
         title={`Comparatifs outils ${new Date().getFullYear()} — VPN, Hébergement, Antivirus, IA | Comparateur-Tech`}
         description={`Comparez les ${tools.length} meilleurs outils VPN, hébergement web, antivirus et IA. Avis experts vérifiés, notes, prix et essais gratuits. Mis à jour ${new Date().getFullYear()}.`}
         canonical="https://comparateur-tech.com/comparatifs"
-        keywords="comparatif VPN 2026, comparatif hébergement web, meilleur antivirus comparatif, comparateur IA"
         structuredData={buildBreadcrumbSchema([
           { name: 'Accueil', url: '/' },
           { name: 'Comparatifs' },
