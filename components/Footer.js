@@ -1,28 +1,7 @@
 import Link from 'next/link';
-import { useState } from 'react';
-import { Mail, CheckCircle, AlertCircle, Twitter, Linkedin, Youtube } from 'lucide-react';
-
-const FORMSPREE_URL = 'https://formspree.io/f/xvzwyejw';
+import { Mail } from 'lucide-react';
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!email) return;
-    setStatus('loading');
-    try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email, _subject: '[Comparateur-Tech] Inscription newsletter (footer)' }),
-      });
-      setStatus(res.ok ? 'success' : 'error');
-      if (res.ok) setEmail('');
-    } catch { setStatus('error'); }
-  };
-
   return (
     <footer className="border-t border-purple-100 py-10 sm:py-14 mt-8 sm:mt-10 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
@@ -38,15 +17,9 @@ export default function Footer() {
             <p className="text-gray-600 text-sm leading-relaxed">
               La plateforme de référence pour découvrir et comparer les meilleurs outils du web.
             </p>
-            <div className="flex gap-3">
-              <a href="#" aria-label="Twitter" className="w-9 h-9 rounded-xl bg-gray-100 hover:bg-purple-100 hover:text-purple-700 flex items-center justify-center text-gray-500 transition-all">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="w-9 h-9 rounded-xl bg-gray-100 hover:bg-purple-100 hover:text-purple-700 flex items-center justify-center text-gray-500 transition-all">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href="#" aria-label="YouTube" className="w-9 h-9 rounded-xl bg-gray-100 hover:bg-purple-100 hover:text-purple-700 flex items-center justify-center text-gray-500 transition-all">
-                <Youtube className="w-4 h-4" />
+            <div className="flex gap-3 mt-4">
+              <a href="mailto:comparateur.tech@gmail.com" aria-label="Contacter Comparateur-Tech" className="w-9 h-9 rounded-xl bg-gray-100 hover:bg-purple-100 hover:text-purple-700 flex items-center justify-center text-gray-500 transition-all">
+                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -72,6 +45,7 @@ export default function Footer() {
               <li><Link href="/top-10-vpn" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">🏆 Top 10 VPN</Link></li>
               <li><Link href="/top-10-hebergement-web" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">🏆 Top 10 Hébergement</Link></li>
               <li><Link href="/top-10-antivirus" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">🏆 Top 10 Antivirus</Link></li>
+              <li><Link href="/top-10-cybersecurite" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">🏆 Top 10 Cybersécurité</Link></li>
             </ul>
           </div>
 

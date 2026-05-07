@@ -5,8 +5,8 @@ import { useMemo, useState } from 'react';
 import { ExternalLink, Star, Check, X, ChevronDown, ChevronRight, Zap, Shield, Globe, Award, Scale, Plus } from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import ToolCard from '../../components/ToolCard';
 import SEO, { buildBreadcrumbSchema, buildFAQSchema, buildSoftwareSchema } from '../../components/SEO';
+import { normalizeInternalHref } from '../../lib/internal-links';
 
 // ─── AJOUT SSG : getStaticPaths + getStaticProps ──────────────────────────────
 // AVANT : page 100% client-side (useEffect + fetch) → Google voyait une page vide
@@ -28,7 +28,8 @@ export async function getStaticProps({ params }) {
   if (!tool) return { notFound: true };
   const relatedTools = tools
     .filter(t => t.id !== tool.id && t.categories?.some(c => tool.categories?.includes(c)))
-    .slice(0, 12);
+    .slice(0, 6)
+    .map(pickRelatedToolFields);
   return { props: { tool, relatedTools } };
 }
 
@@ -99,6 +100,54 @@ function getCategoryUrl(category) {
   return `/outils/${slugify(category)}`;
 }
 
+function compactSerializableFields(fields) {
+  return Object.fromEntries(
+    Object.entries(fields).filter(([, value]) => value !== undefined)
+  );
+}
+
+function pickRelatedToolFields(tool) {
+  return compactSerializableFields({
+    id: tool.id,
+    slug: tool.slug,
+    name: tool.name,
+    logo: tool.logo,
+    website: tool.website,
+    affiliateUrl: tool.affiliateUrl,
+    link: tool.link,
+    categories: tool.categories || [],
+    price: tool.price,
+    trial: tool.trial,
+    featured: tool.featured,
+    verified: tool.verified,
+    rating: tool.rating,
+    short: tool.short,
+    highlight: tool.highlight,
+    strengthShort: tool.strengthShort || [],
+    strengths: tool.strengths || [],
+    languages: tool.languages || [],
+    idealFor: tool.idealFor || [],
+  });
+}
+
+function trimMetaText(text, maxLength) {
+  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  if (clean.length <= maxLength) return clean;
+  const shortened = clean.slice(0, maxLength - 1).replace(/\s+\S*$/, '').trim();
+  return `${shortened}…`;
+}
+
+function buildToolMetaTitle(tool) {
+  return trimMetaText(tool.seoTitle || `${tool.name} : avis, prix et alternatives`, 62);
+}
+
+function buildToolMetaDescription(tool) {
+  const fallback = tool.short
+    ? `${tool.short} Avis, prix, points forts et alternatives.`
+    : `Découvrez notre avis sur ${tool.name} : fonctionnalités, prix, points forts et alternatives.`;
+  return trimMetaText(tool.metaDescription || fallback, 158);
+}
+
 // ─── Props injectées par getStaticProps (plus de useEffect / fetch) ───────────
 export default function ToolPage({ tool, relatedTools }) {
   const cat = tool.categories?.[0];
@@ -134,10 +183,10 @@ export default function ToolPage({ tool, relatedTools }) {
       { name: tool.name },
     ]),
     ...(tool.faq?.length ? [buildFAQSchema(tool.faq)] : []),
-  ];
+  ].filter(Boolean);
 
-  const metaTitle = tool.seoTitle || `${tool.name} – Avis, Prix & Alternatives | Comparateur-Tech`;
-  const metaDescription = tool.metaDescription || (tool.short ? `${tool.short.slice(0, 140)} Avis expert, prix, alternatives.` : `Découvrez notre avis sur ${tool.name} : fonctionnalités, prix, points forts et alternatives.`);
+  const metaTitle = buildToolMetaTitle(tool);
+  const metaDescription = buildToolMetaDescription(tool);
   const heroTitle = tool.heroTitle || tool.name;
   const heroIntro = tool.heroIntro || tool.short || tool.highlight;
   const contentSections = Array.isArray(tool.contentSections) ? tool.contentSections : [];
@@ -462,7 +511,7 @@ export default function ToolPage({ tool, relatedTools }) {
                     {alternatives.map((item, i) => (
                       <Link
                         key={`${item.href}-${i}`}
-                        href={item.href}
+                        href={normalizeInternalHref(item.href)}
                         className="rounded-2xl border border-gray-200 bg-gray-50 p-4 hover:border-purple-300 hover:bg-purple-50 transition-colors"
                       >
                         <p className="text-sm font-semibold text-gray-900 mb-1">{item.title}</p>
@@ -501,7 +550,7 @@ export default function ToolPage({ tool, relatedTools }) {
                   <h2 className="text-lg font-bold text-gray-900 mb-4">À lire aussi</h2>
                   <div className="space-y-3">
                     {tool.readMore.map((item, i) => (
-                      <a key={i} href={item.href} className="flex items-start gap-3 p-3 rounded-xl hover:bg-purple-50 transition-colors group">
+                      <a key={i} href={normalizeInternalHref(item.href)} className="flex items-start gap-3 p-3 rounded-xl hover:bg-purple-50 transition-colors group">
                         <span className="text-purple-600 font-bold text-lg leading-none mt-0.5">→</span>
                         <div>
                           <p className="text-sm font-semibold text-gray-800 group-hover:text-purple-700 transition-colors">{item.title}</p>

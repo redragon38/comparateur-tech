@@ -10,13 +10,14 @@ const META = {
   colorLight: 'from-emerald-50 to-green-50',
   border: 'border-emerald-200',
   badge: 'bg-emerald-50 border-emerald-200 text-emerald-700',
-  desc: 'Les meilleurs hébergeurs web pour lancer et gérer vos projets en ligne en 2025.',
+  desc: 'Les meilleurs hébergeurs web pour lancer et gérer vos projets en ligne en 2026.',
 };
 
 const OTHERS = [
   { href: '/top-10-intelligence-artificielle', label: 'Top 10 IA', icon: '🤖' },
   { href: '/top-10-vpn', label: 'Top 10 VPN', icon: '🛡️' },
   { href: '/top-10-antivirus', label: 'Top 10 Antivirus', icon: '🦠' },
+  { href: '/top-10-cybersecurite', label: 'Top 10 Cybersécurité', icon: '🔐' },
 ];
 
 export async function getStaticProps() {
@@ -36,10 +37,10 @@ export default function Top10Hebergement({ tools }) {
       meta={META}
       others={OTHERS}
       seo={{
-        title: 'Top 10 Hébergement Web 2025 — Classement & Comparatif | Comparateur-Tech',
-        description: `Découvrez le Top 10 des meilleurs hébergeurs web en 2025. ${META.desc}`,
+        title: 'Top 10 hébergement web 2026 : comparatif',
+        description: `Découvrez le Top 10 des meilleurs hébergeurs web en 2026. ${META.desc}`,
         canonical: 'https://comparateur-tech.com/top-10-hebergement-web',
-        keywords: 'top 10 hebergement web, meilleur hebergeur 2025, comparatif hebergement',
+        keywords: 'top 10 hebergement web, meilleur hebergeur 2026, comparatif hebergement',
       }}
     />
   );

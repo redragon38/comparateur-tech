@@ -14,7 +14,7 @@ const slimPath = path.join(dataDir, 'tools-slim.json');
 const SLIM_FIELDS = [
   'id','slug','name','logo','website','affiliateUrl','link',
   'categories','price','trial','featured','verified','rating',
-  'short','highlight','strengthShort',
+  'short','highlight','strengthShort','createdAt','updatedAt',
 ];
 
 function rebuildSlim() {
@@ -35,6 +35,18 @@ function rebuildSlim() {
   }
 }
 
+function slimShapeChanged() {
+  try {
+    const tools = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+    const slim = JSON.parse(fs.readFileSync(slimPath, 'utf8'));
+    const fullSample = tools.find(Boolean) || {};
+    const slimSample = slim.find(Boolean) || {};
+    return SLIM_FIELDS.some(k => k in fullSample && !(k in slimSample));
+  } catch {
+    return true;
+  }
+}
+
 if (!fs.existsSync(fullPath)) {
   console.warn('⚠️  postbuild: tools.json introuvable, postbuild ignoré.');
 } else if (!fs.existsSync(slimPath)) {
@@ -44,7 +56,7 @@ if (!fs.existsSync(fullPath)) {
   try {
     const fullMtime = fs.statSync(fullPath).mtimeMs;
     const slimMtime = fs.statSync(slimPath).mtimeMs;
-    if (fullMtime > slimMtime) {
+    if (fullMtime > slimMtime || slimShapeChanged()) {
       console.log('⚡ tools.json modifié, mise à jour de tools-slim.json...');
       rebuildSlim();
     } else {

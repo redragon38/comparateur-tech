@@ -64,7 +64,7 @@ export default function Header() {
       {/* ── Topbar ── */}
       {topbarVisible && (
         <div className="bg-gradient-to-r from-violet-700 via-purple-600 to-violet-700 text-white text-center py-2.5 text-sm font-medium px-4 relative">
-          🧪 Sélection éditoriale — <strong>119 outils analysés</strong> et des fiches mises à jour régulièrement &nbsp;·&nbsp;
+          🧪 Sélection éditoriale — <strong>134 outils analysés</strong> et des fiches mises à jour régulièrement &nbsp;·&nbsp;
           <Link href="/outils" className="underline font-bold hover:text-purple-200 transition-colors">Voir la sélection →</Link>
           <button
             onClick={() => setTopbarVisible(false)}

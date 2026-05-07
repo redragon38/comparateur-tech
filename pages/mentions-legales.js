@@ -122,6 +122,7 @@ export default function MentionsLegalesPage() {
       <SEO
         title="Mentions légales – Comparateur-Tech"
         description="Mentions légales du site comparateur-tech.com : éditeur, hébergement, propriété intellectuelle, données personnelles et cookies."
+        canonical="https://comparateur-tech.com/mentions-legales"
       />
       <Header />
 
@@ -132,7 +133,7 @@ export default function MentionsLegalesPage() {
             <Shield className="w-7 h-7 text-white" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">Mentions légales</h1>
-          <p className="text-gray-500 text-sm">Dernière mise à jour : 2025</p>
+          <p className="text-gray-500 text-sm">Dernière mise à jour : 2026</p>
         </div>
 
         {/* Sections */}

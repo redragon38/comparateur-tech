@@ -44,7 +44,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
         <section className={`py-12 sm:py-20 bg-gradient-to-b ${meta.colorLight} border-b ${meta.border}`}>
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <div className="inline-flex items-center gap-2 bg-white border border-purple-200 text-gray-600 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-sm">
-              <Trophy className="w-3.5 h-3.5" /> Classement 2025
+              <Trophy className="w-3.5 h-3.5" /> Classement 2026
             </div>
             <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">{meta.icon}</div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 text-gray-900">
@@ -197,14 +197,14 @@ export default function Top10Page({ tools, meta, others, seo }) {
           {/* ── Autres Top 10 ── */}
           <div className="border-t border-gray-100 pt-10 sm:pt-12">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">Voir les autres Top 10</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {others.map(cat => (
                 <Link key={cat.href} href={cat.href}
                   className="bg-white border-2 border-purple-100 rounded-2xl p-4 sm:p-5 flex items-center gap-3 hover:border-purple-300 hover:shadow-md transition-all group shadow-sm min-h-[72px]">
                   <span className="text-2xl sm:text-3xl">{cat.icon}</span>
                   <div className="flex-1">
                     <p className="font-bold text-gray-800 text-sm">{cat.label}</p>
-                    <p className="text-xs text-gray-400">Classement 2025</p>
+                    <p className="text-xs text-gray-400">Classement 2026</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors flex-shrink-0" />
                 </Link>

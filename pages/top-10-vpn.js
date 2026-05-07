@@ -10,13 +10,14 @@ const META = {
   colorLight: 'from-blue-50 to-cyan-50',
   border: 'border-blue-200',
   badge: 'bg-blue-50 border-blue-200 text-blue-700',
-  desc: 'Les meilleurs VPN pour sécuriser vos connexions et protéger votre vie privée en 2025.',
+  desc: 'Les meilleurs VPN pour sécuriser vos connexions et protéger votre vie privée en 2026.',
 };
 
 const OTHERS = [
   { href: '/top-10-intelligence-artificielle', label: 'Top 10 IA', icon: '🤖' },
   { href: '/top-10-hebergement-web', label: 'Top 10 Hébergement', icon: '🌐' },
   { href: '/top-10-antivirus', label: 'Top 10 Antivirus', icon: '🦠' },
+  { href: '/top-10-cybersecurite', label: 'Top 10 Cybersécurité', icon: '🔐' },
 ];
 
 export async function getStaticProps() {
@@ -36,10 +37,10 @@ export default function Top10VPN({ tools }) {
       meta={META}
       others={OTHERS}
       seo={{
-        title: 'Top 10 VPN 2025 — Classement & Comparatif | Comparateur-Tech',
-        description: `Découvrez le Top 10 des meilleurs VPN en 2025. ${META.desc}`,
+        title: 'Top 10 VPN 2026 : classement comparatif',
+        description: `Découvrez le Top 10 des meilleurs VPN en 2026. ${META.desc}`,
         canonical: 'https://comparateur-tech.com/top-10-vpn',
-        keywords: 'top 10 vpn, meilleur vpn 2025, comparatif vpn',
+        keywords: 'top 10 vpn, meilleur vpn 2026, comparatif vpn',
       }}
     />
   );

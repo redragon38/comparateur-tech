@@ -30,7 +30,7 @@ const USE_CASES = [
   { icon: '✍️', label: 'Rédaction', prompt: 'Rédige un article de blog de 300 mots sur les avantages de l\'IA générative pour les créateurs de contenu.' },
   { icon: '📧', label: 'Email pro', prompt: 'Écris un email professionnel pour proposer un partenariat à une startup tech.' },
   { icon: '💡', label: 'Idées', prompt: 'Génère 10 idées de contenu créatif pour les réseaux sociaux d\'une marque lifestyle.' },
-  { icon: '🔍', label: 'Résumé', prompt: 'Résume en 5 points clés comment l\'IA générative transforme le monde du travail en 2025.' },
+  { icon: '🔍', label: 'Résumé', prompt: 'Résume en 5 points clés comment l\'IA générative transforme le monde du travail en 2026.' },
   { icon: '🛒', label: 'Copywriting', prompt: 'Crée une description produit percutante pour un outil SaaS de productivité basé sur l\'IA.' },
   { icon: '🎯', label: 'Stratégie', prompt: 'Propose une stratégie de contenu en 3 étapes pour lancer un blog sur l\'intelligence artificielle.' },
 ];

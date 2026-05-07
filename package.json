@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "dev:watch": "npm run watch-sitemap & next dev -p 3000",
+    "prebuild": "node scripts/postbuild.js",
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint",

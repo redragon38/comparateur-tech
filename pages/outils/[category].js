@@ -5,7 +5,7 @@ import { Star, ChevronRight } from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ToolCard from '../../components/ToolCard';
-import SEO, { buildBreadcrumbSchema } from '../../components/SEO';
+import SEO, { buildBreadcrumbSchema, buildItemListSchema } from '../../components/SEO';
 
 // Sous-catégories IA avec les outils assignés par nom
 const IA_SUBCATEGORIES = [
@@ -221,16 +221,25 @@ function StarRating({ value }) {
   );
 }
 export default function CategoryPage({ tools, meta, slug, allCategories }) {
+  const structuredData = [
+    buildBreadcrumbSchema([
+      { name: 'Accueil', url: '/' },
+      { name: 'Outils', url: '/outils' },
+      { name: meta.label },
+    ]),
+    buildItemListSchema({
+      name: `Comparatif ${meta.label}`,
+      description: meta.desc,
+      items: tools,
+    }),
+  ];
+
   return (
     <>
       <SEO
         title={`${meta.label} – Comparatif & Avis ${new Date().getFullYear()} | Comparateur-Tech`}
         description={`Comparez les meilleurs ${meta.label.toLowerCase()} : avis experts, prix, essais gratuits et classement ${new Date().getFullYear()}. ${tools.length} outils sélectionnés et vérifiés.`}
-        structuredData={buildBreadcrumbSchema([
-          { name: 'Accueil', url: '/' },
-          { name: 'Outils', url: '/outils' },
-          { name: meta.label },
-        ])}
+        structuredData={structuredData}
         canonical={`https://comparateur-tech.com/outils/${slug}`}
       />
       <div className="min-h-screen flex flex-col">

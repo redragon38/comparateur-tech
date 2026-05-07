@@ -28,8 +28,8 @@ export default function PourquoiNousPage() {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Pourquoi nous choisir — Notre méthode & nos valeurs | Comparateur-Tech"
-        description="Découvrez comment Comparateur-Tech sélectionne et évalue les meilleurs outils du web. Notre processus de test rigoureux, nos valeurs et notre engagement envers vous."
+        title="Pourquoi choisir Comparateur-Tech"
+        description="Découvrez comment Comparateur-Tech sélectionne les meilleurs outils du web : méthode de test, critères de notation, valeurs et indépendance éditoriale."
         canonical="https://comparateur-tech.com/pourquoi-nous"
       />
       <Header />

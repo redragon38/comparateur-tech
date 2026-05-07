@@ -21,8 +21,8 @@ export default function IAIndexPage({ subcatCounts }) {
   return (
     <>
       <SEO
-        title="Meilleurs outils IA 2025 — Comparatif Intelligence Artificielle | Comparateur-Tech"
-        description="Comparez les meilleurs outils d'intelligence artificielle : IA de rédaction, génération d'images, vidéo, agents IA et productivité. Classement expert mis à jour."
+        title="Meilleurs outils IA 2026 : comparatif par usage"
+        description="Comparez les outils IA par usage : rédaction, image, vidéo, recherche, agents, productivité, audio et code. Sélection éditoriale mise à jour."
         canonical="https://comparateur-tech.com/outils/intelligence-artificielle"
         structuredData={buildBreadcrumbSchema([
           { name: 'Accueil', url: '/' },

@@ -75,7 +75,7 @@ export default function NewsletterPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title="Newsletter — Outils IA, VPN & Hébergement chaque semaine | Comparateur-Tech"
+        title="Newsletter outils IA, VPN et hébergement"
         description="Rejoignez 2 800+ créateurs et entrepreneurs. Recevez chaque semaine la sélection des meilleurs outils, offres exclusives et tendances du digital."
         canonical="https://comparateur-tech.com/newsletter"
       />

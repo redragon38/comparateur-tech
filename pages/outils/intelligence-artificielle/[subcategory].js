@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import ToolCard from '../../../components/ToolCard';
-import SEO, { buildBreadcrumbSchema } from '../../../components/SEO';
+import SEO, { buildBreadcrumbSchema, buildItemListSchema } from '../../../components/SEO';
 import { IA_SUBCATEGORIES } from '../../../lib/ia-subcategories';
 
 export async function getStaticPaths() {
@@ -36,18 +36,27 @@ export async function getStaticProps({ params }) {
 }
 
 export default function IASubcategoryPage({ sub, tools, otherSubs }) {
+  const structuredData = [
+    buildBreadcrumbSchema([
+      { name: 'Accueil', url: '/' },
+      { name: 'Outils', url: '/outils' },
+      { name: 'Intelligence artificielle', url: '/outils/intelligence-artificielle' },
+      { name: sub.label },
+    ]),
+    buildItemListSchema({
+      name: `Comparatif ${sub.label}`,
+      description: sub.desc,
+      items: tools,
+    }),
+  ];
+
   return (
     <>
       <SEO
-        title={`${sub.label} – Comparatif & Avis 2025 | Comparateur-Tech`}
+        title={`${sub.label} – Comparatif & Avis 2026 | Comparateur-Tech`}
         description={`Comparez les meilleurs outils de ${sub.label.toLowerCase()} : ${sub.desc} ${tools.length} outil${tools.length > 1 ? 's' : ''} sélectionné${tools.length > 1 ? 's' : ''} par nos experts.`}
         canonical={`https://comparateur-tech.com/outils/intelligence-artificielle/${sub.slug}`}
-        structuredData={buildBreadcrumbSchema([
-          { name: 'Accueil', url: '/' },
-          { name: 'Outils', url: '/outils' },
-          { name: 'Intelligence artificielle', url: '/outils/intelligence-artificielle' },
-          { name: sub.label },
-        ])}
+        structuredData={structuredData}
       />
       <div className="min-h-screen flex flex-col">
         <Header />

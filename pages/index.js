@@ -128,8 +128,8 @@ export default function Home({ tools, stats, spotlightTools }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title="Comparateur-Tech — Outils IA, API IA et assistants de code comparés"
-        description="Comparez des API IA, assistants génératifs, IDE IA et outils pour développeurs avec une méthode éditoriale claire : usages, limites, alternatives et verdict par profil."
+        title="Comparateur-Tech : IA, API IA et outils dev comparés"
+        description="Comparez API IA, assistants génératifs, IDE IA et outils pour développeurs : usages, limites, alternatives et verdicts par profil."
         canonical="https://comparateur-tech.com/"
         structuredData={STRUCTURED_DATA}
       />

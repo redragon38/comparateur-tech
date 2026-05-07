@@ -1,19 +1,9 @@
+# Crawling rules for Comparateur-Tech
 User-agent: *
-Allow: /
-
-# Exclure les ressources techniques
-Disallow: /_next/
 Disallow: /api/
 
-# Google
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
+# Rendering assets used by Next.js
+Allow: /_next/static/
+Allow: /_next/image
 
-# Bing
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 2
-
-# Sitemap
 Sitemap: https://comparateur-tech.com/sitemap.xml

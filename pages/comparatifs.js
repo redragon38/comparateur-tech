@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import SEO, { buildBreadcrumbSchema } from '../components/SEO';
+import SEO, { buildBreadcrumbSchema, buildItemListSchema } from '../components/SEO';
 import { Star, ExternalLink, ArrowRight, Search, X } from 'lucide-react';
 
 export async function getStaticProps() {
@@ -124,16 +124,25 @@ export default function ComparatifsPage({ tools }) {
     return t.name?.toLowerCase().includes(q) || t.short?.toLowerCase().includes(q) || t.highlight?.toLowerCase().includes(q);
   }).sort((a, b) => (b.rating?.value || 0) - (a.rating?.value || 0));
 
+  const structuredData = [
+    buildBreadcrumbSchema([
+      { name: 'Accueil', url: '/' },
+      { name: 'Comparatifs' },
+    ]),
+    buildItemListSchema({
+      name: 'Comparatifs outils tech',
+      description: 'Comparatif des outils tech sélectionnés par Comparateur-Tech avec notes, prix, essais et avis.',
+      items: filtered,
+    }),
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title={`Comparatifs outils ${new Date().getFullYear()} — VPN, Hébergement, Antivirus, IA | Comparateur-Tech`}
-        description={`Comparez les ${tools.length} meilleurs outils VPN, hébergement web, antivirus et IA. Avis experts vérifiés, notes, prix et essais gratuits. Mis à jour ${new Date().getFullYear()}.`}
+        title={`Comparatifs outils ${new Date().getFullYear()} : IA, VPN, hébergement`}
+        description={`Comparez ${tools.length} outils IA, VPN, hébergement web et sécurité : notes, prix, essais gratuits, points forts et avis éditoriaux.`}
         canonical="https://comparateur-tech.com/comparatifs"
-        structuredData={buildBreadcrumbSchema([
-          { name: 'Accueil', url: '/' },
-          { name: 'Comparatifs' },
-        ])}
+        structuredData={structuredData}
       />
       <Header />
       <main>

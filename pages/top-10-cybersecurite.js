@@ -10,7 +10,7 @@ const META = {
   colorLight: 'from-slate-50 to-gray-100',
   border: 'border-slate-200',
   badge: 'bg-slate-50 border-slate-200 text-slate-700',
-  desc: 'Les meilleurs outils de cybersécurité pour protéger vos accès, vos comptes et vos infrastructures en 2025.',
+  desc: 'Les meilleurs outils de cybersécurité pour protéger vos accès, vos comptes et vos infrastructures en 2026.',
 };
 
 const OTHERS = [
@@ -67,10 +67,10 @@ export default function Top10Cybersecurite({ tools }) {
       meta={META}
       others={OTHERS}
       seo={{
-        title: 'Top 10 Cybersécurité 2025 — Classement & Comparatif | Comparateur-Tech',
-        description: `Découvrez le Top 10 des meilleurs outils de cybersécurité en 2025. ${META.desc}`,
+        title: 'Top 10 cybersécurité 2026 : outils à comparer',
+        description: 'Découvrez les meilleurs outils de cybersécurité en 2026 pour protéger vos accès, comptes, appareils et infrastructures.',
         canonical: 'https://comparateur-tech.com/top-10-cybersecurite',
-        keywords: 'top 10 cybersécurité, meilleur outil cybersécurité 2025, comparatif cybersécurité',
+        keywords: 'top 10 cybersécurité, meilleur outil cybersécurité 2026, comparatif cybersécurité',
       }}
     />
   );

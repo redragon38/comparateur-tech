@@ -17,6 +17,18 @@ const ARTICLES = [
   { slug: 'hebergement-petit-budget', category: 'Hébergement', catColor: 'text-gray-900 bg-emerald-900/20 border-emerald-500/20', date: '14 jan. 2025', readTime: '5 min', title: 'Héberger son site pour moins de 3€/mois : c\'est possible ?', excerpt: 'Petit budget, grandes ambitions. On a trouvé les hébergeurs les plus accessibles sans sacrifier les performances.', emoji: '💸', featured: false },
 ];
 
+const BLOG_ITEM_LIST = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Guides Comparateur-Tech',
+  itemListElement: ARTICLES.map((article, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `https://comparateur-tech.com/blog/${article.slug}`,
+    name: article.title,
+  })),
+};
+
 export default function BlogPage() {
   const featured = ARTICLES.filter(a => a.featured);
   const rest = ARTICLES.filter(a => !a.featured);
@@ -24,13 +36,16 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Blog — Guides, Comparatifs & Avis Outils 2025 | Comparateur-Tech"
+        title="Blog : guides et comparatifs outils tech"
         description={`${ARTICLES.length} guides et comparatifs experts sur les meilleurs outils IA, VPN, hébergement web et antivirus. Conseils vérifiés et mis à jour régulièrement.`}
         canonical="https://comparateur-tech.com/blog"
-        structuredData={buildBreadcrumbSchema([
-          { name: 'Accueil', url: '/' },
-          { name: 'Blog' },
-        ])}
+        structuredData={[
+          buildBreadcrumbSchema([
+            { name: 'Accueil', url: '/' },
+            { name: 'Blog' },
+          ]),
+          BLOG_ITEM_LIST,
+        ]}
       />
       <Header />
       <main>

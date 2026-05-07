@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ToolCard from '../../components/ToolCard';
-import SEO, { buildBreadcrumbSchema } from '../../components/SEO';
+import SEO, { buildBreadcrumbSchema, buildItemListSchema } from '../../components/SEO';
 import { ChevronRight, Search } from 'lucide-react';
 
 function normalizeSlug(text) {
@@ -41,8 +42,15 @@ export async function getStaticProps() {
 }
 
 export default function ToolsPage({ tools, categoryMap }) {
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    const query = Array.isArray(router.query.q) ? router.query.q[0] : router.query.q;
+    setSearchTerm(query || '');
+  }, [router.isReady, router.query.q]);
 
   const filtered = tools.filter(tool => {
     const toolCats = tool.categories || [];
@@ -55,16 +63,25 @@ export default function ToolsPage({ tools, categoryMap }) {
     return matchCat && matchSearch;
   });
 
+  const structuredData = [
+    buildBreadcrumbSchema([
+      { name: 'Accueil', url: '/' },
+      { name: 'Tous les outils' },
+    ]),
+    buildItemListSchema({
+      name: 'Catalogue Comparateur-Tech',
+      description: 'Catalogue des outils IA, VPN, hébergement web, antivirus et cybersécurité sélectionnés par Comparateur-Tech.',
+      items: tools,
+    }),
+  ];
+
   return (
     <>
       <SEO
-        title="Tous les outils tech — IA, VPN, Hébergement, Antivirus, Cybersécurité | Comparateur-Tech"
-        description={`Explorez ${tools.length}+ outils sélectionnés et vérifiés par nos experts : intelligence artificielle, VPN, hébergement web, antivirus et cybersécurité. Comparez et choisissez le meilleur outil pour vos besoins.`}
+        title="Outils tech comparés : IA, VPN, hébergement, sécurité"
+        description={`Explorez ${tools.length}+ outils IA, VPN, hébergement, antivirus et cybersécurité avec fiches, notes, prix, essais et avis éditoriaux.`}
         canonical="https://comparateur-tech.com/outils"
-        structuredData={buildBreadcrumbSchema([
-          { name: 'Accueil', url: '/' },
-          { name: 'Tous les outils' },
-        ])}
+        structuredData={structuredData}
       />
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <Header />

@@ -10,13 +10,14 @@ const META = {
   colorLight: 'from-violet-50 to-purple-50',
   border: 'border-violet-200',
   badge: 'bg-violet-50 border-violet-200 text-violet-700',
-  desc: 'Les meilleurs outils IA pour booster votre productivité et créativité en 2025.',
+  desc: 'Les meilleurs outils IA pour booster votre productivité et créativité en 2026.',
 };
 
 const OTHERS = [
   { href: '/top-10-vpn', label: 'Top 10 VPN', icon: '🛡️' },
   { href: '/top-10-hebergement-web', label: 'Top 10 Hébergement', icon: '🌐' },
   { href: '/top-10-antivirus', label: 'Top 10 Antivirus', icon: '🦠' },
+  { href: '/top-10-cybersecurite', label: 'Top 10 Cybersécurité', icon: '🔐' },
 ];
 
 export async function getStaticProps() {
@@ -36,10 +37,10 @@ export default function Top10IA({ tools }) {
       meta={META}
       others={OTHERS}
       seo={{
-        title: 'Top 10 Intelligence Artificielle 2025 — Classement & Comparatif | Comparateur-Tech',
-        description: `Découvrez le Top 10 des meilleurs outils IA en 2025. ${META.desc}`,
+        title: 'Top 10 outils IA 2026 : classement comparatif',
+        description: `Découvrez le Top 10 des meilleurs outils IA en 2026. ${META.desc}`,
         canonical: 'https://comparateur-tech.com/top-10-intelligence-artificielle',
-        keywords: 'top 10 ia, meilleur outil ia 2025, comparatif intelligence artificielle',
+        keywords: 'top 10 ia, meilleur outil ia 2026, comparatif intelligence artificielle',
       }}
     />
   );

@@ -1,108 +1,125 @@
 import fs from 'fs';
 import path from 'path';
+import { IA_SUBCATEGORIES } from '../lib/ia-subcategories';
 
-const BASE_URL = 'https://comparateur-tech.com';
+const BASE_URL = (process.env.SITE_URL || 'https://comparateur-tech.com').replace(/\/$/, '');
 
-// lastmod : vraie date de dernière modif éditoriale, pas la date du build.
-// Mettre à jour manuellement quand le contenu de la page change.
+// lastmod must reflect meaningful content changes, not the build date.
 const STATIC_PAGES = [
-  { url: '/',                                 lastmod: '2026-04-19', changefreq: 'weekly',  priority: '1.0' },
-  { url: '/outils',                           lastmod: '2026-04-19', changefreq: 'weekly',  priority: '0.9' },
-  { url: '/comparatifs',                      lastmod: '2026-04-19', changefreq: 'weekly',  priority: '0.8' },
-  { url: '/blog',                             lastmod: '2026-04-19', changefreq: 'weekly',  priority: '0.8' },
-  { url: '/outils/intelligence-artificielle', lastmod: '2026-04-19', changefreq: 'weekly',  priority: '0.8' },
-  { url: '/ia-generative',                    lastmod: '2026-04-19', changefreq: 'weekly',  priority: '0.7' },
-  { url: '/top-10-vpn',                       lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-  { url: '/top-10-antivirus',                 lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-  { url: '/top-10-hebergement-web',           lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-  { url: '/top-10-intelligence-artificielle', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-  { url: '/partenaires',                      lastmod: '2025-12-01', changefreq: 'monthly', priority: '0.5' },
-  { url: '/pourquoi-nous',                    lastmod: '2025-12-01', changefreq: 'monthly', priority: '0.5' },
-  { url: '/temoignages',                      lastmod: '2025-12-01', changefreq: 'monthly', priority: '0.5' },
-  { url: '/newsletter',                       lastmod: '2025-12-01', changefreq: 'monthly', priority: '0.4' },
-  { url: '/contact',                          lastmod: '2025-09-01', changefreq: 'yearly',  priority: '0.4' },
-  { url: '/cgu',                              lastmod: '2025-09-01', changefreq: 'yearly',  priority: '0.2' },
-  { url: '/mentions-legales',                 lastmod: '2025-09-01', changefreq: 'yearly',  priority: '0.2' },
+  { path: '/', lastmod: '2026-04-19' },
+  { path: '/outils', lastmod: '2026-04-19' },
+  { path: '/comparatifs', lastmod: '2026-04-19' },
+  { path: '/blog', lastmod: '2026-05-02' },
+  { path: '/methodologie', lastmod: '2026-05-02' },
+  { path: '/outils/intelligence-artificielle', lastmod: '2026-05-02' },
+  { path: '/ia-generative', lastmod: '2026-05-02' },
+  { path: '/top-10-vpn', lastmod: '2026-05-02' },
+  { path: '/top-10-antivirus', lastmod: '2026-05-02' },
+  { path: '/top-10-hebergement-web', lastmod: '2026-05-02' },
+  { path: '/top-10-intelligence-artificielle', lastmod: '2026-05-02' },
+  { path: '/top-10-cybersecurite', lastmod: '2026-05-02' },
+  { path: '/partenaires', lastmod: '2025-12-01' },
+  { path: '/pourquoi-nous', lastmod: '2025-12-01' },
+  { path: '/temoignages', lastmod: '2025-12-01' },
+  { path: '/newsletter', lastmod: '2025-12-01' },
+  { path: '/contact', lastmod: '2025-09-01' },
+  { path: '/cgu', lastmod: '2026-05-02' },
+  { path: '/mentions-legales', lastmod: '2026-05-02' },
 ];
 
-// Tous les articles blog (synchronisé avec pages/blog/index.js et pages/blog/[slug].js)
+// Blog articles kept in sync with pages/blog/index.js and pages/blog/[slug].js.
 const BLOG_ARTICLES = [
-  { slug: 'openai-api-vs-anthropic-api',                date: '2026-04-19' },
-  { slug: 'meilleurs-comparateurs-ia-2025',             date: '2025-03-13' },
-  { slug: 'meilleurs-comparateurs-vpn-2025',            date: '2025-03-14' },
-  { slug: 'meilleurs-comparateurs-antivirus-2025',      date: '2025-03-14' },
-  { slug: 'meilleurs-comparateurs-hebergement-web-2025',date: '2025-03-14' },
-  { slug: 'meilleur-vpn-2025',                          date: '2025-02-18' },
-  { slug: 'hebergement-wordpress-2025',                 date: '2025-02-11' },
-  { slug: 'antivirus-gratuit-vs-payant',                date: '2025-02-04' },
-  { slug: 'outils-ia-productivite',                     date: '2025-01-28' },
-  { slug: 'vpn-streaming-netflix',                      date: '2025-01-21' },
-  { slug: 'hebergement-petit-budget',                   date: '2025-01-14' },
+  { path: '/blog/openai-api-vs-anthropic-api', lastmod: '2026-04-19' },
+  { path: '/blog/meilleurs-comparateurs-ia-2025', lastmod: '2025-03-13' },
+  { path: '/blog/meilleurs-comparateurs-vpn-2025', lastmod: '2025-03-14' },
+  { path: '/blog/meilleurs-comparateurs-antivirus-2025', lastmod: '2025-03-14' },
+  { path: '/blog/meilleurs-comparateurs-hebergement-web-2025', lastmod: '2026-05-02' },
+  { path: '/blog/meilleur-vpn-2025', lastmod: '2025-02-18' },
+  { path: '/blog/hebergement-wordpress-2025', lastmod: '2025-02-11' },
+  { path: '/blog/antivirus-gratuit-vs-payant', lastmod: '2025-02-04' },
+  { path: '/blog/outils-ia-productivite', lastmod: '2025-01-28' },
+  { path: '/blog/vpn-streaming-netflix', lastmod: '2025-01-21' },
+  { path: '/blog/hebergement-petit-budget', lastmod: '2025-01-14' },
 ];
 
-const OUTILS_CATEGORIES = [
+const TOOL_CATEGORIES = [
   'vpn',
   'hebergement-web',
   'antivirus',
   'cybersecurite',
-  'intelligence-artificielle',
 ];
 
-const IA_SUBCATEGORIES = [
-  'redaction', 'image', 'video', 'recherche', 'agent', 'productivite', 'code', 'audio',
-];
+function escapeXml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
 
-function urlEntry(loc, lastmod, changefreq, priority) {
-  return `
-  <url>
-    <loc>${BASE_URL}${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>`;
+function normalizeLastmod(value, fallback) {
+  const date = String(value || fallback || '').slice(0, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : fallback;
+}
+
+function urlEntry({ path: urlPath, lastmod }) {
+  return [
+    '  <url>',
+    `    <loc>${escapeXml(`${BASE_URL}${urlPath}`)}</loc>`,
+    `    <lastmod>${escapeXml(lastmod)}</lastmod>`,
+    '  </url>',
+  ].join('\n');
 }
 
 function generateSitemap(tools) {
-  // Date de référence pour les pages dépendantes du catalogue (catégories, sous-catégories).
-  // On prend la date de modif la plus récente parmi les outils → Google détecte les vrais changements.
   const catalogLastmod = tools
-    .map(t => t.updatedAt || t.createdAt)
+    .map(tool => tool.updatedAt || tool.createdAt)
     .filter(Boolean)
     .sort()
     .pop() || '2026-04-19';
 
-  const staticUrls = STATIC_PAGES.map(p =>
-    urlEntry(p.url, p.lastmod, p.changefreq, p.priority)
-  ).join('');
+  const categoryUrls = TOOL_CATEGORIES.map(category => ({
+    path: `/outils/${category}`,
+    lastmod: catalogLastmod,
+  }));
 
-  const categoryUrls = OUTILS_CATEGORIES.map(cat =>
-    urlEntry(`/outils/${cat}`, catalogLastmod, 'weekly', '0.7')
-  ).join('');
+  const iaSubcategoryUrls = IA_SUBCATEGORIES.map(subcategory => ({
+    path: `/outils/intelligence-artificielle/${subcategory.slug}`,
+    lastmod: catalogLastmod,
+  }));
 
-  const iaSubUrls = IA_SUBCATEGORIES.map(sub =>
-    urlEntry(`/outils/intelligence-artificielle/${sub}`, catalogLastmod, 'weekly', '0.6')
-  ).join('');
+  const toolUrls = tools
+    .filter(tool => tool.id)
+    .map(tool => ({
+      path: `/tool/${tool.id}`,
+      lastmod: normalizeLastmod(tool.updatedAt || tool.createdAt, catalogLastmod),
+    }));
 
-  const toolUrls = tools.map(t =>
-    urlEntry(`/tool/${t.id}`, t.updatedAt || t.createdAt || catalogLastmod, 'monthly', '0.8')
-  ).join('');
+  const urls = [
+    ...STATIC_PAGES,
+    ...categoryUrls,
+    ...iaSubcategoryUrls,
+    ...BLOG_ARTICLES,
+    ...toolUrls,
+  ];
 
-  const blogUrls = BLOG_ARTICLES.map(a =>
-    urlEntry(`/blog/${a.slug}`, a.date, 'monthly', '0.7')
-  ).join('');
+  const uniqueUrls = Array.from(
+    new Map(urls.map(item => [item.path, {
+      path: item.path,
+      lastmod: normalizeLastmod(item.lastmod, catalogLastmod),
+    }])).values()
+  );
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${staticUrls}
-${categoryUrls}
-${iaSubUrls}
-${toolUrls}
-${blogUrls}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${uniqueUrls.map(urlEntry).join('\n')}
 </urlset>`;
 }
 
-function SitemapPage() { return null; }
+function SitemapPage() {
+  return null;
+}
 
 export async function getServerSideProps({ res }) {
   const filePath = path.join(process.cwd(), 'public', 'data', 'tools-slim.json');

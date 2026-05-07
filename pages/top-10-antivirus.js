@@ -10,13 +10,14 @@ const META = {
   colorLight: 'from-red-50 to-orange-50',
   border: 'border-red-200',
   badge: 'bg-red-50 border-red-200 text-red-700',
-  desc: 'Les meilleurs antivirus pour protéger vos appareils contre les cybermenaces en 2025.',
+  desc: 'Les meilleurs antivirus pour protéger vos appareils contre les cybermenaces en 2026.',
 };
 
 const OTHERS = [
   { href: '/top-10-intelligence-artificielle', label: 'Top 10 IA', icon: '🤖' },
   { href: '/top-10-vpn', label: 'Top 10 VPN', icon: '🛡️' },
   { href: '/top-10-hebergement-web', label: 'Top 10 Hébergement', icon: '🌐' },
+  { href: '/top-10-cybersecurite', label: 'Top 10 Cybersécurité', icon: '🔐' },
 ];
 
 export async function getStaticProps() {
@@ -36,10 +37,10 @@ export default function Top10Antivirus({ tools }) {
       meta={META}
       others={OTHERS}
       seo={{
-        title: 'Top 10 Antivirus 2025 — Classement & Comparatif | Comparateur-Tech',
-        description: `Découvrez le Top 10 des meilleurs antivirus en 2025. ${META.desc}`,
+        title: 'Top 10 antivirus 2026 : classement comparatif',
+        description: `Découvrez le Top 10 des meilleurs antivirus en 2026. ${META.desc}`,
         canonical: 'https://comparateur-tech.com/top-10-antivirus',
-        keywords: 'top 10 antivirus, meilleur antivirus 2025, comparatif antivirus',
+        keywords: 'top 10 antivirus, meilleur antivirus 2026, comparatif antivirus',
       }}
     />
   );

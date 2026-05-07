@@ -11,7 +11,7 @@ Lorsque la question concerne les outils tech, le numérique ou les services en l
 - /outils/hebergement-web → Hébergement web
 - /outils/antivirus → Antivirus
 - /outils/cybersecurite → Cybersécurité
-- /top-10-intelligence-artificielle, /top-10-vpn, /top-10-hebergement-web, /top-10-antivirus → Top 10
+- /top-10-intelligence-artificielle, /top-10-vpn, /top-10-hebergement-web, /top-10-antivirus, /top-10-cybersecurite → Top 10
 - /comparatifs → Comparatifs détaillés
 - /blog → Articles et guides
 
@@ -96,7 +96,7 @@ export default function AIChatbot() {
   };
 
   const QUICK_QUESTIONS = [
-    'Meilleur VPN en 2025 ?',
+    'Meilleur VPN en 2026 ?',
     'Explique-moi c\'est quoi l\'IA',
     'Écris-moi un email pro',
   ];

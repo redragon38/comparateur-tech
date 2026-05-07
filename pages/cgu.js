@@ -110,6 +110,7 @@ export default function CGUPage() {
       <SEO
         title="Conditions Générales d'Utilisation – Comparateur-Tech"
         description="Conditions générales d'utilisation du site comparateur-tech.com : accès, fonctionnement, responsabilité et droit applicable."
+        canonical="https://comparateur-tech.com/cgu"
       />
       <Header />
 
@@ -122,7 +123,7 @@ export default function CGUPage() {
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
             Conditions Générales d'Utilisation
           </h1>
-          <p className="text-gray-500 text-sm">Dernière mise à jour : 2025</p>
+          <p className="text-gray-500 text-sm">Dernière mise à jour : 2026</p>
         </div>
 
         {/* Sections */}
