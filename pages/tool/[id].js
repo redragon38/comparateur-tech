@@ -26,8 +26,19 @@ export async function getStaticProps({ params }) {
   const tools = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const tool = tools.find(t => t.id === params.id) || null;
   if (!tool) return { notFound: true };
+  const toolCategories = tool.categories || [];
   const relatedTools = tools
-    .filter(t => t.id !== tool.id && t.categories?.some(c => tool.categories?.includes(c)))
+    .filter(t => t.id !== tool.id && t.categories?.some(c => toolCategories.includes(c)))
+    .sort((a, b) => {
+      const score = t => {
+        const commonCategories = (t.categories || []).filter(c => toolCategories.includes(c)).length;
+        return commonCategories * 100
+          + (t.featured ? 12 : 0)
+          + (t.verified ? 8 : 0)
+          + ((t.rating?.value || 0) * 2);
+      };
+      return score(b) - score(a);
+    })
     .slice(0, 6)
     .map(pickRelatedToolFields);
   return { props: { tool, relatedTools } };
@@ -148,21 +159,215 @@ function buildToolMetaDescription(tool) {
   return trimMetaText(tool.metaDescription || fallback, 158);
 }
 
+const CATEGORY_CONTEXT = {
+  'VPN': {
+    audience: 'les utilisateurs qui veulent sécuriser leur connexion, protéger leur adresse IP et accéder à des contenus depuis plusieurs pays',
+    criteria: ['niveau de chiffrement', 'vitesse des serveurs', 'politique de confidentialité', 'applications disponibles', 'prix de renouvellement'],
+    hub: '/top-10-vpn',
+    hubTitle: 'Top 10 VPN',
+  },
+  'Hébergement web': {
+    audience: 'les créateurs de sites, freelances, PME et équipes qui veulent publier un projet fiable sans complexité inutile',
+    criteria: ['performances', 'support client', 'sauvegardes', 'simplicité de gestion', 'évolutivité'],
+    hub: '/top-10-hebergement-web',
+    hubTitle: 'Top 10 hébergement web',
+  },
+  'Antivirus': {
+    audience: 'les particuliers, familles et petites entreprises qui veulent réduire le risque de malware, phishing et ransomware',
+    criteria: ['protection en temps réel', 'impact sur les performances', 'détection phishing', 'outils inclus', 'qualité du support'],
+    hub: '/top-10-antivirus',
+    hubTitle: 'Top 10 antivirus',
+  },
+  'Cybersécurité': {
+    audience: 'les équipes techniques, PME et indépendants qui doivent protéger leurs comptes, postes ou infrastructures',
+    criteria: ['couverture des risques', 'facilité de déploiement', 'alertes', 'intégrations', 'coût opérationnel'],
+    hub: '/top-10-cybersecurite',
+    hubTitle: 'Top 10 cybersécurité',
+  },
+  'Intelligence artificielle': {
+    audience: 'les créateurs, équipes produit, développeurs et indépendants qui veulent accélérer la production ou l’analyse',
+    criteria: ['qualité des résultats', 'limites du plan gratuit', 'intégrations', 'confidentialité des données', 'facilité de prise en main'],
+    hub: '/top-10-intelligence-artificielle',
+    hubTitle: 'Top 10 outils IA',
+  },
+  'IA générative': {
+    audience: 'les créateurs, marketeurs, freelances et équipes qui produisent du texte, des images, de la vidéo ou des prototypes',
+    criteria: ['qualité créative', 'contrôle du rendu', 'droits d’usage', 'vitesse de génération', 'prix des crédits'],
+    hub: '/top-10-intelligence-artificielle',
+    hubTitle: 'Top 10 outils IA',
+  },
+};
+
+function cleanInlineText(text) {
+  return String(text || '')
+    .replace(/__([^_]+)__/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function joinHumanList(items, fallback = '') {
+  const values = (items || []).map(cleanInlineText).filter(Boolean);
+  if (!values.length) return fallback;
+  if (values.length === 1) return values[0];
+  return `${values.slice(0, -1).join(', ')} et ${values[values.length - 1]}`;
+}
+
+function getCategoryContext(category) {
+  return CATEGORY_CONTEXT[category] || {
+    audience: 'les professionnels qui veulent comparer les options avant de choisir un outil',
+    criteria: ['qualité des fonctionnalités', 'prix', 'prise en main', 'support', 'évolutivité'],
+    hub: '/comparatifs',
+    hubTitle: 'Comparatifs outils',
+  };
+}
+
+function buildGeneratedDescription(tool) {
+  const category = tool.categories?.[0] || 'outil tech';
+  const context = getCategoryContext(category);
+  const intro = cleanInlineText(tool.short || tool.highlight);
+  const strengths = joinHumanList((tool.strengthShort || tool.strengths || []).slice(0, 3), 'sa proposition fonctionnelle');
+  const price = tool.price ? ` Son positionnement tarifaire est indiqué comme : ${cleanInlineText(tool.price)}.` : '';
+
+  return [
+    intro || `${tool.name} est une solution de la catégorie ${category} suivie dans le catalogue Comparateur-Tech.`,
+    `Cette fiche analyse ${tool.name} sous l’angle de l’usage réel : points forts, limites, prix, alternatives et pertinence pour ${context.audience}.`,
+    `Les éléments à regarder en priorité sont ${joinHumanList(context.criteria.slice(0, 4))}. ${tool.name} se distingue notamment par ${strengths}.${price}`,
+  ].join(' ');
+}
+
+function buildFallbackContentSections(tool, relatedTools = []) {
+  const category = tool.categories?.[0] || 'outil tech';
+  const context = getCategoryContext(category);
+  const strengths = (tool.strengthShort?.length ? tool.strengthShort : tool.strengths || []).map(cleanInlineText).filter(Boolean);
+  const limitations = (tool.limitations || []).map(cleanInlineText).filter(Boolean);
+  const idealFor = (tool.idealFor || []).map(cleanInlineText).filter(Boolean);
+  const relatedNames = relatedTools.slice(0, 3).map(t => t.name).filter(Boolean);
+  const priceText = tool.price ? cleanInlineText(tool.price) : 'un tarif à vérifier selon le plan choisi';
+
+  return [
+    {
+      title: `Que permet ${tool.name} ?`,
+      lead: cleanInlineText(tool.highlight || tool.short || `${tool.name} répond à un besoin précis dans la catégorie ${category}.`),
+      paragraphs: [
+        `${tool.name} est évalué ici comme une solution de ${category}. L’objectif est de comprendre ce que l’outil apporte concrètement, dans quels cas il devient pertinent et quels points doivent être vérifiés avant de l’adopter.`,
+        `Pour comparer correctement ${tool.name}, il faut regarder ${joinHumanList(context.criteria.slice(0, 4))}. Ces critères évitent de se limiter au prix ou à la notoriété de la marque.`,
+      ],
+      bullets: strengths.slice(0, 4),
+    },
+    {
+      title: `À qui s’adresse ${tool.name} ?`,
+      lead: `${tool.name} convient surtout à ${joinHumanList(idealFor.slice(0, 3), context.audience)}.`,
+      paragraphs: [
+        idealFor.length
+          ? `Les meilleurs cas d’usage identifiés sont ${joinHumanList(idealFor.slice(0, 5))}. Cette approche aide à distinguer les profils pour lesquels ${tool.name} apporte une vraie valeur des usages où une alternative peut être plus adaptée.`
+          : `Cette solution s’adresse principalement à ${context.audience}. Elle mérite d’être comparée avec des outils proches pour valider le niveau de fonctionnalités et la simplicité de prise en main.`,
+        relatedNames.length
+          ? `Dans le même univers, vous pouvez aussi comparer ${tool.name} avec ${joinHumanList(relatedNames)} afin d’identifier le meilleur compromis selon votre budget et votre niveau d’exigence.`
+          : `Avant de choisir, vérifiez la compatibilité avec vos usages, le support proposé et les conditions tarifaires à long terme.`,
+      ],
+      bullets: idealFor.slice(0, 4),
+    },
+    {
+      title: `Prix, limites et points de vigilance`,
+      lead: `Le tarif de ${tool.name} est à analyser avec les fonctionnalités incluses, les limites du plan et les éventuels coûts de renouvellement.`,
+      paragraphs: [
+        `${tool.name} est présenté avec le positionnement suivant : ${priceText}. ${tool.trial ? 'La présence d’un essai gratuit permet de tester l’outil avant engagement.' : 'Il faut vérifier les conditions d’essai ou de remboursement avant de s’engager.'}`,
+        limitations.length
+          ? `Les principales limites à prendre en compte sont ${joinHumanList(limitations.slice(0, 4))}. Ces points ne rendent pas forcément l’outil moins intéressant, mais ils doivent être comparés à vos priorités.`
+          : `Comme pour tout outil de ${category}, regardez les limites d’usage, la qualité du support, les conditions de résiliation et les éventuelles restrictions selon les formules.`,
+      ],
+      bullets: limitations.slice(0, 4),
+    },
+  ];
+}
+
+function buildFallbackAlternatives(tool, relatedTools = []) {
+  return relatedTools.slice(0, 6).map(related => ({
+    href: `/tool/${related.id}`,
+    title: `${related.name} comme alternative à ${tool.name}`,
+    desc: cleanInlineText(related.short || related.highlight || `Comparer ${related.name} avec ${tool.name}.`),
+  }));
+}
+
+function buildFallbackFaq(tool, relatedTools = []) {
+  const category = tool.categories?.[0] || 'outil tech';
+  const relatedNames = relatedTools.slice(0, 3).map(t => t.name).filter(Boolean);
+  const faq = [
+    {
+      q: `${tool.name} est-il un bon choix en ${category} ?`,
+      a: `${tool.name} peut être un bon choix si ses points forts correspondent à vos priorités : ${joinHumanList((tool.strengthShort || tool.strengths || []).slice(0, 3), 'fonctionnalités, budget et simplicité d’usage')}. Comparez aussi ses limites avant de décider.`,
+    },
+    {
+      q: `Combien coûte ${tool.name} ?`,
+      a: tool.price
+        ? `Le positionnement indiqué pour ${tool.name} est : ${cleanInlineText(tool.price)}. Le prix réel peut varier selon la formule, la durée d’engagement et les options incluses.`
+        : `Le prix de ${tool.name} dépend de la formule choisie. Il faut vérifier le plan gratuit, les limites d’usage, les options payantes et le tarif de renouvellement.`,
+    },
+    {
+      q: `${tool.name} propose-t-il un essai gratuit ?`,
+      a: tool.trial
+        ? `Oui, ${tool.name} est indiqué avec un essai gratuit ou une option permettant de tester le service avant de s’engager.`
+        : `${tool.name} n’est pas indiqué avec un essai gratuit dans notre catalogue. Vérifiez les conditions de test, de démonstration ou de remboursement sur le site officiel.`,
+    },
+  ];
+
+  if (relatedNames.length) {
+    faq.push({
+      q: `Quelles alternatives comparer avec ${tool.name} ?`,
+      a: `Les alternatives proches à regarder sont ${joinHumanList(relatedNames)}. Le meilleur choix dépendra surtout du budget, des fonctionnalités attendues et du niveau de support recherché.`,
+    });
+  }
+
+  return faq;
+}
+
+function buildFallbackReadMore(tool, category, categoryUrl) {
+  const context = getCategoryContext(category);
+  return [
+    {
+      href: categoryUrl,
+      title: `Comparer les outils ${category || 'tech'}`,
+      desc: `Retrouvez les solutions proches de ${tool.name} dans la même catégorie.`,
+    },
+    {
+      href: context.hub,
+      title: context.hubTitle,
+      desc: `Classement et critères pour choisir une solution adaptée.`,
+    },
+    {
+      href: '/methodologie',
+      title: 'Notre méthode de comparaison',
+      desc: 'Découvrez les critères utilisés pour analyser les outils.',
+    },
+  ];
+}
+
 // ─── Props injectées par getStaticProps (plus de useEffect / fetch) ───────────
 export default function ToolPage({ tool, relatedTools }) {
   const cat = tool.categories?.[0];
   const m = CAT_META[cat] || DEFAULT;
   const url = tool.affiliateUrl || tool.website || '#';
-  const [compareId, setCompareId] = useState(relatedTools?.[0]?.id || null);
+  const safeRelatedTools = Array.isArray(relatedTools) ? relatedTools : [];
+  const [compareId, setCompareId] = useState(safeRelatedTools?.[0]?.id || null);
 
   const compareTool = useMemo(() => {
     if (!compareId) return null;
-    return (relatedTools || []).find(t => t.id === compareId) || null;
-  }, [compareId, relatedTools]);
+    return safeRelatedTools.find(t => t.id === compareId) || null;
+  }, [compareId, safeRelatedTools]);
 
   const notForList = tool.notFor || tool.notIdealFor || [];
-  const alternatives = Array.isArray(tool.alternatives) ? tool.alternatives : [];
   const categoryUrl = getCategoryUrl(cat);
+  const alternatives = Array.isArray(tool.alternatives) && tool.alternatives.length
+    ? tool.alternatives
+    : buildFallbackAlternatives(tool, safeRelatedTools);
+  const effectiveFaq = tool.faq?.length ? tool.faq : buildFallbackFaq(tool, safeRelatedTools);
+  const effectiveReadMore = tool.readMore?.length ? tool.readMore : buildFallbackReadMore(tool, cat, categoryUrl);
+  const introDescription = tool.description || buildGeneratedDescription(tool);
+  const contentSections = Array.isArray(tool.contentSections) && tool.contentSections.length
+    ? tool.contentSections
+    : buildFallbackContentSections(tool, safeRelatedTools);
 
   const comparisonRows = compareTool ? [
     { label: 'Catégorie', left: (tool.categories || []).join(', ') || '—', right: (compareTool.categories || []).join(', ') || '—' },
@@ -182,20 +387,20 @@ export default function ToolPage({ tool, relatedTools }) {
       ...(cat ? [{ name: cat, url: categoryUrl }] : []),
       { name: tool.name },
     ]),
-    ...(tool.faq?.length ? [buildFAQSchema(tool.faq)] : []),
+    ...(effectiveFaq?.length ? [buildFAQSchema(effectiveFaq)] : []),
   ].filter(Boolean);
 
   const metaTitle = buildToolMetaTitle(tool);
   const metaDescription = buildToolMetaDescription(tool);
   const heroTitle = tool.heroTitle || tool.name;
   const heroIntro = tool.heroIntro || tool.short || tool.highlight;
-  const contentSections = Array.isArray(tool.contentSections) ? tool.contentSections : [];
   const pageLinks = [
-    ...(tool.description ? [{ id: `a-propos-${slugify(tool.name)}`, label: `À propos de ${tool.name}` }] : []),
+    ...(introDescription ? [{ id: `a-propos-${slugify(tool.name)}`, label: `À propos de ${tool.name}` }] : []),
     ...contentSections.map(section => ({ id: slugify(section.title), label: section.title })),
+    ...(safeRelatedTools.length ? [{ id: 'outils-similaires', label: 'Outils similaires' }] : []),
     ...(alternatives.length ? [{ id: 'alternatives', label: 'Alternatives' }] : []),
     ...(tool.verdict ? [{ id: 'notre-verdict', label: 'Notre verdict' }] : []),
-    ...(tool.faq?.length ? [{ id: 'questions-frequentes', label: 'Questions fréquentes' }] : []),
+    ...(effectiveFaq?.length ? [{ id: 'questions-frequentes', label: 'Questions fréquentes' }] : []),
   ];
 
   return (
@@ -298,7 +503,7 @@ export default function ToolPage({ tool, relatedTools }) {
                     }}>
                     Visiter {tool.name} <ExternalLink className="w-4 h-4" />
                   </a>
-                  {relatedTools?.length > 0 && (
+                  {safeRelatedTools.length > 0 && (
                     <a href="#compare" className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-semibold text-gray-800 bg-white border border-gray-200 hover:border-purple-300 transition-all duration-200">
                       <Scale className="w-4 h-4" /> Comparer avec d'autres
                     </a>
@@ -370,11 +575,11 @@ export default function ToolPage({ tool, relatedTools }) {
                 </div>
               )}
 
-              {tool.description && (
+              {introDescription && (
                 <section id={`a-propos-${slugify(tool.name)}`} className="bg-white rounded-2xl p-6 sm:p-8 scroll-mt-28" style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
                   <h2 className="text-lg font-bold text-gray-900 mb-4">À propos de {tool.name}</h2>
                   <div className="text-gray-500 text-sm leading-relaxed space-y-4"
-                    dangerouslySetInnerHTML={{ __html: renderMarkdown(tool.description) }} />
+                    dangerouslySetInnerHTML={{ __html: renderMarkdown(introDescription) }} />
                 </section>
               )}
 
@@ -504,6 +709,33 @@ export default function ToolPage({ tool, relatedTools }) {
                 </div>
               )}
 
+              {safeRelatedTools.length > 0 && (
+                <div id="outils-similaires" className="bg-white rounded-2xl p-6 sm:p-8 scroll-mt-28" style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+                  <h2 className="text-lg font-bold text-gray-900 mb-4">Outils similaires à {tool.name}</h2>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {safeRelatedTools.slice(0, 6).map(related => (
+                      <Link
+                        key={related.id}
+                        href={`/tool/${related.id}`}
+                        className="rounded-2xl border border-gray-200 bg-gray-50 p-4 hover:border-purple-300 hover:bg-purple-50 transition-colors"
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <p className="text-sm font-semibold text-gray-900 mb-1">{related.name}</p>
+                            <p className="text-xs text-gray-500 leading-relaxed">{related.short || related.highlight}</p>
+                          </div>
+                          {related.rating && (
+                            <span className="text-xs font-bold px-2 py-1 rounded-lg bg-white border border-gray-200 text-gray-700 flex-shrink-0">
+                              {related.rating.value}/5
+                            </span>
+                          )}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {alternatives.length > 0 && (
                 <div id="alternatives" className="bg-white rounded-2xl p-6 sm:p-8 scroll-mt-28" style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
                   <h2 className="text-lg font-bold text-gray-900 mb-4">Alternatives et comparaisons utiles</h2>
@@ -535,21 +767,21 @@ export default function ToolPage({ tool, relatedTools }) {
                 </div>
               )}
 
-              {tool.faq?.length > 0 && (
+              {effectiveFaq?.length > 0 && (
                 <div id="questions-frequentes" className="bg-white rounded-2xl p-6 sm:p-8 scroll-mt-28" style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
                   <h2 className="text-lg font-bold text-gray-900 mb-5">Questions fréquentes</h2>
                   <div className="space-y-2">
-                    {tool.faq.map((item, i) => <FAQItem key={i} q={item.q} a={item.a} />)}
+                    {effectiveFaq.map((item, i) => <FAQItem key={i} q={item.q} a={item.a} />)}
                   </div>
                 </div>
               )}
 
               {/* ── Articles liés (liens internes SEO) ── */}
-              {tool.readMore?.length > 0 && (
+              {effectiveReadMore?.length > 0 && (
                 <div className="bg-white rounded-2xl p-6 sm:p-8" style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
                   <h2 className="text-lg font-bold text-gray-900 mb-4">À lire aussi</h2>
                   <div className="space-y-3">
-                    {tool.readMore.map((item, i) => (
+                    {effectiveReadMore.map((item, i) => (
                       <a key={i} href={normalizeInternalHref(item.href)} className="flex items-start gap-3 p-3 rounded-xl hover:bg-purple-50 transition-colors group">
                         <span className="text-purple-600 font-bold text-lg leading-none mt-0.5">→</span>
                         <div>
@@ -613,11 +845,11 @@ export default function ToolPage({ tool, relatedTools }) {
                 </div>
               </div>
 
-              {relatedTools.length > 0 && (
+              {safeRelatedTools.length > 0 && (
                 <div id="compare" className="bg-white rounded-2xl p-5 sm:p-6 scroll-mt-28" style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
                   <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Comparer avec</h3>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {relatedTools.slice(0, 6).map(option => (
+                    {safeRelatedTools.slice(0, 6).map(option => (
                       <button
                         key={option.id}
                         onClick={() => setCompareId(option.id)}

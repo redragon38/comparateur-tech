@@ -236,7 +236,6 @@ function buildOffer(tool) {
 export function buildSoftwareSchema(tool) {
   const verdictClean = stripMarkdown(tool.verdict);
   const offer = buildOffer(tool);
-  if (!offer) return null;
 
   return {
     '@context': 'https://schema.org',

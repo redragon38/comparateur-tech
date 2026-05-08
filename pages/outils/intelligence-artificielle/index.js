@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
-import SEO, { buildBreadcrumbSchema } from '../../../components/SEO';
+import SEO, { buildBreadcrumbSchema, buildFAQSchema } from '../../../components/SEO';
 import { IA_SUBCATEGORIES } from '../../../lib/ia-subcategories';
 
 export async function getStaticProps() {
@@ -17,6 +17,28 @@ export async function getStaticProps() {
   return { props: { subcatCounts } };
 }
 
+const IA_SELECTION_CRITERIA = [
+  'Qualité des résultats en français',
+  'Confidentialité des données',
+  'Limites du plan gratuit ou payant',
+  'Intégrations avec vos outils',
+];
+
+const IA_INDEX_FAQ = [
+  {
+    q: 'Quel type d’outil IA choisir en premier ?',
+    a: 'Commencez par le besoin le plus fréquent : rédaction, image, recherche, code, vidéo, audio, agent ou productivité. Un outil excellent dans un usage peut être moyen dans un autre.',
+  },
+  {
+    q: 'Comment comparer deux outils IA ?',
+    a: 'Utilisez un même exemple de test, comparez la qualité du résultat, les limites, la confidentialité, le prix réel et la facilité d’intégration dans votre flux de travail.',
+  },
+  {
+    q: 'Les outils IA gratuits suffisent-ils ?',
+    a: 'Ils suffisent souvent pour tester ou produire ponctuellement, mais les plans payants apportent généralement plus de contexte, de vitesse, de confidentialité ou de droits d’usage.',
+  },
+];
+
 export default function IAIndexPage({ subcatCounts }) {
   return (
     <>
@@ -24,11 +46,14 @@ export default function IAIndexPage({ subcatCounts }) {
         title="Meilleurs outils IA 2026 : comparatif par usage"
         description="Comparez les outils IA par usage : rédaction, image, vidéo, recherche, agents, productivité, audio et code. Sélection éditoriale mise à jour."
         canonical="https://comparateur-tech.com/outils/intelligence-artificielle"
-        structuredData={buildBreadcrumbSchema([
-          { name: 'Accueil', url: '/' },
-          { name: 'Outils', url: '/outils' },
-          { name: 'Intelligence artificielle' },
-        ])}
+        structuredData={[
+          buildBreadcrumbSchema([
+            { name: 'Accueil', url: '/' },
+            { name: 'Outils', url: '/outils' },
+            { name: 'Intelligence artificielle' },
+          ]),
+          buildFAQSchema(IA_INDEX_FAQ),
+        ]}
       />
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
@@ -69,6 +94,20 @@ export default function IAIndexPage({ subcatCounts }) {
 
           {/* GRILLE */}
           <section className="container mx-auto px-4 sm:px-6 py-12 pb-24">
+            <div className="bg-white border border-purple-100 rounded-2xl shadow-sm p-6 mb-8">
+              <h2 className="text-xl font-bold text-gray-900 mb-3">Comment choisir un outil IA ?</h2>
+              <p className="text-gray-600 leading-relaxed mb-5">
+                Le bon outil dépend d’abord de la tâche à automatiser. Une IA de rédaction, un générateur d’images, un assistant de code et un agent autonome ne se comparent pas avec les mêmes critères.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {IA_SELECTION_CRITERIA.map(criterion => (
+                  <div key={criterion} className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
+                    <p className="text-sm font-semibold text-gray-800">{criterion}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">
               Quel type d&apos;IA recherchez-vous ?
             </p>
@@ -143,6 +182,17 @@ export default function IAIndexPage({ subcatCounts }) {
                   </Link>
                 );
               })}
+            </div>
+            <div className="bg-white border border-purple-100 rounded-2xl shadow-sm p-6 mt-10">
+              <h2 className="text-xl font-bold text-gray-900 mb-5">Questions fréquentes sur les outils IA</h2>
+              <div className="space-y-4">
+                {IA_INDEX_FAQ.map(item => (
+                  <div key={item.q} className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0">
+                    <h3 className="text-sm font-bold text-gray-900 mb-2">{item.q}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{item.a}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 

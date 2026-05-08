@@ -5,7 +5,7 @@ import { useState, useRef } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ToolCard from '../components/ToolCard';
-import SEO from '../components/SEO';
+import SEO, { buildBreadcrumbSchema, buildFAQSchema, buildItemListSchema } from '../components/SEO';
 import { ExternalLink, Star, ChevronRight, Sparkles, RotateCcw, Copy, CheckCircle, Brain, Zap, Wand2, FileText } from 'lucide-react';
 
 export async function getStaticProps() {
@@ -36,6 +36,28 @@ const USE_CASES = [
 ];
 
 const TONES = ['Professionnel', 'Casual', 'Créatif', 'Technique', 'Persuasif'];
+
+const IA_GENERATIVE_CRITERIA = [
+  'Qualité du rendu sur vos exemples',
+  'Droits d’usage des contenus générés',
+  'Coût des crédits ou abonnements',
+  'Contrôle du style, du ton et des exports',
+];
+
+const IA_GENERATIVE_FAQ = [
+  {
+    q: 'Quel outil d’IA générative choisir ?',
+    a: 'Choisissez selon le format principal à produire : texte, image, vidéo, audio ou contenu marketing. Testez ensuite le même brief sur plusieurs outils pour comparer la qualité réelle.',
+  },
+  {
+    q: 'Les contenus générés par IA sont-ils utilisables commercialement ?',
+    a: 'Cela dépend des conditions de chaque outil et de votre formule. Vérifiez toujours les droits d’usage, les restrictions de marque et les règles liées aux contenus générés.',
+  },
+  {
+    q: 'Faut-il un outil IA généraliste ou spécialisé ?',
+    a: 'Un outil généraliste suffit pour démarrer, mais un outil spécialisé devient souvent meilleur pour l’image, la vidéo, la voix, le design ou les workflows de production réguliers.',
+  },
+];
 
 const SIDEBAR_CATEGORIES = [
   { slug: 'intelligence-artificielle', label: 'Intelligence artificielle', icon: '🤖', count: null },
@@ -113,6 +135,19 @@ export default function IAGenerativePage({ tools }) {
         title="IA Générative — Meilleurs outils | Comparateur-Tech"
         description="Découvrez les meilleurs outils d'IA générative : ChatGPT, Midjourney, Claude, Gemini… Comparez et trouvez l'outil parfait pour créer textes, images et vidéos."
         canonical="https://comparateur-tech.com/ia-generative"
+        structuredData={[
+          buildBreadcrumbSchema([
+            { name: 'Accueil', url: '/' },
+            { name: 'Outils', url: '/outils' },
+            { name: 'IA générative' },
+          ]),
+          buildItemListSchema({
+            name: 'Meilleurs outils IA générative',
+            description: 'Sélection des outils IA générative pour texte, image, vidéo, audio et création de contenu.',
+            items: tools,
+          }),
+          buildFAQSchema(IA_GENERATIVE_FAQ),
+        ]}
       />
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
@@ -186,6 +221,20 @@ export default function IAGenerativePage({ tools }) {
                   </p>
                 </div>
 
+                <section className="bg-white border border-pink-200/60 rounded-2xl p-6 mb-8">
+                  <h2 className="text-xl font-bold text-gray-900 mb-3">Comment choisir un outil d&apos;IA générative ?</h2>
+                  <p className="text-gray-600 leading-relaxed mb-5">
+                    Le bon choix dépend du format à produire, du niveau de contrôle attendu et des droits d&apos;usage. Une IA très forte pour écrire ne sera pas forcément la meilleure pour générer des images ou créer des vidéos.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {IA_GENERATIVE_CRITERIA.map(criterion => (
+                      <div key={criterion} className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
+                        <p className="text-sm font-semibold text-gray-800">{criterion}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
                 {/* Grille d'outils */}
                 {tools.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
@@ -199,6 +248,18 @@ export default function IAGenerativePage({ tools }) {
                     <p className="text-gray-600 text-lg">Aucun outil dans cette catégorie pour l&apos;instant.</p>
                   </div>
                 )}
+
+                <section className="bg-white border border-pink-200/60 rounded-2xl p-6 mb-16">
+                  <h2 className="text-xl font-bold text-gray-900 mb-5">Questions fréquentes sur l&apos;IA générative</h2>
+                  <div className="space-y-4">
+                    {IA_GENERATIVE_FAQ.map(item => (
+                      <div key={item.q} className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0">
+                        <h3 className="text-sm font-bold text-gray-900 mb-2">{item.q}</h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">{item.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
 
                 {/* ─── Générateur IA ─── */}
                 <div className="bg-white rounded-2xl border border-purple-100 shadow-sm overflow-hidden">

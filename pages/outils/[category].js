@@ -5,7 +5,7 @@ import { Star, ChevronRight } from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ToolCard from '../../components/ToolCard';
-import SEO, { buildBreadcrumbSchema, buildItemListSchema } from '../../components/SEO';
+import SEO, { buildBreadcrumbSchema, buildFAQSchema, buildItemListSchema } from '../../components/SEO';
 
 // Sous-catégories IA avec les outils assignés par nom
 const IA_SUBCATEGORIES = [
@@ -220,7 +220,76 @@ function StarRating({ value }) {
     </div>
   );
 }
+
+const CATEGORY_GUIDES = {
+  'vpn': {
+    criteria: [
+      'Politique no-log et juridiction',
+      'Vitesse réelle des serveurs',
+      'Applications Windows, macOS, iOS et Android',
+      'Streaming, P2P et connexions simultanées',
+    ],
+    buyerHint: 'Pour un VPN, le meilleur choix dépend moins du nombre de serveurs annoncé que de la régularité des débits, de la politique de confidentialité et de la simplicité des applications.',
+  },
+  'hebergement-web': {
+    criteria: [
+      'Temps de chargement et disponibilité',
+      'Support client et sauvegardes',
+      'Gestion WordPress ou VPS',
+      'Prix de renouvellement après promotion',
+    ],
+    buyerHint: 'Un hébergeur web doit être choisi selon le type de projet : blog, vitrine, boutique, application ou site à fort trafic. Les sauvegardes et le support comptent autant que le prix d’appel.',
+  },
+  'antivirus': {
+    criteria: [
+      'Détection malware et phishing',
+      'Impact sur les performances',
+      'Protection ransomware',
+      'VPN, contrôle parental et mots de passe inclus',
+    ],
+    buyerHint: 'Un bon antivirus doit protéger sans ralentir l’appareil. Les suites les plus complètes ajoutent un VPN, une surveillance web et des outils familiaux, mais ces options varient selon le plan.',
+  },
+  'cybersecurite': {
+    criteria: [
+      'Risque couvert par l’outil',
+      'Déploiement et prise en main',
+      'Alertes, rapports et intégrations',
+      'Coût opérationnel pour l’équipe',
+    ],
+    buyerHint: 'En cybersécurité, il faut d’abord identifier le risque prioritaire : mots de passe, authentification, vulnérabilités, supervision, poste de travail ou infrastructure.',
+  },
+};
+
+function getCategoryGuide(slug) {
+  return CATEGORY_GUIDES[slug] || {
+    criteria: ['Fonctionnalités utiles', 'Prix réel', 'Support', 'Simplicité de prise en main'],
+    buyerHint: 'Comparez les outils selon votre cas d’usage, votre budget et le niveau de support dont vous aurez besoin après l’achat.',
+  };
+}
+
+function buildCategoryFaq(meta, tools) {
+  const topTools = tools.slice(0, 3).map(t => t.name).join(', ');
+  return [
+    {
+      q: `Comment choisir un outil ${meta.label.toLowerCase()} ?`,
+      a: `Commencez par votre besoin principal, puis comparez le prix réel, les limites, le support et les fonctionnalités indispensables. Les notes seules ne suffisent pas : il faut vérifier l’adéquation avec votre usage.`,
+    },
+    {
+      q: `Combien d’outils ${meta.label.toLowerCase()} sont comparés ?`,
+      a: `Cette page compare ${tools.length} outil${tools.length > 1 ? 's' : ''} ${meta.label.toLowerCase()} avec leurs prix, points forts, essais disponibles et fiches détaillées.`,
+    },
+    {
+      q: `Quels outils regarder en priorité ?`,
+      a: topTools
+        ? `Les outils les mieux notés de cette sélection incluent notamment ${topTools}. Le meilleur choix dépend ensuite de votre budget et de vos contraintes techniques.`
+        : `Regardez en priorité les solutions qui documentent clairement leurs prix, leurs limites et leurs cas d’usage.`,
+    },
+  ];
+}
+
 export default function CategoryPage({ tools, meta, slug, allCategories }) {
+  const categoryGuide = getCategoryGuide(slug);
+  const categoryFaq = buildCategoryFaq(meta, tools);
   const structuredData = [
     buildBreadcrumbSchema([
       { name: 'Accueil', url: '/' },
@@ -232,6 +301,7 @@ export default function CategoryPage({ tools, meta, slug, allCategories }) {
       description: meta.desc,
       items: tools,
     }),
+    buildFAQSchema(categoryFaq),
   ];
 
   return (
@@ -308,6 +378,18 @@ export default function CategoryPage({ tools, meta, slug, allCategories }) {
                     <p className="text-gray-600 leading-relaxed">{meta.longDesc}</p>
                   </div>
                 )}
+                <section className="bg-white rounded-2xl border border-purple-100 shadow-sm p-6 mb-8">
+                  <h2 className="text-xl font-bold text-gray-900 mb-3">Comment choisir un outil {meta.label.toLowerCase()} ?</h2>
+                  <p className="text-gray-600 leading-relaxed mb-5">{categoryGuide.buyerHint}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {categoryGuide.criteria.map(criterion => (
+                      <div key={criterion} className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
+                        <p className="text-sm font-semibold text-gray-800">{criterion}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
                 {tools.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
                     {tools.map(tool => (
@@ -320,6 +402,18 @@ export default function CategoryPage({ tools, meta, slug, allCategories }) {
                     <p className="text-gray-900 text-lg">Aucun outil dans cette catégorie pour l&apos;instant.</p>
                   </div>
                 )}
+                <section className="mt-12 bg-white rounded-2xl border border-purple-100 shadow-sm p-6">
+                  <h2 className="text-xl font-bold text-gray-900 mb-5">Questions fréquentes sur {meta.label.toLowerCase()}</h2>
+                  <div className="space-y-4">
+                    {categoryFaq.map(item => (
+                      <div key={item.q} className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0">
+                        <h3 className="text-sm font-bold text-gray-900 mb-2">{item.q}</h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">{item.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
                 {allCategories.filter(c => c.slug !== slug).length > 0 && (
                   <div className="mt-16">
                     <h2 className="text-xl font-bold text-gray-900 mb-6">Autres catégories</h2>

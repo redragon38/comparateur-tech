@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import ToolCard from '../../../components/ToolCard';
-import SEO, { buildBreadcrumbSchema, buildItemListSchema } from '../../../components/SEO';
+import SEO, { buildBreadcrumbSchema, buildFAQSchema, buildItemListSchema } from '../../../components/SEO';
 import { IA_SUBCATEGORIES } from '../../../lib/ia-subcategories';
 
 export async function getStaticPaths() {
@@ -35,7 +35,44 @@ export async function getStaticProps({ params }) {
   return { props: { sub, tools, otherSubs } };
 }
 
+const IA_BUYER_CRITERIA = {
+  redaction: ['Qualité du style en français', 'Longueur du contexte', 'Fiabilité des réponses', 'Export et intégrations'],
+  image: ['Qualité visuelle', 'Contrôle du style', 'Droits d’usage', 'Coût par génération'],
+  video: ['Qualité du mouvement', 'Durée des rendus', 'Contrôle caméra', 'Export professionnel'],
+  audio: ['Naturel de la voix', 'Langues disponibles', 'Droits commerciaux', 'Temps de génération'],
+  recherche: ['Sources citées', 'Fraîcheur des réponses', 'Synthèse', 'Export des recherches'],
+  code: ['Qualité des suggestions', 'Confidentialité du code', 'IDE compatibles', 'Compréhension du contexte'],
+  agent: ['Autonomie réelle', 'Connecteurs disponibles', 'Contrôle humain', 'Journalisation des actions'],
+  productivite: ['Collaboration', 'Automatisations', 'Gestion des tâches', 'Rapports et tableaux de bord'],
+};
+
+function getSubcategoryCriteria(slug) {
+  return IA_BUYER_CRITERIA[slug] || ['Qualité des résultats', 'Prix', 'Confidentialité', 'Intégrations'];
+}
+
+function buildSubcategoryFaq(sub, tools) {
+  const topTools = tools.slice(0, 3).map(t => t.name).join(', ');
+  return [
+    {
+      q: `Comment choisir un outil ${sub.label.toLowerCase()} ?`,
+      a: `Comparez d’abord la qualité des résultats sur vos propres exemples, puis les limites du plan, la confidentialité des données et les intégrations avec vos outils existants.`,
+    },
+    {
+      q: `Combien d’outils sont listés dans ${sub.label.toLowerCase()} ?`,
+      a: `Cette sélection présente ${tools.length} outil${tools.length > 1 ? 's' : ''} pour ${sub.label.toLowerCase()}, avec accès aux fiches détaillées, prix, notes et alternatives.`,
+    },
+    {
+      q: `Quels outils comparer en priorité ?`,
+      a: topTools
+        ? `Vous pouvez commencer par ${topTools}, puis comparer selon votre budget, le niveau de contrôle attendu et la qualité obtenue sur vos cas d’usage.`
+        : `Commencez par les outils qui documentent clairement leurs limites, leurs prix et leurs conditions d’utilisation des données.`,
+    },
+  ];
+}
+
 export default function IASubcategoryPage({ sub, tools, otherSubs }) {
+  const buyerCriteria = getSubcategoryCriteria(sub.slug);
+  const subcategoryFaq = buildSubcategoryFaq(sub, tools);
   const structuredData = [
     buildBreadcrumbSchema([
       { name: 'Accueil', url: '/' },
@@ -48,6 +85,7 @@ export default function IASubcategoryPage({ sub, tools, otherSubs }) {
       description: sub.desc,
       items: tools,
     }),
+    buildFAQSchema(subcategoryFaq),
   ];
 
   return (
@@ -161,6 +199,20 @@ export default function IASubcategoryPage({ sub, tools, otherSubs }) {
                   <p className={`${sub.textColor} leading-relaxed`}>{sub.longDesc}</p>
                 </div>
 
+                <section className="bg-white rounded-2xl border border-purple-100 shadow-sm p-6 mb-8">
+                  <h2 className="text-xl font-bold text-gray-900 mb-3">Comment choisir une solution {sub.label.toLowerCase()} ?</h2>
+                  <p className="text-gray-600 leading-relaxed mb-5">
+                    Testez toujours l’outil sur un exemple réel avant de comparer les prix. Les solutions IA peuvent sembler proches, mais elles diffèrent beaucoup sur la qualité, les limites d’usage et le contrôle du résultat.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {buyerCriteria.map(criterion => (
+                      <div key={criterion} className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
+                        <p className="text-sm font-semibold text-gray-800">{criterion}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
                 {/* Grille d'outils */}
                 {tools.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -174,6 +226,18 @@ export default function IASubcategoryPage({ sub, tools, otherSubs }) {
                     <p className="text-gray-500 text-lg">Aucun outil dans cette catégorie pour l&apos;instant.</p>
                   </div>
                 )}
+
+                <section className="mt-12 bg-white rounded-2xl border border-purple-100 shadow-sm p-6">
+                  <h2 className="text-xl font-bold text-gray-900 mb-5">Questions fréquentes</h2>
+                  <div className="space-y-4">
+                    {subcategoryFaq.map(item => (
+                      <div key={item.q} className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0">
+                        <h3 className="text-sm font-bold text-gray-900 mb-2">{item.q}</h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">{item.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
 
                 {/* Autres types d'IA */}
                 {otherSubs.length > 0 && (
