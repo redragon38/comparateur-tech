@@ -1,6 +1,10 @@
 # Crawling rules for Comparateur-Tech
 User-agent: *
 Disallow: /api/
+Disallow: /index-v2.html
+Disallow: /data/tools.json
+Disallow: /data/tools.backup
+Disallow: /data/*.bak
 
 # Rendering assets used by Next.js
 Allow: /_next/static/

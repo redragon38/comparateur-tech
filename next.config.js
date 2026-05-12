@@ -62,6 +62,17 @@ const legacyInternalRedirects = [
   ['/guides/creer-soc-entreprise', '/outils/cybersecurite'],
 ].map(([source, destination]) => ({ source, destination, permanent: true }));
 
+const canonicalHostRedirects = [
+  'comparateurtech.com',
+  'www.comparateurtech.com',
+  'www.comparateur-tech.com',
+].map(host => ({
+  source: '/:path*',
+  has: [{ type: 'host', value: host }],
+  destination: 'https://comparateur-tech.com/:path*',
+  permanent: true,
+}));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -125,6 +136,7 @@ const nextConfig = {
 
   async redirects() {
     return [
+      ...canonicalHostRedirects,
       ...legacyInternalRedirects,
       { source: '/en',        destination: '/',          permanent: true  },
       { source: '/en/:path*', destination: '/:path*',    permanent: true  },

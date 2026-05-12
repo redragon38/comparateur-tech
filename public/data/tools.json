@@ -19659,5 +19659,541 @@
     "en.verdict": "KeePass is the ideal choice for users wanting absolute control over their passwords without relying on a cloud service. Free, open source and highly portable, it is the reference for technical users and data-sensitive organizations.",
     "createdAt": "2026-04-26",
     "updatedAt": "2026-04-26"
+  },
+  {
+    "id": "snyk",
+    "slug": "snyk",
+    "name": "Snyk",
+    "partner": "Snyk",
+    "website": "https://snyk.io",
+    "affiliateUrl": "https://snyk.io",
+    "categories": [
+      "Cybersécurité",
+      "Sécurité applicative"
+    ],
+    "tags": [
+      "DevSecOps",
+      "SAST",
+      "SCA",
+      "container security",
+      "IaC",
+      "dépendances open source"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "priceCurrency": "USD",
+    "price": "Gratuit / Team et Enterprise",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.7,
+      "count": 96
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Plateforme DevSecOps pour trouver et corriger les vulnérabilités dans le code, les dépendances, les conteneurs et l'IaC.",
+    "highlight": "Une plateforme orientée développeurs pour sécuriser le code, l'open source, les conteneurs et l'infrastructure as code.",
+    "description": "Snyk est une plateforme de __sécurité applicative__ pensée pour les équipes de développement. Elle couvre l'analyse de code, les dépendances open source, les images de conteneurs et l'infrastructure as code afin de détecter les vulnérabilités plus tôt dans le cycle de livraison.",
+    "strengths": [
+      "Couverture SAST, SCA, conteneurs et IaC",
+      "Intégrations IDE, GitHub, GitLab, Bitbucket et CI/CD",
+      "Conseils de remédiation directement exploitables par les développeurs",
+      "Priorisation orientée risque pour réduire le bruit",
+      "Base de vulnérabilités riche sur l'open source et les conteneurs"
+    ],
+    "strengthShort": [
+      "Dev-first",
+      "SAST + SCA",
+      "Conteneurs",
+      "IaC",
+      "Fix PR"
+    ],
+    "limitations": [
+      "Le coût peut grimper pour les grandes équipes",
+      "Nécessite une bonne intégration dans les workflows dev",
+      "Certaines fonctionnalités avancées sont réservées aux plans supérieurs",
+      "Les résultats doivent rester triés par criticité réelle"
+    ],
+    "limitationsShort": [
+      "Coût entreprise",
+      "Intégration requise",
+      "Options avancées",
+      "Triage nécessaire"
+    ],
+    "idealFor": [
+      "Équipes SaaS et DevSecOps",
+      "Développeurs qui veulent sécuriser leurs dépendances",
+      "Organisations utilisant Docker, Kubernetes ou Terraform",
+      "Entreprises qui veulent intégrer la sécurité dans la CI/CD"
+    ],
+    "notFor": [
+      "Utilisateurs cherchant un antivirus classique",
+      "Très petites équipes sans pipeline de développement",
+      "Besoins purement réseau ou SOC"
+    ],
+    "verdict": "Snyk est un excellent choix pour les équipes qui veulent déplacer la sécurité applicative au plus près des développeurs. Sa force tient à la combinaison code, dépendances, conteneurs et IaC dans des workflows déjà utilisés par les équipes produit.",
+    "readMore": [
+      {
+        "href": "/guides/devsecops-shift-left",
+        "title": "Mettre en place une approche DevSecOps",
+        "desc": "Comprendre comment intégrer la sécurité plus tôt dans le cycle de développement."
+      },
+      {
+        "href": "/outils/cybersecurite",
+        "title": "Comparer les outils de cybersécurité",
+        "desc": "Retrouvez les solutions proches de Snyk dans la catégorie cybersécurité."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Snyk analyse-t-il seulement le code source ?",
+        "a": "Non. Snyk couvre aussi les dépendances open source, les images de conteneurs et l'infrastructure as code."
+      },
+      {
+        "q": "Snyk convient-il aux développeurs ?",
+        "a": "Oui, son positionnement est justement d'intégrer la sécurité dans les outils et workflows de développement."
+      },
+      {
+        "q": "Snyk remplace-t-il un SIEM ?",
+        "a": "Non. Snyk sert surtout à sécuriser les applications et la supply chain logicielle, pas à centraliser tous les événements de sécurité."
+      }
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12"
+  },
+  {
+    "id": "semgrep",
+    "slug": "semgrep",
+    "name": "Semgrep",
+    "partner": "Semgrep",
+    "website": "https://semgrep.dev",
+    "affiliateUrl": "https://semgrep.dev",
+    "categories": [
+      "Cybersécurité",
+      "Sécurité applicative"
+    ],
+    "tags": [
+      "SAST",
+      "SCA",
+      "secrets scanning",
+      "AppSec",
+      "CI/CD",
+      "code security"
+    ],
+    "languages": [
+      "en"
+    ],
+    "priceCurrency": "USD",
+    "price": "Community gratuite / plans Pro",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.6,
+      "count": 82
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Plateforme de sécurité du code combinant SAST, SCA et détection de secrets avec intégration IDE et CI/CD.",
+    "highlight": "Un outil AppSec moderne pour détecter vulnérabilités, dépendances à risque et secrets dans le code.",
+    "description": "Semgrep est une plateforme de __sécurité applicative__ qui combine __SAST__, __SCA__ et __détection de secrets__. Elle analyse le code sans l'exécuter, s'intègre aux dépôts et pipelines CI/CD, et permet aux équipes sécurité d'écrire ou d'adapter des règles proches de leur contexte.",
+    "strengths": [
+      "Très bon moteur SAST avec règles lisibles",
+      "Détection de secrets et analyse des dépendances",
+      "Intégrations GitHub, GitLab, Bitbucket, IDE et CI/CD",
+      "Version communautaire utile pour démarrer",
+      "Règles personnalisables pour les besoins internes"
+    ],
+    "strengthShort": [
+      "SAST lisible",
+      "Secrets",
+      "SCA",
+      "CI/CD",
+      "Règles custom"
+    ],
+    "limitations": [
+      "Demande une vraie stratégie de règles pour éviter le bruit",
+      "Les capacités avancées nécessitent les offres payantes",
+      "Moins adapté à la sécurité réseau ou endpoint",
+      "Le triage reste nécessaire sur les grands monorepos"
+    ],
+    "limitationsShort": [
+      "Triage requis",
+      "Pro payant",
+      "Pas endpoint",
+      "Règles à piloter"
+    ],
+    "idealFor": [
+      "Équipes AppSec",
+      "Développeurs voulant du feedback sécurité rapide",
+      "Organisations avec règles internes de sécurité",
+      "Startups et SaaS qui veulent scanner tôt dans la CI/CD"
+    ],
+    "notFor": [
+      "Utilisateurs non techniques",
+      "Protection antivirus grand public",
+      "SOC cherchant seulement de la corrélation de logs"
+    ],
+    "verdict": "Semgrep est particulièrement pertinent pour les équipes qui veulent un SAST compréhensible, personnalisable et proche du flux développeur. Sa combinaison SAST, SCA et secrets en fait une option solide pour réduire les risques avant merge.",
+    "readMore": [
+      {
+        "href": "/guides/securite-application-web",
+        "title": "Sécuriser une application web",
+        "desc": "Les contrôles essentiels à intégrer avant la mise en production."
+      },
+      {
+        "href": "/outils/cybersecurite",
+        "title": "Comparer les outils de cybersécurité",
+        "desc": "Explorez les alternatives AppSec, DevSecOps et sécurité cloud."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Semgrep est-il open source ?",
+        "a": "Semgrep propose une édition communautaire open source, complétée par une plateforme payante pour les usages avancés."
+      },
+      {
+        "q": "Semgrep détecte-t-il les secrets ?",
+        "a": "Oui, Semgrep peut détecter des clés API, jetons et identifiants exposés dans le code."
+      },
+      {
+        "q": "Semgrep est-il adapté à la CI/CD ?",
+        "a": "Oui, il s'intègre aux dépôts et pipelines pour bloquer ou signaler les problèmes avant mise en production."
+      }
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12"
+  },
+  {
+    "id": "wazuh",
+    "slug": "wazuh",
+    "name": "Wazuh",
+    "partner": "Wazuh",
+    "website": "https://wazuh.com",
+    "affiliateUrl": "https://wazuh.com",
+    "categories": [
+      "Cybersécurité",
+      "SIEM"
+    ],
+    "tags": [
+      "XDR",
+      "SIEM",
+      "endpoint security",
+      "open source",
+      "cloud workload",
+      "incident response"
+    ],
+    "languages": [
+      "en",
+      "fr",
+      "es"
+    ],
+    "priceMonthly": 0,
+    "priceCurrency": "USD",
+    "price": "Open source / Cloud managé",
+    "trial": true,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.7,
+      "count": 104
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Plateforme open source XDR et SIEM pour superviser endpoints, workloads cloud, logs, vulnérabilités et incidents.",
+    "highlight": "Un socle open source puissant pour centraliser détection, réponse à incident et conformité.",
+    "description": "Wazuh est une plateforme __open source de cybersécurité__ combinant des capacités __XDR__ et __SIEM__. Elle aide à surveiller les endpoints, les workloads cloud et les environnements on-premise, avec détection de vulnérabilités, analyse de logs, conformité et réponse à incident.",
+    "strengths": [
+      "Approche open source sans coût de licence de base",
+      "Fonctions XDR et SIEM dans une même plateforme",
+      "Agent endpoint, analyse de logs et détection de vulnérabilités",
+      "Cas d'usage conformité et incident response",
+      "Déploiement possible on-premise ou via cloud managé"
+    ],
+    "strengthShort": [
+      "Open source",
+      "XDR + SIEM",
+      "Endpoint",
+      "Conformité",
+      "Cloud managé"
+    ],
+    "limitations": [
+      "Déploiement et exploitation plus techniques qu'un SaaS simple",
+      "Nécessite des compétences SOC ou système",
+      "Le tuning des alertes prend du temps",
+      "Le cloud managé devient payant selon le volume"
+    ],
+    "limitationsShort": [
+      "Technique",
+      "Tuning alertes",
+      "Compétences SOC",
+      "Cloud payant"
+    ],
+    "idealFor": [
+      "PME techniques cherchant un SIEM open source",
+      "Équipes SOC avec budget maîtrisé",
+      "Administrateurs système et cloud",
+      "Organisations voulant garder le contrôle de leurs données"
+    ],
+    "notFor": [
+      "Utilisateurs grand public",
+      "Entreprises sans ressources d'exploitation sécurité",
+      "Besoin d'un antivirus personnel simple"
+    ],
+    "verdict": "Wazuh est une excellente option pour les équipes qui veulent un socle SIEM/XDR open source sérieux. Il demande plus d'exploitation qu'un pur SaaS, mais offre beaucoup de contrôle et une couverture intéressante pour endpoints, cloud et conformité.",
+    "readMore": [
+      {
+        "href": "/guides/creer-soc-entreprise",
+        "title": "Créer un SOC en entreprise",
+        "desc": "Les briques nécessaires pour structurer supervision, alerting et réponse à incident."
+      },
+      {
+        "href": "/comparatifs/meilleurs-siem",
+        "title": "Comparer les SIEM",
+        "desc": "Les critères pour choisir une solution de supervision sécurité."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wazuh est-il vraiment gratuit ?",
+        "a": "La plateforme open source est disponible sans coût de licence, avec des options de service cloud managé et de support selon les besoins."
+      },
+      {
+        "q": "Wazuh remplace-t-il un SIEM ?",
+        "a": "Oui, Wazuh couvre des cas d'usage SIEM, avec aussi des capacités XDR et endpoint."
+      },
+      {
+        "q": "Wazuh convient-il aux petites entreprises ?",
+        "a": "Oui si elles disposent de compétences techniques pour le déploiement, l'exploitation et le tuning des alertes."
+      }
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12"
+  },
+  {
+    "id": "trivy",
+    "slug": "trivy",
+    "name": "Trivy",
+    "partner": "Aqua Security",
+    "website": "https://trivy.dev",
+    "affiliateUrl": "https://trivy.dev",
+    "categories": [
+      "Cybersécurité",
+      "Scanner de vulnérabilités"
+    ],
+    "tags": [
+      "vulnerability scanner",
+      "container security",
+      "Kubernetes",
+      "IaC",
+      "SBOM",
+      "open source"
+    ],
+    "languages": [
+      "en"
+    ],
+    "priceMonthly": 0,
+    "priceCurrency": "USD",
+    "price": "Gratuit open source",
+    "trial": false,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.8,
+      "count": 118
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Scanner open source pour détecter CVE, mauvaises configurations IaC, secrets et risques dans images conteneurs, dépôts et clusters Kubernetes.",
+    "highlight": "Le scanner open source simple et rapide pour sécuriser conteneurs, Kubernetes, dépôts et IaC.",
+    "description": "Trivy est un scanner de sécurité __open source__ maintenu par Aqua Security. Il détecte les __vulnérabilités CVE__, mauvaises configurations, secrets et risques dans les images de conteneurs, dépôts Git, systèmes de fichiers, artefacts et clusters Kubernetes.",
+    "strengths": [
+      "Installation simple en binaire ou via CI/CD",
+      "Très adapté aux conteneurs et à Kubernetes",
+      "Scan CVE, IaC, secrets et SBOM",
+      "Sorties compatibles SARIF, JSON et pipelines DevSecOps",
+      "Open source, rapide et largement adopté"
+    ],
+    "strengthShort": [
+      "Open source",
+      "Conteneurs",
+      "Kubernetes",
+      "IaC",
+      "SBOM"
+    ],
+    "limitations": [
+      "Pas une plateforme SOC complète",
+      "Les faux positifs doivent être triés selon le contexte",
+      "L'orchestration enterprise demande des outils complémentaires",
+      "Ne remplace pas les tests dynamiques applicatifs"
+    ],
+    "limitationsShort": [
+      "Pas SOC",
+      "Triage CVE",
+      "Orchestration externe",
+      "Pas DAST"
+    ],
+    "idealFor": [
+      "Équipes DevOps et Kubernetes",
+      "Projets open source",
+      "Pipelines CI/CD conteneurisés",
+      "Développeurs voulant scanner vite avant déploiement"
+    ],
+    "notFor": [
+      "Utilisateurs non techniques",
+      "Gestion complète d'un programme GRC",
+      "Besoin d'une console enterprise clé en main uniquement"
+    ],
+    "verdict": "Trivy est l'un des meilleurs outils open source pour ajouter rapidement du scan de vulnérabilités et de mauvaises configurations dans une chaîne DevSecOps. Il est simple, efficace et particulièrement pertinent pour les environnements conteneurs et Kubernetes.",
+    "readMore": [
+      {
+        "href": "/guides/scanner-vulnerabilites",
+        "title": "Scanner les vulnérabilités",
+        "desc": "Les bonnes pratiques pour analyser CVE, dépendances et images conteneurs."
+      },
+      {
+        "href": "/outils/cybersecurite",
+        "title": "Comparer les scanners de sécurité",
+        "desc": "Retrouvez les outils proches de Trivy dans la catégorie cybersécurité."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Trivy scanne-t-il seulement les images Docker ?",
+        "a": "Non. Trivy peut aussi analyser des dépôts, systèmes de fichiers, configurations IaC, secrets, SBOM et clusters Kubernetes."
+      },
+      {
+        "q": "Trivy est-il gratuit ?",
+        "a": "Oui, Trivy est un outil open source gratuit."
+      },
+      {
+        "q": "Trivy convient-il à la CI/CD ?",
+        "a": "Oui, il est souvent utilisé dans les pipelines pour bloquer ou signaler des vulnérabilités avant le déploiement."
+      }
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12"
+  },
+  {
+    "id": "falco",
+    "slug": "falco",
+    "name": "Falco",
+    "partner": "CNCF",
+    "website": "https://falco.org",
+    "affiliateUrl": "https://falco.org",
+    "categories": [
+      "Cybersécurité",
+      "Détection intrusion"
+    ],
+    "tags": [
+      "runtime security",
+      "Kubernetes",
+      "containers",
+      "eBPF",
+      "CNCF",
+      "threat detection"
+    ],
+    "languages": [
+      "en"
+    ],
+    "priceMonthly": 0,
+    "priceCurrency": "USD",
+    "price": "Gratuit open source",
+    "trial": false,
+    "status": "published",
+    "source": "éditeur",
+    "rating": {
+      "value": 4.6,
+      "count": 74
+    },
+    "selection": false,
+    "featured": false,
+    "verified": true,
+    "isAffiliate": false,
+    "hasReview": true,
+    "short": "Outil CNCF de sécurité runtime pour détecter en temps réel les comportements suspects sur Linux, conteneurs et Kubernetes.",
+    "highlight": "La référence cloud native pour détecter les menaces runtime dans Kubernetes et les conteneurs.",
+    "description": "Falco est un outil __open source de sécurité runtime__ pour environnements Linux, conteneurs, Kubernetes et cloud. Il observe les événements système, les enrichit avec le contexte cloud native, puis déclenche des alertes en temps réel à partir de règles personnalisables.",
+    "strengths": [
+      "Projet CNCF mature pour la sécurité cloud native",
+      "Détection temps réel sur hosts, conteneurs et Kubernetes",
+      "Règles personnalisables et nombreuses intégrations",
+      "S'appuie sur les événements système et eBPF",
+      "Très utile en complément d'un SIEM ou d'un data lake sécurité"
+    ],
+    "strengthShort": [
+      "Runtime",
+      "Kubernetes",
+      "CNCF",
+      "eBPF",
+      "Règles custom"
+    ],
+    "limitations": [
+      "Nécessite une bonne compréhension des workloads",
+      "Les règles doivent être ajustées pour limiter le bruit",
+      "Pas une solution EDR complète à elle seule",
+      "Moins utile hors environnements Linux/cloud native"
+    ],
+    "limitationsShort": [
+      "Tuning requis",
+      "Technique",
+      "Pas EDR complet",
+      "Linux ciblé"
+    ],
+    "idealFor": [
+      "Équipes Kubernetes",
+      "SRE et plateformes cloud native",
+      "SOC qui veulent enrichir la détection runtime",
+      "Organisations utilisant conteneurs et workloads Linux"
+    ],
+    "notFor": [
+      "Postes utilisateurs Windows classiques",
+      "Débutants sans contexte Kubernetes",
+      "Besoin d'un antivirus grand public"
+    ],
+    "verdict": "Falco est une brique très solide pour détecter les comportements suspects en production cloud native. Il n'est pas une console SOC complète, mais il apporte une visibilité runtime précieuse dans Kubernetes, les conteneurs et les workloads Linux.",
+    "readMore": [
+      {
+        "href": "/guides/ids-ips-entreprise",
+        "title": "IDS/IPS et détection d'intrusion",
+        "desc": "Comprendre les rôles des outils de détection réseau, endpoint et runtime."
+      },
+      {
+        "href": "/outils/cybersecurite",
+        "title": "Comparer les outils de cybersécurité",
+        "desc": "Découvrez les autres solutions de détection et de supervision."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Falco est-il adapté à Kubernetes ?",
+        "a": "Oui, Falco est particulièrement reconnu pour la détection runtime dans les environnements Kubernetes et conteneurs."
+      },
+      {
+        "q": "Falco est-il gratuit ?",
+        "a": "Oui, Falco est un projet open source de la Cloud Native Computing Foundation."
+      },
+      {
+        "q": "Falco remplace-t-il un SIEM ?",
+        "a": "Non. Falco génère des alertes runtime qui peuvent justement être envoyées vers un SIEM ou une plateforme de supervision."
+      }
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12"
   }
 ]
