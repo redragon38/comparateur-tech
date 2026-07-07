@@ -2,6 +2,7 @@ import { Star, Zap, Check, ArrowUpRight, Scale } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useUI, useLocale, pickToolText } from '../lib/i18n';
 
 const CAT_META = {
   'VPN': {
@@ -63,9 +64,9 @@ const DEFAULT = {
   glow: 'rgba(124,58,237,0.22)',
 };
 
-function StarRating({ value }) {
+function StarRating({ value, ariaLabel }) {
   return (
-    <div className="flex gap-0.5" aria-label={`${value} étoiles sur 5`}>
+    <div className="flex gap-0.5" aria-label={ariaLabel}>
       {[...Array(5)].map((_, i) => (
         <svg key={i} className="w-3 h-3" viewBox="0 0 14 14">
           <path
@@ -81,11 +82,15 @@ function StarRating({ value }) {
 export default function ToolCard({ tool }) {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
+  const ui = useUI();
+  const locale = useLocale();
 
   const cat = tool.categories?.[0];
   const m = CAT_META[cat] || DEFAULT;
+  const catLabel = ui.catLabels[m.label] || (m === DEFAULT ? ui.tool.defaultCatLabel : m.label);
   const url = tool.affiliateUrl || tool.website || tool.link || '#';
-  const strengths = (tool.strengthShort || []).slice(0, 3);
+  const strengths = (pickToolText(tool, locale, 'strengthShort') || []).slice(0, 3);
+  const short = pickToolText(tool, locale, 'short') || pickToolText(tool, locale, 'highlight') || '';
 
   return (
     <article
@@ -120,7 +125,7 @@ export default function ToolCard({ tool }) {
               {tool.logo ? (
                 <img
                   src={tool.logo}
-                  alt={`Logo ${tool.name}`}
+                  alt={ui.tool.logoAlt(tool.name)}
                   width={64}
                   height={64}
                   className="w-full h-full object-contain p-1.5"
@@ -155,14 +160,14 @@ export default function ToolCard({ tool }) {
               className="inline-flex items-center text-[9px] font-bold px-2 py-0.5 rounded-full tracking-widest uppercase"
               style={{ color: m.softText, background: m.softBg, border: `1px solid ${m.borderAlpha}` }}
             >
-              {m.label}
+              {catLabel}
             </span>
             {tool.verified && (
               <span
                 className="inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full"
                 style={{ color: '#059669', background: '#ecfdf5', border: '1px solid #a7f3d0' }}
               >
-                <Check className="w-2.5 h-2.5" /> Vérifié
+                <Check className="w-2.5 h-2.5" /> {ui.tool.verified}
               </span>
             )}
             {tool.trial && (
@@ -170,7 +175,7 @@ export default function ToolCard({ tool }) {
                 className="inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full"
                 style={{ color: '#0369a1', background: '#e0f2fe', border: '1px solid #bae6fd' }}
               >
-                <Zap className="w-2.5 h-2.5" /> Essai gratuit
+                <Zap className="w-2.5 h-2.5" /> {ui.tool.freeTrial}
               </span>
             )}
           </div>
@@ -202,7 +207,7 @@ export default function ToolCard({ tool }) {
           className="text-[12px] text-gray-400 line-clamp-2"
           style={{ lineHeight: '1.7' }}
         >
-          {tool.short || tool.highlight || ''}
+          {short}
         </p>
 
         {/* Strength chips */}
@@ -223,12 +228,12 @@ export default function ToolCard({ tool }) {
         {/* Rating */}
         {tool.rating && (
           <div className="flex items-center gap-1.5">
-            <StarRating value={tool.rating.value} />
+            <StarRating value={tool.rating.value} ariaLabel={ui.tool.starsAria(tool.rating.value)} />
             <span className="text-[12px] font-bold" style={{ color: m.color }}>
               {tool.rating.value}
             </span>
             <span className="text-[10px] text-gray-200">·</span>
-            <span className="text-[10px] text-gray-400">{tool.rating.count} avis</span>
+            <span className="text-[10px] text-gray-400">{tool.rating.count} {ui.tool.reviews}</span>
           </div>
         )}
 
@@ -256,7 +261,7 @@ export default function ToolCard({ tool }) {
               e.currentTarget.style.borderColor = '#e5e7eb';
             }}
           >
-            Voir la fiche
+            {ui.tool.viewProfile}
           </Link>
           <Link
             href={`/tool/${tool.id}#compare`}
@@ -273,7 +278,7 @@ export default function ToolCard({ tool }) {
             }}
           >
             <Scale className="w-3.5 h-3.5" />
-            Comparer
+            {ui.tool.compare}
           </Link>
           <a
             href={url}
@@ -296,7 +301,7 @@ export default function ToolCard({ tool }) {
               e.currentTarget.style.transform = '';
             }}
           >
-            Site officiel
+            {ui.tool.officialSite}
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>

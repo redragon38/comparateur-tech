@@ -8,6 +8,72 @@ import Footer from '../../components/Footer';
 import ToolCard from '../../components/ToolCard';
 import SEO, { buildBreadcrumbSchema, buildItemListSchema } from '../../components/SEO';
 import { ChevronRight, Search } from 'lucide-react';
+import { useT } from '../../lib/i18n';
+
+const CONTENT = {
+  fr: {
+    seoTitle: 'Outils tech comparés : IA, VPN, hébergement, sécurité',
+    seoDescription: (n) => `Explorez ${n}+ outils IA, VPN, hébergement, antivirus et cybersécurité avec fiches, notes, prix, essais et avis éditoriaux.`,
+    breadcrumbHome: 'Accueil',
+    breadcrumbPage: 'Tous les outils',
+    itemListName: 'Catalogue Comparateur-Tech',
+    itemListDesc: 'Catalogue des outils IA, VPN, hébergement web, antivirus et cybersécurité sélectionnés par Comparateur-Tech.',
+    badge: '🛠️ Tous les outils',
+    h1: 'Découvrez les meilleurs outils',
+    intro: 'Sélectionnés et testés pour les créateurs, freelances et entrepreneurs.',
+    browseByCategory: 'Parcourir par catégorie',
+    toolCount: (n) => `${n} outil${n > 1 ? 's' : ''}`,
+    searchPlaceholder: 'Rechercher un outil...',
+    searchAria: 'Rechercher un outil',
+    allFilter: 'Tous',
+    noResult: 'Aucun outil trouvé.',
+    catNames: {
+      'Intelligence artificielle': 'Intelligence artificielle',
+      'Hébergement web': 'Hébergement web',
+      'VPN': 'VPN',
+      'Antivirus': 'Antivirus',
+      'Cybersécurité': 'Cybersécurité',
+    },
+    catShort: {
+      'Intelligence artificielle': 'Intelligence',
+      'Hébergement web': 'Hébergement',
+      'VPN': 'VPN',
+      'Antivirus': 'Antivirus',
+      'Cybersécurité': 'Cybersécurité',
+    },
+  },
+  en: {
+    seoTitle: 'Tech tools compared: AI, VPN, hosting, security',
+    seoDescription: (n) => `Explore ${n}+ AI, VPN, hosting, antivirus and cybersecurity tools with reviews, ratings, pricing, trials and editorial verdicts.`,
+    breadcrumbHome: 'Home',
+    breadcrumbPage: 'All tools',
+    itemListName: 'Comparateur-Tech catalog',
+    itemListDesc: 'Catalog of AI, VPN, web hosting, antivirus and cybersecurity tools selected by Comparateur-Tech.',
+    badge: '🛠️ All tools',
+    h1: 'Discover the best tools',
+    intro: 'Selected and tested for creators, freelancers and entrepreneurs.',
+    browseByCategory: 'Browse by category',
+    toolCount: (n) => `${n} tool${n > 1 ? 's' : ''}`,
+    searchPlaceholder: 'Search for a tool...',
+    searchAria: 'Search for a tool',
+    allFilter: 'All',
+    noResult: 'No tools found.',
+    catNames: {
+      'Intelligence artificielle': 'Artificial intelligence',
+      'Hébergement web': 'Web hosting',
+      'VPN': 'VPN',
+      'Antivirus': 'Antivirus',
+      'Cybersécurité': 'Cybersecurity',
+    },
+    catShort: {
+      'Intelligence artificielle': 'AI',
+      'Hébergement web': 'Hosting',
+      'VPN': 'VPN',
+      'Antivirus': 'Antivirus',
+      'Cybersécurité': 'Cybersecurity',
+    },
+  },
+};
 
 function normalizeSlug(text) {
   return text.toLowerCase()
@@ -43,6 +109,7 @@ export async function getStaticProps() {
 
 export default function ToolsPage({ tools, categoryMap }) {
   const router = useRouter();
+  const t = useT(CONTENT);
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -65,12 +132,12 @@ export default function ToolsPage({ tools, categoryMap }) {
 
   const structuredData = [
     buildBreadcrumbSchema([
-      { name: 'Accueil', url: '/' },
-      { name: 'Tous les outils' },
+      { name: t.breadcrumbHome, url: '/' },
+      { name: t.breadcrumbPage },
     ]),
     buildItemListSchema({
-      name: 'Catalogue Comparateur-Tech',
-      description: 'Catalogue des outils IA, VPN, hébergement web, antivirus et cybersécurité sélectionnés par Comparateur-Tech.',
+      name: t.itemListName,
+      description: t.itemListDesc,
       items: tools,
     }),
   ];
@@ -78,8 +145,8 @@ export default function ToolsPage({ tools, categoryMap }) {
   return (
     <>
       <SEO
-        title="Outils tech comparés : IA, VPN, hébergement, sécurité"
-        description={`Explorez ${tools.length}+ outils IA, VPN, hébergement, antivirus et cybersécurité avec fiches, notes, prix, essais et avis éditoriaux.`}
+        title={t.seoTitle}
+        description={t.seoDescription(tools.length)}
         canonical="https://comparateur-tech.com/outils"
         structuredData={structuredData}
       />
@@ -91,13 +158,13 @@ export default function ToolsPage({ tools, categoryMap }) {
           <section className="py-12 sm:py-20 bg-gradient-to-b from-purple-50 to-white border-b border-purple-100">
             <div className="container mx-auto px-4 sm:px-6 text-center">
               <span className="inline-block bg-white border border-purple-200 text-purple-700 px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-sm">
-                🛠️ Tous les outils
+                {t.badge}
               </span>
               <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 text-gray-900 leading-tight">
-                Découvrez les meilleurs outils
+                {t.h1}
               </h1>
               <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto px-2">
-                Sélectionnés et testés pour les créateurs, freelances et entrepreneurs.
+                {t.intro}
               </p>
             </div>
           </section>
@@ -106,7 +173,7 @@ export default function ToolsPage({ tools, categoryMap }) {
 
             {/* Catégories cards */}
             <div className="mb-8 sm:mb-12">
-              <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-5 text-gray-900">Parcourir par catégorie</h2>
+              <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-5 text-gray-900">{t.browseByCategory}</h2>
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
                 {FIXED_CATEGORIES.map(cat => {
                   const meta = CATEGORY_META[cat];
@@ -120,8 +187,8 @@ export default function ToolsPage({ tools, categoryMap }) {
                           {meta.icon}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-bold text-gray-900 text-xs sm:text-sm truncate">{cat}</p>
-                          <p className="text-xs text-gray-500 mt-0.5">{categoryMap[cat]} outil{categoryMap[cat] > 1 ? 's' : ''}</p>
+                          <p className="font-bold text-gray-900 text-xs sm:text-sm truncate">{t.catNames[cat]}</p>
+                          <p className="text-xs text-gray-500 mt-0.5">{t.toolCount(categoryMap[cat])}</p>
                         </div>
                         <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors flex-shrink-0 hidden sm:block" />
                       </div>
@@ -138,13 +205,14 @@ export default function ToolsPage({ tools, categoryMap }) {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="search"
-                  placeholder="Rechercher un outil..."
+                  aria-label={t.searchAria}
+                  placeholder={t.searchPlaceholder}
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
                   className="w-full bg-white border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-purple-400 shadow-sm transition-all text-base"
                 />
               </div>
-              {/* Filtres — scroll horizontal sur mobile */}
+              {/* Filtres, scroll horizontal sur mobile */}
               <div className="scroll-x-mobile gap-2 sm:flex sm:flex-wrap sm:gap-2 -mx-4 px-4 sm:mx-0 sm:px-0">
                 <button
                   onClick={() => setActiveCategory('all')}
@@ -153,7 +221,7 @@ export default function ToolsPage({ tools, categoryMap }) {
                       ? 'gradient-purple text-white shadow-md shadow-purple-300/40'
                       : 'bg-white border border-gray-200 text-gray-700 hover:border-purple-300 hover:text-purple-700'
                   }`}>
-                  Tous ({tools.length})
+                  {t.allFilter} ({tools.length})
                 </button>
                 {FIXED_CATEGORIES.map(cat => {
                   const meta = CATEGORY_META[cat];
@@ -164,14 +232,14 @@ export default function ToolsPage({ tools, categoryMap }) {
                           ? 'gradient-purple text-white shadow-md shadow-purple-300/40'
                           : 'bg-white border border-gray-200 text-gray-700 hover:border-purple-300 hover:text-purple-700'
                       }`}>
-                      {meta.icon} {cat.split(' ')[0]} ({categoryMap[cat]})
+                      {meta.icon} {t.catShort[cat]} ({categoryMap[cat]})
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Grille outils — 2 colonnes sur mobile */}
+            {/* Grille outils, 2 colonnes sur mobile */}
             {filtered.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                 {filtered.map(tool => (
@@ -180,7 +248,7 @@ export default function ToolsPage({ tools, categoryMap }) {
               </div>
             ) : (
               <div className="text-center py-16 sm:py-20">
-                <p className="text-gray-500 text-base sm:text-lg">Aucun outil trouvé.</p>
+                <p className="text-gray-500 text-base sm:text-lg">{t.noResult}</p>
               </div>
             )}
           </div>

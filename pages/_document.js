@@ -1,8 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
-export default function Document() {
+export default function Document(props) {
+  const lang = props.locale === 'en' ? 'en' : 'fr';
   return (
-    <Html lang="fr">
+    <Html lang={lang}>
       <Head>
         {/* ── Favicons ── */}
         <link rel="shortcut icon" href="/favicon.ico" />

@@ -1,31 +1,38 @@
 import { Star, Quote } from 'lucide-react';
+import { useT } from '../lib/i18n';
 
-const testimonials = [
-  {
-    stars: 5,
-    text: "Grâce à Comparateur-Tech, j'ai trouvé le bon hébergeur en 10 minutes. Les comparatifs sont clairs et les avis fiables. Je recommande !",
-    name: "Sarah M.",
-    role: "Freelance Web Designer",
-    initial: "S",
-    gradient: "from-purple-500 to-pink-500",
-  },
-  {
-    stars: 5,
-    text: "Le meilleur site pour comparer les VPN. J'ai passé des heures ailleurs sans décision — ici en 5 minutes c'était réglé.",
-    name: "Thomas K.",
-    role: "Développeur & Digital Nomad",
-    initial: "T",
-    gradient: "from-blue-500 to-purple-500",
-  },
-  {
-    stars: 5,
-    text: "J'utilise Comparateur-Tech comme référence avant chaque achat d'outil IA. La sélection est sérieuse et les notes honnêtes.",
-    name: "Amélie R.",
-    role: "Créatrice de contenu",
-    initial: "A",
-    gradient: "from-pink-500 to-purple-500",
-  },
+const STYLES = [
+  { initial: 'S', gradient: 'from-purple-500 to-pink-500' },
+  { initial: 'T', gradient: 'from-blue-500 to-purple-500' },
+  { initial: 'A', gradient: 'from-pink-500 to-purple-500' },
 ];
+
+const CONTENT = {
+  fr: {
+    badge: '💬 Témoignages',
+    h2: "Ce qu'en disent nos lecteurs",
+    intro: 'Des entrepreneurs et créateurs qui ont trouvé les bons outils grâce à Comparateur-Tech.',
+    testimonials: [
+      { stars: 5, text: "Grâce à Comparateur-Tech, j'ai trouvé le bon hébergeur en 10 minutes. Les comparatifs sont clairs et les avis fiables. Je recommande !", name: 'Sarah M.', role: 'Freelance Web Designer' },
+      { stars: 5, text: "Le meilleur site pour comparer les VPN. J'ai passé des heures ailleurs sans décision, ici en 5 minutes c'était réglé.", name: 'Thomas K.', role: 'Développeur & Digital Nomad' },
+      { stars: 5, text: "J'utilise Comparateur-Tech comme référence avant chaque achat d'outil IA. La sélection est sérieuse et les notes honnêtes.", name: 'Amélie R.', role: 'Créatrice de contenu' },
+    ],
+    socialBold: '12 000+',
+    socialRest: ' lecteurs nous font confiance chaque mois',
+  },
+  en: {
+    badge: '💬 Testimonials',
+    h2: 'What our readers say',
+    intro: 'Entrepreneurs and creators who found the right tools thanks to Comparateur-Tech.',
+    testimonials: [
+      { stars: 5, text: 'Thanks to Comparateur-Tech, I found the right web host in 10 minutes. The comparisons are clear and the reviews reliable. Highly recommended!', name: 'Sarah M.', role: 'Freelance Web Designer' },
+      { stars: 5, text: 'The best site for comparing VPNs. I spent hours elsewhere without deciding, here it was settled in 5 minutes.', name: 'Thomas K.', role: 'Developer & Digital Nomad' },
+      { stars: 5, text: 'I use Comparateur-Tech as my reference before every AI tool purchase. The selection is serious and the ratings honest.', name: 'Amélie R.', role: 'Content creator' },
+    ],
+    socialBold: '12,000+',
+    socialRest: ' readers trust us every month',
+  },
+};
 
 function Stars({ count }) {
   return (
@@ -38,32 +45,34 @@ function Stars({ count }) {
 }
 
 export default function TestimonialsSection() {
+  const t = useT(CONTENT);
+
   return (
     <section className="py-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14">
           <span className="inline-block bg-yellow-50 border border-yellow-200 text-yellow-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            💬 Témoignages
+            {t.badge}
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Ce qu'en disent nos lecteurs</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">{t.h2}</h2>
           <p className="text-gray-500 max-w-lg mx-auto text-lg">
-            Des entrepreneurs et créateurs qui ont trouvé les bons outils grâce à Comparateur-Tech.
+            {t.intro}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+          {t.testimonials.map((item, i) => (
             <div key={i} className="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/10 hover:border-purple-200 transition-all duration-300 flex flex-col">
               <Quote className="w-8 h-8 text-purple-200 mb-4 flex-shrink-0" />
-              <Stars count={t.stars} />
-              <p className="text-gray-600 text-sm leading-relaxed italic flex-1 mb-6">"{t.text}"</p>
+              <Stars count={item.stars} />
+              <p className="text-gray-600 text-sm leading-relaxed italic flex-1 mb-6">"{item.text}"</p>
               <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center font-bold text-white text-sm`}>
-                  {t.initial}
+                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${STYLES[i].gradient} flex items-center justify-center font-bold text-white text-sm`}>
+                  {STYLES[i].initial}
                 </div>
                 <div>
-                  <div className="font-bold text-sm text-gray-900">{t.name}</div>
-                  <div className="text-gray-400 text-xs">{t.role}</div>
+                  <div className="font-bold text-sm text-gray-900">{item.name}</div>
+                  <div className="text-gray-400 text-xs">{item.role}</div>
                 </div>
               </div>
             </div>
@@ -81,7 +90,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
             <span className="text-sm text-gray-600 font-medium">
-              <strong className="text-gray-900">12 000+</strong> lecteurs nous font confiance chaque mois
+              <strong className="text-gray-900">{t.socialBold}</strong>{t.socialRest}
             </span>
           </div>
         </div>

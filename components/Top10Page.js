@@ -3,6 +3,38 @@ import Header from './Header';
 import Footer from './Footer';
 import SEO, { buildItemListSchema, buildBreadcrumbSchema } from './SEO';
 import { Star, ExternalLink, ArrowRight, Trophy, ChevronRight } from 'lucide-react';
+import { useT, useUI, useLocale, pickToolText } from '../lib/i18n';
+
+const UI_TEXT = {
+  fr: {
+    ranking: 'Classement 2026',
+    home: 'Accueil',
+    viewProfile: 'Voir la fiche',
+    officialSite: 'Site officiel',
+    profileShort: 'Fiche',
+    siteShort: 'Site',
+    verified: '✓ Vérifié',
+    trial: '🆓 Essai gratuit',
+    trialShort: '🆓 Essai',
+    reviews: 'avis',
+    scoreLabel: 'Note',
+    othersTitle: 'Voir les autres Top 10',
+  },
+  en: {
+    ranking: '2026 ranking',
+    home: 'Home',
+    viewProfile: 'View details',
+    officialSite: 'Official site',
+    profileShort: 'Details',
+    siteShort: 'Site',
+    verified: '✓ Verified',
+    trial: '🆓 Free trial',
+    trialShort: '🆓 Trial',
+    reviews: 'reviews',
+    scoreLabel: 'Score',
+    othersTitle: 'Explore the other Top 10s',
+  },
+};
 
 function Stars({ val }) {
   return (
@@ -21,7 +53,17 @@ function getRankBadge(rank) {
   return { emoji: '', label: `#${rank + 1}`, bg: 'bg-purple-50 border-purple-200 text-purple-700' };
 }
 
-export default function Top10Page({ tools, meta, others, seo }) {
+export default function Top10Page({ tools, meta, seo }) {
+  const t = useT(UI_TEXT);
+  const ui = useUI();
+  const locale = useLocale();
+
+  // Les autres classements sont dérivés du dictionnaire global,
+  // en excluant la catégorie courante (meta.slug).
+  const others = ui.top10Categories
+    .filter((cat) => cat.slug !== meta.slug)
+    .map((cat) => ({ href: `/top-10-${cat.slug}`, label: `Top 10 ${cat.label}`, icon: cat.icon }));
+
   const structuredData = [
     buildItemListSchema({
       name: `Top 10 ${meta.label}`,
@@ -29,7 +71,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
       items: tools,
     }),
     buildBreadcrumbSchema([
-      { name: 'Accueil', url: '/' },
+      { name: t.home, url: '/' },
       { name: `Top 10 ${meta.label}` },
     ]),
   ];
@@ -44,7 +86,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
         <section className={`py-12 sm:py-20 bg-gradient-to-b ${meta.colorLight} border-b ${meta.border}`}>
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <div className="inline-flex items-center gap-2 bg-white border border-purple-200 text-gray-600 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-sm">
-              <Trophy className="w-3.5 h-3.5" /> Classement 2026
+              <Trophy className="w-3.5 h-3.5" /> {t.ranking}
             </div>
             <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">{meta.icon}</div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 text-gray-900">
@@ -61,6 +103,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
               const badge = getRankBadge(i);
               const url = tool.affiliateUrl || tool.website || '#';
               const isTop3 = i < 3;
+              const short = pickToolText(tool, locale, 'short') || pickToolText(tool, locale, 'highlight');
 
               return (
                 <div key={tool.id}
@@ -94,14 +137,14 @@ export default function Top10Page({ tools, meta, others, seo }) {
                         <h3 className="font-bold text-gray-900 text-base leading-tight truncate">{tool.name}</h3>
                         <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
                           {tool.verified && <span className="text-xs bg-green-50 border border-green-200 text-green-700 px-1.5 py-0.5 rounded-full font-semibold">✓</span>}
-                          {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-1.5 py-0.5 rounded-full font-semibold">🆓 Essai</span>}
+                          {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-1.5 py-0.5 rounded-full font-semibold">{t.trialShort}</span>}
                           {tool.price && <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${meta.badge}`}>{tool.price}</span>}
                         </div>
                       </div>
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 mb-3">{tool.short || tool.highlight}</p>
+                    <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 mb-3">{short}</p>
 
                     {/* Note + barre */}
                     {tool.rating && (
@@ -114,15 +157,15 @@ export default function Top10Page({ tools, meta, others, seo }) {
                       </div>
                     )}
 
-                    {/* Boutons — pleine largeur */}
+                    {/* Boutons, pleine largeur */}
                     <div className="flex gap-2">
                       <Link href={`/tool/${tool.id}`}
                         className="flex-1 border border-gray-200 text-gray-700 py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 hover:bg-purple-50 hover:border-purple-300 transition-all min-h-[44px]">
-                        Voir la fiche <ArrowRight className="w-3 h-3" />
+                        {t.viewProfile} <ArrowRight className="w-3 h-3" />
                       </Link>
                       <a href={url} target="_blank" rel="sponsored nofollow noopener noreferrer"
                         className="flex-1 gradient-purple text-white py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 hover:shadow-md transition-all min-h-[44px]">
-                        Site officiel <ExternalLink className="w-3 h-3" />
+                        {t.officialSite} <ExternalLink className="w-3 h-3" />
                       </a>
                     </div>
                   </div>
@@ -148,14 +191,14 @@ export default function Top10Page({ tools, meta, others, seo }) {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
                           <h3 className="font-bold text-gray-900 text-lg">{tool.name}</h3>
-                          {tool.verified && <span className="text-xs bg-green-50 border border-green-200 text-green-700 px-2 py-0.5 rounded-full font-semibold">✓ Vérifié</span>}
-                          {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-2 py-0.5 rounded-full font-semibold">🆓 Essai gratuit</span>}
+                          {tool.verified && <span className="text-xs bg-green-50 border border-green-200 text-green-700 px-2 py-0.5 rounded-full font-semibold">{t.verified}</span>}
+                          {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-2 py-0.5 rounded-full font-semibold">{t.trial}</span>}
                         </div>
-                        <p className="text-gray-500 text-sm line-clamp-1">{tool.short || tool.highlight}</p>
+                        <p className="text-gray-500 text-sm line-clamp-1">{short}</p>
                         {tool.rating && (
                           <div className="flex items-center gap-2 mt-1.5">
                             <Stars val={tool.rating.value} />
-                            <span className="text-xs text-gray-500">{tool.rating.value}/5 ({tool.rating.count} avis)</span>
+                            <span className="text-xs text-gray-500">{tool.rating.value}/5 ({tool.rating.count} {t.reviews})</span>
                           </div>
                         )}
                       </div>
@@ -166,11 +209,11 @@ export default function Top10Page({ tools, meta, others, seo }) {
                         <div className="flex gap-2">
                           <Link href={`/tool/${tool.id}`}
                             className="border border-purple-200 text-gray-600 px-3 py-2 rounded-xl font-semibold text-xs flex items-center gap-1 hover:bg-purple-50 transition-all min-h-[44px]">
-                            Fiche <ArrowRight className="w-3 h-3" />
+                            {t.profileShort} <ArrowRight className="w-3 h-3" />
                           </Link>
                           <a href={url} target="_blank" rel="sponsored nofollow noopener noreferrer"
                             className="gradient-purple text-white px-3 py-2 rounded-xl font-semibold text-xs flex items-center gap-1 hover:shadow-md transition-all min-h-[44px]">
-                            Site <ExternalLink className="w-3 h-3" />
+                            {t.siteShort} <ExternalLink className="w-3 h-3" />
                           </a>
                         </div>
                       </div>
@@ -180,7 +223,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
                     {tool.rating && (
                       <div className="px-5 pb-4">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-400 w-10">Note</span>
+                          <span className="text-xs text-gray-400 w-10">{t.scoreLabel}</span>
                           <div className="flex-1 bg-gray-100 rounded-full h-1.5 overflow-hidden">
                             <div className={`h-full bg-gradient-to-r ${meta.color} rounded-full`} style={{ width: `${(tool.rating.value / 5) * 100}%` }} />
                           </div>
@@ -196,7 +239,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
 
           {/* ── Autres Top 10 ── */}
           <div className="border-t border-gray-100 pt-10 sm:pt-12">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">Voir les autres Top 10</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">{t.othersTitle}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {others.map(cat => (
                 <Link key={cat.href} href={cat.href}
@@ -204,7 +247,7 @@ export default function Top10Page({ tools, meta, others, seo }) {
                   <span className="text-2xl sm:text-3xl">{cat.icon}</span>
                   <div className="flex-1">
                     <p className="font-bold text-gray-800 text-sm">{cat.label}</p>
-                    <p className="text-xs text-gray-400">Classement 2026</p>
+                    <p className="text-xs text-gray-400">{t.ranking}</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors flex-shrink-0" />
                 </Link>

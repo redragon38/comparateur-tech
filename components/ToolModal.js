@@ -23,7 +23,7 @@ export default function ToolModal({ tool, onClose }) {
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
 
-      {/* Modal — bottom sheet sur mobile, centré sur desktop */}
+      {/* Modal, bottom sheet sur mobile, centré sur desktop */}
       <div className="relative bg-white rounded-t-3xl sm:rounded-2xl w-full sm:max-w-4xl max-h-[92vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl">
         {/* Handle mobile */}
         <div className="flex justify-center pt-3 pb-1 sm:hidden">

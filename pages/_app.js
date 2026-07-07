@@ -4,7 +4,11 @@ import Script from 'next/script'
 import { Space_Grotesk } from 'next/font/google'
 import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
-import AIChatbot from '../components/AIChatbot'
+import dynamic from 'next/dynamic'
+
+// Le chatbot n'est pas critique au premier rendu : on le charge en différé (hors
+// du bundle initial) pour alléger le JS de chaque page. Le contenu reste présent.
+const AIChatbot = dynamic(() => import('../components/AIChatbot'), { ssr: false })
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -82,6 +86,10 @@ export default function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <link rel="dns-prefetch" href="https://comparateur-tech.com" />
+        {/* Pré-résolution DNS des origines tierces (analytics) pour accélérer leur chargement différé. */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://cloud.umami.is" />
+        <link rel="dns-prefetch" href="https://taap.it" />
       </Head>
 
       {/* Trackers chargés en lazy/afterInteractive pour ne pas bloquer le LCP */}

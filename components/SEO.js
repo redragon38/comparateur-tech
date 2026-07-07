@@ -1,10 +1,23 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const SITE_NAME = 'Comparateur-Tech';
 const BASE_URL  = 'https://comparateur-tech.com';
 
+/**
+ * Extrait le chemin « nu » (sans domaine ni préfixe de langue) d'une URL
+ * canonique fournie par une page, pour reconstruire les URLs fr/en.
+ */
+function bareCanonicalPath(canonical) {
+  let path = String(canonical || '/').replace(/^https?:\/\/[^/]+/, '');
+  path = path.replace(/^\/(fr|en)(?=\/|$)/, '');
+  if (!path.startsWith('/')) path = `/${path}`;
+  if (path === '/') return '';
+  return path.replace(/\/+$/, '');
+}
+
 export default function SEO({
-  title = `${SITE_NAME} — Les Meilleurs Outils IA, VPN, Cybersécurité & Hébergement Web`,
+  title = `${SITE_NAME}, Les Meilleurs Outils IA, VPN, Cybersécurité & Hébergement Web`,
   description = "Découvrez et comparez les meilleurs outils IA, VPN, cybersécurité, hébergements web et antivirus. Sélection vérifiée et mise à jour par nos experts.",
   canonical = `${BASE_URL}/`,
   ogImage = `${BASE_URL}/og-image.png`,
@@ -20,6 +33,15 @@ export default function SEO({
   dateModified = null,
   articleSection = null,
 }) {
+  const { locale: rawLocale } = useRouter();
+  const locale = rawLocale === 'en' ? 'en' : 'fr';
+  const path = bareCanonicalPath(canonical);
+  const canonicalUrl = `${BASE_URL}/${locale}${path}`;
+  const alternates = {
+    fr: `${BASE_URL}/fr${path}`,
+    en: `${BASE_URL}/en${path}`,
+  };
+
   const robotsContent = [
     noindex ? 'noindex' : 'index',
     nofollow ? 'nofollow' : 'follow',
@@ -41,12 +63,15 @@ export default function SEO({
       {dateModified  && <meta property="article:modified_time"  content={dateModified}  />}
       {articleSection && <meta property="article:section" content={articleSection} />}
 
-      <link rel="canonical" href={canonical} />
+      <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="fr" href={alternates.fr} />
+      <link rel="alternate" hrefLang="en" href={alternates.en} />
+      <link rel="alternate" hrefLang="x-default" href={alternates.fr} />
       <meta name="robots"    content={robotsContent} />
       <meta name="googlebot" content={robotsContent} />
 
       <meta property="og:type"         content={ogType} />
-      <meta property="og:url"          content={canonical} />
+      <meta property="og:url"          content={canonicalUrl} />
       <meta property="og:title"        content={title} />
       <meta property="og:description"  content={description} />
       <meta property="og:image"        content={ogImage} />
@@ -54,10 +79,11 @@ export default function SEO({
       <meta property="og:image:width"  content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name"    content={SITE_NAME} />
-      <meta property="og:locale"       content="fr_FR" />
+      <meta property="og:locale"       content={locale === 'en' ? 'en_US' : 'fr_FR'} />
+      <meta property="og:locale:alternate" content={locale === 'en' ? 'fr_FR' : 'en_US'} />
 
       <meta name="twitter:card"        content={twitterCard} />
-      <meta name="twitter:url"         content={canonical} />
+      <meta name="twitter:url"         content={canonicalUrl} />
       <meta name="twitter:title"       content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image"       content={ogImage} />

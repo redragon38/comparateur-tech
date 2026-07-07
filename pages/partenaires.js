@@ -3,12 +3,57 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { Send, CheckCircle, AlertCircle, Users2 } from 'lucide-react';
+import { useT } from '../lib/i18n';
 
 const FORMSPREE_URL = 'https://formspree.io/f/xvzwyejw';
 
-
+const CONTENT = {
+  fr: {
+    seoTitle: 'Partenaires, Comparateur-Tech',
+    seoDescription: 'Découvrez nos partenaires et rejoignez le programme partenaire Comparateur-Tech.',
+    badge: '🤝 Programme Partenaires',
+    h1a: 'Développez votre visibilité', h1b: 'avec Comparateur-Tech',
+    heroIntro: "Rejoignez les outils qui font confiance à notre plateforme pour toucher des milliers d'utilisateurs qualifiés en quête de la meilleure solution tech.",
+    becomePartner: 'Devenir partenaire',
+    partnersTitle: 'Nos partenaires',
+    partnersIntro: 'Des outils de référence qui nous font confiance.',
+    noPartner: 'Aucun partenaire pour le moment',
+    beFirst: 'Soyez le premier à rejoindre notre programme partenaire.',
+    startTitle: 'Démarrons ensemble',
+    startIntro: 'Remplissez ce formulaire et nous vous recontactons sous 24h avec une proposition personnalisée.',
+    firstName: 'Prénom *', firstNamePlaceholder: 'Marie',
+    proEmail: 'Email pro *', proEmailPlaceholder: 'marie@entreprise.com',
+    company: 'Entreprise / Outil *', companyPlaceholder: 'Nom de votre entreprise ou outil',
+    project: 'Votre projet *', projectPlaceholder: 'Décrivez votre outil, vos objectifs de partenariat, et toute information utile…',
+    sending: 'Envoi en cours…', submit: 'Envoyer ma demande',
+    success: 'Demande envoyée ! Nous vous recontactons sous 24h.',
+    errorBefore: 'Erreur. Écrivez directement à ',
+  },
+  en: {
+    seoTitle: 'Partners, Comparateur-Tech',
+    seoDescription: 'Discover our partners and join the Comparateur-Tech partner program.',
+    badge: '🤝 Partner Program',
+    h1a: 'Grow your visibility', h1b: 'with Comparateur-Tech',
+    heroIntro: 'Join the tools that trust our platform to reach thousands of qualified users looking for the best tech solution.',
+    becomePartner: 'Become a partner',
+    partnersTitle: 'Our partners',
+    partnersIntro: 'Reference tools that trust us.',
+    noPartner: 'No partners yet',
+    beFirst: 'Be the first to join our partner program.',
+    startTitle: "Let's get started together",
+    startIntro: 'Fill out this form and we will get back to you within 24h with a tailored proposal.',
+    firstName: 'First name *', firstNamePlaceholder: 'Mary',
+    proEmail: 'Work email *', proEmailPlaceholder: 'mary@company.com',
+    company: 'Company / Tool *', companyPlaceholder: 'Your company or tool name',
+    project: 'Your project *', projectPlaceholder: 'Describe your tool, your partnership goals, and any useful information…',
+    sending: 'Sending…', submit: 'Send my request',
+    success: 'Request sent! We will get back to you within 24h.',
+    errorBefore: 'Something went wrong. Email us directly at ',
+  },
+};
 
 export default function PartenairesPage() {
+  const t = useT(CONTENT);
   const [form, setForm] = useState({ prenom: '', email: '', entreprise: '', message: '' });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
@@ -59,8 +104,8 @@ export default function PartenairesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title="Partenaires — Comparateur-Tech"
-        description="Découvrez nos partenaires et rejoignez le programme partenaire Comparateur-Tech."
+        title={t.seoTitle}
+        description={t.seoDescription}
         canonical="https://comparateur-tech.com/partenaires"
       />
       <Header />
@@ -70,19 +115,18 @@ export default function PartenairesPage() {
         <section className="py-14 sm:py-24 bg-gradient-to-b from-purple-50 to-white border-b border-purple-100">
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <span className="inline-block bg-white border border-purple-200 text-gray-600 px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-5 shadow-sm">
-              🤝 Programme Partenaires
+              {t.badge}
             </span>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 text-gray-900 leading-tight">
-              Développez votre visibilité<br />
-              <span className="gradient-text">avec Comparateur-Tech</span>
+              {t.h1a}<br />
+              <span className="gradient-text">{t.h1b}</span>
             </h1>
             <p className="text-gray-600 text-base sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-              Rejoignez les outils qui font confiance à notre plateforme pour toucher des milliers
-              d'utilisateurs qualifiés en quête de la meilleure solution tech.
+              {t.heroIntro}
             </p>
             <a href="#contact"
               className="gradient-purple text-white font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-purple-300/40 hover:-translate-y-0.5 hover:shadow-purple-400/50 transition-all text-base inline-flex items-center justify-center gap-2">
-              <Users2 className="w-5 h-5" /> Devenir partenaire
+              <Users2 className="w-5 h-5" /> {t.becomePartner}
             </a>
           </div>
         </section>
@@ -91,18 +135,18 @@ export default function PartenairesPage() {
         <section className="py-14 sm:py-20 bg-white border-b border-purple-100">
           <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
             <div className="text-center mb-10 sm:mb-14">
-              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-3">Nos partenaires</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-3">{t.partnersTitle}</h2>
               <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
-                Des outils de référence qui nous font confiance.
+                {t.partnersIntro}
               </p>
             </div>
             <div className="flex flex-col items-center justify-center py-16 bg-white rounded-3xl border border-dashed border-purple-200">
               <span className="text-5xl mb-4">🤝</span>
-              <p className="text-gray-500 text-base font-medium mb-2">Aucun partenaire pour le moment</p>
-              <p className="text-gray-400 text-sm mb-6">Soyez le premier à rejoindre notre programme partenaire.</p>
+              <p className="text-gray-500 text-base font-medium mb-2">{t.noPartner}</p>
+              <p className="text-gray-400 text-sm mb-6">{t.beFirst}</p>
               <a href="#contact"
                 className="gradient-purple text-white font-bold px-6 py-2.5 rounded-xl text-sm shadow-md shadow-purple-300/40 hover:-translate-y-0.5 transition-all inline-flex items-center gap-2">
-                Devenir partenaire
+                {t.becomePartner}
               </a>
             </div>
           </div>
@@ -113,10 +157,10 @@ export default function PartenairesPage() {
           <div className="container mx-auto px-4 sm:px-6 max-w-2xl">
             <div className="text-center mb-8 sm:mb-10">
               <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-3">
-                Démarrons ensemble
+                {t.startTitle}
               </h2>
               <p className="text-gray-500 text-base max-w-md mx-auto">
-                Remplissez ce formulaire et nous vous recontactons sous 24h avec une proposition personnalisée.
+                {t.startIntro}
               </p>
             </div>
 
@@ -124,27 +168,27 @@ export default function PartenairesPage() {
               <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">Prénom *</label>
+                    <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">{t.firstName}</label>
                     <input type="text" name="prenom" value={form.prenom} onChange={handleChange}
-                      placeholder="Marie" className={inputClass('prenom')} autoComplete="given-name" />
+                      placeholder={t.firstNamePlaceholder} className={inputClass('prenom')} autoComplete="given-name" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">Email pro *</label>
+                    <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">{t.proEmail}</label>
                     <input type="email" name="email" value={form.email} onChange={handleChange}
-                      placeholder="marie@entreprise.com" className={inputClass('email')} autoComplete="email" inputMode="email" />
+                      placeholder={t.proEmailPlaceholder} className={inputClass('email')} autoComplete="email" inputMode="email" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">Entreprise / Outil *</label>
+                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">{t.company}</label>
                   <input type="text" name="entreprise" value={form.entreprise} onChange={handleChange}
-                    placeholder="Nom de votre entreprise ou outil" className={inputClass('entreprise')} />
+                    placeholder={t.companyPlaceholder} className={inputClass('entreprise')} />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">Votre projet *</label>
+                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">{t.project}</label>
                   <textarea name="message" value={form.message} onChange={handleChange} rows={4}
-                    placeholder="Décrivez votre outil, vos objectifs de partenariat, et toute information utile…"
+                    placeholder={t.projectPlaceholder}
                     className={inputClass('message') + ' resize-none min-h-[110px]'} />
                 </div>
 
@@ -155,23 +199,23 @@ export default function PartenairesPage() {
                       <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
-                      </svg> Envoi en cours…
+                      </svg> {t.sending}
                     </>
                   ) : (
-                    <><Send className="w-4 h-4" /> Envoyer ma demande</>
+                    <><Send className="w-4 h-4" /> {t.submit}</>
                   )}
                 </button>
 
                 {status === 'success' && (
                   <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl text-sm font-medium">
                     <CheckCircle className="w-4 h-4 flex-shrink-0" />
-                    Demande envoyée ! Nous vous recontactons sous 24h.
+                    {t.success}
                   </div>
                 )}
                 {status === 'error' && (
                   <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl text-sm font-medium">
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                    Erreur. Écrivez directement à{' '}
+                    {t.errorBefore}
                     <a href="mailto:comparateur.tech@gmail.com" className="underline">comparateur.tech@gmail.com</a>
                   </div>
                 )}

@@ -77,6 +77,14 @@ const canonicalHostRedirects = [
 const nextConfig = {
   reactStrictMode: true,
 
+  // La locale 'default' est technique : le middleware la redirige en 301 vers /fr.
+  // Toutes les URLs publiques sont donc préfixées /fr ou /en.
+  i18n: {
+    locales: ['default', 'fr', 'en'],
+    defaultLocale: 'default',
+    localeDetection: false,
+  },
+
   // Optimisation images
   images: {
     remotePatterns: [
@@ -97,6 +105,8 @@ const nextConfig = {
   experimental: {
     optimizeCss: false,
     cpus: 1,
+    // Tree-shaking fin des icônes lucide-react → bundle JS plus léger, hydratation/LCP plus rapides.
+    optimizePackageImports: ['lucide-react'],
   },
 
   async headers() {
@@ -109,6 +119,17 @@ const nextConfig = {
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          // HSTS : force HTTPS (durcissement sécurité).
+          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+        ],
+      },
+      {
+        // Cache CDN des pages HTML : le edge sert une copie en ~quelques ms (TTFB bas),
+        // stale-while-revalidate rafraîchit en arrière-plan. Exclut api, _next, le sitemap
+        // et tous les fichiers à extension (assets, robots.txt…) qui ont leur propre cache.
+        source: '/((?!api/|_next/|.*\\..*).*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800' },
         ],
       },
       {
@@ -138,10 +159,6 @@ const nextConfig = {
     return [
       ...canonicalHostRedirects,
       ...legacyInternalRedirects,
-      { source: '/en',        destination: '/',          permanent: true  },
-      { source: '/en/:path*', destination: '/:path*',    permanent: true  },
-      { source: '/fr',        destination: '/',          permanent: true  },
-      { source: '/fr/:path*', destination: '/:path*',    permanent: true  },
       { source: '/outils/',   destination: '/outils',    permanent: true  },
       { source: '/blog/',     destination: '/blog',      permanent: true  },
     ];

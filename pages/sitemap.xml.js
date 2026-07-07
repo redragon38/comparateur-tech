@@ -9,6 +9,7 @@ const STATIC_PAGES = [
   { path: '/', lastmod: '2026-04-19' },
   { path: '/outils', lastmod: '2026-04-19' },
   { path: '/comparatifs', lastmod: '2026-04-19' },
+  { path: '/quiz', lastmod: '2026-07-06' },
   { path: '/blog', lastmod: '2026-05-02' },
   { path: '/methodologie', lastmod: '2026-05-02' },
   { path: '/outils/intelligence-artificielle', lastmod: '2026-05-02' },
@@ -29,6 +30,12 @@ const STATIC_PAGES = [
 
 // Blog articles kept in sync with pages/blog/index.js and pages/blog/[slug].js.
 const BLOG_ARTICLES = [
+  { path: '/blog/comment-choisir-vpn-2026', lastmod: '2026-07-06' },
+  { path: '/blog/comment-choisir-hebergeur-web-2026', lastmod: '2026-07-06' },
+  { path: '/blog/comment-choisir-antivirus-2026', lastmod: '2026-07-06' },
+  { path: '/blog/comment-choisir-outil-ia-2026', lastmod: '2026-07-06' },
+  { path: '/blog/gestionnaire-mots-de-passe-guide-2026', lastmod: '2026-07-06' },
+  { path: '/blog/vpn-gratuit-ou-payant-2026', lastmod: '2026-07-06' },
   { path: '/blog/openai-api-vs-anthropic-api', lastmod: '2026-04-19' },
   { path: '/blog/meilleurs-comparateurs-ia-2025', lastmod: '2025-03-13' },
   { path: '/blog/meilleurs-comparateurs-vpn-2025', lastmod: '2025-03-14' },
@@ -63,13 +70,25 @@ function normalizeLastmod(value, fallback) {
   return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : fallback;
 }
 
+const LOCALES = ['fr', 'en'];
+
+// Une entrée <url> par locale, chacune annotée des alternates hreflang
+// (fr, en, x-default → fr) comme le recommande Google pour le multilingue.
 function urlEntry({ path: urlPath, lastmod }) {
-  return [
+  const bare = urlPath === '/' ? '' : urlPath;
+  const alternates = [
+    `    <xhtml:link rel="alternate" hreflang="fr" href="${escapeXml(`${BASE_URL}/fr${bare}`)}" />`,
+    `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(`${BASE_URL}/en${bare}`)}" />`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(`${BASE_URL}/fr${bare}`)}" />`,
+  ].join('\n');
+
+  return LOCALES.map(locale => [
     '  <url>',
-    `    <loc>${escapeXml(`${BASE_URL}${urlPath}`)}</loc>`,
+    `    <loc>${escapeXml(`${BASE_URL}/${locale}${bare}`)}</loc>`,
+    alternates,
     `    <lastmod>${escapeXml(lastmod)}</lastmod>`,
     '  </url>',
-  ].join('\n');
+  ].join('\n')).join('\n');
 }
 
 function generateSitemap(tools) {
@@ -112,7 +131,7 @@ function generateSitemap(tools) {
   );
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${uniqueUrls.map(urlEntry).join('\n')}
 </urlset>`;
 }

@@ -2,6 +2,33 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import SEO, { buildBreadcrumbSchema } from '../../components/SEO';
 import Link from 'next/link';
+import { useT, useLocale } from '../../lib/i18n';
+import { getNewArticleCards, NEW_BLOG } from '../../lib/new-blog-articles';
+
+const CONTENT = {
+  fr: {
+    seoTitle: 'Blog : guides et comparatifs outils tech',
+    seoDescription: (n) => `${n} guides et comparatifs experts sur les meilleurs outils IA, VPN, hébergement web et antivirus. Conseils vérifiés et mis à jour régulièrement.`,
+    home: 'Accueil', blog: 'Blog',
+    badge: '📰 Blog & Guides',
+    h1a: 'Guides, conseils &', h1b: 'comparatifs experts',
+    intro: "Tout ce qu'il faut savoir sur les meilleurs outils du web, expliqué simplement.",
+    featured: 'À la une', allArticles: 'Tous les articles',
+    readArticle: "Lire l'article →", read: 'Lire →',
+    readingTime: 'de lecture',
+  },
+  en: {
+    seoTitle: 'Blog: tech tool guides and comparisons',
+    seoDescription: (n) => `${n} expert guides and comparisons on the best AI, VPN, web hosting and antivirus tools. Verified advice, regularly updated.`,
+    home: 'Home', blog: 'Blog',
+    badge: '📰 Blog & Guides',
+    h1a: 'Expert guides, tips &', h1b: 'comparisons',
+    intro: 'Everything you need to know about the best tools on the web, explained simply.',
+    featured: 'Featured', allArticles: 'All articles',
+    readArticle: 'Read the article →', read: 'Read →',
+    readingTime: 'read',
+  },
+};
 
 const ARTICLES = [
   { slug: 'openai-api-vs-anthropic-api', category: 'IA', catColor: 'text-gray-900 bg-purple-900/20 border-purple-500/20', date: '19 avr. 2026', readTime: '8 min', title: 'OpenAI API vs Anthropic API : laquelle choisir pour un SaaS ?', excerpt: 'Comparatif clair pour choisir entre OpenAI API et Anthropic API selon vos usages SaaS, vos coûts et votre logique d’intégration.', emoji: '🔌', featured: true },
@@ -21,28 +48,32 @@ const BLOG_ITEM_LIST = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Guides Comparateur-Tech',
-  itemListElement: ARTICLES.map((article, index) => ({
+  itemListElement: [...NEW_BLOG, ...ARTICLES].map((article, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     url: `https://comparateur-tech.com/blog/${article.slug}`,
-    name: article.title,
+    name: article.fr ? article.fr.title : article.title,
   })),
 };
 
 export default function BlogPage() {
-  const featured = ARTICLES.filter(a => a.featured);
-  const rest = ARTICLES.filter(a => !a.featured);
+  const t = useT(CONTENT);
+  const locale = useLocale();
+  // Les nouveaux articles (bilingues) sont ajoutés en tête ; les anciens restent en FR.
+  const all = [...getNewArticleCards(locale), ...ARTICLES];
+  const featured = all.filter(a => a.featured);
+  const rest = all.filter(a => !a.featured);
 
   return (
     <div className="min-h-screen">
       <SEO
-        title="Blog : guides et comparatifs outils tech"
-        description={`${ARTICLES.length} guides et comparatifs experts sur les meilleurs outils IA, VPN, hébergement web et antivirus. Conseils vérifiés et mis à jour régulièrement.`}
+        title={t.seoTitle}
+        description={t.seoDescription(all.length)}
         canonical="https://comparateur-tech.com/blog"
         structuredData={[
           buildBreadcrumbSchema([
-            { name: 'Accueil', url: '/' },
-            { name: 'Blog' },
+            { name: t.home, url: '/' },
+            { name: t.blog },
           ]),
           BLOG_ITEM_LIST,
         ]}
@@ -52,18 +83,18 @@ export default function BlogPage() {
         <section className="relative py-24 text-center overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-900/20 rounded-full blur-3xl pointer-events-none" />
           <div className="container mx-auto px-6 relative z-10">
-            <span className="inline-block bg-purple-900/30 border border-purple-500/30 text-gray-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">📰 Blog & Guides</span>
+            <span className="inline-block bg-purple-900/30 border border-purple-500/30 text-gray-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">{t.badge}</span>
             <h1 className="text-5xl md:text-6xl font-bold mb-5 leading-tight">
-              Guides, conseils &<br />
-              <span className="text-gray-900">comparatifs experts</span>
+              {t.h1a}<br />
+              <span className="text-gray-900">{t.h1b}</span>
             </h1>
-            <p className="text-gray-600 text-lg max-w-lg mx-auto">Tout ce qu'il faut savoir sur les meilleurs outils du web, expliqué simplement.</p>
+            <p className="text-gray-600 text-lg max-w-lg mx-auto">{t.intro}</p>
           </div>
         </section>
 
         <div className="container mx-auto px-6 pb-24">
           <div className="mb-14">
-            <h2 className="text-sm font-bold mb-6 text-gray-900 uppercase tracking-wider">À la une</h2>
+            <h2 className="text-sm font-bold mb-6 text-gray-900 uppercase tracking-wider">{t.featured}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {featured.map((article, i) => (
                 <Link key={i} href={`/blog/${article.slug}`} className="gradient-card rounded-2xl overflow-hidden hover:border-purple-500/50 hover:-translate-y-2 transition-all group block">
@@ -71,11 +102,11 @@ export default function BlogPage() {
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${article.catColor}`}>{article.category}</span>
-                      <span className="text-gray-600 text-xs">{article.date} · {article.readTime} de lecture</span>
+                      <span className="text-gray-600 text-xs">{article.date} · {article.readTime} {t.readingTime}</span>
                     </div>
                     <h3 className="font-bold text-lg mb-2 group-hover:text-gray-900 transition-colors leading-snug">{article.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">{article.excerpt}</p>
-                    <p className="text-gray-600 text-sm font-semibold mt-4">Lire l'article →</p>
+                    <p className="text-gray-600 text-sm font-semibold mt-4">{t.readArticle}</p>
                   </div>
                 </Link>
               ))}
@@ -83,7 +114,7 @@ export default function BlogPage() {
           </div>
 
           <div>
-            <h2 className="text-sm font-bold mb-6 text-gray-900 uppercase tracking-wider">Tous les articles</h2>
+            <h2 className="text-sm font-bold mb-6 text-gray-900 uppercase tracking-wider">{t.allArticles}</h2>
             <div className="space-y-4">
               {rest.map((article, i) => (
                 <Link key={i} href={`/blog/${article.slug}`} className="gradient-card rounded-2xl p-5 flex items-center gap-5 hover:border-purple-500/50 hover:-translate-y-1 transition-all group block">
@@ -96,7 +127,7 @@ export default function BlogPage() {
                     <h3 className="font-bold group-hover:text-gray-900 transition-colors truncate">{article.title}</h3>
                     <p className="text-gray-600 text-sm mt-0.5 truncate">{article.excerpt}</p>
                   </div>
-                  <span className="text-gray-600 text-sm font-semibold flex-shrink-0 hidden sm:block">Lire →</span>
+                  <span className="text-gray-600 text-sm font-semibold flex-shrink-0 hidden sm:block">{t.read}</span>
                 </Link>
               ))}
             </div>

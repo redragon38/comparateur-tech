@@ -1,30 +1,40 @@
 import fs from 'fs';
 import path from 'path';
 import Top10Page from '../components/Top10Page';
+import { useT } from '../lib/i18n';
 
-const META = {
-  label: 'Cybersécurité',
+const STYLE = {
+  slug: 'cybersecurite',
   catFilter: 'Cybersécurité',
   icon: '🔐',
   color: 'from-slate-600 to-gray-800',
   colorLight: 'from-slate-50 to-gray-100',
   border: 'border-slate-200',
   badge: 'bg-slate-50 border-slate-200 text-slate-700',
-  desc: 'Les meilleurs outils de cybersécurité pour protéger vos accès, vos comptes et vos infrastructures en 2026.',
 };
 
-const OTHERS = [
-  { href: '/top-10-intelligence-artificielle', label: 'Top 10 IA', icon: '🤖' },
-  { href: '/top-10-vpn', label: 'Top 10 VPN', icon: '🛡️' },
-  { href: '/top-10-hebergement-web', label: 'Top 10 Hébergement', icon: '🌐' },
-  { href: '/top-10-antivirus', label: 'Top 10 Antivirus', icon: '🦠' },
-];
+const CONTENT = {
+  fr: {
+    label: 'Cybersécurité',
+    desc: 'Les meilleurs outils de cybersécurité pour protéger vos accès, vos comptes et vos infrastructures en 2026.',
+    seoTitle: 'Top 10 cybersécurité 2026 : outils à comparer',
+    seoDescription: 'Découvrez les meilleurs outils de cybersécurité en 2026 pour protéger vos accès, comptes, appareils et infrastructures.',
+    keywords: 'top 10 cybersécurité, meilleur outil cybersécurité 2026, comparatif cybersécurité',
+  },
+  en: {
+    label: 'Cybersecurity',
+    desc: 'The best cybersecurity tools to protect your access, accounts and infrastructure in 2026.',
+    seoTitle: 'Top 10 cybersecurity 2026: tools to compare',
+    seoDescription: 'Discover the best cybersecurity tools in 2026 to protect your access, accounts, devices and infrastructure.',
+    keywords: 'top 10 cybersecurity, best cybersecurity tool 2026, cybersecurity comparison',
+  },
+};
 
 function normalizeSlug(text = '') {
   return text
     .toString()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
@@ -39,7 +49,7 @@ export async function getStaticProps() {
       (tool.categories || []).some((cat) => {
         const raw = String(cat || '').trim();
         return (
-          raw === META.catFilter ||
+          raw === STYLE.catFilter ||
           normalizeSlug(raw) === 'cybersecurite'
         );
       })
@@ -61,16 +71,16 @@ export async function getStaticProps() {
 }
 
 export default function Top10Cybersecurite({ tools }) {
+  const t = useT(CONTENT);
   return (
     <Top10Page
       tools={tools}
-      meta={META}
-      others={OTHERS}
+      meta={{ ...STYLE, label: t.label, desc: t.desc }}
       seo={{
-        title: 'Top 10 cybersécurité 2026 : outils à comparer',
-        description: 'Découvrez les meilleurs outils de cybersécurité en 2026 pour protéger vos accès, comptes, appareils et infrastructures.',
+        title: t.seoTitle,
+        description: t.seoDescription,
         canonical: 'https://comparateur-tech.com/top-10-cybersecurite',
-        keywords: 'top 10 cybersécurité, meilleur outil cybersécurité 2026, comparatif cybersécurité',
+        keywords: t.keywords,
       }}
     />
   );
