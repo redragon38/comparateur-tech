@@ -55,7 +55,7 @@ async function run() {
       process.stdout.write(`\r✓ ${ok} logos téléchargés...`);
     } catch (e) {
       fail++;
-      // silencieux — logo non critique
+      // silencieux, logo non critique
     }
   }
 

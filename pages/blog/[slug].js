@@ -1,33 +1,9 @@
 import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import SEO, { buildArticleSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../components/SEO';
-import { localizePaths, useT, useLocale } from '../../lib/i18n';
-import { getNewArticle, NEW_BLOG_SLUGS } from '../../lib/new-blog-articles';
+import SEO, { buildArticleSchema, buildBreadcrumbSchema } from '../../components/SEO';
+import { localizePaths } from '../../lib/i18n';
 import { ArrowLeft } from 'lucide-react';
-
-const UI = {
-  fr: {
-    notFound: 'Article non trouvé', backToBlog: 'Retour au blog',
-    readingTime: 'de lecture', visitSite: 'Visiter le site →', allArticles: 'Voir tous les articles',
-    home: 'Accueil', blog: 'Blog',
-    faqTitle: 'Questions fréquentes',
-    ctaTitle: 'Passez à l’action',
-    ctaText: 'Trouvez l’outil fait pour vous en une minute, ou explorez notre comparatif complet.',
-    ctaQuiz: 'Faire le quiz',
-    ctaCompare: 'Voir les comparatifs',
-  },
-  en: {
-    notFound: 'Article not found', backToBlog: 'Back to the blog',
-    readingTime: 'read', visitSite: 'Visit the site →', allArticles: 'See all articles',
-    home: 'Home', blog: 'Blog',
-    faqTitle: 'Frequently asked questions',
-    ctaTitle: 'Take action',
-    ctaText: 'Find the tool made for you in one minute, or explore our full comparison.',
-    ctaQuiz: 'Take the quiz',
-    ctaCompare: 'See the comparisons',
-  },
-};
 
 const ARTICLES = {
   'meilleur-vpn-2025': {
@@ -333,34 +309,26 @@ function trimMetaText(text, maxLength) {
 }
 
 export async function getStaticPaths() {
-  const slugs = [...Object.keys(ARTICLES), ...NEW_BLOG_SLUGS];
   return {
-    paths: localizePaths(slugs.map(slug => ({ params: { slug } }))),
+    paths: localizePaths(Object.keys(ARTICLES).map(slug => ({ params: { slug } }))),
     fallback: false,
   };
 }
 
-export async function getStaticProps({ params, locale }) {
-  // Les nouveaux articles sont bilingues (FR/EN) ; les anciens restent en FR.
-  const newArticle = getNewArticle(params.slug, locale);
-  const article = newArticle || ARTICLES[params.slug] || null;
-  const dates = newArticle
-    ? { published: newArticle.published, modified: newArticle.modified, section: newArticle.category }
-    : (ARTICLE_DATES[params.slug] || null);
-  return { props: { article, slug: params.slug, dates } };
+export async function getStaticProps({ params }) {
+  const article = ARTICLES[params.slug] || null;
+  return { props: { article, slug: params.slug } };
 }
 
-export default function ArticlePage({ article, slug, dates }) {
-  const t = useT(UI);
-  const locale = useLocale();
+export default function ArticlePage({ article, slug }) {
   if (!article) {
     return (
       <div className="min-h-screen">
         <Header />
         <div className="container mx-auto px-6 py-20 text-center">
-          <h1 className="text-4xl font-bold mb-4">{t.notFound}</h1>
+          <h1 className="text-4xl font-bold mb-4">Article non trouvé</h1>
           <Link href="/blog" className="gradient-purple text-white px-6 py-3 rounded-xl font-semibold inline-flex items-center gap-2">
-            <ArrowLeft className="w-5 h-5" /> {t.backToBlog}
+            <ArrowLeft className="w-5 h-5" /> Retour au blog
           </Link>
         </div>
         <Footer />
@@ -375,24 +343,23 @@ export default function ArticlePage({ article, slug, dates }) {
         description={trimMetaText(article.intro, 156)}
         canonical={`https://comparateur-tech.com/blog/${slug}`}
         ogType="article"
-        datePublished={dates?.published || '2025-01-01'}
-        dateModified={dates?.modified || '2025-01-01'}
-        articleSection={dates?.section || article.category}
+        datePublished={ARTICLE_DATES[slug]?.published || '2025-01-01'}
+        dateModified={ARTICLE_DATES[slug]?.modified || '2025-01-01'}
+        articleSection={ARTICLE_DATES[slug]?.section || article.category}
         structuredData={[
           buildArticleSchema({
             title: article.title,
             description: article.intro.slice(0, 155).trim(),
             url: `/blog/${slug}`,
-            datePublished: dates?.published || '2025-01-01',
-            dateModified: dates?.modified || '2025-01-01',
-            section: dates?.section || article.category,
+            datePublished: ARTICLE_DATES[slug]?.published || '2025-01-01',
+            dateModified: ARTICLE_DATES[slug]?.modified || '2025-01-01',
+            section: ARTICLE_DATES[slug]?.section || article.category,
           }),
           buildBreadcrumbSchema([
-            { name: t.home, url: '/' },
-            { name: t.blog, url: '/blog' },
+            { name: 'Accueil', url: '/' },
+            { name: 'Blog', url: '/blog' },
             { name: article.title },
           ]),
-          ...(article.faq?.length ? [buildFAQSchema(article.faq)] : []),
         ]}
       />
       <Header />
@@ -401,11 +368,11 @@ export default function ArticlePage({ article, slug, dates }) {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-purple-900/20 rounded-full blur-3xl pointer-events-none" />
           <div className="container mx-auto px-6 max-w-3xl relative z-10">
             <Link href="/blog" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-600 mb-8 transition-colors text-sm">
-              <ArrowLeft className="w-4 h-4" /> {t.backToBlog}
+              <ArrowLeft className="w-4 h-4" /> Retour au blog
             </Link>
             <div className="flex items-center gap-3 mb-6">
               <span className={`text-xs font-bold px-3 py-1 rounded-full border ${article.catColor}`}>{article.category}</span>
-              <span className="text-gray-600 text-sm">{article.date} · {article.readTime} {t.readingTime}</span>
+              <span className="text-gray-600 text-sm">{article.date} · {article.readTime} de lecture</span>
             </div>
             <div className="text-6xl mb-6">{article.emoji}</div>
             <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">{article.title}</h1>
@@ -426,45 +393,15 @@ export default function ArticlePage({ article, slug, dates }) {
                     rel="sponsored nofollow noopener noreferrer"
                     className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-all hover:-translate-y-0.5 shadow-lg shadow-purple-900/30"
                   >
-                    {t.visitSite}
+                    Visiter le site →
                   </a>
                 )}
               </div>
             ))}
           </div>
-
-          {/* FAQ (SEO/GEO) */}
-          {article.faq?.length > 0 && (
-            <div className="mt-8 gradient-card rounded-2xl p-8">
-              <h2 className="text-xl font-bold mb-5">{t.faqTitle}</h2>
-              <div className="space-y-4">
-                {article.faq.map((item) => (
-                  <div key={item.q} className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0">
-                    <h3 className="text-sm font-bold text-gray-900 mb-2">{item.q}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.a}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* CTA maillage interne : quiz + comparatifs (temps sur le site) */}
-          <div className="mt-8 rounded-3xl p-8 text-center bg-gradient-to-br from-purple-50 to-white border border-purple-100">
-            <h2 className="text-xl font-bold text-gray-900 mb-2">{t.ctaTitle}</h2>
-            <p className="text-gray-600 text-sm max-w-md mx-auto mb-6">{t.ctaText}</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/quiz" className="gradient-purple text-white px-7 py-3 rounded-xl font-bold inline-flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-all">
-                🧭 {t.ctaQuiz}
-              </Link>
-              <Link href="/comparatifs" className="bg-white border border-gray-200 text-gray-700 px-7 py-3 rounded-xl font-semibold inline-flex items-center justify-center gap-2 hover:border-purple-300 hover:text-purple-700 transition-all">
-                {t.ctaCompare}
-              </Link>
-            </div>
-          </div>
-
-          <div className="mt-10 pt-10 border-t border-purple-900/30 text-center">
+          <div className="mt-14 pt-10 border-t border-purple-900/30 text-center">
             <Link href="/blog" className="gradient-card border border-purple-500/30 text-gray-900 px-8 py-3 rounded-xl font-semibold hover:border-purple-500/60 hover:-translate-y-0.5 transition-all inline-flex items-center gap-2">
-              <ArrowLeft className="w-4 h-4" /> {t.allArticles}
+              <ArrowLeft className="w-4 h-4" /> Voir tous les articles
             </Link>
           </div>
         </div>

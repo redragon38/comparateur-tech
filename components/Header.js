@@ -1,14 +1,13 @@
 import Link from 'next/link';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Menu, X, ChevronDown, LayoutGrid, Trophy, Mail, Users2 } from 'lucide-react';
-import { useUI } from '../lib/i18n';
+import { X, ChevronDown, LayoutGrid, Trophy } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useUI } from '../lib/i18n';
 
 export default function Header() {
   const ui = useUI();
   const CATEGORIES = ui.categories;
   const TOP10_CATEGORIES = ui.top10Categories;
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [outilsOpen, setOutilsOpen] = useState(false);
   const [top10Open, setTop10Open] = useState(false);
@@ -147,23 +146,11 @@ export default function Header() {
               <Link href="/comparatifs" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
                 {ui.nav.comparisons}
               </Link>
-              <Link href="/quiz" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
-                🧭 {ui.nav.quiz}
-              </Link>
               <Link href="/blog" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
                 {ui.nav.blog}
               </Link>
               <Link href="/methodologie" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
                 {ui.nav.methodology}
-              </Link>
-              <Link href="/newsletter" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200 flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5" /> {ui.nav.newsletter}
-              </Link>
-              <Link href="/contact" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200">
-                {ui.nav.contact}
-              </Link>
-              <Link href="/partenaires" className="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 text-sm font-medium transition-all duration-200 flex items-center gap-1.5">
-                <Users2 className="w-3.5 h-3.5" /> {ui.nav.partners}
               </Link>
 
               {/* Top 10 dropdown */}
@@ -208,35 +195,35 @@ export default function Header() {
                 aria-label={mobileMenuOpen ? ui.nav.closeMenu : ui.nav.openMenu}
                 aria-expanded={mobileMenuOpen}
               >
+              <span
+                className="block w-6 relative"
+                style={{ height: '18px' }}
+              >
                 <span
-                  className="block w-6 relative"
-                  style={{ height: '18px' }}
-                >
-                  <span
-                    className="absolute left-0 h-0.5 bg-current rounded-full transition-all duration-300"
-                    style={{
-                      width: '100%',
-                      top: mobileMenuOpen ? '50%' : '0',
-                      transform: mobileMenuOpen ? 'translateY(-50%) rotate(45deg)' : 'none',
-                    }}
-                  />
-                  <span
-                    className="absolute left-0 h-0.5 bg-current rounded-full transition-all duration-200"
-                    style={{
-                      width: '75%',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      opacity: mobileMenuOpen ? 0 : 1,
-                    }}
-                  />
-                  <span
-                    className="absolute left-0 h-0.5 bg-current rounded-full transition-all duration-300"
-                    style={{
-                      width: '100%',
-                      bottom: mobileMenuOpen ? '50%' : '0',
-                      transform: mobileMenuOpen ? 'translateY(50%) rotate(-45deg)' : 'none',
-                    }}
-                  />
+                  className="absolute left-0 h-0.5 bg-current rounded-full transition-all duration-300"
+                  style={{
+                    width: '100%',
+                    top: mobileMenuOpen ? '50%' : '0',
+                    transform: mobileMenuOpen ? 'translateY(-50%) rotate(45deg)' : 'none',
+                  }}
+                />
+                <span
+                  className="absolute left-0 h-0.5 bg-current rounded-full transition-all duration-200"
+                  style={{
+                    width: '75%',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    opacity: mobileMenuOpen ? 0 : 1,
+                  }}
+                />
+                <span
+                  className="absolute left-0 h-0.5 bg-current rounded-full transition-all duration-300"
+                  style={{
+                    width: '100%',
+                    bottom: mobileMenuOpen ? '50%' : '0',
+                    transform: mobileMenuOpen ? 'translateY(50%) rotate(-45deg)' : 'none',
+                  }}
+                />
                 </span>
               </button>
             </div>
@@ -281,16 +268,19 @@ export default function Header() {
             ))}
           </div>
           <Link href="/comparatifs" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">⚖️ {ui.nav.comparisons}</Link>
-          <Link href="/quiz" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">🧭 {ui.nav.quiz}</Link>
+          <Link href="/methodologie" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">📘 {ui.nav.methodology}</Link>
           <Link href="/blog" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">📰 {ui.nav.blog}</Link>
-          <Link href="/newsletter" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">📧 {ui.nav.newsletter}</Link>
-          <Link href="/contact" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">✉️ {ui.nav.contact}</Link>
-          <Link href="/partenaires" onClick={closeMobile} className="block text-gray-700 hover:text-purple-700 px-3 py-2.5 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">🤝 {ui.nav.partners}</Link>
+          <div className="pt-3 border-t border-purple-50">
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 px-3 py-1.5">{ui.nav.usefulLinks}</p>
+            <Link href="/newsletter" onClick={closeMobile} className="block text-gray-500 hover:text-purple-700 px-3 py-2 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">📧 {ui.nav.newsletter}</Link>
+            <Link href="/contact" onClick={closeMobile} className="block text-gray-500 hover:text-purple-700 px-3 py-2 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">✉️ {ui.nav.contact}</Link>
+            <Link href="/partenaires" onClick={closeMobile} className="block text-gray-500 hover:text-purple-700 px-3 py-2 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">🤝 {ui.nav.partners}</Link>
+          </div>
           <div className="pt-3 border-t border-purple-50">
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 px-3 py-1.5">🏆 {ui.nav.top10}</p>
             {TOP10_CATEGORIES.map(cat => (
               <Link key={cat.slug} href={`/top-10-${cat.slug}`} onClick={closeMobile} className="flex items-center gap-2 text-gray-700 hover:text-purple-700 px-3 py-2 rounded-xl hover:bg-purple-50 text-sm transition-all duration-150">
-                <span>{cat.icon}</span>Top 10 {cat.label}
+                <span>{cat.icon}</span>{ui.nav.top10} {cat.label}
               </Link>
             ))}
           </div>
@@ -300,7 +290,7 @@ export default function Header() {
               onClick={closeMobile}
               className="w-full gradient-purple text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 text-base shadow-lg shadow-purple-300/40 min-h-[48px] active:scale-98 transition-all duration-150"
             >
-              {ui.nav.exploreTools}
+              ⚡ Explorer les outils
             </Link>
           </div>
         </div>

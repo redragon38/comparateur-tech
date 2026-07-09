@@ -3,64 +3,20 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { Mail, Clock, Globe, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { useT } from '../lib/i18n';
 
 const FORMSPREE_ID = 'xvzwyejw';
 const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
 
-const CONTENT = {
-  fr: {
-    seoTitle: 'Contact, Comparateur-Tech',
-    seoDescription: "Contactez l'équipe Comparateur-Tech pour toute question ou partenariat.",
-    badge: '✉️ Contactez-nous',
-    h1a: 'On est là pour', h1b: 'vous aider',
-    intro: 'Une question, un partenariat, une suggestion ? Réponse sous 24h.',
-    infoEmail: 'Email', infoDelay: 'Délai', infoDelayValue: 'Sous 24h en jours ouvrés',
-    infoAvailability: 'Disponibilité', infoAvailabilityValue: 'France & International',
-    formTitle: 'Envoyer un message',
-    firstName: 'Prénom', firstNamePlaceholder: 'Marie',
-    email: 'Email', emailPlaceholder: 'marie@email.com',
-    subject: 'Sujet', message: 'Message', messagePlaceholder: 'Votre message…',
-    sending: 'Envoi…', send: 'Envoyer le message',
-    success: 'Message envoyé ! Nous vous répondrons sous 24h.',
-    errorBefore: 'Erreur. Écrivez à ',
-    subjects: [
-      { value: '', label: 'Choisissez un sujet…', disabled: true },
-      { value: 'question', label: '❓ Question générale' },
-      { value: 'partenariat', label: '🤝 Partenariat' },
-      { value: 'suggestion', label: "💡 Suggestion d'outil" },
-      { value: 'support', label: '🛠️ Support technique' },
-      { value: 'autre', label: '💬 Autre' },
-    ],
-  },
-  en: {
-    seoTitle: 'Contact, Comparateur-Tech',
-    seoDescription: 'Contact the Comparateur-Tech team for any question or partnership.',
-    badge: '✉️ Contact us',
-    h1a: "We're here to", h1b: 'help you',
-    intro: 'A question, a partnership, a suggestion? We reply within 24h.',
-    infoEmail: 'Email', infoDelay: 'Response time', infoDelayValue: 'Within 24h on business days',
-    infoAvailability: 'Availability', infoAvailabilityValue: 'France & International',
-    formTitle: 'Send a message',
-    firstName: 'First name', firstNamePlaceholder: 'Mary',
-    email: 'Email', emailPlaceholder: 'mary@email.com',
-    subject: 'Subject', message: 'Message', messagePlaceholder: 'Your message…',
-    sending: 'Sending…', send: 'Send message',
-    success: "Message sent! We'll reply within 24h.",
-    errorBefore: 'Something went wrong. Email ',
-    subjects: [
-      { value: '', label: 'Choose a subject…', disabled: true },
-      { value: 'question', label: '❓ General question' },
-      { value: 'partenariat', label: '🤝 Partnership' },
-      { value: 'suggestion', label: '💡 Tool suggestion' },
-      { value: 'support', label: '🛠️ Technical support' },
-      { value: 'autre', label: '💬 Other' },
-    ],
-  },
-};
+const SUBJECTS = [
+  { value: '', label: 'Choisissez un sujet…', disabled: true },
+  { value: 'question', label: '❓ Question générale' },
+  { value: 'partenariat', label: '🤝 Partenariat' },
+  { value: 'suggestion', label: '💡 Suggestion d\'outil' },
+  { value: 'support', label: '🛠️ Support technique' },
+  { value: 'autre', label: '💬 Autre' },
+];
 
 export default function ContactPage() {
-  const t = useT(CONTENT);
   const [form, setForm] = useState({ prenom: '', email: '', sujet: '', message: '' });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
@@ -106,8 +62,8 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title={t.seoTitle}
-        description={t.seoDescription}
+        title="Contact, Comparateur-Tech"
+        description="Contactez l'équipe Comparateur-Tech pour toute question ou partenariat."
         canonical="https://comparateur-tech.com/contact"
       />
       <Header />
@@ -117,14 +73,14 @@ export default function ContactPage() {
         <section className="py-12 sm:py-20 bg-gradient-to-b from-purple-50 to-white border-b border-purple-100">
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <span className="inline-block bg-white border border-purple-200 text-gray-600 px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-sm">
-              {t.badge}
+              ✉️ Contactez-nous
             </span>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 text-gray-900">
-              {t.h1a}<br />
-              <span className="text-gray-900">{t.h1b}</span>
+              On est là pour<br />
+              <span className="text-gray-900">vous aider</span>
             </h1>
             <p className="text-gray-600 text-base sm:text-lg max-w-md mx-auto">
-              {t.intro}
+              Une question, un partenariat, une suggestion ? Réponse sous 24h.
             </p>
           </div>
         </section>
@@ -133,9 +89,9 @@ export default function ContactPage() {
           {/* Infos, horizontal scroll sur mobile, grid sur desktop */}
           <div className="flex gap-3 sm:grid sm:grid-cols-3 sm:gap-4 mb-8 sm:mb-10 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0">
             {[
-              { icon: <Mail className="w-5 h-5 text-purple-700" />, title: t.infoEmail, content: 'comparateur.tech@gmail.com' },
-              { icon: <Clock className="w-5 h-5 text-purple-700" />, title: t.infoDelay, content: t.infoDelayValue },
-              { icon: <Globe className="w-5 h-5 text-purple-700" />, title: t.infoAvailability, content: t.infoAvailabilityValue },
+              { icon: <Mail className="w-5 h-5 text-purple-700" />, title: 'Email', content: 'comparateur.tech@gmail.com' },
+              { icon: <Clock className="w-5 h-5 text-purple-700" />, title: 'Délai', content: 'Sous 24h en jours ouvrés' },
+              { icon: <Globe className="w-5 h-5 text-purple-700" />, title: 'Disponibilité', content: 'France & International' },
             ].map((card, i) => (
               <div key={i} className="bg-white rounded-2xl p-4 flex items-start gap-3 border border-purple-100 shadow-sm flex-shrink-0 w-56 sm:w-auto">
                 <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center flex-shrink-0">
@@ -151,59 +107,59 @@ export default function ContactPage() {
 
           {/* Formulaire */}
           <div className="bg-white rounded-3xl p-5 sm:p-8 border border-purple-100 shadow-sm">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6">{t.formTitle}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6">Envoyer un message</h2>
 
             <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5">
               {/* Prénom + Email, empilés sur mobile */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">{t.firstName}</label>
+                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">Prénom</label>
                   <input type="text" name="prenom" value={form.prenom} onChange={handleChange}
-                    placeholder={t.firstNamePlaceholder} className={inputClass('prenom')} autoComplete="given-name" />
+                    placeholder="Marie" className={inputClass('prenom')} autoComplete="given-name" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">{t.email}</label>
+                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">Email</label>
                   <input type="email" name="email" value={form.email} onChange={handleChange}
-                    placeholder={t.emailPlaceholder} className={inputClass('email')} autoComplete="email" inputMode="email" />
+                    placeholder="marie@email.com" className={inputClass('email')} autoComplete="email" inputMode="email" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">{t.subject}</label>
+                <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">Sujet</label>
                 <select name="sujet" value={form.sujet} onChange={handleChange}
                   className={`${inputClass('sujet')} cursor-pointer`}>
-                  {t.subjects.map(s => (
+                  {SUBJECTS.map(s => (
                     <option key={s.value} value={s.value} disabled={s.disabled}>{s.label}</option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">{t.message}</label>
+                <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">Message</label>
                 <textarea name="message" value={form.message} onChange={handleChange} rows={5}
-                  placeholder={t.messagePlaceholder}
+                  placeholder="Votre message…"
                   className={`${inputClass('message')} resize-none min-h-[120px]`} />
               </div>
 
               <button type="submit" disabled={status === 'loading'}
                 className="w-full gradient-purple text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-purple-300/50 transition-all disabled:opacity-60 text-base min-h-[52px]">
                 {status === 'loading' ? (
-                  <><svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/></svg> {t.sending}</>
+                  <><svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/></svg> Envoi…</>
                 ) : (
-                  <><Send className="w-4 h-4" /> {t.send}</>
+                  <><Send className="w-4 h-4" /> Envoyer le message</>
                 )}
               </button>
 
               {status === 'success' && (
                 <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl text-sm font-medium">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" />
-                  {t.success}
+                  Message envoyé ! Nous vous répondrons sous 24h.
                 </div>
               )}
               {status === 'error' && (
                 <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl text-sm font-medium">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                  {t.errorBefore}
+                  Erreur. Écrivez à{' '}
                   <a href="mailto:comparateur.tech@gmail.com" className="underline">comparateur.tech@gmail.com</a>
                 </div>
               )}

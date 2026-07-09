@@ -1,7 +1,26 @@
 import { X, Star, ExternalLink, Check, AlertCircle, Users, Target } from 'lucide-react';
 import { useEffect } from 'react';
+import { useLocale, applyLocale } from '../lib/i18n';
 
-export default function ToolModal({ tool, onClose }) {
+const TM = {
+  fr: {
+    close: 'Fermer', verified: '✓ Vérifié', ratingLabel: (v) => `Note éditoriale : ${v}/5`,
+    description: 'Description', strengths: 'Points forts', limitations: 'Limites', idealFor: 'Idéal pour',
+    verdict: 'Notre verdict', faqTitle: 'Questions fréquentes', free: 'Gratuit',
+    trialAvailable: '✓ Essai gratuit disponible', visitSite: 'Visiter le site',
+  },
+  en: {
+    close: 'Close', verified: '✓ Verified', ratingLabel: (v) => `Editorial rating: ${v}/5`,
+    description: 'Description', strengths: 'Strengths', limitations: 'Limitations', idealFor: 'Ideal for',
+    verdict: 'Our verdict', faqTitle: 'Frequently asked questions', free: 'Free',
+    trialAvailable: '✓ Free trial available', visitSite: 'Visit the website',
+  },
+};
+
+export default function ToolModal({ tool: rawTool, onClose }) {
+  const locale = useLocale();
+  const t = TM[locale] || TM.fr;
+  const tool = applyLocale(rawTool, locale);
   useEffect(() => {
     const handleEscape = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', handleEscape);
@@ -35,7 +54,7 @@ export default function ToolModal({ tool, onClose }) {
           onClick={onClose}
           className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10"
           data-testid="close-modal-btn"
-          aria-label="Fermer"
+          aria-label={t.close}
         >
           <X className="w-5 h-5 text-gray-700" />
         </button>
@@ -56,14 +75,14 @@ export default function ToolModal({ tool, onClose }) {
               <div className="flex items-center gap-2 mb-1.5 flex-wrap pr-10">
                 <h2 className="text-xl sm:text-3xl font-bold text-gray-900">{tool.name}</h2>
                 {tool.verified && (
-                  <span className="bg-green-50 border border-green-200 text-green-700 px-2 py-0.5 rounded-full text-xs font-semibold flex-shrink-0">✓ Vérifié</span>
+                  <span className="bg-green-50 border border-green-200 text-green-700 px-2 py-0.5 rounded-full text-xs font-semibold flex-shrink-0">{t.verified}</span>
                 )}
               </div>
 
               {tool.rating && (
                 <div className="flex items-center gap-2 mb-2">
                   <div className="flex">{renderStars(tool.rating.value)}</div>
-                  <span className="text-gray-500 text-xs sm:text-sm">{tool.rating.value}/5 ({tool.rating.count} avis)</span>
+                  <span className="text-gray-500 text-xs sm:text-sm">{t.ratingLabel(tool.rating.value)}</span>
                 </div>
               )}
 
@@ -87,7 +106,7 @@ export default function ToolModal({ tool, onClose }) {
           {tool.description && (
             <div>
               <h3 className="text-base sm:text-xl font-bold mb-3 flex items-center gap-2 text-gray-900">
-                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" /> Description
+                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" /> {t.description}
               </h3>
               <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{tool.description.replace(/__/g, '')}</p>
             </div>
@@ -96,7 +115,7 @@ export default function ToolModal({ tool, onClose }) {
           {tool.strengths?.length > 0 && (
             <div>
               <h3 className="text-base sm:text-xl font-bold mb-3 flex items-center gap-2 text-gray-900">
-                <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" /> Points forts
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" /> {t.strengths}
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 {tool.strengths.map((s, idx) => (
@@ -112,7 +131,7 @@ export default function ToolModal({ tool, onClose }) {
           {tool.limitations?.length > 0 && (
             <div>
               <h3 className="text-base sm:text-xl font-bold mb-3 flex items-center gap-2 text-gray-900">
-                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" /> Limites
+                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" /> {t.limitations}
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 {tool.limitations.map((l, idx) => (
@@ -128,7 +147,7 @@ export default function ToolModal({ tool, onClose }) {
           {tool.idealFor?.length > 0 && (
             <div>
               <h3 className="text-base sm:text-xl font-bold mb-3 flex items-center gap-2 text-gray-900">
-                <Target className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" /> Idéal pour
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" /> {t.idealFor}
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 {tool.idealFor.map((item, idx) => (
@@ -143,14 +162,14 @@ export default function ToolModal({ tool, onClose }) {
 
           {tool.verdict && (
             <div className="bg-purple-50 rounded-xl p-4 sm:p-6 border border-purple-100">
-              <h3 className="text-base sm:text-xl font-bold mb-2 sm:mb-4 text-gray-900">Notre verdict</h3>
+              <h3 className="text-base sm:text-xl font-bold mb-2 sm:mb-4 text-gray-900">{t.verdict}</h3>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{tool.verdict.replace(/__/g, '')}</p>
             </div>
           )}
 
           {tool.faq?.length > 0 && (
             <div>
-              <h3 className="text-base sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Questions fréquentes</h3>
+              <h3 className="text-base sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">{t.faqTitle}</h3>
               <div className="space-y-3">
                 {tool.faq.slice(0, 5).map((item, idx) => (
                   <div key={idx} className="bg-gray-50 rounded-xl p-4">
@@ -167,8 +186,8 @@ export default function ToolModal({ tool, onClose }) {
         <div className="sticky bottom-0 p-4 sm:p-8 border-t border-gray-100 bg-white safe-bottom">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <div className="text-2xl sm:text-3xl font-bold text-gray-900">{tool.price || 'Gratuit'}</div>
-              {tool.trial && <span className="text-gray-500 text-xs sm:text-sm font-medium">✓ Essai gratuit disponible</span>}
+              <div className="text-2xl sm:text-3xl font-bold text-gray-900">{tool.price || t.free}</div>
+              {tool.trial && <span className="text-gray-500 text-xs sm:text-sm font-medium">{t.trialAvailable}</span>}
             </div>
             <a
               href={tool.website || tool.affiliateUrl || '#'}
@@ -177,7 +196,7 @@ export default function ToolModal({ tool, onClose }) {
               className="gradient-purple text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-purple-500/50 transition-all min-h-[52px]"
               data-testid="visit-website-btn"
             >
-              <span>Visiter le site</span>
+              <span>{t.visitSite}</span>
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
           </div>

@@ -4,50 +4,58 @@ import { ArrowRight, Shield, Globe, Zap } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useT } from '../lib/i18n';
 
-const CONTENT = {
+const DICT = {
   fr: {
     quickLinks: [
       { label: '🤖 Outils IA', href: '/outils/intelligence-artificielle' },
-      { label: '💻 IA coding', href: '/outils/intelligence-artificielle/code' },
-      { label: '🔌 OpenAI API', href: '/tool/openai-api' },
-      { label: '🧠 Anthropic API', href: '/tool/anthropic-api' },
-      { label: '✨ IA générative', href: '/ia-generative' },
+      { label: '⚖️ ChatGPT vs Claude', href: '/comparatifs/chatgpt-vs-claude' },
+      { label: '💻 IA développeurs', href: '/guides/meilleurs-outils-ia-pour-developpeurs' },
+      { label: '🛡️ VPN streaming', href: '/guides/meilleur-vpn-streaming' },
+      { label: '🌐 Hébergement WordPress', href: '/guides/meilleur-hebergement-wordpress' },
     ],
-    badge: 'Focus éditorial : API IA, assistants de code et outils pour développeurs',
-    h1Line1: 'Comparez les meilleurs outils IA,',
-    h1Line2: 'API et assistants de code',
-    intro: "Nous comparons des API IA, assistants génératifs, IDE boostés à l'IA et outils pour développeurs avec une grille claire : usages réels, limites, alternatives, verdict et liens internes utiles pour aller plus vite.",
-    searchPlaceholder: 'Rechercher OpenAI API, Cursor, Claude, embeddings...',
-    searchButton: 'Rechercher',
     methodologyLink: '📘 Notre méthodologie',
-    stats: ['Outils analysés', 'Outils IA comparés', 'Outils IA pour développeurs'],
-    trust: [
-      { title: (n) => `${n} fiches relues`, desc: 'Compteurs et blocs de confiance basés sur les données du site, pas sur un chiffre figé en homepage.' },
-      { title: (n) => `${n} verticales couvertes`, desc: "Le cluster IA est priorisé, sans casser les autres catégories déjà présentes sur le site." },
-      { title: () => 'Verdicts orientés usage', desc: "Chaque fiche met l'accent sur le bon profil, les limites réelles et les alternatives internes à comparer." },
-    ],
+    badge: 'Comparateur-Tech aide à choisir les meilleurs outils IA, VPN, hébergements et logiciels tech',
+    h1a: 'Comparez les meilleurs outils IA,',
+    h1b: 'VPN, hébergement et cybersécurité',
+    subtitle: 'Trouvez rapidement l’outil adapté à votre besoin : prix, essais gratuits, points forts, limites, alternatives et verdict éditorial en langage simple.',
+    affiliate: 'Certains liens peuvent être affiliés, sans coût supplémentaire pour vous.',
+    searchPlaceholder: 'Rechercher ChatGPT, NordVPN, Hostinger, Bitdefender...',
+    searchButton: 'Rechercher',
+    statAnalyzed: 'Outils analysés',
+    statAI: 'Outils IA',
+    statAIDev: 'Outils IA dev',
+    reviewsChecked: 'fiches relues',
+    verticalsCovered: 'verticales couvertes',
+    card1Desc: 'Les fiches sont structurées pour comparer vite : prix, essai, points forts, limites et alternatives.',
+    card2Desc: 'IA, VPN, hébergement, antivirus et cybersécurité restent accessibles depuis des pages dédiées.',
+    card3Title: 'Verdicts orientés usage',
+    card3Desc: 'Chaque fiche aide à savoir pour qui l’outil est adapté, et dans quel cas il vaut mieux comparer une alternative.',
   },
   en: {
     quickLinks: [
       { label: '🤖 AI tools', href: '/outils/intelligence-artificielle' },
-      { label: '💻 AI coding', href: '/outils/intelligence-artificielle/code' },
-      { label: '🔌 OpenAI API', href: '/tool/openai-api' },
-      { label: '🧠 Anthropic API', href: '/tool/anthropic-api' },
-      { label: '✨ Generative AI', href: '/ia-generative' },
+      { label: '⚖️ ChatGPT vs Claude', href: '/comparatifs/chatgpt-vs-claude' },
+      { label: '💻 AI for developers', href: '/guides/meilleurs-outils-ia-pour-developpeurs' },
+      { label: '🛡️ Streaming VPN', href: '/guides/meilleur-vpn-streaming' },
+      { label: '🌐 WordPress hosting', href: '/guides/meilleur-hebergement-wordpress' },
     ],
-    badge: 'Editorial focus: AI APIs, code assistants and developer tools',
-    h1Line1: 'Compare the best AI tools,',
-    h1Line2: 'APIs and code assistants',
-    intro: 'We compare AI APIs, generative assistants, AI-powered IDEs and developer tools with a clear grid: real-world use cases, limitations, alternatives, a verdict and useful internal links to move faster.',
-    searchPlaceholder: 'Search OpenAI API, Cursor, Claude, embeddings...',
-    searchButton: 'Search',
     methodologyLink: '📘 Our methodology',
-    stats: ['Tools analyzed', 'AI tools compared', 'AI tools for developers'],
-    trust: [
-      { title: (n) => `${n} reviewed listings`, desc: 'Counters and trust blocks computed from the site\'s real data, not a hardcoded homepage figure.' },
-      { title: (n) => `${n} verticals covered`, desc: 'The AI cluster is prioritized without breaking the other categories already on the site.' },
-      { title: () => 'Use-case driven verdicts', desc: 'Each listing focuses on the right profile, real limitations and internal alternatives to compare.' },
-    ],
+    badge: 'Comparateur-Tech helps you choose the best AI, VPN, hosting and tech tools',
+    h1a: 'Compare the best AI tools,',
+    h1b: 'VPN, hosting and cybersecurity',
+    subtitle: 'Quickly find the right tool for your needs: pricing, free trials, strengths, limitations, alternatives and a plain-language editorial verdict.',
+    affiliate: 'Some links may be affiliated, at no extra cost to you.',
+    searchPlaceholder: 'Search ChatGPT, NordVPN, Hostinger, Bitdefender...',
+    searchButton: 'Search',
+    statAnalyzed: 'Tools analyzed',
+    statAI: 'AI tools',
+    statAIDev: 'AI dev tools',
+    reviewsChecked: 'reviews checked',
+    verticalsCovered: 'verticals covered',
+    card1Desc: 'Reviews are structured for fast comparison: price, trial, strengths, limitations and alternatives.',
+    card2Desc: 'AI, VPN, hosting, antivirus and cybersecurity stay accessible from dedicated pages.',
+    card3Title: 'Use-case driven verdicts',
+    card3Desc: 'Every review helps you know who the tool fits, and when it is better to compare an alternative.',
   },
 };
 
@@ -83,8 +91,8 @@ function AnimatedCounter({ target, suffix, delay = 0 }) {
 }
 
 export default function HeroSection({ stats }) {
+  const t = useT(DICT);
   const router = useRouter();
-  const t = useT(CONTENT);
   const [query, setQuery] = useState('');
   const [mounted, setMounted] = useState(false);
 
@@ -99,9 +107,9 @@ export default function HeroSection({ stats }) {
   };
 
   const primaryStats = [
-    { value: stats?.totalTools || 129, suffix: '+', label: t.stats[0] },
-    { value: stats?.aiTools || 46, suffix: '', label: t.stats[1] },
-    { value: stats?.aiDevTools || 18, suffix: '', label: t.stats[2] },
+    { value: stats?.totalTools || 129, suffix: '+', label: t.statAnalyzed },
+    { value: stats?.aiTools || 46, suffix: '', label: t.statAI },
+    { value: stats?.aiDevTools || 18, suffix: '', label: t.statAIDev },
   ];
 
   return (
@@ -144,9 +152,9 @@ export default function HeroSection({ stats }) {
             transition: 'opacity 550ms 60ms cubic-bezier(0.16,1,0.3,1), transform 550ms 60ms cubic-bezier(0.16,1,0.3,1)',
           }}
         >
-          {t.h1Line1}
+          {t.h1a}
           <br className="hidden sm:block" />
-          {t.h1Line2}
+          {t.h1b}
         </h1>
 
         <p
@@ -157,7 +165,10 @@ export default function HeroSection({ stats }) {
             transition: 'opacity 600ms 120ms cubic-bezier(0.16,1,0.3,1), transform 600ms 120ms cubic-bezier(0.16,1,0.3,1)',
           }}
         >
-          {t.intro}
+          {t.subtitle}
+        </p>
+        <p className="mx-auto -mt-5 mb-8 max-w-2xl text-sm text-gray-500">
+          {t.affiliate}
         </p>
 
         <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-6 sm:mb-8">
@@ -165,7 +176,6 @@ export default function HeroSection({ stats }) {
             <input
               type="text"
               placeholder={t.searchPlaceholder}
-              aria-label={t.searchButton}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="flex-1 px-4 py-3 rounded-xl bg-transparent outline-none text-gray-900 placeholder-gray-400"
@@ -201,18 +211,18 @@ export default function HeroSection({ stats }) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto mt-8 sm:mt-10">
           <div className="bg-white/80 backdrop-blur border border-gray-200 rounded-2xl p-4 text-left shadow-sm">
             <Shield className="w-5 h-5 text-purple-600 mb-2" />
-            <p className="font-semibold text-gray-900">{t.trust[0].title(stats?.verifiedTools || 127)}</p>
-            <p className="text-sm text-gray-500 mt-1">{t.trust[0].desc}</p>
+            <p className="font-semibold text-gray-900">{stats?.verifiedTools || 127} {t.reviewsChecked}</p>
+            <p className="text-sm text-gray-500 mt-1">{t.card1Desc}</p>
           </div>
           <div className="bg-white/80 backdrop-blur border border-gray-200 rounded-2xl p-4 text-left shadow-sm">
             <Globe className="w-5 h-5 text-purple-600 mb-2" />
-            <p className="font-semibold text-gray-900">{t.trust[1].title(stats?.totalCategories || 5)}</p>
-            <p className="text-sm text-gray-500 mt-1">{t.trust[1].desc}</p>
+            <p className="font-semibold text-gray-900">{stats?.totalCategories || 5} {t.verticalsCovered}</p>
+            <p className="text-sm text-gray-500 mt-1">{t.card2Desc}</p>
           </div>
           <div className="bg-white/80 backdrop-blur border border-gray-200 rounded-2xl p-4 text-left shadow-sm">
             <Zap className="w-5 h-5 text-purple-600 mb-2" />
-            <p className="font-semibold text-gray-900">{t.trust[2].title()}</p>
-            <p className="text-sm text-gray-500 mt-1">{t.trust[2].desc}</p>
+            <p className="font-semibold text-gray-900">{t.card3Title}</p>
+            <p className="text-sm text-gray-500 mt-1">{t.card3Desc}</p>
           </div>
         </div>
       </div>

@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "dev:watch": "npm run watch-sitemap & next dev -p 3000",
-    "prebuild": "node scripts/postbuild.js",
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint",
+    "translate": "node scripts/translate-tools.js",
+    "translate:rich": "node scripts/translate-tools.js --only-rich",
+    "translate:dry": "node scripts/translate-tools.js --dry-run",
     "sitemap": "node scripts/generate-sitemap.js",
     "sitemap:validate": "node scripts/validate-sitemap.js",
     "watch-sitemap": "node scripts/watch-sitemap.js",
@@ -26,7 +28,7 @@
     "dotenv": "^16.3.0",
     "fs-extra": "^11.2.0",
     "lucide-react": "^0.263.1",
-    "next": "14.1.0",
+    "next": "^15.5.20",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

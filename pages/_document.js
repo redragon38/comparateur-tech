@@ -19,25 +19,6 @@ export default function Document(props) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
 
-        {/* ── Schéma global Organisation ── */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Comparateur-Tech",
-              "url": "https://comparateur-tech.com",
-              "logo": "https://comparateur-tech.com/logo.png",
-              "sameAs": [],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "customer service",
-                "url": "https://comparateur-tech.com/contact"
-              }
-            })
-          }}
-        />
       </Head>
       <body>
         <Main />

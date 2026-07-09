@@ -1,73 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User, Loader2, Minimize2 } from 'lucide-react';
-import { useT } from '../lib/i18n';
-
-const LINKS_BLOCK = `When the question concerns tech tools, digital products or online services, you can also point to the site:
-- /outils/intelligence-artificielle → AI tools
-- /outils/vpn → VPN
-- /outils/hebergement-web → Web hosting
-- /outils/antivirus → Antivirus
-- /outils/cybersecurite → Cybersecurity
-- /top-10-intelligence-artificielle, /top-10-vpn, /top-10-hebergement-web, /top-10-antivirus, /top-10-cybersecurite → Top 10
-- /comparatifs → Detailed comparisons
-- /blog → Articles and guides`;
-
-const CONTENT = {
-  fr: {
-    systemPrompt: `Tu es l'assistant IA de Comparateur-Tech, une plateforme française qui compare et référence les meilleurs outils tech du web.
-
-Tu es un assistant universel, capable de répondre à n'importe quelle question : tech, culture générale, coding, science, histoire, conseils, traduction, rédaction, maths, etc. Tu n'as aucune restriction de sujet.
-
-${LINKS_BLOCK}
-
-Réponds toujours en français sauf si l'utilisateur écrit dans une autre langue (dans ce cas adapte-toi à sa langue). Sois clair, précis et utile. Adapte la longueur de ta réponse à la complexité de la question.`,
-    greeting: "Bonjour ! 👋 Je suis l'assistant IA de Comparateur-Tech. Posez-moi n'importe quelle question, tech, culture générale, coding, conseils... Je suis là pour tout !",
-    fallbackReply: "Désolé, je n'ai pas pu répondre. Réessayez !",
-    errorReply: 'Une erreur est survenue. Veuillez réessayer dans un instant.',
-    quickQuestions: ['Meilleur VPN en 2026 ?', "Explique-moi c'est quoi l'IA", 'Écris-moi un email pro'],
-    title: 'Assistant Comparateur-Tech', online: 'En ligne',
-    minimize: 'Minimiser', close: 'Fermer',
-    placeholder: 'Posez votre question...', send: 'Envoyer',
-    footer: 'ia de comparateur-tech',
-    openChat: 'Ouvrir le chat', closeChat: 'Fermer le chat',
-  },
-  en: {
-    systemPrompt: `You are the AI assistant of Comparateur-Tech, a French platform that compares and lists the best tech tools on the web.
-
-You are a universal assistant, able to answer any question: tech, general knowledge, coding, science, history, advice, translation, writing, math, etc. You have no topic restriction.
-
-${LINKS_BLOCK}
-
-Always respond in English unless the user writes in another language (in which case adapt to their language). Be clear, precise and helpful. Adapt the length of your answer to the complexity of the question.`,
-    greeting: "Hi! 👋 I'm the Comparateur-Tech AI assistant. Ask me anything, tech, general knowledge, coding, advice... I'm here for it all!",
-    fallbackReply: "Sorry, I couldn't answer. Please try again!",
-    errorReply: 'Something went wrong. Please try again in a moment.',
-    quickQuestions: ['Best VPN in 2026?', 'Explain what AI is', 'Write me a professional email'],
-    title: 'Comparateur-Tech Assistant', online: 'Online',
-    minimize: 'Minimize', close: 'Close',
-    placeholder: 'Ask your question...', send: 'Send',
-    footer: 'comparateur-tech ai',
-    openChat: 'Open chat', closeChat: 'Close chat',
-  },
-};
 
 export default function AIChatbot() {
-  const t = useT(CONTENT);
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [messages, setMessages] = useState([{ role: 'assistant', content: t.greeting }]);
+  const [messages, setMessages] = useState([
+    {
+      role: 'assistant',
+      content: 'Bonjour ! 👋 Je suis l\'assistant IA de Comparateur-Tech. Posez-moi n\'importe quelle question, tech, culture générale, coding, conseils... Je suis là pour tout !'
+    }
+  ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [hasNotification, setHasNotification] = useState(true);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
-
-  // Réinitialise le message d'accueil si la langue change et que rien n'a été envoyé.
-  useEffect(() => {
-    setMessages(prev => (prev.length === 1 && prev[0].role === 'assistant'
-      ? [{ role: 'assistant', content: t.greeting }]
-      : prev));
-  }, [t.greeting]);
 
   useEffect(() => {
     if (isOpen && messagesEndRef.current) {
@@ -101,7 +48,8 @@ export default function AIChatbot() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          system: t.systemPrompt,
+          // Le system prompt est désormais défini côté serveur (/api/chat) pour
+          // empêcher l'utilisation de l'endpoint comme proxy LLM générique.
           messages: history,
         }),
       });
@@ -112,13 +60,13 @@ export default function AIChatbot() {
         throw new Error(data.error || 'API error');
       }
 
-      const reply = data.reply || t.fallbackReply;
+      const reply = data.reply || 'Désolé, je n\'ai pas pu répondre. Réessayez !';
       setMessages(prev => [...prev, { role: 'assistant', content: reply }]);
     } catch (err) {
       console.error('Chat error:', err);
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: t.errorReply
+        content: 'Une erreur est survenue. Veuillez réessayer dans un instant.'
       }]);
     } finally {
       setIsLoading(false);
@@ -132,7 +80,11 @@ export default function AIChatbot() {
     }
   };
 
-  const QUICK_QUESTIONS = t.quickQuestions;
+  const QUICK_QUESTIONS = [
+    'Meilleur VPN en 2026 ?',
+    'Explique-moi c\'est quoi l\'IA',
+    'Écris-moi un email pro',
+  ];
 
   return (
     <>
@@ -157,10 +109,10 @@ export default function AIChatbot() {
                   <Bot className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm leading-tight">{t.title}</p>
+                  <p className="text-white font-semibold text-sm leading-tight">Assistant Comparateur-Tech</p>
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                    <p className="text-purple-200 text-xs">{t.online}</p>
+                    <p className="text-purple-200 text-xs">En ligne</p>
                   </div>
                 </div>
               </div>
@@ -168,14 +120,14 @@ export default function AIChatbot() {
                 <button
                   onClick={() => setIsMinimized(!isMinimized)}
                   className="w-7 h-7 rounded-lg hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-colors"
-                  aria-label={t.minimize}
+                  aria-label="Minimiser"
                 >
                   <Minimize2 className="w-3.5 h-3.5" />
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="w-7 h-7 rounded-lg hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-colors"
-                  aria-label={t.close}
+                  aria-label="Fermer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -259,7 +211,7 @@ export default function AIChatbot() {
                       value={input}
                       onChange={e => setInput(e.target.value)}
                       onKeyDown={handleKeyDown}
-                      placeholder={t.placeholder}
+                      placeholder="Posez votre question..."
                       rows={1}
                       className="flex-1 resize-none rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 transition-all"
                       style={{ maxHeight: '96px' }}
@@ -269,7 +221,7 @@ export default function AIChatbot() {
                       onClick={sendMessage}
                       disabled={!input.trim() || isLoading}
                       className="w-10 h-10 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-200 rounded-xl flex items-center justify-center transition-colors flex-shrink-0"
-                      aria-label={t.send}
+                      aria-label="Envoyer"
                     >
                       {isLoading
                         ? <Loader2 className="w-4 h-4 text-white animate-spin" />
@@ -277,7 +229,7 @@ export default function AIChatbot() {
                       }
                     </button>
                   </div>
-                  <p className="text-center text-gray-300 text-xs mt-2">{t.footer}</p>
+                  <p className="text-center text-gray-300 text-xs mt-2">ia de comparateur-tech</p>
                 </div>
               </>
             )}
@@ -288,7 +240,7 @@ export default function AIChatbot() {
         <button
           onClick={() => { setIsOpen(!isOpen); }}
           className="w-14 h-14 bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-2xl shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95"
-          aria-label={isOpen ? t.closeChat : t.openChat}
+          aria-label={isOpen ? 'Fermer le chat' : 'Ouvrir le chat'}
         >
           {isOpen
             ? <X className="w-6 h-6 text-white" />

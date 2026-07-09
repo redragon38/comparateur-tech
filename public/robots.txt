@@ -11,3 +11,4 @@ Allow: /_next/static/
 Allow: /_next/image
 
 Sitemap: https://comparateur-tech.com/sitemap.xml
+Sitemap: https://comparateur-tech.com/sitemap-priority.xml

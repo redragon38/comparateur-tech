@@ -1,4 +1,54 @@
-# Changelog - TheCreamAI
+# Changelog - Comparateur-Tech
+
+## [1.3.0] - 2026-07-04
+
+### 🆕 Nouvelles pages comparateur
+- ✨ `/comparatifs/claude-vs-gemini` — Claude vs Gemini
+- ✨ `/comparatifs/surfshark-vs-cyberghost` — Surfshark vs CyberGhost
+- ✨ `/comparatifs/proton-vpn-vs-mullvad` — Proton VPN vs Mullvad
+- ✨ `/comparatifs/bitwarden-vs-1password` — Bitwarden vs 1Password
+- ✨ `/comparatifs/norton-vs-mcafee` — Norton 360 vs McAfee
+
+### 🔒 Sécurité
+- 🚨 `env.local` (clé GROQ_API_KEY) retiré du suivi git — **révoquer et régénérer la clé**, elle reste dans l'historique git
+- ⬆️ Next.js 14.2.35 → 15.5.20 : corrige la faille de contournement middleware (GHSA-36qx-fr4f-26g5) et `form-data` (CRLF injection)
+- 🛡️ Headers renforcés : HSTS `preload`, `Referrer-Policy: strict-origin-when-cross-origin`, Permissions-Policy étendue (payment, usb, browsing-topics), `Cross-Origin-Opener-Policy`, `X-XSS-Protection: 0`
+- 🛡️ `/api/*` : `Cache-Control: no-store` + `X-Robots-Tag: noindex`
+- 🛡️ `/api/chat` : contrôle de l'en-tête `Origin` (bloque l'utilisation de l'endpoint par des sites tiers)
+
+### 🔒 Vague 6 : durcissement sécurité maximal
+- 🛡️ CSP `script-src` **sans `'unsafe-inline'`** : scripts GA/tracker externalisés dans `public/js/` — une injection XSS ne peut plus exécuter aucun script inline ni charger de script hors liste blanche
+- 🐛 XSS potentiel corrigé : `renderMarkdown` (fiches outils) échappe désormais le HTML avant injection dans le DOM
+- 🛡️ `/api/chat` : Content-Type application/json obligatoire (415 sinon) + body plafonné à 128 Ko
+- 🛡️ Header `X-Permitted-Cross-Domain-Policies: none` + `/.well-known/security.txt` (contact sécurité)
+- 🔍 Scan de l'historique git : seul secret trouvé = clé Groq (30+ commits publics) → **rotation obligatoire**
+
+### 🔗 Vague 5 : actifs citables (link building)
+- ✨ `/barometre-prix-vpn` — étude : prix promo vs renouvellement de 14 VPN (prix vérifiés le 2026-07-04, sources presse spécialisée + sites officiels), schema Dataset + Article + FAQPage, bloc « Citer cette étude » (CC BY 4.0)
+- ✨ `/calculateur-hebergement` — outil gratuit interactif : coût réel d'un hébergement sur 3 ans (renouvellement + domaine) + comparatif du coût réel de 10 hébergeurs, schema WebApplication
+- 📊 `lib/barometre-data.js` — données centralisées, ⚠️ prix à re-vérifier sur les sites officiels avant déploiement puis trimestriellement (mettre à jour BAROMETRE_DATE)
+
+### 📝 Vague 4 : enrichissement des 30 pages historiques
+- ✍️ Contenu éditorial unique (3 sections + 3 FAQ, ~600 mots) rédigé pour les 30 anciennes pages de décision : 9 comparatifs, 5 pages alternatives, 16 guides
+- ✅ Les 47 pages de décision font désormais toutes 950-1150 mots visibles avec schema Article + FAQPage et date de mise à jour
+
+### 📝 Vague 3 : profondeur de contenu
+- ✨ DecisionPage supporte désormais `sections` (contenu éditorial H2), `faq` (questions personnalisées fusionnées), date « Mis à jour le » visible et schema Article (datePublished/dateModified)
+- ✍️ Contenu éditorial unique rédigé pour les 17 pages récentes : ~450 mots + 3 FAQ par page → les pages passent de ~300 à 1000+ mots visibles
+
+### 🆕 Vague 2 : 12 pages SEO longue traîne
+- ✨ Comparatifs : chatgpt-vs-perplexity, chatgpt-vs-mistral, nordvpn-vs-cyberghost, expressvpn-vs-surfshark, avast-vs-avg, bitdefender-vs-kaspersky, dashlane-vs-1password, hostinger-vs-siteground
+- ✨ Guides : meilleure-ia-gratuite, meilleur-vpn-android, meilleur-vpn-iphone, meilleur-antivirus-pas-cher
+- 🗺️ Champ `lastmod` par page de décision dans les deux sitemaps (signal de fraîcheur pour Google)
+- 🔗 Nouvelles pages maillées depuis /comparatifs, /guides, silos IA/VPN/hébergement/cybersécurité et groupes de liens SEO
+
+### 🔍 SEO
+- 🔗 Consolidation des duels : quand une page éditoriale `/comparatifs/<slug>` existe, les pages programmatiques `/comparatif/...` pointent dessus (canonical + liens internes + sitemaps) — plus de contenu dupliqué
+- 🔗 Maillage interne : groupes de liens SEO mis à jour vers les pages éditoriales, nouveaux duels ajoutés sur `/comparatifs`
+- 🗺️ `lastmod` de `/comparatifs` mis à jour dans les deux sitemaps
+
+### 🐛 Corrections
+- 🐛 `pages/comparatifs.js` : `CATEGORY_ALIASES` non défini faisait planter le filtre par catégorie (ReferenceError) — remplacé par `matchesMainCategory`
 
 ## [1.2.0] - 2026-02-14
 

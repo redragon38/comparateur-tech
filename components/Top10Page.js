@@ -1,38 +1,26 @@
 import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
-import SEO, { buildItemListSchema, buildBreadcrumbSchema } from './SEO';
+import SEO, { buildItemListSchema, buildBreadcrumbSchema, buildFAQSchema } from './SEO';
 import { Star, ExternalLink, ArrowRight, Trophy, ChevronRight } from 'lucide-react';
-import { useT, useUI, useLocale, pickToolText } from '../lib/i18n';
+import { useLocale } from '../lib/i18n';
 
-const UI_TEXT = {
+const T10 = {
   fr: {
-    ranking: 'Classement 2026',
-    home: 'Accueil',
-    viewProfile: 'Voir la fiche',
-    officialSite: 'Site officiel',
-    profileShort: 'Fiche',
-    siteShort: 'Site',
-    verified: '✓ Vérifié',
-    trial: '🆓 Essai gratuit',
-    trialShort: '🆓 Essai',
-    reviews: 'avis',
-    scoreLabel: 'Note',
-    othersTitle: 'Voir les autres Top 10',
+    ranking: 'Classement 2026', home: 'Accueil',
+    verified: '✓ Vérifié', verifiedShort: '✓', freeTrial: '🆓 Essai gratuit', freeTrialShort: '🆓 Essai',
+    seeProfile: 'Voir la fiche', officialSite: 'Site officiel', profileShort: 'Fiche', siteShort: 'Site',
+    ratingLabel: (v) => `Note éditoriale : ${v}/5`, note: 'Note',
+    goFurther: (label) => `Pour aller plus loin sur les ${label}`,
+    faqTitle: 'Questions fréquentes', otherTop10: 'Voir les autres Top 10',
   },
   en: {
-    ranking: '2026 ranking',
-    home: 'Home',
-    viewProfile: 'View details',
-    officialSite: 'Official site',
-    profileShort: 'Details',
-    siteShort: 'Site',
-    verified: '✓ Verified',
-    trial: '🆓 Free trial',
-    trialShort: '🆓 Trial',
-    reviews: 'reviews',
-    scoreLabel: 'Score',
-    othersTitle: 'Explore the other Top 10s',
+    ranking: '2026 ranking', home: 'Home',
+    verified: '✓ Verified', verifiedShort: '✓', freeTrial: '🆓 Free trial', freeTrialShort: '🆓 Trial',
+    seeProfile: 'View details', officialSite: 'Official site', profileShort: 'Details', siteShort: 'Site',
+    ratingLabel: (v) => `Editorial rating: ${v}/5`, note: 'Rating',
+    goFurther: (label) => `Go further on ${label}`,
+    faqTitle: 'Frequently asked questions', otherTop10: 'See the other Top 10',
   },
 };
 
@@ -53,17 +41,8 @@ function getRankBadge(rank) {
   return { emoji: '', label: `#${rank + 1}`, bg: 'bg-purple-50 border-purple-200 text-purple-700' };
 }
 
-export default function Top10Page({ tools, meta, seo }) {
-  const t = useT(UI_TEXT);
-  const ui = useUI();
-  const locale = useLocale();
-
-  // Les autres classements sont dérivés du dictionnaire global,
-  // en excluant la catégorie courante (meta.slug).
-  const others = ui.top10Categories
-    .filter((cat) => cat.slug !== meta.slug)
-    .map((cat) => ({ href: `/top-10-${cat.slug}`, label: `Top 10 ${cat.label}`, icon: cat.icon }));
-
+export default function Top10Page({ tools, meta, others, seo, faqs = [], clusterLinks = [] }) {
+  const t = T10[useLocale()] || T10.fr;
   const structuredData = [
     buildItemListSchema({
       name: `Top 10 ${meta.label}`,
@@ -74,6 +53,7 @@ export default function Top10Page({ tools, meta, seo }) {
       { name: t.home, url: '/' },
       { name: `Top 10 ${meta.label}` },
     ]),
+    ...(faqs.length ? [buildFAQSchema(faqs)] : []),
   ];
 
   return (
@@ -103,7 +83,6 @@ export default function Top10Page({ tools, meta, seo }) {
               const badge = getRankBadge(i);
               const url = tool.affiliateUrl || tool.website || '#';
               const isTop3 = i < 3;
-              const short = pickToolText(tool, locale, 'short') || pickToolText(tool, locale, 'highlight');
 
               return (
                 <div key={tool.id}
@@ -137,14 +116,14 @@ export default function Top10Page({ tools, meta, seo }) {
                         <h3 className="font-bold text-gray-900 text-base leading-tight truncate">{tool.name}</h3>
                         <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
                           {tool.verified && <span className="text-xs bg-green-50 border border-green-200 text-green-700 px-1.5 py-0.5 rounded-full font-semibold">✓</span>}
-                          {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-1.5 py-0.5 rounded-full font-semibold">{t.trialShort}</span>}
+                          {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-1.5 py-0.5 rounded-full font-semibold">{t.freeTrialShort}</span>}
                           {tool.price && <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${meta.badge}`}>{tool.price}</span>}
                         </div>
                       </div>
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 mb-3">{short}</p>
+                    <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 mb-3">{tool.short || tool.highlight}</p>
 
                     {/* Note + barre */}
                     {tool.rating && (
@@ -161,7 +140,7 @@ export default function Top10Page({ tools, meta, seo }) {
                     <div className="flex gap-2">
                       <Link href={`/tool/${tool.id}`}
                         className="flex-1 border border-gray-200 text-gray-700 py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 hover:bg-purple-50 hover:border-purple-300 transition-all min-h-[44px]">
-                        {t.viewProfile} <ArrowRight className="w-3 h-3" />
+                        {t.seeProfile} <ArrowRight className="w-3 h-3" />
                       </Link>
                       <a href={url} target="_blank" rel="sponsored nofollow noopener noreferrer"
                         className="flex-1 gradient-purple text-white py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 hover:shadow-md transition-all min-h-[44px]">
@@ -192,13 +171,13 @@ export default function Top10Page({ tools, meta, seo }) {
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
                           <h3 className="font-bold text-gray-900 text-lg">{tool.name}</h3>
                           {tool.verified && <span className="text-xs bg-green-50 border border-green-200 text-green-700 px-2 py-0.5 rounded-full font-semibold">{t.verified}</span>}
-                          {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-2 py-0.5 rounded-full font-semibold">{t.trial}</span>}
+                          {tool.trial && <span className="text-xs bg-cyan-50 border border-cyan-200 text-cyan-700 px-2 py-0.5 rounded-full font-semibold">{t.freeTrial}</span>}
                         </div>
-                        <p className="text-gray-500 text-sm line-clamp-1">{short}</p>
+                        <p className="text-gray-500 text-sm line-clamp-1">{tool.short || tool.highlight}</p>
                         {tool.rating && (
                           <div className="flex items-center gap-2 mt-1.5">
                             <Stars val={tool.rating.value} />
-                            <span className="text-xs text-gray-500">{tool.rating.value}/5 ({tool.rating.count} {t.reviews})</span>
+                            <span className="text-xs text-gray-500">{t.ratingLabel(tool.rating.value)}</span>
                           </div>
                         )}
                       </div>
@@ -223,7 +202,7 @@ export default function Top10Page({ tools, meta, seo }) {
                     {tool.rating && (
                       <div className="px-5 pb-4">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-400 w-10">{t.scoreLabel}</span>
+                          <span className="text-xs text-gray-400 w-10">{t.note}</span>
                           <div className="flex-1 bg-gray-100 rounded-full h-1.5 overflow-hidden">
                             <div className={`h-full bg-gradient-to-r ${meta.color} rounded-full`} style={{ width: `${(tool.rating.value / 5) * 100}%` }} />
                           </div>
@@ -237,9 +216,42 @@ export default function Top10Page({ tools, meta, seo }) {
             })}
           </div>
 
+          {/* ── Maillage cluster : comparatifs, guides et catégorie associés ── */}
+          {clusterLinks.length > 0 && (
+            <section className="mb-12 sm:mb-16" aria-labelledby="cluster-title">
+              <h2 id="cluster-title" className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
+                {t.goFurther(meta.label.toLowerCase())}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+                {clusterLinks.map(link => (
+                  <Link key={link.href} href={link.href}
+                    className="bg-white border border-gray-200 rounded-2xl p-4 hover:border-purple-300 hover:shadow-md transition-all group">
+                    <p className="font-bold text-gray-800 text-sm mb-1 group-hover:text-purple-700 transition-colors">{link.label}</p>
+                    {link.desc && <p className="text-xs text-gray-500 leading-relaxed">{link.desc}</p>}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* ── FAQ (rendue côté serveur + schema FAQPage) ── */}
+          {faqs.length > 0 && (
+            <section className="mb-12 sm:mb-16" aria-labelledby="faq-title">
+              <h2 id="faq-title" className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">{t.faqTitle}</h2>
+              <div className="space-y-3">
+                {faqs.map(item => (
+                  <div key={item.q} className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5">
+                    <h3 className="font-bold text-gray-900 text-sm sm:text-base mb-2">{item.q}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.a}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* ── Autres Top 10 ── */}
           <div className="border-t border-gray-100 pt-10 sm:pt-12">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">{t.othersTitle}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">{t.otherTop10}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {others.map(cat => (
                 <Link key={cat.href} href={cat.href}

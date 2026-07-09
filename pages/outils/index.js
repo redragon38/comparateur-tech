@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
@@ -6,72 +6,37 @@ import { useRouter } from 'next/router';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ToolCard from '../../components/ToolCard';
+import SeoInternalLinks from '../../components/SeoInternalLinks';
 import SEO, { buildBreadcrumbSchema, buildItemListSchema } from '../../components/SEO';
 import { ChevronRight, Search } from 'lucide-react';
+import { TOOL_LIST_PAGE_SIZE, normalizeText, toCardTool } from '../../lib/tool-data';
+import { TOOLS_SEO_LINK_GROUPS } from '../../lib/seo-internal-link-groups';
 import { useT } from '../../lib/i18n';
 
-const CONTENT = {
+const DICT = {
   fr: {
     seoTitle: 'Outils tech comparés : IA, VPN, hébergement, sécurité',
-    seoDescription: (n) => `Explorez ${n}+ outils IA, VPN, hébergement, antivirus et cybersécurité avec fiches, notes, prix, essais et avis éditoriaux.`,
-    breadcrumbHome: 'Accueil',
-    breadcrumbPage: 'Tous les outils',
-    itemListName: 'Catalogue Comparateur-Tech',
-    itemListDesc: 'Catalogue des outils IA, VPN, hébergement web, antivirus et cybersécurité sélectionnés par Comparateur-Tech.',
-    badge: '🛠️ Tous les outils',
-    h1: 'Découvrez les meilleurs outils',
-    intro: 'Sélectionnés et testés pour les créateurs, freelances et entrepreneurs.',
+    seoDesc: (n) => `Explorez ${n}+ outils IA, VPN, hébergement, antivirus et cybersécurité avec fiches, notes éditoriales, prix, essais et alternatives.`,
+    home: 'Accueil', allTools: 'Tous les outils',
+    badge: '🛠️ Tous les outils', h1: 'Découvrez les meilleurs outils',
+    subtitle: 'Sélectionnés et testés pour les créateurs, freelances et entrepreneurs.',
     browseByCategory: 'Parcourir par catégorie',
     toolCount: (n) => `${n} outil${n > 1 ? 's' : ''}`,
-    searchPlaceholder: 'Rechercher un outil...',
-    searchAria: 'Rechercher un outil',
-    allFilter: 'Tous',
-    noResult: 'Aucun outil trouvé.',
-    catNames: {
-      'Intelligence artificielle': 'Intelligence artificielle',
-      'Hébergement web': 'Hébergement web',
-      'VPN': 'VPN',
-      'Antivirus': 'Antivirus',
-      'Cybersécurité': 'Cybersécurité',
-    },
-    catShort: {
-      'Intelligence artificielle': 'Intelligence',
-      'Hébergement web': 'Hébergement',
-      'VPN': 'VPN',
-      'Antivirus': 'Antivirus',
-      'Cybersécurité': 'Cybersécurité',
-    },
+    searchPlaceholder: 'Rechercher un outil...', all: 'Tous', noneFound: 'Aucun outil trouvé.',
+    catLabels: { 'Intelligence artificielle': 'Intelligence artificielle', 'Hébergement web': 'Hébergement web', 'VPN': 'VPN', 'Antivirus': 'Antivirus', 'Cybersécurité': 'Cybersécurité' },
+    catShort: { 'Intelligence artificielle': 'IA', 'Hébergement web': 'Hébergement', 'VPN': 'VPN', 'Antivirus': 'Antivirus', 'Cybersécurité': 'Cybersécurité' },
   },
   en: {
     seoTitle: 'Tech tools compared: AI, VPN, hosting, security',
-    seoDescription: (n) => `Explore ${n}+ AI, VPN, hosting, antivirus and cybersecurity tools with reviews, ratings, pricing, trials and editorial verdicts.`,
-    breadcrumbHome: 'Home',
-    breadcrumbPage: 'All tools',
-    itemListName: 'Comparateur-Tech catalog',
-    itemListDesc: 'Catalog of AI, VPN, web hosting, antivirus and cybersecurity tools selected by Comparateur-Tech.',
-    badge: '🛠️ All tools',
-    h1: 'Discover the best tools',
-    intro: 'Selected and tested for creators, freelancers and entrepreneurs.',
+    seoDesc: (n) => `Explore ${n}+ AI, VPN, hosting, antivirus and cybersecurity tools with reviews, editorial ratings, pricing, trials and alternatives.`,
+    home: 'Home', allTools: 'All tools',
+    badge: '🛠️ All tools', h1: 'Discover the best tools',
+    subtitle: 'Selected and tested for creators, freelancers and entrepreneurs.',
     browseByCategory: 'Browse by category',
     toolCount: (n) => `${n} tool${n > 1 ? 's' : ''}`,
-    searchPlaceholder: 'Search for a tool...',
-    searchAria: 'Search for a tool',
-    allFilter: 'All',
-    noResult: 'No tools found.',
-    catNames: {
-      'Intelligence artificielle': 'Artificial intelligence',
-      'Hébergement web': 'Web hosting',
-      'VPN': 'VPN',
-      'Antivirus': 'Antivirus',
-      'Cybersécurité': 'Cybersecurity',
-    },
-    catShort: {
-      'Intelligence artificielle': 'AI',
-      'Hébergement web': 'Hosting',
-      'VPN': 'VPN',
-      'Antivirus': 'Antivirus',
-      'Cybersécurité': 'Cybersecurity',
-    },
+    searchPlaceholder: 'Search for a tool...', all: 'All', noneFound: 'No tool found.',
+    catLabels: { 'Intelligence artificielle': 'Artificial intelligence', 'Hébergement web': 'Web hosting', 'VPN': 'VPN', 'Antivirus': 'Antivirus', 'Cybersécurité': 'Cybersecurity' },
+    catShort: { 'Intelligence artificielle': 'AI', 'Hébergement web': 'Hosting', 'VPN': 'VPN', 'Antivirus': 'Antivirus', 'Cybersécurité': 'Cybersecurity' },
   },
 };
 
@@ -90,28 +55,67 @@ const CATEGORY_META = {
   'Cybersécurité':             { icon: '🔐', topBar: 'bg-slate-700', border: 'border-slate-200', badge: 'bg-slate-50 border-slate-200 text-slate-700', desc: 'Renforcez votre sécurité' },
 };
 
-const FIXED_CATEGORIES = ['Intelligence artificielle', 'Hébergement web', 'VPN', 'Antivirus', 'Cybersécurité'];
+const FIXED_CATEGORIES = [
+  'Intelligence artificielle',
+  'Hébergement web',
+  'VPN',
+  'Antivirus',
+  'Cybersécurité',
+];
+
+const CATEGORY_ALIASES = {
+  IA: 'Intelligence artificielle',
+  'IA générative': 'Intelligence artificielle',
+  'Hébergement Web': 'Hébergement web',
+  VPN: 'VPN',
+  Antivirus: 'Antivirus',
+  Cybersécurité: 'Cybersécurité',
+};
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'public', 'data', 'tools-slim.json');
-  const tools = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  const categoryMap = {};
-  FIXED_CATEGORIES.forEach(cat => { categoryMap[cat] = 0; });
+  const filePath = path.join(
+    process.cwd(),
+    'public',
+    'data',
+    'tools-slim.json'
+  );
+
+  const tools = JSON.parse(
+    fs.readFileSync(filePath, 'utf8')
+  );
+
+  const categoryMap = {
+    'Intelligence artificielle': 0,
+    'Hébergement web': 0,
+    VPN: 0,
+    Antivirus: 0,
+    Cybersécurité: 0,
+  };
+
   tools.forEach(tool => {
     (tool.categories || []).forEach(cat => {
-      if (FIXED_CATEGORIES.includes(cat)) categoryMap[cat]++;
-      // Les outils "IA générative" sont comptés dans "Intelligence artificielle"
-      if (cat === 'IA générative') categoryMap['Intelligence artificielle']++;
+      const normalized = CATEGORY_ALIASES[cat] || cat;
+      if (categoryMap[normalized] !== undefined) {
+        categoryMap[normalized]++;
+      }
     });
   });
-  return { props: { tools, categoryMap } };
+
+  return {
+    props: {
+      tools: tools.map(toCardTool),
+      categoryMap,
+    },
+  };
 }
 
 export default function ToolsPage({ tools, categoryMap }) {
+  const t = useT(DICT);
   const router = useRouter();
-  const t = useT(CONTENT);
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const deferredSearchTerm = useDeferredValue(searchTerm);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -119,35 +123,51 @@ export default function ToolsPage({ tools, categoryMap }) {
     setSearchTerm(query || '');
   }, [router.isReady, router.query.q]);
 
-  const filtered = tools.filter(tool => {
-    const toolCats = tool.categories || [];
-    const matchCat = activeCategory === 'all' ||
-      toolCats.includes(activeCategory) ||
-      (activeCategory === 'Intelligence artificielle' && toolCats.includes('IA générative'));
-    const matchSearch = !searchTerm ||
-      tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (tool.short || '').toLowerCase().includes(searchTerm.toLowerCase());
-    return matchCat && matchSearch;
-  });
+  const filtered = useMemo(() => {
+    const q = normalizeText(deferredSearchTerm.trim());
+    return tools.filter(tool => {
+      const toolCats = tool.categories || [];
+      const matchCat =
+        activeCategory === 'all' ||
+        toolCats.some(
+          cat => (CATEGORY_ALIASES[cat] || cat) === activeCategory
+        );
+      const matchSearch = !q ||
+        normalizeText(`${tool.name} ${tool.short || ''} ${tool.highlight || ''}`).includes(q);
+      return matchCat && matchSearch;
+    });
+  }, [activeCategory, deferredSearchTerm, tools]);
 
-  const structuredData = [
+  const totalPages = Math.ceil(filtered.length / TOOL_LIST_PAGE_SIZE);
+
+  const visibleTools = useMemo(() => {
+    const start = (currentPage - 1) * TOOL_LIST_PAGE_SIZE;
+    const end = start + TOOL_LIST_PAGE_SIZE;
+    return filtered.slice(start, end);
+  }, [filtered, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory, deferredSearchTerm]);
+
+  const structuredData = useMemo(() => [
     buildBreadcrumbSchema([
-      { name: t.breadcrumbHome, url: '/' },
-      { name: t.breadcrumbPage },
+      { name: t.home, url: '/' },
+      { name: t.allTools },
     ]),
     buildItemListSchema({
-      name: t.itemListName,
-      description: t.itemListDesc,
+      name: 'Catalogue Comparateur-Tech',
+      description: 'Catalogue des outils IA, VPN, hébergement web, antivirus et cybersécurité sélectionnés par Comparateur-Tech.',
       items: tools,
     }),
-  ];
+  ], [tools]);
 
   return (
     <>
       <SEO
         title={t.seoTitle}
-        description={t.seoDescription(tools.length)}
-        canonical="https://comparateur-tech.com/outils"
+        description={t.seoDesc(tools.length)}
+        canonical={`https://comparateur-tech.com/outils?page=${currentPage}`}
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -164,7 +184,7 @@ export default function ToolsPage({ tools, categoryMap }) {
                 {t.h1}
               </h1>
               <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto px-2">
-                {t.intro}
+                {t.subtitle}
               </p>
             </div>
           </section>
@@ -187,7 +207,7 @@ export default function ToolsPage({ tools, categoryMap }) {
                           {meta.icon}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-bold text-gray-900 text-xs sm:text-sm truncate">{t.catNames[cat]}</p>
+                          <p className="font-bold text-gray-900 text-xs sm:text-sm truncate">{t.catLabels[cat] || cat}</p>
                           <p className="text-xs text-gray-500 mt-0.5">{t.toolCount(categoryMap[cat])}</p>
                         </div>
                         <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors flex-shrink-0 hidden sm:block" />
@@ -198,6 +218,10 @@ export default function ToolsPage({ tools, categoryMap }) {
               </div>
             </div>
 
+            <div className="mb-8 sm:mb-12">
+              <SeoInternalLinks groups={TOOLS_SEO_LINK_GROUPS} />
+            </div>
+
             {/* Filtres + recherche */}
             <div className="flex flex-col gap-3 sm:gap-4 mb-6 sm:mb-8">
               {/* Barre de recherche */}
@@ -205,7 +229,6 @@ export default function ToolsPage({ tools, categoryMap }) {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="search"
-                  aria-label={t.searchAria}
                   placeholder={t.searchPlaceholder}
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
@@ -221,7 +244,7 @@ export default function ToolsPage({ tools, categoryMap }) {
                       ? 'gradient-purple text-white shadow-md shadow-purple-300/40'
                       : 'bg-white border border-gray-200 text-gray-700 hover:border-purple-300 hover:text-purple-700'
                   }`}>
-                  {t.allFilter} ({tools.length})
+                  {t.all} ({tools.length})
                 </button>
                 {FIXED_CATEGORIES.map(cat => {
                   const meta = CATEGORY_META[cat];
@@ -232,7 +255,7 @@ export default function ToolsPage({ tools, categoryMap }) {
                           ? 'gradient-purple text-white shadow-md shadow-purple-300/40'
                           : 'bg-white border border-gray-200 text-gray-700 hover:border-purple-300 hover:text-purple-700'
                       }`}>
-                      {meta.icon} {t.catShort[cat]} ({categoryMap[cat]})
+                      {meta.icon} {t.catShort[cat] || cat.split(' ')[0]} ({categoryMap[cat]})
                     </button>
                   );
                 })}
@@ -242,15 +265,38 @@ export default function ToolsPage({ tools, categoryMap }) {
             {/* Grille outils, 2 colonnes sur mobile */}
             {filtered.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-                {filtered.map(tool => (
+                {visibleTools.map(tool => (
                   <ToolCard key={tool.id} tool={tool} />
                 ))}
               </div>
             ) : (
               <div className="text-center py-16 sm:py-20">
-                <p className="text-gray-500 text-base sm:text-lg">{t.noResult}</p>
+                <p className="text-gray-500 text-base sm:text-lg">{t.noneFound}</p>
               </div>
             )}
+
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-10 gap-2 flex-wrap">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => {
+                      setCurrentPage(page);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className={`px-4 py-2 rounded-lg border font-medium transition-all ${
+                      currentPage === page
+                        ? 'bg-purple-600 text-white border-purple-600'
+                        : 'bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:text-purple-700'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+            )}
+
           </div>
         </main>
         <Footer />

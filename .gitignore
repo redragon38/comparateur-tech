@@ -1,14 +1,11 @@
-.next/
-out/
-node_modules/
+node_modules
+.next
+.cursor
+.DS_Store
+
+# Local environment files
 .env
-.env.local
-.env.*.local
-# Fichiers d'environnement sans point initial (le vrai fichier local s'appelle env.local)
+.env.*
+!.env.example
 env.local
 env.*.local
-npm-debug.log*
-.DS_Store
-Thumbs.db
-# Config locale de l'outillage Claude Code
-.claude/

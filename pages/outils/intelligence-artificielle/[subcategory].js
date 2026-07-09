@@ -6,8 +6,9 @@ import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import ToolCard from '../../../components/ToolCard';
 import SEO, { buildBreadcrumbSchema, buildFAQSchema, buildItemListSchema } from '../../../components/SEO';
-import { IA_SUBCATEGORIES, localizeSubcat } from '../../../lib/ia-subcategories';
-import { localizePaths, useT, useLocale } from '../../../lib/i18n';
+import { IA_SUBCATEGORIES } from '../../../lib/ia-subcategories';
+import { toCardTool } from '../../../lib/tool-data';
+import { localizePaths } from '../../../lib/i18n';
 
 export async function getStaticPaths() {
   const paths = IA_SUBCATEGORIES.map(sub => ({
@@ -33,115 +34,56 @@ export async function getStaticProps({ params }) {
       count: allTools.filter(t => s.tools.includes(t.name)).length,
     }));
 
-  return { props: { sub, tools, otherSubs } };
+  return { props: { sub, tools: tools.map(toCardTool), otherSubs } };
 }
 
 const IA_BUYER_CRITERIA = {
-  fr: {
-    redaction: ['Qualité du style en français', 'Longueur du contexte', 'Fiabilité des réponses', 'Export et intégrations'],
-    image: ['Qualité visuelle', 'Contrôle du style', 'Droits d’usage', 'Coût par génération'],
-    video: ['Qualité du mouvement', 'Durée des rendus', 'Contrôle caméra', 'Export professionnel'],
-    audio: ['Naturel de la voix', 'Langues disponibles', 'Droits commerciaux', 'Temps de génération'],
-    recherche: ['Sources citées', 'Fraîcheur des réponses', 'Synthèse', 'Export des recherches'],
-    code: ['Qualité des suggestions', 'Confidentialité du code', 'IDE compatibles', 'Compréhension du contexte'],
-    agent: ['Autonomie réelle', 'Connecteurs disponibles', 'Contrôle humain', 'Journalisation des actions'],
-    productivite: ['Collaboration', 'Automatisations', 'Gestion des tâches', 'Rapports et tableaux de bord'],
-    default: ['Qualité des résultats', 'Prix', 'Confidentialité', 'Intégrations'],
-  },
-  en: {
-    redaction: ['Writing style quality', 'Context length', 'Answer reliability', 'Export and integrations'],
-    image: ['Visual quality', 'Style control', 'Usage rights', 'Cost per generation'],
-    video: ['Motion quality', 'Render length', 'Camera control', 'Professional export'],
-    audio: ['Voice naturalness', 'Available languages', 'Commercial rights', 'Generation time'],
-    recherche: ['Cited sources', 'Answer freshness', 'Synthesis', 'Research export'],
-    code: ['Suggestion quality', 'Code privacy', 'Compatible IDEs', 'Context understanding'],
-    agent: ['Real autonomy', 'Available connectors', 'Human control', 'Action logging'],
-    productivite: ['Collaboration', 'Automations', 'Task management', 'Reports and dashboards'],
-    default: ['Output quality', 'Price', 'Privacy', 'Integrations'],
-  },
+  redaction: ['Qualité du style en français', 'Longueur du contexte', 'Fiabilité des réponses', 'Export et intégrations'],
+  image: ['Qualité visuelle', 'Contrôle du style', 'Droits d’usage', 'Coût par génération'],
+  video: ['Qualité du mouvement', 'Durée des rendus', 'Contrôle caméra', 'Export professionnel'],
+  audio: ['Naturel de la voix', 'Langues disponibles', 'Droits commerciaux', 'Temps de génération'],
+  recherche: ['Sources citées', 'Fraîcheur des réponses', 'Synthèse', 'Export des recherches'],
+  code: ['Qualité des suggestions', 'Confidentialité du code', 'IDE compatibles', 'Compréhension du contexte'],
+  agent: ['Autonomie réelle', 'Connecteurs disponibles', 'Contrôle humain', 'Journalisation des actions'],
+  productivite: ['Collaboration', 'Automatisations', 'Gestion des tâches', 'Rapports et tableaux de bord'],
 };
 
-const UI_TEXT = {
-  fr: {
-    home: 'Accueil', tools: 'Outils', ai: 'Intelligence artificielle',
-    seoTitle: (label) => `${label} – Comparatif & Avis 2026 | Comparateur-Tech`,
-    seoDescription: (label, desc, n) => `Comparez les meilleurs outils de ${label.toLowerCase()} : ${desc} ${n} outil${n > 1 ? 's' : ''} sélectionné${n > 1 ? 's' : ''} par nos experts.`,
-    itemListName: (label) => `Comparatif ${label}`,
-    toolsAvailable: (n) => `${n} outil${n > 1 ? 's' : ''} disponible${n > 1 ? 's' : ''}`,
-    aiTypes: "Types d'IA", allTypes: 'Tous les types', otherCategories: 'Autres catégories',
-    howToChoose: (label) => `Comment choisir une solution ${label.toLowerCase()} ?`,
-    howToChooseIntro: "Testez toujours l'outil sur un exemple réel avant de comparer les prix. Les solutions IA peuvent sembler proches, mais elles diffèrent beaucoup sur la qualité, les limites d'usage et le contrôle du résultat.",
-    noTools: "Aucun outil dans cette catégorie pour l'instant.",
-    faqTitle: 'Questions fréquentes', otherAiTypes: "Autres types d'IA",
-    toolCount: (n) => `${n} outil${n > 1 ? 's' : ''}`,
-    otherCats: [
-      { slug: 'hebergement-web', label: 'Hébergement web', icon: '🌐' },
-      { slug: 'vpn', label: 'VPN', icon: '🛡️' },
-      { slug: 'antivirus', label: 'Antivirus', icon: '🦠' },
-      { slug: 'cybersecurite', label: 'Cybersécurité', icon: '🔐' },
-    ],
-    faq: (label, tools) => {
-      const topTools = tools.slice(0, 3).map(t => t.name).join(', ');
-      const l = label.toLowerCase();
-      return [
-        { q: `Comment choisir un outil ${l} ?`, a: `Comparez d'abord la qualité des résultats sur vos propres exemples, puis les limites du plan, la confidentialité des données et les intégrations avec vos outils existants.` },
-        { q: `Combien d'outils sont listés dans ${l} ?`, a: `Cette sélection présente ${tools.length} outil${tools.length > 1 ? 's' : ''} pour ${l}, avec accès aux fiches détaillées, prix, notes et alternatives.` },
-        { q: `Quels outils comparer en priorité ?`, a: topTools ? `Vous pouvez commencer par ${topTools}, puis comparer selon votre budget, le niveau de contrôle attendu et la qualité obtenue sur vos cas d'usage.` : `Commencez par les outils qui documentent clairement leurs limites, leurs prix et leurs conditions d'utilisation des données.` },
-      ];
-    },
-  },
-  en: {
-    home: 'Home', tools: 'Tools', ai: 'Artificial intelligence',
-    seoTitle: (label) => `${label} – Comparison & Reviews 2026 | Comparateur-Tech`,
-    seoDescription: (label, desc, n) => `Compare the best ${label.toLowerCase()} tools: ${desc} ${n} tool${n > 1 ? 's' : ''} selected by our experts.`,
-    itemListName: (label) => `${label} comparison`,
-    toolsAvailable: (n) => `${n} tool${n > 1 ? 's' : ''} available`,
-    aiTypes: 'AI types', allTypes: 'All types', otherCategories: 'Other categories',
-    howToChoose: (label) => `How to choose a ${label.toLowerCase()} solution?`,
-    howToChooseIntro: 'Always test the tool on a real example before comparing prices. AI solutions may look similar, but they differ a lot in quality, usage limits and control over the output.',
-    noTools: 'No tools in this category yet.',
-    faqTitle: 'Frequently asked questions', otherAiTypes: 'Other AI types',
-    toolCount: (n) => `${n} tool${n > 1 ? 's' : ''}`,
-    otherCats: [
-      { slug: 'hebergement-web', label: 'Web hosting', icon: '🌐' },
-      { slug: 'vpn', label: 'VPN', icon: '🛡️' },
-      { slug: 'antivirus', label: 'Antivirus', icon: '🦠' },
-      { slug: 'cybersecurite', label: 'Cybersecurity', icon: '🔐' },
-    ],
-    faq: (label, tools) => {
-      const topTools = tools.slice(0, 3).map(t => t.name).join(', ');
-      const l = label.toLowerCase();
-      return [
-        { q: `How do I choose a ${l} tool?`, a: `First compare output quality on your own examples, then the plan limits, data privacy and integrations with your existing tools.` },
-        { q: `How many tools are listed in ${l}?`, a: `This selection features ${tools.length} tool${tools.length > 1 ? 's' : ''} for ${l}, with access to detailed pages, pricing, ratings and alternatives.` },
-        { q: `Which tools should I compare first?`, a: topTools ? `You can start with ${topTools}, then compare based on your budget, the level of control you need and the quality you get on your use cases.` : `Start with tools that clearly document their limits, pricing and data-usage terms.` },
-      ];
-    },
-  },
-};
-
-function getSubcategoryCriteria(locale, slug) {
-  const dict = IA_BUYER_CRITERIA[locale] || IA_BUYER_CRITERIA.fr;
-  return dict[slug] || dict.default;
+function getSubcategoryCriteria(slug) {
+  return IA_BUYER_CRITERIA[slug] || ['Qualité des résultats', 'Prix', 'Confidentialité', 'Intégrations'];
 }
 
-export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOtherSubs }) {
-  const t = useT(UI_TEXT);
-  const locale = useLocale();
-  const sub = localizeSubcat(rawSub, locale);
-  const otherSubs = rawOtherSubs.map((s) => ({ ...localizeSubcat(s, locale), count: s.count }));
-  const subcategories = IA_SUBCATEGORIES.map((s) => localizeSubcat(s, locale));
-  const buyerCriteria = getSubcategoryCriteria(locale, sub.slug);
-  const subcategoryFaq = t.faq(sub.label, tools);
+function buildSubcategoryFaq(sub, tools) {
+  const topTools = tools.slice(0, 3).map(t => t.name).join(', ');
+  return [
+    {
+      q: `Comment choisir un outil ${sub.label.toLowerCase()} ?`,
+      a: `Comparez d’abord la qualité des résultats sur vos propres exemples, puis les limites du plan, la confidentialité des données et les intégrations avec vos outils existants.`,
+    },
+    {
+      q: `Combien d’outils sont listés dans ${sub.label.toLowerCase()} ?`,
+      a: `Cette sélection présente ${tools.length} outil${tools.length > 1 ? 's' : ''} pour ${sub.label.toLowerCase()}, avec accès aux fiches détaillées, prix, notes et alternatives.`,
+    },
+    {
+      q: `Quels outils comparer en priorité ?`,
+      a: topTools
+        ? `Vous pouvez commencer par ${topTools}, puis comparer selon votre budget, le niveau de contrôle attendu et la qualité obtenue sur vos cas d’usage.`
+        : `Commencez par les outils qui documentent clairement leurs limites, leurs prix et leurs conditions d’utilisation des données.`,
+    },
+  ];
+}
+
+export default function IASubcategoryPage({ sub, tools, otherSubs }) {
+  const buyerCriteria = getSubcategoryCriteria(sub.slug);
+  const subcategoryFaq = buildSubcategoryFaq(sub, tools);
   const structuredData = [
     buildBreadcrumbSchema([
-      { name: t.home, url: '/' },
-      { name: t.tools, url: '/outils' },
-      { name: t.ai, url: '/outils/intelligence-artificielle' },
+      { name: 'Accueil', url: '/' },
+      { name: 'Outils', url: '/outils' },
+      { name: 'Intelligence artificielle', url: '/outils/intelligence-artificielle' },
       { name: sub.label },
     ]),
     buildItemListSchema({
-      name: t.itemListName(sub.label),
+      name: `Comparatif ${sub.label}`,
       description: sub.desc,
       items: tools,
     }),
@@ -151,8 +93,8 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
   return (
     <>
       <SEO
-        title={t.seoTitle(sub.label)}
-        description={t.seoDescription(sub.label, sub.desc, tools.length)}
+        title={`${sub.label} – Comparatif & Avis 2026 | Comparateur-Tech`}
+        description={`Comparez les meilleurs outils de ${sub.label.toLowerCase()} : ${sub.desc} ${tools.length} outil${tools.length > 1 ? 's' : ''} sélectionné${tools.length > 1 ? 's' : ''} par nos experts.`}
         canonical={`https://comparateur-tech.com/outils/intelligence-artificielle/${sub.slug}`}
         structuredData={structuredData}
       />
@@ -168,11 +110,11 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
 
               {/* Breadcrumb */}
               <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8 flex-wrap">
-                <Link href="/" className="hover:text-gray-900 transition-colors">{t.home}</Link>
+                <Link href="/" className="hover:text-gray-900 transition-colors">Accueil</Link>
                 <ChevronRight className="w-4 h-4" />
-                <Link href="/outils" className="hover:text-gray-900 transition-colors">{t.tools}</Link>
+                <Link href="/outils" className="hover:text-gray-900 transition-colors">Outils</Link>
                 <ChevronRight className="w-4 h-4" />
-                <Link href="/outils/intelligence-artificielle" className="hover:text-gray-900 transition-colors">{t.ai}</Link>
+                <Link href="/outils/intelligence-artificielle" className="hover:text-gray-900 transition-colors">Intelligence artificielle</Link>
                 <ChevronRight className="w-4 h-4" />
                 <span className="text-gray-900 font-medium">{sub.label}</span>
               </nav>
@@ -184,7 +126,7 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
                 </div>
                 <div>
                   <div className={`inline-block text-xs font-semibold tracking-widest uppercase ${sub.textColor} ${sub.bg} border ${sub.border} px-3 py-1 rounded-full mb-3`}>
-                    {t.toolsAvailable(tools.length)}
+                    {tools.length} outil{tools.length > 1 ? 's' : ''} disponible{tools.length > 1 ? 's' : ''}
                   </div>
                   <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 leading-tight">
                     {sub.label}
@@ -201,15 +143,15 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
               {/* SIDEBAR */}
               <aside className="lg:w-64 flex-shrink-0">
                 <div className="bg-white rounded-2xl border border-purple-100 shadow-sm p-5 sticky top-24">
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">{t.aiTypes}</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Types d'IA</h3>
                   <ul className="space-y-1">
                     <li>
                       <Link href="/outils/intelligence-artificielle"
                         className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm text-gray-500 hover:bg-purple-50 hover:text-purple-700 transition-all">
-                        <span>🤖</span> {t.allTypes}
+                        <span>🤖</span> Tous les types
                       </Link>
                     </li>
-                    {subcategories.map(s => {
+                    {IA_SUBCATEGORIES.map(s => {
                       const isActive = s.slug === sub.slug;
                       return (
                         <li key={s.slug}>
@@ -231,9 +173,14 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
                     })}
                   </ul>
                   <div className="mt-4 pt-4 border-t border-gray-100">
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">{t.otherCategories}</h3>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Autres catégories</h3>
                     <ul className="space-y-1">
-                      {t.otherCats.map(cat => (
+                      {[
+                        { slug: 'hebergement-web', label: 'Hébergement web', icon: '🌐' },
+                        { slug: 'vpn', label: 'VPN', icon: '🛡️' },
+                        { slug: 'antivirus', label: 'Antivirus', icon: '🦠' },
+                        { slug: 'cybersecurite', label: 'Cybersécurité', icon: '🔐' },
+                      ].map(cat => (
                         <li key={cat.slug}>
                           <Link href={`/outils/${cat.slug}`}
                             className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm text-gray-600 hover:bg-purple-50 hover:text-purple-700 transition-all">
@@ -255,9 +202,9 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
                 </div>
 
                 <section className="bg-white rounded-2xl border border-purple-100 shadow-sm p-6 mb-8">
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 text-center">{t.howToChoose(sub.label)}</h2>
+                  <h2 className="text-xl font-bold text-gray-900 mb-3">Comment choisir une solution {sub.label.toLowerCase()} ?</h2>
                   <p className="text-gray-600 leading-relaxed mb-5">
-                    {t.howToChooseIntro}
+                    Testez toujours l’outil sur un exemple réel avant de comparer les prix. Les solutions IA peuvent sembler proches, mais elles diffèrent beaucoup sur la qualité, les limites d’usage et le contrôle du résultat.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {buyerCriteria.map(criterion => (
@@ -278,12 +225,12 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
                 ) : (
                   <div className="text-center py-20 bg-white rounded-2xl border border-purple-100">
                     <p className="text-4xl mb-4">🔍</p>
-                    <p className="text-gray-500 text-lg">{t.noTools}</p>
+                    <p className="text-gray-500 text-lg">Aucun outil dans cette catégorie pour l&apos;instant.</p>
                   </div>
                 )}
 
                 <section className="mt-12 bg-white rounded-2xl border border-purple-100 shadow-sm p-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-5 text-center">{t.faqTitle}</h2>
+                  <h2 className="text-xl font-bold text-gray-900 mb-5">Questions fréquentes</h2>
                   <div className="space-y-4">
                     {subcategoryFaq.map(item => (
                       <div key={item.q} className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0">
@@ -297,7 +244,7 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
                 {/* Autres types d'IA */}
                 {otherSubs.length > 0 && (
                   <div className="mt-16">
-                    <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">{t.otherAiTypes}</h2>
+                    <h2 className="text-xl font-bold text-gray-900 mb-6">Autres types d'IA</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {otherSubs.map(s => (
                         <Link key={s.slug} href={`/outils/intelligence-artificielle/${s.slug}`}
@@ -307,7 +254,7 @@ export default function IASubcategoryPage({ sub: rawSub, tools, otherSubs: rawOt
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="font-semibold text-gray-900">{s.label}</p>
-                            <p className="text-xs text-gray-400 mt-0.5">{t.toolCount(s.count)}</p>
+                            <p className="text-xs text-gray-400 mt-0.5">{s.count} outil{s.count > 1 ? 's' : ''}</p>
                           </div>
                           <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-purple-600 transition-colors flex-shrink-0" />
                         </Link>

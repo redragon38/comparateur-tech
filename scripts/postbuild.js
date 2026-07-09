@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * postbuild.js — tâches post-build
+ * postbuild.js, tâches post-build
  * Vérifie et régénère tools-slim.json si nécessaire.
  * Compatible Vercel (le fichier public/ est accessible en écriture au build).
  */
@@ -25,7 +25,7 @@ function rebuildSlim() {
     ));
     fs.writeFileSync(slimPath, JSON.stringify(slim), 'utf8');
     const ratio = (JSON.stringify(slim).length / JSON.stringify(tools).length * 100).toFixed(1);
-    console.log(`✓ tools-slim.json régénéré — ${slim.length} outils, ${ratio}% de la taille originale`);
+    console.log(`✓ tools-slim.json régénéré, ${slim.length} outils, ${ratio}% de la taille originale`);
   } catch (err) {
     console.warn('⚠️  postbuild: impossible de régénérer tools-slim.json:', err.message);
     // Ne pas faire échouer le build si le fichier est déjà présent

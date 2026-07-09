@@ -3,11 +3,9 @@ import { useRouter } from 'next/router';
 
 const SITE_NAME = 'Comparateur-Tech';
 const BASE_URL  = 'https://comparateur-tech.com';
+const DEFAULT_LOGO = `${BASE_URL}/logo.png`;
 
-/**
- * Extrait le chemin « nu » (sans domaine ni préfixe de langue) d'une URL
- * canonique fournie par une page, pour reconstruire les URLs fr/en.
- */
+/** Chemin « nu » (sans domaine ni préfixe de langue) pour reconstruire les URLs fr/en. */
 function bareCanonicalPath(canonical) {
   let path = String(canonical || '/').replace(/^https?:\/\/[^/]+/, '');
   path = path.replace(/^\/(fr|en)(?=\/|$)/, '');
@@ -35,12 +33,10 @@ export default function SEO({
 }) {
   const { locale: rawLocale } = useRouter();
   const locale = rawLocale === 'en' ? 'en' : 'fr';
-  const path = bareCanonicalPath(canonical);
-  const canonicalUrl = `${BASE_URL}/${locale}${path}`;
-  const alternates = {
-    fr: `${BASE_URL}/fr${path}`,
-    en: `${BASE_URL}/en${path}`,
-  };
+  const barePath = bareCanonicalPath(canonical);
+  const canonicalUrl = `${BASE_URL}/${locale}${barePath}`;
+  const altFr = `${BASE_URL}/fr${barePath}`;
+  const altEn = `${BASE_URL}/en${barePath}`;
 
   const robotsContent = [
     noindex ? 'noindex' : 'index',
@@ -64,9 +60,9 @@ export default function SEO({
       {articleSection && <meta property="article:section" content={articleSection} />}
 
       <link rel="canonical" href={canonicalUrl} />
-      <link rel="alternate" hrefLang="fr" href={alternates.fr} />
-      <link rel="alternate" hrefLang="en" href={alternates.en} />
-      <link rel="alternate" hrefLang="x-default" href={alternates.fr} />
+      <link rel="alternate" hrefLang="fr" href={altFr} />
+      <link rel="alternate" hrefLang="en" href={altEn} />
+      <link rel="alternate" hrefLang="x-default" href={altFr} />
       <meta name="robots"    content={robotsContent} />
       <meta name="googlebot" content={robotsContent} />
 
@@ -165,7 +161,7 @@ export function buildArticleSchema({ title, description, url, datePublished, dat
       url: BASE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/logo.png`,
+        url: DEFAULT_LOGO,
         width: 200,
         height: 60,
       },
@@ -173,14 +169,39 @@ export function buildArticleSchema({ title, description, url, datePublished, dat
   };
 }
 
-export function buildItemListSchema({ name, description, items }) {
+export function buildWebPageSchema({ name, description, url }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name,
+    description,
+    url: `${BASE_URL}${url}`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: BASE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: BASE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: DEFAULT_LOGO,
+      },
+    },
+  };
+}
+
+export function buildItemListSchema({ name, description, items, maxItems = 100 }) {
+  const visibleItems = items.slice(0, maxItems);
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name,
     ...(description ? { description } : {}),
     numberOfItems: items.length,
-    itemListElement: items.map((tool, i) => ({
+    itemListElement: visibleItems.map((tool, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       url: `${BASE_URL}/tool/${tool.id}`,
@@ -273,15 +294,6 @@ export function buildSoftwareSchema(tool) {
     url: `${BASE_URL}/tool/${tool.id}`,
     ...(tool.logo ? { image: `${BASE_URL}${tool.logo}` } : {}),
     ...(tool.website ? { sameAs: tool.website } : {}),
-    ...(tool.rating && {
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: tool.rating.value,
-        ratingCount: tool.rating.count,
-        bestRating: 5,
-        worstRating: 1,
-      },
-    }),
     ...(verdictClean && tool.rating && {
       review: {
         '@type': 'Review',

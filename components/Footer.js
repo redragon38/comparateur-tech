@@ -5,11 +5,10 @@ import { useUI } from '../lib/i18n';
 export default function Footer() {
   const ui = useUI();
   const f = ui.footer;
-
   return (
     <footer className="border-t border-purple-100 py-10 sm:py-14 mt-8 sm:mt-10 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 mb-8 sm:mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-10 mb-8 sm:mb-10">
           {/* Logo + description, occupe 2 colonnes sur mobile */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-3">
@@ -32,14 +31,12 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-3 text-gray-700 text-xs uppercase tracking-wider">{f.toolsTitle}</h4>
             <ul className="space-y-2.5">
-              <li><Link href="/outils" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{ui.nav.allTools}</Link></li>
-              {ui.categories.map((cat) => (
-                <li key={cat.slug}>
-                  <Link href={cat.href} className="text-gray-500 hover:text-purple-700 transition-colors text-sm">
-                    {cat.icon} {cat.label}
-                  </Link>
-                </li>
-              ))}
+              <li><Link href="/outils" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.allTools}</Link></li>
+              <li><Link href="/outils/intelligence-artificielle" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.catAI}</Link></li>
+              <li><Link href="/outils/vpn" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.catVPN}</Link></li>
+              <li><Link href="/outils/hebergement-web" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.catHost}</Link></li>
+              <li><Link href="/outils/antivirus" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.catAV}</Link></li>
+              <li><Link href="/outils/cybersecurite" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.catCyber}</Link></li>
             </ul>
           </div>
 
@@ -47,18 +44,29 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-3 text-gray-700 text-xs uppercase tracking-wider">{f.top10Title}</h4>
             <ul className="space-y-2.5">
-              {ui.top10Categories.map((cat) => (
-                <li key={cat.slug}>
-                  <Link href={`/top-10-${cat.slug}`} className="text-gray-500 hover:text-purple-700 transition-colors text-sm">
-                    🏆 Top 10 {cat.label}
-                  </Link>
-                </li>
-              ))}
+              <li><Link href="/top-10-intelligence-artificielle" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.top10AI}</Link></li>
+              <li><Link href="/top-10-vpn" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.top10VPN}</Link></li>
+              <li><Link href="/top-10-hebergement-web" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.top10Host}</Link></li>
+              <li><Link href="/top-10-antivirus" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.top10AV}</Link></li>
+              <li><Link href="/top-10-cybersecurite" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.top10Cyber}</Link></li>
+            </ul>
+          </div>
+
+
+          {/* Guides */}
+          <div>
+            <h4 className="font-bold mb-3 text-gray-700 text-xs uppercase tracking-wider">{f.guidesTitle}</h4>
+            <ul className="space-y-2.5">
+              <li><Link href="/comparatifs/chatgpt-vs-claude" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">ChatGPT vs Claude</Link></li>
+              <li><Link href="/alternatives/alternative-chatgpt" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.guideAltChatgpt}</Link></li>
+              <li><Link href="/comparatifs/nordvpn-vs-surfshark" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">NordVPN vs Surfshark</Link></li>
+              <li><Link href="/guides/meilleur-vpn-streaming" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.guideVpnStreaming}</Link></li>
+              <li><Link href="/guides/meilleur-hebergement-wordpress" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.guideWpHosting}</Link></li>
             </ul>
           </div>
 
           <div className="hidden md:block">
-            <h4 className="font-bold mb-3 text-gray-700 text-xs uppercase tracking-wider">{f.legalTitle}</h4>
+            <h4 className="font-bold mb-3 text-gray-700 text-xs uppercase tracking-wider">{f.linksTitle}</h4>
             <ul className="space-y-2.5">
               <li><Link href="/contact" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.contact}</Link></li>
               <li><Link href="/partenaires" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.partners}</Link></li>
@@ -67,6 +75,8 @@ export default function Footer() {
               <li><Link href="/methodologie" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.methodology}</Link></li>
               <li><Link href="/mentions-legales" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.legalNotice}</Link></li>
               <li><Link href="/cgu" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.terms}</Link></li>
+              <li><Link href="/politique-affiliation" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.affiliation}</Link></li>
+              <li><Link href="/politique-confidentialite" className="text-gray-500 hover:text-purple-700 transition-colors text-sm">{f.privacy}</Link></li>
             </ul>
           </div>
         </div>
@@ -78,6 +88,8 @@ export default function Footer() {
             {[
               { label: f.legalNotice, href: '/mentions-legales' },
               { label: f.terms, href: '/cgu' },
+              { label: f.affiliation, href: '/politique-affiliation' },
+              { label: f.privacy, href: '/politique-confidentialite' },
               { label: f.contact, href: '/contact' },
             ].map((item, i) => (
               <Link key={i} href={item.href}

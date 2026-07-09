@@ -1,8 +1,8 @@
 import { Star, Zap, Check, ArrowUpRight, Scale } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useUI, useLocale, pickToolText } from '../lib/i18n';
+import { memo, useState } from 'react';
+import { useUI } from '../lib/i18n';
 
 const CAT_META = {
   'VPN': {
@@ -64,9 +64,9 @@ const DEFAULT = {
   glow: 'rgba(124,58,237,0.22)',
 };
 
-function StarRating({ value, ariaLabel }) {
+function StarRating({ value }) {
   return (
-    <div className="flex gap-0.5" aria-label={ariaLabel}>
+    <div className="flex gap-0.5" aria-label={`${value} étoiles sur 5`}>
       {[...Array(5)].map((_, i) => (
         <svg key={i} className="w-3 h-3" viewBox="0 0 14 14">
           <path
@@ -79,18 +79,39 @@ function StarRating({ value, ariaLabel }) {
   );
 }
 
-export default function ToolCard({ tool }) {
+function ToolCard({
+  tool,
+  detailHref,
+  compareHref,
+  externalUrl,
+  externalLabel,
+  secondaryLabel,
+  showCompare = true,
+  cardHref,
+}) {
   const router = useRouter();
-  const [hovered, setHovered] = useState(false);
   const ui = useUI();
-  const locale = useLocale();
+  const [hovered, setHovered] = useState(false);
 
+  const extLabel = externalLabel || ui.tool.officialSite;
+  const secLabel = secondaryLabel || ui.tool.viewProfile;
   const cat = tool.categories?.[0];
   const m = CAT_META[cat] || DEFAULT;
-  const catLabel = ui.catLabels[m.label] || (m === DEFAULT ? ui.tool.defaultCatLabel : m.label);
-  const url = tool.affiliateUrl || tool.website || tool.link || '#';
-  const strengths = (pickToolText(tool, locale, 'strengthShort') || []).slice(0, 3);
-  const short = pickToolText(tool, locale, 'short') || pickToolText(tool, locale, 'highlight') || '';
+  const catLabel = ui.catLabels[m.label] || m.label;
+  const url = externalUrl || tool.affiliateUrl || tool.website || tool.link || '#';
+  const defaultDetailHref = `/tool/${tool.id}`;
+  const finalDetailHref = detailHref || defaultDetailHref;
+  const finalCompareHref = compareHref || `${defaultDetailHref}#compare`;
+  const finalCardHref = cardHref || finalDetailHref;
+  const strengths = (tool.strengthShort || []).slice(0, 3);
+  const isExternalHref = (href) => /^https?:\/\//.test(href || '');
+  const handleCardClick = () => {
+    if (isExternalHref(finalCardHref)) {
+      if (typeof window !== 'undefined') window.open(finalCardHref, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    router.push(finalCardHref);
+  };
 
   return (
     <article
@@ -103,8 +124,10 @@ export default function ToolCard({ tool }) {
           : `0 1px 4px rgba(0,0,0,0.04), 0 4px 14px rgba(0,0,0,0.04)`,
         transform: hovered ? 'translateY(-5px)' : 'translateY(0)',
         transition: 'transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.25s ease',
+        contentVisibility: 'auto',
+        containIntrinsicSize: '320px',
       }}
-      onClick={() => router.push(`/tool/${tool.id}`)}
+      onClick={handleCardClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -207,7 +230,7 @@ export default function ToolCard({ tool }) {
           className="text-[12px] text-gray-400 line-clamp-2"
           style={{ lineHeight: '1.7' }}
         >
-          {short}
+          {tool.short || tool.highlight || ''}
         </p>
 
         {/* Strength chips */}
@@ -228,12 +251,12 @@ export default function ToolCard({ tool }) {
         {/* Rating */}
         {tool.rating && (
           <div className="flex items-center gap-1.5">
-            <StarRating value={tool.rating.value} ariaLabel={ui.tool.starsAria(tool.rating.value)} />
+            <StarRating value={tool.rating.value} />
             <span className="text-[12px] font-bold" style={{ color: m.color }}>
               {tool.rating.value}
             </span>
             <span className="text-[10px] text-gray-200">·</span>
-            <span className="text-[10px] text-gray-400">{tool.rating.count} {ui.tool.reviews}</span>
+            <span className="text-[10px] text-gray-400">{ui.tool.editorialRating}</span>
           </div>
         )}
 
@@ -245,41 +268,66 @@ export default function ToolCard({ tool }) {
 
         {/* Actions */}
         <div className="flex gap-2">
-          <Link
-            href={`/tool/${tool.id}`}
-            onClick={e => e.stopPropagation()}
-            className="flex-1 h-10 rounded-xl font-semibold text-[11px] flex items-center justify-center transition-all duration-200"
-            style={{ color: '#6b7280', background: '#f9fafb', border: '1.5px solid #e5e7eb' }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = '#f3f4f6';
-              e.currentTarget.style.color = '#374151';
-              e.currentTarget.style.borderColor = '#d1d5db';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = '#f9fafb';
-              e.currentTarget.style.color = '#6b7280';
-              e.currentTarget.style.borderColor = '#e5e7eb';
-            }}
-          >
-            {ui.tool.viewProfile}
-          </Link>
-          <Link
-            href={`/tool/${tool.id}#compare`}
-            onClick={e => e.stopPropagation()}
-            className="h-10 px-3 rounded-xl font-semibold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-200"
-            style={{ color: m.softText, background: m.softBg, border: `1.5px solid ${m.borderAlpha}` }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-1px)';
-              e.currentTarget.style.borderColor = m.hoverBorder;
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = m.borderAlpha;
-            }}
-          >
-            <Scale className="w-3.5 h-3.5" />
-            {ui.tool.compare}
-          </Link>
+          {isExternalHref(finalDetailHref) ? (
+            <a
+              href={finalDetailHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={e => e.stopPropagation()}
+              className="flex-1 h-10 rounded-xl font-semibold text-[11px] flex items-center justify-center transition-all duration-200"
+              style={{ color: '#6b7280', background: '#f9fafb', border: '1.5px solid #e5e7eb' }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = '#f3f4f6';
+                e.currentTarget.style.color = '#374151';
+                e.currentTarget.style.borderColor = '#d1d5db';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = '#f9fafb';
+                e.currentTarget.style.color = '#6b7280';
+                e.currentTarget.style.borderColor = '#e5e7eb';
+              }}
+            >
+              {secLabel}
+            </a>
+          ) : (
+            <Link
+              href={finalDetailHref}
+              onClick={e => e.stopPropagation()}
+              className="flex-1 h-10 rounded-xl font-semibold text-[11px] flex items-center justify-center transition-all duration-200"
+              style={{ color: '#6b7280', background: '#f9fafb', border: '1.5px solid #e5e7eb' }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = '#f3f4f6';
+                e.currentTarget.style.color = '#374151';
+                e.currentTarget.style.borderColor = '#d1d5db';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = '#f9fafb';
+                e.currentTarget.style.color = '#6b7280';
+                e.currentTarget.style.borderColor = '#e5e7eb';
+              }}
+            >
+              {secLabel}
+            </Link>
+          )}
+          {showCompare && (
+            <Link
+              href={finalCompareHref}
+              onClick={e => e.stopPropagation()}
+              className="h-10 px-3 rounded-xl font-semibold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-200"
+              style={{ color: m.softText, background: m.softBg, border: `1.5px solid ${m.borderAlpha}` }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.borderColor = m.hoverBorder;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = m.borderAlpha;
+              }}
+            >
+              <Scale className="w-3.5 h-3.5" />
+              {ui.tool.compare}
+            </Link>
+          )}
           <a
             href={url}
             target="_blank"
@@ -301,7 +349,7 @@ export default function ToolCard({ tool }) {
               e.currentTarget.style.transform = '';
             }}
           >
-            {ui.tool.officialSite}
+            {extLabel}
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>
@@ -310,3 +358,5 @@ export default function ToolCard({ tool }) {
     </article>
   );
 }
+
+export default memo(ToolCard);

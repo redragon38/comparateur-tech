@@ -15,9 +15,7 @@ export function middleware(req) {
 }
 
 export const config = {
-  // La racine '/' est déclarée explicitement : le matcher à lookahead négatif
-  // ne la capture pas de façon fiable. Le reste exclut les API, les assets Next
-  // et tout chemin contenant un point (fichiers statiques, sitemap.xml, robots.txt,
-  // images…) qui ne doivent pas être préfixés.
+  // La racine '/' est déclarée explicitement (le lookahead ne la capture pas de
+  // façon fiable). Le reste exclut api, assets Next et tout chemin avec un point.
   matcher: ['/', '/((?!api|_next|.*\\..*).*)'],
 };
