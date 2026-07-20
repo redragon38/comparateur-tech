@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { buildSitewideSchemas } from '../lib/premium-seo';
 
 const SITE_NAME = 'Comparateur-Tech';
 const BASE_URL  = 'https://comparateur-tech.com';
@@ -45,9 +46,12 @@ export default function SEO({
     'max-snippet:-1',
     'max-video-preview:-1',
   ].join(',');
-  const schemas = structuredData
+  const schemas = [
+    ...buildSitewideSchemas(),
+    ...(structuredData
     ? (Array.isArray(structuredData) ? structuredData : [structuredData])
-    : [];
+    : []),
+  ];
 
   return (
     <Head>

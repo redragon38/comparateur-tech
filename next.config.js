@@ -243,10 +243,6 @@ const nextConfig = {
       ...canonicalHostRedirects,
       ...decisionPageRedirects,
       ...legacyInternalRedirects,
-      { source: '/en',        destination: '/',          permanent: true  },
-      { source: '/en/:path*', destination: '/:path*',    permanent: true  },
-      { source: '/fr',        destination: '/',          permanent: true  },
-      { source: '/fr/:path*', destination: '/:path*',    permanent: true  },
       { source: '/outils/',   destination: '/outils',    permanent: true  },
       { source: '/blog/',     destination: '/blog',      permanent: true  },
     ];
