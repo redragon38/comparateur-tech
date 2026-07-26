@@ -53,13 +53,25 @@ function normalizeLastmod(value, fallback) {
   return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : fallback;
 }
 
+const LOCALES = ['fr', 'en'];
+
+// Une entrée <url> par langue (fr + en), annotée des alternates hreflang
+// (fr, en, x-default → fr), pour rester cohérent avec pages/sitemap.xml.js
+// et pointer directement vers les URLs canoniques (plus de redirection).
 function urlEntry({ path: urlPath, lastmod }) {
-  return [
+  const bare = urlPath === '/' ? '' : urlPath;
+  const alternates = [
+    `    <xhtml:link rel="alternate" hreflang="fr" href="${escapeXml(`${BASE_URL}/fr${bare}`)}" />`,
+    `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(`${BASE_URL}/en${bare}`)}" />`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(`${BASE_URL}/fr${bare}`)}" />`,
+  ].join('\n');
+  return LOCALES.map((locale) => [
     '  <url>',
-    `    <loc>${escapeXml(`${BASE_URL}${urlPath}`)}</loc>`,
+    `    <loc>${escapeXml(`${BASE_URL}/${locale}${bare}`)}</loc>`,
+    alternates,
     `    <lastmod>${escapeXml(lastmod)}</lastmod>`,
     '  </url>',
-  ].join('\n');
+  ].join('\n')).join('\n');
 }
 
 function hasStrongToolData(tool) {
@@ -159,7 +171,7 @@ function generatePrioritySitemap(tools) {
   ).slice(0, PRIORITY_URL_LIMIT);
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${uniqueUrls.map(urlEntry).join('\n')}
 </urlset>`;
 }
