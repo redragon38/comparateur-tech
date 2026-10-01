@@ -88,14 +88,15 @@ const LOCALES = ['fr', 'en'];
 // donc aucune URL exacte n'apparaît deux fois.
 function urlEntry({ path: urlPath, lastmod }) {
   const bare = urlPath === '/' ? '' : urlPath;
+  const localizedUrl = (locale) => encodeURI(`${BASE_URL}/${locale}${bare}`);
   const alternates = [
-    `    <xhtml:link rel="alternate" hreflang="fr" href="${escapeXml(`${BASE_URL}/fr${bare}`)}" />`,
-    `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(`${BASE_URL}/en${bare}`)}" />`,
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(`${BASE_URL}/fr${bare}`)}" />`,
+    `    <xhtml:link rel="alternate" hreflang="fr" href="${escapeXml(localizedUrl('fr'))}" />`,
+    `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(localizedUrl('en'))}" />`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(localizedUrl('fr'))}" />`,
   ].join('\n');
   return LOCALES.map((locale) => [
     '  <url>',
-    `    <loc>${escapeXml(`${BASE_URL}/${locale}${bare}`)}</loc>`,
+    `    <loc>${escapeXml(localizedUrl(locale))}</loc>`,
     alternates,
     `    <lastmod>${escapeXml(lastmod)}</lastmod>`,
     '  </url>',

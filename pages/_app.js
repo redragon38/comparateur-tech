@@ -50,28 +50,11 @@ function useScrollToTop() {
 }
 
 // ── Prefetch des pages au survol des liens ──
-function useLinkPrefetch() {
-  const router = useRouter()
-  useEffect(() => {
-    const onMouseOver = (e) => {
-      const link = e.target.closest('a[href]')
-      if (!link) return
-      const href = link.getAttribute('href')
-      if (href && href.startsWith('/') && !href.startsWith('//')) {
-        router.prefetch(href).catch(() => {})
-      }
-    }
-    document.addEventListener('mouseover', onMouseOver, { passive: true })
-    return () => document.removeEventListener('mouseover', onMouseOver)
-  }, [router])
-}
-
 export default function App({ Component, pageProps }) {
   const [analyticsAllowed, setAnalyticsAllowed] = useState(false)
   useResizeTransitionGuard()
   useViewTransitions()
   useScrollToTop()
-  useLinkPrefetch()
 
   useEffect(() => {
     setAnalyticsAllowed(hasAnalyticsConsent())

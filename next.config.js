@@ -216,6 +216,12 @@ const nextConfig = {
         ],
       },
       {
+        // Les recherches internes ne doivent pas créer de variantes indexables.
+        source: '/outils',
+        has: [{ type: 'query', key: 'q' }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, follow' }],
+      },
+      {
         // Cache long pour les assets statiques : le `.` est obligatoire,
         // sinon des URLs sans extension matchaient (ex: /page) et héritaient d'un cache immutable.
         source: '/:path*.(png|jpg|jpeg|gif|webp|avif|ico|svg|woff2|woff|ttf)',

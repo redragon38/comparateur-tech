@@ -103,19 +103,33 @@ export async function getStaticProps() {
 
   return {
     props: {
-      tools: tools.map(toCardTool),
+      // Keep initial HTML useful while loading the full catalogue after hydration.
+      initialTools: tools.slice(0, TOOL_LIST_PAGE_SIZE).map(toCardTool),
       categoryMap,
     },
   };
 }
 
-export default function ToolsPage({ tools, categoryMap }) {
+export default function ToolsPage({ initialTools, categoryMap }) {
   const t = useT(DICT);
   const router = useRouter();
+  const hasSearchQuery = Boolean(router.query.q);
+  const [tools, setTools] = useState(initialTools);
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const deferredSearchTerm = useDeferredValue(searchTerm);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/data/tools-slim.json')
+      .then(response => response.ok ? response.json() : Promise.reject(new Error('Catalogue indisponible')))
+      .then(data => {
+        if (!cancelled) setTools(data.map(toCardTool));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -167,7 +181,8 @@ export default function ToolsPage({ tools, categoryMap }) {
       <SEO
         title={t.seoTitle}
         description={t.seoDesc(tools.length)}
-        canonical={`https://comparateur-tech.com/outils?page=${currentPage}`}
+        canonical="https://comparateur-tech.com/outils"
+        noindex={hasSearchQuery}
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-gray-50 flex flex-col">

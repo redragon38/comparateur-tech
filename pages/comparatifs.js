@@ -89,7 +89,7 @@ const DICT = {
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), 'public', 'data', 'tools-slim.json');
   const tools = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  return { props: { tools: sortByRating(tools).map(toCardTool) } };
+  return { props: { initialTools: sortByRating(tools).slice(0, TOOL_LIST_PAGE_SIZE).map(toCardTool) } };
 }
 
 const CATEGORIES = ['Tout', 'VPN', 'Hébergement web', 'Antivirus', 'Intelligence artificielle'];
@@ -215,12 +215,24 @@ function ToolCard({ tool, rank, t }) {
   );
 }
 
-export default function ComparatifsPage({ tools }) {
+export default function ComparatifsPage({ initialTools }) {
   const t = useT(DICT);
+  const [tools, setTools] = useState(initialTools);
   const [selectedCat, setSelectedCat] = useState('Tout');
   const [searchQuery, setSearchQuery] = useState('');
   const [visibleCount, setVisibleCount] = useState(TOOL_LIST_PAGE_SIZE);
   const deferredSearchQuery = useDeferredValue(searchQuery);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/data/tools-slim.json')
+      .then(response => response.ok ? response.json() : Promise.reject(new Error('Catalogue indisponible')))
+      .then(data => {
+        if (!cancelled) setTools(sortByRating(data).map(toCardTool));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
 
   const filtered = useMemo(() => {
     const q = normalizeText(deferredSearchQuery.trim());

@@ -150,6 +150,8 @@ function FAQItem({ q, a }) {
       style={{ background: open ? '#fafafa' : 'white' }}
     >
       <button
+        type="button"
+        aria-expanded={open}
         className="w-full flex items-center justify-between px-5 py-4 text-left gap-3"
         onClick={() => setOpen(o => !o)}
       >
