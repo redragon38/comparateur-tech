@@ -122,7 +122,7 @@ export default function ToolsPage({ initialTools, categoryMap }) {
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/data/tools-slim.json')
+    fetch('/data/tools-catalog.json')
       .then(response => response.ok ? response.json() : Promise.reject(new Error('Catalogue indisponible')))
       .then(data => {
         if (!cancelled) setTools(data.map(toCardTool));
@@ -319,3 +319,4 @@ export default function ToolsPage({ initialTools, categoryMap }) {
     </>
   );
 }
+

@@ -225,7 +225,7 @@ export default function ComparatifsPage({ initialTools }) {
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/data/tools-slim.json')
+    fetch('/data/tools-catalog.json')
       .then(response => response.ok ? response.json() : Promise.reject(new Error('Catalogue indisponible')))
       .then(data => {
         if (!cancelled) setTools(sortByRating(data).map(toCardTool));
@@ -383,3 +383,4 @@ export default function ComparatifsPage({ initialTools }) {
     </div>
   );
 }
+

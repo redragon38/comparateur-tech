@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import CookieConsent, { hasAnalyticsConsent } from '../components/CookieConsent'
 
-const AIChatbot = dynamic(() => import('../components/AIChatbot'), { ssr: false })
+const loadAIChatbot = () => import('../components/AIChatbot')
 
 // ── Resize : désactive les transitions pendant le redimensionnement ──
 function useResizeTransitionGuard() {
@@ -52,12 +52,34 @@ function useScrollToTop() {
 // ── Prefetch des pages au survol des liens ──
 export default function App({ Component, pageProps }) {
   const [analyticsAllowed, setAnalyticsAllowed] = useState(false)
+  const [AIChatbot, setAIChatbot] = useState(null)
   useResizeTransitionGuard()
   useViewTransitions()
   useScrollToTop()
 
   useEffect(() => {
     setAnalyticsAllowed(hasAnalyticsConsent())
+  }, [])
+
+  useEffect(() => {
+    // The chat is available on every page, but it is not part of the critical
+    // path. Load its ~200 kB chunk only once the page has settled.
+    let cancelled = false
+    const load = () => loadAIChatbot().then(module => {
+      if (!cancelled) setAIChatbot(() => module.default)
+    }).catch(() => {})
+    if ('requestIdleCallback' in window) {
+      const idleId = window.requestIdleCallback(load, { timeout: 2500 })
+      return () => {
+        cancelled = true
+        window.cancelIdleCallback(idleId)
+      }
+    }
+    const timeoutId = window.setTimeout(load, 1500)
+    return () => {
+      cancelled = true
+      window.clearTimeout(timeoutId)
+    }
   }, [])
 
   const handleCookieChange = useCallback((choice) => {
@@ -98,9 +120,10 @@ export default function App({ Component, pageProps }) {
 
       <div className="font-sans">
         <Component {...pageProps} />
-        <AIChatbot />
+        {AIChatbot && <AIChatbot />}
         <CookieConsent onChange={handleCookieChange} />
       </div>
     </>
   )
 }
+

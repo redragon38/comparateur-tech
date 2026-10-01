@@ -10,12 +10,32 @@ const path = require('path');
 const dataDir  = path.join(__dirname, '..', 'public', 'data');
 const fullPath = path.join(dataDir, 'tools.json');
 const slimPath = path.join(dataDir, 'tools-slim.json');
+const catalogPath = path.join(dataDir, 'tools-catalog.json');
 
 const SLIM_FIELDS = [
   'id','slug','name','logo','website','affiliateUrl','link',
   'categories','price','trial','featured','verified','rating',
   'short','highlight','strengthShort','createdAt','updatedAt',
 ];
+
+const CATALOG_FIELDS = [
+  'id','name','logo','website','affiliateUrl','categories','price','trial',
+  'featured','verified','rating','short','highlight','strengthShort',
+];
+
+function toCatalogTool(tool) {
+  return Object.fromEntries(
+    CATALOG_FIELDS
+      .filter(k => k in tool)
+      .map(k => [k, k === 'strengthShort' ? (tool[k] || []).slice(0, 3) : tool[k]])
+  );
+}
+
+function writeCatalog(tools) {
+  const catalog = tools.map(toCatalogTool);
+  fs.writeFileSync(catalogPath, JSON.stringify(catalog), 'utf8');
+  console.log(`✓ tools-catalog.json généré, ${catalog.length} outils`);
+}
 
 function rebuildSlim() {
   try {
@@ -24,6 +44,7 @@ function rebuildSlim() {
       SLIM_FIELDS.filter(k => k in t).map(k => [k, t[k]])
     ));
     fs.writeFileSync(slimPath, JSON.stringify(slim), 'utf8');
+    writeCatalog(tools);
     const ratio = (JSON.stringify(slim).length / JSON.stringify(tools).length * 100).toFixed(1);
     console.log(`✓ tools-slim.json régénéré, ${slim.length} outils, ${ratio}% de la taille originale`);
   } catch (err) {
@@ -56,7 +77,9 @@ if (!fs.existsSync(fullPath)) {
   try {
     const fullMtime = fs.statSync(fullPath).mtimeMs;
     const slimMtime = fs.statSync(slimPath).mtimeMs;
-    if (fullMtime > slimMtime || slimShapeChanged()) {
+    const catalogExists = fs.existsSync(catalogPath);
+    const catalogMtime = catalogExists ? fs.statSync(catalogPath).mtimeMs : 0;
+    if (fullMtime > slimMtime || fullMtime > catalogMtime || slimShapeChanged()) {
       console.log('⚡ tools.json modifié, mise à jour de tools-slim.json...');
       rebuildSlim();
     } else {
@@ -66,3 +89,4 @@ if (!fs.existsSync(fullPath)) {
     console.warn('⚠️  postbuild: erreur stat:', err.message);
   }
 }
+
